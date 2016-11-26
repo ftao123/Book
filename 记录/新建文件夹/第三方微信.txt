@@ -1,0 +1,64 @@
+1.http://blog.csdn.net/meng2602956882/article/details/12869237   Android 第三方应用接入微信平台研究情况分享
+  http://www.linuxidc.com/Linux/2013-02/79881.htm                Android微信分享功能实例+demo
+  http://www.linuxidc.com/Linux/2013-05/84292.htm                Android App接入微信开放平台注意事项
+
+
+  http://blog.csdn.net/linuxcjh/article/details/8798764           Android 调用微信Api
+
+  http://blog.csdn.net/dawanganban/article/details/40478317     Android实现微信分享及注意事项
+
+
+
+
+
+  分享：
+  WXWebpageObject webpage = new WXWebpageObject();
+        webpage.webpageUrl = url; // 点击跳转的地址。
+        WXMediaMessage msg = new WXMediaMessage(webpage);
+        msg.title = title; // 链接标题
+        msg.description = context; // 链接内容
+        msg.thumbData = Util.bmpToByteArray(thumb, true); // thumb是链接带的图片。（注：微信分享图片，分享链接的缩略图，必须要150×150的固定尺寸，单位是px）
+
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        //transaction字段用于唯一标识一个请求  
+        req.transaction = buildTransaction("textshare");  
+        req.transaction = buildTransaction("webpage");
+        req.message = msg;
+        // 第一个是分享大盘朋友圈，后面是分享给好友
+        req.scene = SendMessageToWX.Req.WXSceneTimeline;// SendMessageToWX.Req.WXSceneSession;
+        api.sendReq(req);
+
+
+
+
+
+
+if (null == IWXApi) {
+                        IWXApi = WXAPIFactory.createWXAPI(VideoPlayerActivity.this, FyzbSnsManager.WEIXIN.APP_ID, true);
+                        IWXApi.registerApp(FyzbSnsManager.WEIXIN.APP_ID);
+                    }
+                    WXWebpageObject obj = new WXWebpageObject();
+                    //分享后点击链接需要跳转的url
+                    obj.webpageUrl = "your webpage url";
+                    
+                    WXMediaMessage msg = new WXMediaMessage();
+                    msg.mediaObject = obj;
+                    msg.description = "一些分享的描述";
+                    msg.title = "分享的标题";
+                    
+                    Bitmap bmp = BitmapFactory.decodeFile("图片的绝对路径");
+                    if (null != bmp) {
+                        //生成一张缩略图，注意：此处的bitmap千万不能太大，不要超过40k,否则sendReq()时，会有可能返回false。不知道开发shareSDK的人是怎么想的，在文档里写一下会掉一块肉么！
+                        Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, 80, 80, true);
+                        bmp.recycle();
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        thumbBmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                        msg.thumbData = baos.toByteArray();
+                    }
+                    
+                    SendMessageToWX.Req req = new SendMessageToWX.Req();
+                    req.transaction = "wxpyq" + System.currentTimeMillis();
+                    req.message = msg;
+                    //scene 这个参数表示你要分享到朋友圈还是微信好友，WXSceneTimeline表示分享到朋友圈，WXSceneSession表示分享到微信好友。
+                    req.scene = SendMessageToWX.Req.WXSceneTimeline;
+                    boolean flag = IWXApi.sendReq(req);

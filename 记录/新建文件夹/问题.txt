@@ -1,0 +1,265 @@
+
+http://www.tuicool.com/articles/FnaUFrv   这是在浏览器中处理
+
+
+
+1.在DirectPurchaseOrderFragment里面
+   mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(dy>0){
+                    Toast.makeText(getActivity(),"往下滑动了",Toast.LENGTH_SHORT).show();//这两个是自己添加的
+                }
+                if(dx<0){
+                    Toast.makeText(getActivity(),"往右滑动了",Toast.LENGTH_SHORT).show();
+                }
+                isPullUp = dy > 0;//原本在111行
+            }
+ 自己新添加Toast致使它一直显示不消失，并且dx的判断不起作用
+ 可能是“往下滑动了”不消失是的其他Toast一直在排队，最后才一次显示出来
+
+
+
+type : 1 截获 0 释放
+
+
+***********
+
+
+if(!webView.getUrl().equals(URL)){
+            Log.d("<<<<<","判断URL");
+            //webView.loadUrl(URL);
+        }
+加上它还可以稍微控制一下      这个判断的是按下返回键之后跳进去页面的url是否等于URL
+
+
+ @Override
+    //设置回退
+    //覆盖Activity类的onKeyDown(int keyCoder,KeyEvent event)方法
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(webView.canGoBack()){
+            Log.d("<<<<<","点击后退按钮canGoBack()");
+            //webView.goBack();
+        }
+        if(webView.canGoForward()){
+            Log.d("<<<<<","点击后退按钮canGoForward()");
+            webView.goForward();
+        }
+        if(!webView.getUrl().equals(URL)){
+            Log.d("<<<<<","判断URL");
+            //webView.loadUrl(URL);
+        }
+
+        if ( (keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack() ) {
+           webView.goBack(); //goBack()表示返回WebView的上一页面
+            Log.d("<<<<<","两件");
+            return true;
+
+        } else if ( (keyCode == KeyEvent.KEYCODE_BACK) && !webView.canGoBack() ) {
+            if ( event.getAction() == KeyEvent.ACTION_DOWN ) {
+                Log.d("<<<<<","系统");
+                if ( doubleBackPressed ) {
+                    this.finish();
+                    return true;
+                }
+                doubleBackPressed = true;
+                toast("再按一次退出" + getString(R.string.app_name));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackPressed = false;
+                    }
+                }, 2000);
+            }
+            return true;
+        }
+//        return false;
+        return super.onKeyDown(keyCode, event);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("<<<<<","onBackPressed()");
+}
+
+}
+
+
+
+
+这样写：
+第一次按返回
+打印：
+11-24 10:07:13.348 10345-10345/com.lampo.zbhrt D/<<<<<: 点击后退按钮canGoBack()
+11-24 10:07:13.349 10345-10345/com.lampo.zbhrt D/<<<<<: 判断URL
+11-24 10:07:13.349 10345-10345/com.lampo.zbhrt D/<<<<<: 两件
+
+
+第二次：
+11-24 10:07:25.427 10345-10345/com.lampo.zbhrt D/<<<<<: 点击后退按钮canGoBack()
+11-24 10:07:25.427 10345-10345/com.lampo.zbhrt D/<<<<<: 点击后退按钮canGoForward()
+11-24 10:07:25.428 10345-10345/com.lampo.zbhrt D/<<<<<: 判断URL
+11-24 10:07:25.428 10345-10345/com.lampo.zbhrt D/<<<<<: 两件
+
+下面一直这样输出，但是就是会一直卡死在已确认这里跳不出
+
+按左上角那个返回
+再按系统返回打印：
+11-24 10:10:15.717 10345-10345/com.lampo.zbhrt D/<<<<<: 点击后退按钮canGoBack()
+11-24 10:10:15.717 10345-10345/com.lampo.zbhrt D/<<<<<: 判断URL
+11-24 10:10:15.717 10345-10345/com.lampo.zbhrt D/<<<<<: 两件
+
+卡死在那里
+
+***********
+
+卡死是因为重写了
+   @Override
+    public void onBackPressed() {
+        Log.d("<<<<<","onBackPressed()");    没有做任何处理
+}
+
+                                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+？？？？
+AndroidManifest.xml中WXPayEntryActivity的android:exported="true"
+这个类的完整路径是你的包名.wxapi.WXPayEntryActivity，其中包名是在微信开放平台设置的包名
+应用apk需要被签名，签名和微信开放平台上的应用签名要一致，附包名检查工具
+在void onCreate(Bundle savedInstanceState)和void onNewIntent(Intent intent)中需要调用IWXAPI.handleIntent(intent, context)，重要！！如果漏了，是调不起微信的！！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+ 
+            return true;  //返回true才能在当前WebView显示url链接内容，否则会打开其它浏览器
+        }
+ 
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            initCollectionImageBtn(url);
+            //1、 view.getOriginalUrl()初始加载为空null，此后该值==view.getUrl() != url
+            // 2、并且url等于onPageFinished的值
+ 
+            imgButtonFresh.setImageDrawable(getResources().getDrawable(
+                    R.drawable.selector_nav_to_refresh_stop));
+        }
+ 
+        @Override
+        public void onPageFinished(WebView view, String url) { // view.getOriginalUrl() == view.getUrl() == url
+            if (isCollection) {
+                changeCollectionImgBg(COLLECTION_SATE_AFTER);
+            } else {
+                changeCollectionImgBg(COLLECTION_SATE_BEFORE);
+            }
+            imgButtonFresh.setImageDrawable(getResources().getDrawable(
+                    R.drawable.selector_nav_to_refresh));
+            view.loadUrl("javascript：" + handleWebViewHeader(url));
+            super.onPageFinished(view, url);
+        }
+ 
+        @Override
+        public void onReceivedError(WebView view, int errorCode,
+                String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+        }
+    }
+
+以上代码是项目的一个代码片段，url的值参考上面代码，其中onPageFinished()函数中view.loadUrl("javascript："+handleWebViewHeader(url))是加载经过处理后的HTML页面，该处是去除header内容：
+ 
+
+"document.body.removeChild(document.getElementsByTagName(\"header\")[0])";
+
+或者 "document.body.removeChild(document.getElementsByClassName(\"header\")[0])";
+
+ 
+
+
+*******************
+Android 单个Activity后台运行，及Activity隐藏但是不调用OnDestory方法 
+最近由于项目需要，需要实现一个Activity隐藏的功能，再次点击按钮进去Activity的时候不用重绘，折腾了好几天都没有解决，最后二行代码就搞定了这个问题，真是验证了Android开的一句经典话语：没有你不会的，只有你不知道的。要是知道的话，开发起来就很快。就不废话了，直接上代码，经验证，肯定是没有问题的。
+1、直接上代码，在你需要隐藏Activity的时候，调用moveTaskToBack函数。
+ public boolean onKeyDown(int keycode, KeyEvent event) {
+  Log.i(TAG, "Key_Stuta = " + event.getAction());
+  if (keycode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+   // 右键处理
+    moveTaskToBack(true); } 
+  return true;
+}
+2、在manifest文件中加上Activity的启动模式，如下代码：
+        <activity
+            android:name=".presentation.SessionActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+android:launchMode="singleInstance"这句话是关键，告诉系统是用单例模式启动，及如果Activity没有OnDestory，就不需要再次创建Activity。
+
+
+
+

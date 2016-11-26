@@ -1,0 +1,70 @@
+
+  public static synchronized SharedPreferencesHelper getInstance
+
+
+
+里面还有一个修改密码的是不是也要改!!!
+
+
+
+
+
+在debug里面修改配置
+
+//            buildConfigField "String", "API_HOST", "\"http://uas.api.51jk.com/\"" //接口
+            buildConfigField "String", "API_HOST", "\"http://04.api.test.51jk.com/\""
+//            buildConfigField "String", "APP_URL", "\"http://app.naja.test.51jk.com/?token=\""
+            buildConfigField "String", "APP_URL", "\"http://app.naja.51jk.com/?token=\""//网页
+            buildConfigField "String", "API_UPLOAD", "\"http://172.20.10.241:9001//upload_pic?\"" 
+            jniDebuggable true
+            signingConfig signingConfigs.debug
+            zipAlignEnabled true
+        }
+
+public static final String API_SITE = "site_id=100001";
+
+
+
+
+服务器返回一个对象，填写数据是从哪里开始LoginItem extends Item在哪里填写的？？？
+ edPassword.setOnEditorActionListener
+SharedPreferencesHelper.getInstance().getString(AppConstants.KEY_PHONE, "");
+
+
+
+
+  signingConfig signingConfigs.debug????debug模式？？、
+
+
+
+
+public static synchronized SharedPreferencesHelper getInstance(String fileName) {
+        if(!sInstance.containsKey(fileName)) {
+            sInstance.put(fileName, new SharedPreferencesHelper(fileName));
+        }
+
+        return (SharedPreferencesHelper)sInstance.get(fileName);
+    }
+
+    public static SharedPreferencesHelper getInstance() {
+        if(mContext == null) {
+            throw new RuntimeException(NOT_INITIALIZE_ERROR_STRING);
+        } else {
+            String OUT_APP_PACKAGENAME = mContext.getPackageName();
+            return getInstance(OUT_APP_PACKAGENAME);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

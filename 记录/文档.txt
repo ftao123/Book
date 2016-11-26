@@ -1,0 +1,554 @@
+C:\Program Files\Java\jdk1.8.0_60  JDK的安装目录
+
+为了增加复用性和灵活性，我们还是定义一个接口来做监听滚动到底部的回调，这样你就可以把它用在listview，scrollView中去。********
+
+
+
+1. MainTabPageActivity  门店助手主页面
+
+                        主页面最下面五个布局  门店助手，下单，消息，联系人，个人中心。   下单没显示出来
+
+
+
+MainTabPageActivity     布局详解
+
+  main_tab_page_tv_no   消息左上角一个textView
+  item_top_tv_title     首先最上面的（门店助手）
+  id_viewpager          首页除了（门店助手）（最下面）中间那一块(ViewPager)
+
+rg_tab线性布局下面对应5个布局（个人感觉是不是写错了，因为下面就只有4个点击，其中   main_tab_page_ll_single是门店助手右上角那个没有显示的布局）
+每个小布局里面又包含image和textView，有得会多余一个没有显示出来（个人感觉也可以去掉啊）
+
+  main_tab_page_img_1    (门店助手那个图片)
+  main_tab_page_img_2   （消息那个图片）
+  main_tab_page_img_3   （联系人那个图片）
+  main_tab_page_img_4   （个人中心那个图片）
+
+  main_tab_page_tv_1      （门店助手那几个字）
+  main_tab_page_tv_2      （消息那几个字）
+  main_tab_page_tv_3      （联系人那几个字）
+  main_tab_page_tv_4      （个人中心那几个字）
+
+
+
+setDefaultTab  设置默认选项卡
+
+
+
+
+
+
+方法：
+initViews();                              初始化一些组件ID
+initEvents()                              初始化Fragment以及引入Fragment管理，给mViewPager.addOnPageChangeListener
+checkUser();                              用户检查
+updateNotify();                           检查更新
+setDefaultTab(currentPageIndex);          设置默认选项卡
+getPersonalInformation();                 个人中心信息:未读信息数
+initAnswerrelation();                     获取好友信息
+
+
+
+
+
+
+
+
+
+
+                                         设置默认选项卡
+
+currentPageIndex                         当前页索引
+
+
+mViewPager.setCurrentItem(i)             跳转到ViewPager的指定页面
+mViewPager.addOnPageChangeListener       监听viewPager的变化，ViewPager的变化会同步到ActionBar的tab页
+
+
+dispatchKeyEvent(KeyEvent event)         给返回键添加监听显示“再按一次退出门店助手”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 《一》  HomeFragment         门店助手页面除去最下面的剩余页面   ScrollView布局 
+   
+                       
+                        
+
+fragment_home_top_rl_1   送货订单0笔            fragment_home_center_ll_1     订单管理
+fragment_home_top_rl_2   直购订单0笔            fragment_home_center_ll_2     会员管理
+fragment_home_top_rl_3   自提订单0笔            fragment_home_center_ll_3     下单
+fragment_home_top_rl_4   今日任务0个            fragment_home_center_ll_4     二维码
+fragment_home_top_rl_5   今日注册0个            fragment_home_center_ll_5     条形码
+fragment_home_top_rl_6   今日销售0笔            fragment_home_center_ll_6     优惠券
+
+getToDayStatistics     得到日统计<<<<< RunnableExecutor.execute
+
+
+ fragment_home_center_ll_1(好几个都会进到这里面)-->>OrderManagementActivity（订单管理）--->>
+  order_management_but_myOrder               送货
+  order_management_but_otherOrder            直购
+  order_management_but_directOrder           自提
+  order_management_viewpager                 标题下面的界面
+
+
+
+从HomeFragment跳转到这里   OrderManagementActivity  订单管理
+
+
+SingleActivity：<<<<<
+从HomeFragment跳转到这里  SingleActivity  下单
+
+
+single_fragment_listview                         （中间空白区域）
+single_fragment_tv_number                        （用来显示，您已添加0种，共0件商品那一块的）
+single_fragment_tv_immediately_orders            （门店直购那一块）
+single_fragment_tv_delivery                      （显示送货上门那一块）
+single_fragment_ed_phone                         （显示填写手机号那一块）
+
+
+
+
+single_fragment_rl_search                         （请输入商品关键字/简称）会跳转到SearchActivity
+single_fragment_ll_scanning                        (扫描那一块)
+
+
+Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));******
+
+
+single_fragment_tv_immediately_orders  （门店直购）跳转到ConfirmOrderActivity （订单确认）
+
+
+confirm_order_tv_single   （确认下单按钮）跳转到 createOrder()
+
+
+
+
+
+
+
+
+
+
+从HomeFragment跳转过来什么放了数据？？？sendMsgAfterOrders = this.getIntent().getBooleanExtra
+edPhone.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)}); 
+String telRegex = "[1][34578]\\d{9}";
+
+
+
+SearchActivity：<<<<
+
+
+
+
+
+
+
+《二》 MyFragment  点击个人中心进入 
+
+fragment_my_img_face                 头像
+fragment_my_tv_name                  这两个是头像和在线之间空白处的ID
+fragment_my_tv_storefront
+fragment_my_tv_online                在线
+fragment_my_ll_notification_settings 通知设置
+fragment_my_ll_chat_settings         聊天设置
+fragment_my_ll_account_settings      账号设置
+fragment_my_ll_update                关于助手
+
+case R.id.fragment_my_tv_online     <<<<<
+
+
+《三》ChatFragment 点击消息进去消息里面  不下
+
+initEvents()   ISession session = listChat.get(position).getSession();<<<<<      
+
+item_top_tv_search 搜索  
+R.id.item_top_tv_other
+fragment_chat_rl_chatmessage
+fragment_chat_rl_systemmessage
+fragment_chat_tv_ischatonline  
+
+《四》SplashActivity  程序刚刚开始进入的静态页面  门店助手立即体验 ------------
+
+PushManager   推送管理器 
+
+
+PushManager.getInstance().initialize(this.getApplicationContext());这句话做了不少事情    (得到一个什么？？？)
+1.启动PushService，并且传过去两个参数
+
+
+
+
+
+
+
+AutomaticLanding 自动登录            
+    
+
+《五》ContactsFragment 联系人界面
+
+home
+
+barcode（条码） 下面三个分别是： 条形码搜索  编辑商品  选择城市
+          memberManagement（会员管理）
+DataFillActivity             设置，身份证等等  
+MembershipQueryActivity      会员查询 
+RegisterActivity             注册
+SoOrderActivity              所以订单
+UserDetailsActivity          用户详情
+           order（订单）
+ConfirmOrderActivity         订单确认
+UserDetailsActivity          优惠券 
+DeliveryInformationActivity  收货信息
+DrugDetailsActivity          药品详情
+SearchActivity               搜索药品
+SingleActivity               下单
+
+
+
+orderManagement(订单管理) 
+CollarCouponCenterActivity    领劵中心   
+FollowQRCodeActivity          二维码
+
+
+
+
+
+
+orderManagement(订单管理)  
+order_management_but_myOrder                （送货）
+order_management_but_otherOrder             （直购）
+order_management_but_directOrder            （自提）
+
+
+
+
+
+
+DirectPurchaseOrderFragment  (直购里面)
+SwipeRefreshLayout-->>RecyclerView
+mRecyclerView.setLayoutManager(mLinearLayoutManager = new LinearLayoutManager(getActivity()));
+
+
+OrderRecyclerViewAdapter：
+RecyclerView布局的适配器OrderRecyclerViewAdapter extends RecyclerView.Adapter
+OrderRecyclerViewAdapter里面的List<OrderListItem>提供数据的List-->>OrderListItem封装(订单详情)里面数据的类
+
+
+ItemViewHolder---***
+
+
+
+
+
+
+在gradle Scripts 中build.gradle中debug的配置
+
+需要配置debug.keystore 
+C:\Program Files\Java\jdk1.6.0_10\bin>keytool -genkey -alias android.keystore -keyalg RSA -validity 20000 -keystore android.keystore 
+
+获得的密钥库密码18874035884fan keystore的密钥18874035884fan  
+
+
+
+
+
+
+
+
+
+
+ 
+
+__________________________________________________________________________________________________________________________________
+
+1. ConfirmOrderActivity 订单确认详细
+   
+   mAllLntegral                               可用积分数
+   mCouponId, couponAmountText, couponAmount  优惠券id;显示文本;优惠券金额
+   couponNum                                  可用优惠券个数
+   mLntegral                                  输入的积分数
+   mMobile                                    本订单的手机号码（上个Activity的传过来的数据）
+   mPrebookId 
+   postStyle                                  支付方式（门店直购，送货上门）
+
+   tvPhone                                    最上门那个条目中的
+   tvDoing                                    优惠券抵扣那一目的右边
+   tvFullcutdeals                             满减优惠那一目的右边
+
+  
+
+
+
+
+
+
+
+
+
+   
+   confirm_order_tv_allPhone                   填写手机号码左上角有一个不显示的布局（不知道做什么用的，感觉可以删除）
+   confirm_order_ll_top                        订单显示手机号码那一页目，除去那个箭头，监听这一块，跳转到填写收货信息那一页
+   confirm_order_tv_single                     确认下单
+   confirm_order_ll_coupon
+   confirm_order_ed_integral
+ 
+
+
+
+
+
+
+
+
+
+
+
+Work封装的一个网络请求登录成功可以拿到数据
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+直购----DirectPurchaseOrderFragment
+
+OrderListResponse（订单列表相应）  OrderListResponse extends Response<OrderListResponse.ListPages>         Response<T>
+
+ListPages  是OrderListResponse的一个内部类
+
+
+new CallbackNetWork 重写他的方法的时候，在success（）方法里面可以直接调用BaseFragment里面的方法dismissProgressDialog()，直接就
+写上去了？？？
+
+
+CollarCouponCenterActivity里面的
+
+
+
+
+
+
+有一个isStatusOk返回status这个值，默认是“ERROR”，但是如果从服务器那边传过来就是“ok”
+
+
+
+OrderPipe.getDirectPurchaseOrderList(1, callback);          getDirectPurchaseOrderList    获得直接采购订单列表
+        getDeliveryOrderList      获取交货单列表
+
+onScrollStateChanged  滚动状态已更改
+
+ProgressDialog progDialog   加载那个圈
+
+
+
+LocalBroadcastManager**
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+ 
+              直购和送货用了同一个布局****************任务列表 他们结构大致一样
+这些布局都使用了SwipeRefreshLayout，然后在SwipeRefreshLayout里面放置一个RecyclerView            （处理布局）
+****RecycleView数据适配器OrderRecyclerViewAdapter：
+OrderRecyclerViewAdapter extends RecyclerView.Adapter----FooterViewHolder和ItemViewHolder两种布局
+
+1.****getItemViewType(int position)：
+决定元素的布局使用哪种类型 
+* 
+* @param position 数据源的下标 
+* @return 一个int型标志，传递给onCreateViewHolder的第二个参数 */
+是用来根据position的不同来实现RecyclerView中对不同布局的要求。从这个方法中所返回的值会在onCreateViewHolder中用到。
+比如头部，尾部，等等的特殊itemView（这里说成ViewHolder比较好）都可以在这里进行判断。
+2.****getItemCount()
+getItemCount()就不必多说了，和ListView是一样的
+  @Override
+    public int getItemCount() {
+        Log.e("AboutAdapter", "getItemCount");//        若需要填充多个item, 可用计数来代替,此处由于不需要故写死为1.
+        return 1;
+    }
+注意!!: 必须在getItemCount中返回大于0的数,RecycleView才会去调用onCreateViewHolder和onBindViewHolder.
+
+3.在 onCreateViewHolder(ViewGroup parent, int viewType) 判断使用哪一种布局
+/** * 渲染具体的ViewHolder 
+*
+* @param parent   ViewHolder的容器 
+* @param viewType 一个标志，我们根据该标志可以实现渲染不同类型的ViewHolder 
+* @return 
+*/
+onCreateViewHolder(ViewGroup parent, int viewType)是用来配合写好的ViewHolder来返回一个ViewHolder对象。这里也涉及到了条目布局的加载。
+viewType则表示需要给当前position生成的是哪一种ViewHolder，这个参数也说明了RecyclerView对多类型ItemView的支持
+
+
+4.其中的ViewHolder就是拿来负责View的回收和复用的
+
+5.onBindViewHolder(MyViewHolder holder, int position)专门用来绑定ViewHolder里的控件和数据源中position位置的数据。这里，会有人问，
+那么item的子控件findViewById 去哪儿了？我们把它交给了ViewHolder的构造方法（其他方法也可以），它的本质是在onCreateViewHolder方法里生成ViewHolder的时候执行的
+
+另外监听器需要自己定义回调接口
+
+6.notifyDataSetChanged方法通过一个外部的方法控制如果适配器的内容改变时需要强制调用getView来刷新每个Item的内容,可以实现动态的刷新列表的功能。、
+
+
+
+
+viewType == TYPE_FOOTER) {//加载进度条的布局
+
+showProgressDialog(getResources().getString(R.string.order_refresh_list));    这是加载时候显示的文字内容    loadingDialog.setCancelable(false);// 不可以用“返回键”取消  
+OrderPipe.getDirectPurchaseOrderList(1, callback);                     getDirectPurchaseOrderList     获得直接采购订单列表
+
+
+
+SwipeRefreshLayout只能有一个直接子View，可能是一个ListView或一个Layout或其他需要刷新的组件。
+setOnRefreshListener 用于监听刷新的动作。SwipeRefreshLayout 下拉，就会有刷新的效果出来，触发该监听。
+如果需要一个刷新的动画，setRefreshing(true)， 停: setRefreshing(false)
+如果要禁用刷新动画和手势响应，ssetEnable(false)，  恢复：setEnable(true)
+：
+         1、setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener):设置手势滑动监听器。
+
+         2、setProgressBackgroundColor(int colorRes):设置进度圈的背景色。
+
+         3、setColorSchemeResources(int… colorResIds):设置进度动画的颜色。
+
+         4、setRefreshing(Boolean refreshing):设置组件的刷洗状态。
+
+         5、setSize(int size):设置进度圈的大小，只有两个值：DEFAULT、LARGE
+
+
+onScrolled(RecyclerView recyclerView, int dx, int dy) ：滚动的回调，dx和dy表示手指滑动水平和垂直的偏移量。
+
+onScrollStateChanged(RecyclerView recyclerView, int newState)：滑动状态的回调。
+
+因为onScrollStateChanged是在状态改变时的回调
+
+
+
+
+
+
+status.equalsIgnoreCase("OK")
+
+用equals( )方法比較两个字符串是否相等。它具有例如以下的一般形式：
+
+1.boolean equals(Object str)  这里str是一个用来与调用字符串（String）对象做比較的字符串（String）对象。假设两个字符串具有同样的字符和
+长度，它返回true。否则返回false。这样的比較是区分大写和小写的。
+
+2.为了运行忽略大写和小写的比較，能够调用equalsIgnoreCase( )方法。当比較两个字符串时，它会觉得A-Z和a-z是一样的
+
+
+
+
+
+
+在使用ViewPager的过程中，有需要直接跳转到某一个页面的情况，这个时候就需要用到ViewPager的setCurrentItem方法了，它的意思是跳转到ViewPager的指定页面，
+但在使用这个方法的时候有个问题，跳转的时候有滑动效果，当需要从当前页面跳转到其它页面时，跳转页面跨度过大、或者ViewPager每个页面的视觉效果相差较大时，
+通过这种方式实现ViewPager跳转显得很不美观，怎么办呢，我们可以去掉在使用ViewPager的setCurrentItem方法时的滑屏速度，具体实现如下：
+
+
+
+
+
+
+
+订单管理里面的三个Fragment的创建是在进去订单管理里面就会同时创建三个fragment,只要是从外面进去，那三个都会从新创建，然后进去订单管理后他们三个之间
+的变化不会从新创建。
+这三个fragment之间的变化是通过ViewPage
+
+showProgressDialog("正在加载订单列表..."); 这个是刚刚进去就会出现那个东西 
+预加载两个Fragment，直购里面有List<OrderListItem> dataList 每次进来清空，然后通过OrderPipe.getDirectPurchaseOrderList(1, callback);
+来拿数据，
+
+
+OrderPipe.getDirectPurchaseOrderList(1, callback); 这个走完dataList.size()是0
+
+Callback<OrderListResponse> callback2  里面有一个
+ List<OrderListItem> listItems = orderListResponse.getResults().getItems();         拿到数据把数据放到List里面
+ dataList.addAll(listItems);
+
+
+
+
+setVisibility
+VISIBLE:0  意思是可见的
+INVISIBILITY:4 意思是不可见的，但还占着原来的空间
+GONE:8  意思是不可见的，不占用原来的布局空间
+
+dismissProgressDialog();
+progDialog.dismiss()方法关闭进度条对话框
+
+
+ mRecyclerView.setAdapter(mAdapter);
+ showProgressDialog(getResources().getString(R.string.order_refresh_list));
+ OrderPipe.getDirectPurchaseOrderList(1, callback); 这里启动一个异步任务去拿数据了，所以下面的还是0
+ Log.d("<<<<<1"," "+dataList.size());//************
+
+进入订单管理先在callback里面
+ List<OrderListItem> listItems = orderListResponse.getResults().getItems(); 此时已经拿到数据10条
+ Log.d("<<<<<11"," "+dataList.size());//************
+ Log.d("<<<<<10***"," "+listItems.size());//************
+下面进行判断操作把数据加紧dataList里面                               ****此时已经拿到数据
+
+callback2里面也拿到数据10
+
+
+--------------------------------------------
+上面那么多都是属于  安卓网络编程*******
+如何给一个方法添加回调机制*********
+一个类里面定义一个广播
+public @interface Query 安卓里面的注解
+ListView的getItemCount
+
+
+
+
+直购DirectPurchaseOrderFragment里面的 mAdapter = new OrderRecyclerViewAdapter(getActivity(), dataList); dataList是从哪里传进来的
+
+
+
+AlertDialog.Builder 
+
+
+mAdapter.setHasMoreDataAndFooter(false, true); 
+
+
+
+
+————————————————————————————————————————————————————————————————————————
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+setEnabled(true);设置可以被点击
+
+

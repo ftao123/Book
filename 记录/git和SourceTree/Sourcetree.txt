@@ -1,0 +1,5 @@
+1.问题：
+  git -c diff.mnemonicprefix=false -c core.quotepath=false fetch origin
+  http://www.lxway.com/4082141154.htm  讲解问什么
+  解决：工具--》添加SSH密钥  （选择我们之前给git配置的文件就可以了，id_rsa）
+  

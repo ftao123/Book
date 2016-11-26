@@ -1,0 +1,87 @@
+git@git.local.ybzf.com:android/pharmacist.git
+李龙兵
+Lampo-李龙兵 2016/11/7 16:16:16
+git config --global user.name "lilongbing"
+git config --global user.email "lilongbing@51jk.com"
+Create a new repository
+mkdir lilongbing
+cd lilongbing
+git init
+touch README.md
+git add README.md
+git commit -m "first commit"
+git remote add origin git@git.local.ybzf.com:lilongbing422707787/lilongbing.git
+git push -u origin master
+Push an existing Git repository
+cd existing_git_repo
+git remote add origin git@git.local.ybzf.com:lilongbing422707787/lilongbing.git
+git push -u origin master
+
+Lampo-李龙兵  17:17:08
+#android release keystore info
+? vim ~/.zshrc
+export KEY_ALIAS="51jk"
+export KEY_PASSWORD="bc550bfb171c28c679db6a522fc2a3ba"
+export KEYSTORE_PASSWORD="5ad4531b05812dfe12f73587f29cd9fe"
+export KEYSTORE="/Users/tablee/.ssh/51jk.jks"
+
+
+                                                                         <<<<<<<<<<<<<<<<<<<<<<<技术岗位的同学实行弹性工作时间，早上9点~10点，晚上6点~7点，午饭时间一样
+
+
+model api http 
+
+注册Source Tree 密码18874035884fan
+
+MultiDexApplication  ImageLoader
+
+
+
+Intel HAXM is required to run this AVD.
+VT-x is disabled in BIOS.
+
+Enable VT-x in your BIOS security settings (refer to documentation for your computer).
+
+
+
+
+
+git 用户名 fantao
+
+
+http://git.local.ybzf.com/lilongbing422707787/Zbhrt 工程地址
+
+My Application工程中设置的Setup Master Password  18874035884fan
+
+
+
+
+R6034 
+Program C:\Users\Administrator\AppData\Local\Atlassian....
+
+An application has made an attemppt to load the C the runtime
+library incorrectly Please contact the application's support team 
+for more information   克隆的时候出问题了
+
+
+
+
+
+http://git.local.ybzf.com/fresh_people/env_build
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

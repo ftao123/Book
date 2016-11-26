@@ -1,0 +1,229 @@
+
+
+http://blog.csdn.net/woaifen3344/article/details/49452227
+WKWebView比UIWebView强大许多***********
+
+
+http://www.jianshu.com/p/d533d2d44814  详细
+1.http://liangruijun.blog.51cto.com/3061169/647456/   
+  http://www.cnblogs.com/tinyphp/p/3858997.html                            控件WebView显示网页
+  http://blog.csdn.net/harvic880925/article/details/51523983               详细点
+
+
+  http://www.cnblogs.com/yaozhongxiao/p/3408948.html                        android + javascript 相互通信实例分析     @JavascriptInterface  
+  http://www.cnblogs.com/lee0oo0/archive/2012/08/01/2617953.html            Android之如何使用javascript调用android代码
+  https://www.evget.com/article/2013/11/8/20020.html
+  http://blog.csdn.net/cappuccinolau/article/details/8262821                 Android WebView 与JS的数据交互
+  http://www.cnblogs.com/qianru/archive/2012/02/27/2369526.html
+
+  http://blog.csdn.net/xiangjai/article/details/8306276                     利用HTML5开发Android
+
+
+http://blog.csdn.net/ethan_xue/article/details/7841431
+在前进按钮点击的时候执行
+if(webView.canGoForward()){  
+                webView.goForward();  
+            }else{  
+                Toast("已经是最后一页了,不能再前进了");  
+            }  
+
+在刷新按钮点击的时候执行
+webView.reload();  
+
+
+
+webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); 
+
+// 开启 DOM storage API 功能
+ 
+webView.getSettings().setDomStorageEnabled(true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5、如果希望点击链接由自己处理，而不是新开Android的系统browser中响应该链接。
+          给WebView添加一个事件监听对象（WebViewClient)   
+
+
+
+
+(3)实现android与js交互
+默认情况下WebView中的js是禁用的，通过将WebSettings附加到WebView中启动js，可以用getSettings()检索WebSettings,然后用setJavaScriptEnabled()启动js。
+mWebView.getSettings().setJavaScriptEnabled(true);
+ //设置js可用
+        webSetting.setJavaScriptEnabled(true);
+        // 添加js调用接口
+        webView.addJavascriptInterface(this,"android");
+        webView.getSettings().setJavaScriptEnabled(true);
+
+mWebView.setWebChromeClient(new WebChromeClient());
+（4）在JS中调用Android的函数方法 
+把本类的一个实例添加到js的全局对象window中，这里是"injs"。
+
+.添加一个对象, 让JS可以访问该对象的方法, 该对象中也可以调用JS中的方法
+mWebView.addJavascriptInterface(new JavaScriptInterface(),"injs");
+实现JavaScriptInterface()类，这里在该类中定义一个方法public void runOnAndroidJavaScript(final String str){...}
+在js中调用java函数
+windows.injs.runOnAndroidJavaScript(str);//调用android的函数 
+
+
+
+*******************
+webView.addJavascriptInterface(new javascriptInterface(), "bridge"); 把javascriptInterface的一个实例“bridge”添加到js的全局对象window中
+然后就可以在js中调用javascriptInterface类中的方法，安卓在javascriptInterface类里面来处理相应方法，js你负责调用，安卓负责处理。
+*******************
+
+
+WebView.canGoBack()和WebView.canGoForward() 在我这个页面这两个键是同一个键都是手机的返回键？？？**********
+
+
+// 添加一个对象, 让JS可以访问该对象的方法, 该对象中可以调用JS中的方法
+webView.addJavascriptInterface(new Contact(), "contact");
+}
+private final class Contact {
+//JavaScript调用此方法拨打电话
+public void call(String phone) {
+startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone)));
+}
+//Html调用此方法传递数据
+public void showcontacts() {
+String json = "[{"name":"zxx", "amount":"9999999", "phone":"18600012345"}]"; 
+// 调用JS中的方法
+webView.loadUrl("javascript:show('" + json + "')");
+}
+}
+}
+
+
+
+
+
+
+
+private static Stack<MainActivity> mStack;
+
+//用来模拟原生应用的页面跳转
+        if (mStack == null) {
+            mStack = new Stack<>();
+        }
+
+        mStack.push(this);
+
+
+
+
+
+11-23 16:26:38.578 10824-10824/com.lampo.zbhrt I/chromium: [INFO:CONSOLE(10)] "-1", source: http://app.naja.51jk.com/js/count_number.js (10)
+11-23 16:26:38.686 10824-10824/com.lampo.zbhrt I/chromium: [INFO:CONSOLE(10)] "-1", source: http://app.naja.51jk.com/js/count_number.js (10)
+
+这个里捕获到webView页面的左上角那个返回按钮了***********????
+
+
+最有意思的是程序进入主界面，那个系统返回键就仅仅是一个返回键，当进入其他页面，这个webView和系统的返回键合二为一，然后那个左上角那个页面的返回键
+起到系统返回键的功能？？？*************
+
+
+  if(webView.canGoBack()){
+            Log.d("<<<<<","点击后退按钮canGoBack()");
+            //webView.goBack();
+        }
+        if(webView.canGoForward()){
+            Log.d("<<<<<","点击后退按钮canGoForward()");
+            webView.goForward();
+        }else{
+            Log.d("<<<<<","已经是最后一页了,不能再前进了");
+        }
+        if(!webView.getUrl().equals(URL)){
+            Log.d("<<<<<","判断URL");
+            //webView.loadUrl(URL);
+        }
+        if ( (keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack() ) {
+            Log.d("<<<<<","两个键");
+            webView.goBack(); //goBack()表示返回WebView的上一页面
+            return true;
+
+
+
+@Override
+    public void onBackPressed() {
+        popActivity();
+
+//        javaCallJs();
+    }
+
+
+ private void popActivity() {
+        if (mStack.size() > 0) {
+            mStack.remove(this);
+            this.finish();
+        }
+    }
+
+
+
+
+
+也是同一个键
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+在android开发中，当不满足触发条件就按返回键的时候，就要对此进行检测。尤其是当前Activity需要往前一个Activity传送消息时。即Activity1跳转到Activity3如果采用的是startActivityForResult这种方式，如果不重写返回键，程序不知道要返回给Activity1什么内容就会报错。因此，必须对Activity3的返回按键重写，这里让他传一个“ERROR”信息：
+
+复制代码 代码如下:
+@Override
+    public void onBackPressed() {
+       // TODO Auto-generated method stub
+     Intent backIntent = new Intent(Activity3.this, Activity1.class);
+       Bundle bundle = new Bundle();
+       if(!clickOk)
+           bundle.putString("send", "ERROR");
+       backIntent.putExtras(bundle);
+       Activity3.this.setResult(1, backIntent);
+       Activity3.this.finish();
+        //super.onBackPressed();               
+    }
+http://blog.csdn.net/linuxcjh/article/details/8116309 
+
+

@@ -1,0 +1,125 @@
+一
+  安卓环境的搭建
+   Android-studio的下载安装与配置
+1.首先下载JDK，JDK的下载推荐去官网上下载http://www.oracle.com，推荐下载JDK1.8版本的，下载和你电脑相对应的位数(现在大多数应该都是64位的)。
+下载完成之后是进行环境变量的配置：
+右键“我的电脑”,“属性”,“高级系统设置”,“环境变量”,“系统变量” 增加:
+JAVA_HOME  :C:\Program Files\Java\jdk1.8.0_60                     (这个是你的JDK安装的根目录)
+CLASSPATH  : .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;         (主要不要少了前面的.;符号)
+Path       ：C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
+Path把;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin（注意不要忘记前面的;符号）
+
+1.首先下载JDK，关于JDK的下载和安装在JAVA模块里面已经给出了，这里我是推荐下载JDK1.8，安装完成在cmd下面运行java -version ，javac检测是否安装成功
+
+
+
+
+
+2.下载Android-studio，推荐下载2.0以上的版本。网上有很多下载网址。http://www.android-studio.org/（中文社区官网）（注意下载的64位还是32位）
+   下载完成后安装，安装中需要注意第一个选择安装目录是选择你的Android-studio工具的安装目录，
+                                 第二个选择安装目录是选择你以后创建工程的安装目录（我的这个电脑C盘有107G，D盘只有4G，我安装在C盘）
+    除了上面注意的，基本上安装过程是“傻瓜”式，一直往下点击就OK。（如果你没有安装JDK是无法安装Android-studio工具）
+
+
+
+
+3. 公司使用的版本控制工具是git，所以接下还需要下载安装git，在通用模块给出git的相关下载和安装。网上依然是很多下载网址，这里给出git官网https://git-scm.com/download/win（git下载完成需要环境变量Path的配置）
+Path ：C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;D:\Git\cmd
+只需要在之前路径后面加上你的Git安装的根目录就可以了注意前面的;符号。
+检测git是否安装成功：
+                    在cmd命令行输入git回车 如果出现usage：git.....一堆堆东西说明git安装成功
+
+4.下载git的辅助工具SourceTree,网上有好几种版本，有中文的，英文的等，自己去搜索下载你喜欢的版本，这里我提供一个不带杂志的下载网址http://download.csdn.net/detail/u010710758/5591247。
+   SourceTree的安装也是“傻瓜”式，一直往下点就可以了。
+
+  Android-studio安装完成之后需要注意：
+1.我安装的是2.1.1版本，安装完成之后默认的API是25，导致可视化界面无法显示。如果你的Android-studio里面的API有23的或者其他版本改成其他版本
+  那个可视化界面就可以显示出来了（一般都会只有一个API版本）。
+  
+  如果只有API25，那需要下载其他的API，在Run按钮那一行有一个SDK Manager-->>SDK Platforms 这个目录下可以看到API的各种版本，下载API 23点钩
+  然后点击 下面那一行字 Launch Standalone SDK Manager 然后就开始下载（你想下载其他版本的API打钩就可以了）
+
+2.使用SourceTree把你今后要做的项目克隆下来：点击克隆，弹出一个窗口。
+  在使用SourceTree工具的时候遇到的问题:在拉数据的时候我们会往源路径\URL里面放一个git路径，如果工具提示说这是一个无效路径。
+                              解决方法：在工具最上面一行有一个工具，点击工具-->>选项-->>选择git，启动git
+                                                                                                                 
+
+  源路径：（填写你克隆项目的git地址）  目标路径：（填写你本地存放克隆数文件的路径） 点击克隆，就可以把数据拉下了。
+  关于SourceTree的使用网上有很多讲解和相关的视频，挺容易上手的不是那么困难。推荐一个视频地址》》》》》》》》》视频里面讲的特别清楚，
+  很容易听懂。
+
+上面的工作做完接下来就是接触你的项目了。拉下了的工程可以直接放到Android-studio里面。你需要了解你的项目，那么多包，类，方法，字段等等，
+直接看真的不知道从何看起，特别盲目。公司在这个方面没有一个系统的文档，我看了两天看的稀里糊涂的。
+解决方法：找一个对你的项目很熟悉的人（一般就是和你同组的人）先给你大致讲解一下项目都包含哪些模块，当下在开发哪些模块，哪些目录是重点
+目录，哪些调用接口等等。大致了解之后你肯定还会很模糊，然后我们需要借助手机来了解项目，把项目安装到手机上面（这真是一个现成的文档），翻到
+哪一页然后再去找与之对应的代码块。
+
+
+
+
+（debug调试）
+
+
+
+在往手机上面安装宏仁堂健康APP的时候，刚开始肯定是装不上去的，因为拉下的数据的debug配置是别人自己的配置，那并不是适合自己的电脑。所以我们
+需要在Gradle Scripts目录下面的build.gradle(Module:app)文件打开，对android标签下的子标签signingConfigs 里面的debug进行配置
+例如：
+ debug {
+            keyAlias 'a'
+            keyPassword '18874035884fan'
+            storeFile file('C:/Users/Administrator/.android/debug.jks')
+            storePassword '18874035884fan'
+        }
+打开Android-studio最上门的Build->Generate Signed APK...->Next 这个过程会让你自己设置的都要记住，后面是要使用的
+在生成Keystore之后，我们在命令行里跳到指定的Keystore的存储位置，然后输入：keytool -list -v -keystore debug.jks；这里的 debug.jks是我的Keystore的存储文件名
+过程中会让你输入密码
+再来就是我们要配置一下我们项目下的build.gradle文件了
+ debug {
+            keyAlias '....'                        (你前面设置的)
+            keyPassword 'password'
+            storeFile file('....debug.jks')        (这些都是你前面自己填写的）
+            storePassword 'password'
+        }
+
+
+然后把工程重构一下，再进行安装就OK了。
+
+（推荐写一个自己的文档）
+在看代码的过程中，你会遇到很早之前的代码，点击去看源码几乎没有详尽的注释，就只能一步一步往下点，有的需要近乎到Java源码才能最开始的代码意思
+如果自己把这个代码块搞懂它是来做什么的，可以把这些都记录在一个文件里面，这样也方便以后的查阅，也可以借阅给后面的人，我相信如果新人不断做这个事情，不断完善这个文档，
+然后把这些记录拼起来，会变成一个详尽的文档。
+
+
+
+
+遇到问题解决方法有两个。1.上网查资料，大部分东西网上都有相关的资料，除非是一些新的领域网上资料比较少
+                        2.请教安卓领域公司的老员工，他们对这些基本问题都是可以轻松解决的(公司氛围超好，我的大哥，组长，我们技术的老大都很和蔼，大家都很乐意)。
+
+
+
+
+
+
+debug
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+  
+

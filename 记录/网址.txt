@@ -1,0 +1,246 @@
+   
+
+1.http://www.cnblogs.com/tiantianbyconan/p/4232560.html                                        (RecyclerView)
+2.http://www.cnblogs.com/Ryandroid/archive/2011/11/25/2263226.html                             (ActivityInfo)
+3.http://www.2cto.com/kf/201512/455409.html                                                    (Toolbar)
+4.http://www.linuxidc.com/Linux/2012-02/55500.htm                                              (Menu)
+  http://blog.csdn.net/jdsjlzx/article/details/36434979
+  http://blog.csdn.net/eclipsexys/article/details/8688538
+5.http://blog.sina.com.cn/s/blog_3e333c4a0101a040.html                                         ( overridePendingTransition()使用 )
+6.http://blog.csdn.net/xiaanming/article/details/8703708/                                      (讲解回调机制特别好********)
+  http://blog.sina.com.cn/s/blog_4d126a2401017fe7.html
+7.http://blog.csdn.net/qjlhlh/article/details/7979179                                          Android自定义类似ProgressDialog效果的Dialog）
+  这个效果就是那个加载缓存有一个圈圈
+8.http://www.cnblogs.com/xilinch/p/4238122.html                                                (LocalBroadcastManager 使用小解）
+  http://blog.csdn.net/dodouaj/article/details/52105647
+  http://www.bkjia.com/Javabc/877628.html                                                       (本地广播LocalBroadcastManager以及在onReceive()中弹出Dialog)
+9.http://www.cnblogs.com/zb-xxzjjcbx/archive/2012/12/10/2811003.html                          （设置EditText，使得只能输入数字或者某些字母）
+  http://blog.csdn.net/rually/article/details/38442539
+10.http://haiyuanxi.blog.51cto.com/4230602/928730                                             （简单讲解泛型的定义）
+11.http://blog.csdn.net/iaiti/article/details/12871445                                         ( Android问题之this与Activity.this的区别)
+12.http://www.android100.org/html/201502/14/118662.html                                        (Android应用开发SharedPreferences存储数据的使用方法)
+   http://zjutsoft.iteye.com/blog/1420099                                                      (讲的比较详细)
+   http://blog.sina.com.cn/s/blog_9d6952df010143i8.html
+   http://blog.csdn.net/yangxi_pekin/article/details/51985869
+13.http://blog.csdn.net/by317966834/article/details/8109329                                     (你还在用notifyDataSetChanged？ 你已经out了)  
+14.http://blog.sina.com.cn/s/blog_a7aa68ea010150ch.html                                          (ProgressDialog应用 )
+15.http://www.cnblogs.com/SharkBin/p/3540612.html                                              （修改ViewPager调用setCurrentItem时，滑屏的速度）
+   http://www.cnblogs.com/Dionexin/p/5727297.html                                                （方法讲解比较详细）ViewPager的addOnPageChangeListener方法详解
+16.http://blog.csdn.net/liuwenbo0920/article/details/7290586                                     ( Java注释@interface的用法) 
+17.http://bbs.51cto.com/thread-835874-1.html                                                       Toast是否能做到停留5秒，然后消失
+   http://www.cnblogs.com/GnagWang/archive/2010/11/26/1888762.html                                  Android中Toast的用法简介
+   http://blog.sina.com.cn/s/blog_76264a170100tfn7.html                                             解决Toast的延时问题
+18.http://liangruijun.blog.51cto.com/3061169/647456/                                                Android开发学习笔记：浅谈WebView
+19.http://www.cnblogs.com/qinghuaideren/archive/2013/05/07/3065115.html                             ActionBarSherlock学习笔记——SupportActionBar()属性设置
+20.http://www.2cto.com/kf/201210/160923.html                                                          android mainfest.xml文件解剖
+21.http://www.cnblogs.com/xingfuzzhd/p/3374504.html                                                 PackageManager使用
+22.http://www.cnblogs.com/Gaojiecai/archive/2011/12/10/2283156.html                                    Android详细的对话框AlertDialog.Builder使用方法
+   http://blog.sina.com.cn/s/blog_639a6ca80100w1bx.html                                               (特别详细)  AlertDialog.Builder对话框类的用法
+23 http://blog.csdn.net/stevenhu_223/article/details/8033153                                             ActionBar应用开发讲解
+
+
+
+
+
+LocalBroadcastManager  很多
+使用LocalBroadcastManager有如下好处：
+
+发送的广播只会在自己App内传播，不会泄露给其他App，确保隐私数据不会泄露
+其他App也无法向你的App发送该广播，不用担心其他App会来搞破坏
+比系统全局广播更加高效
+
+
+
+
+editText.getText()==null   ----------   判断用户的输入是否为空
+"".equals(editText.getText().toString().trim())  ----判断用户有没有输入，trim()--头尾空白被滤掉
+
+
+所以我们可以使用
+TextUtils.isEmpty(text)         代替if(text == null || text.length() == 0)
+
+
+
+volley是目前最流行的android 网络通信框架之一***********
+
+Android 深入解析AsyncTask（doInBackground不工作）
+http://blog.csdn.net/gf771115/article/details/17248037
+
+
+
+
+http://www.kwstu.com/ArticleView/kwstu_20144118313429    （Volley  网络技术）
+
+http://www.cnblogs.com/rwxwsblog/p/5361239.html            （ADT项目导入Android studio及常見問題）
+
+http://blog.csdn.net/lmj623565791/article/details/51118836
+
+http://blog.sina.com.cn/s/blog_5688414b01011bud.html       （Android学习四_六：异步操作（二））
+
+
+
+  （都是关于下拉刷新的） http://blog.csdn.net/lisdye2/article/details/51384159                     (很接近了)
+ http://www.cnblogs.com/krislight1105/p/5251893.html                                             (比较好)
+  http://blog.csdn.net/as_jon/article/details/51149688                                        （和本代码很相似） // dx>0则表示右滑, dx<0表示左滑, dy<0表示上滑, dy>0表示下滑
+  http://blog.csdn.net/gaidandan/article/details/50817083
+  http://www.jianshu.com/p/85bf072bfeed
+  http://www.open-open.com/lib/view/open1438786351692.html                                    （Android水滴效果的下拉刷新）
+  http://www.cnblogs.com/JinyaoLi/p/3852424.html                                              （SwipeRefreshLayout下拉刷新）
+  http://blog.csdn.net/lmj623565791/article/details/24521483
+  http://blog.csdn.net/jwzhangjie/article/details/26359837                                     SwipeRefreshLayout布局里面一般都是ListView或者其他的
+  http://blog.csdn.net/shineflowers/article/details/41802661                                   Android SwipeRefreshLayout 官方下拉刷新控件介绍
+  http://www.cnblogs.com/jerehedu/p/4446351.html                                               （SwipRefreshLayout设置讲的比较详细）
+  https://my.oschina.net/u/2406628/blog/496249                                                  （SwipRefreshLayout里面使用ScrollView）
+  http://blog.csdn.net/richiezhu/article/details/50958259    
+
+  http://blog.csdn.net/qq_22491765/article/details/50663303                                     和本代码很相似
+  http://blog.csdn.net/lisdye2/article/details/51384159                                           （对监听的讲解）    
+
+
+convertView = LayoutInflater.from(getContext()).inflate(listCellId, null);  
+解释：通过LayoutInflater从资源文件中找出id为listcellid的布局。映射到convertview上使用。
+
+http://www.cnblogs.com/HighFun/p/3281674.html ：
+如果将(LinearLayout) LayoutInflater.from(context).inflate(R.layout.contentitem, null);
+修改为(LinearLayout) LayoutInflater.from(context).inflate(R.layout.contentitem, this);
+显示就会正常
+
+http://blog.csdn.net/u013754742/article/details/39050215：
+Adapter.getView中inflater.inflate(R.layout.pending_list_item, parent, false);方法处理
+http://www.2cto.com/kf/201407/313054.html    （LayoutInflater的inflate方法，这个方法重载了四种调用方式）
+
+
+
+
+
+
+
+
+
+______________________________________________________________________________________
+EditText
+http://www.cnblogs.com/fly_binbin/archive/2012/08/18/2645236.html       android 参数含义
+http://www.cnblogs.com/weixing/p/3257058.html                           Android开发之EditText属性详解
+http://www.360doc.com/content/12/0810/15/9462341_229426052.shtml        Android开发之EditText最大可输入字符
+http://blog.sina.com.cn/s/blog_7256fe8f01016pme.html                    Android开发之密码明文密文切换显示
+http://android.tgbus.com/Android/tutorial/201108/361860.shtml           Android开发EditText属性
+http://blog.csdn.net/wangfayinn/article/details/8080740
+
+http://www.android100.org/html/201509/23/183909.html                     Android EditText的设置  1、输入法Enter键图标的设置：
+
+ InputFilter[] filters={new InputFilter.LengthFilter(6)};
+ edPassword.setFilters(filters);//限制验证码长度
+ edPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());////设置为明文显示
+
+
+
+
+android:imeActionLabel="@string/action_login" 
+android:imeOptions="actionDone"
+
+ android:nextFocusDown="@+id/passwd"
+
+
+____________________________________________________________________________________________________________________________________________________
+ PackageManager 
+1、在界面中显示应用程序的版本号;
+　　2、用户启动该应用，后台判断该应用是否是最新版本。
+　　上述情景都需要在程序中自动获取到应用的版本号。
+　　思路简介：
+　　在Android中，应用程序的版本号是在AndroidManifest.xml文件中进行配置的，而PackageInfo类则封装了从该配置文件中获取的所有信息，描述了包内容的整体信息，因此，可以使用PackageInfo对象的versionName属性获取应用的版本号。
+　　要怎么获取PackageInfo对象呢?可以通过PackageManager对象来获取。PackageManager是一个检索当前已安装在设备上的相关应用程序包的各种信息的类。PackageManager对象中的getPackageInfo方法可以获取PackageInfo对象，该方法需要传递两个参数：应用包名和条件。通常情况下，应用程序的包名可以通过Activity或Context(Activity继承自Context)的getPackageName()方法获取，而添加可以有很多设置，通常设置为0。
+　　最后是PackageManager对象的获取，Context对象提供了getPackageManager()方法来获取该对象。
+
+http://blog.sina.com.cn/s/blog_5da93c8f0100yf1x.html    PackageInfo、ResolveInfo 
+http://blog.csdn.net/h7870181/article/details/8372662
+
+a.从packageInfoList获取的packageInfo，再通过packageInfo.applicationInfo获取applicationInfo。
+b.判断(applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM)的值，该值大于0时，表示获取的应用为系统预装的应用，反之则为手动安装的应用。
+//获取手机内所有应用  
+    List<PackageInfo> paklist = pManager.getInstalledPackages(0);  
+    for (int i = 0; i < paklist.size(); i++) {  
+        PackageInfo pak = (PackageInfo) paklist.get(i);  
+        //判断是否为非系统预装的应用程序  
+        if ((pak.applicationInfo.flags & pak.applicationInfo.FLAG_SYSTEM) <= 0) {  
+            // customs applications  
+            apps.add(pak);  
+        }  
+    }  
+
+
+android获取manifast.xml里面meta信息
+ApplicationInfo localApplicationInfo = localPackageManager.getApplicationInfo(paramContext.getPackageName(), 128);
+
+ try {  
+            PackageManager packageManager = ctx.getPackageManager();  
+            if (packageManager != null) {  
+                //注意此处为ApplicationInfo 而不是 ActivityInfo,因为友盟设置的meta-data是在application标签中，而不是某activity标签中，所以用ApplicationInfo  
+                ApplicationInfo applicationInfo = packageManager.getApplicationInfo(ctx.getPackageName(), PackageManager.GET_META_DATA);  
+                if (applicationInfo != null) {  
+                    if (applicationInfo.metaData != null) {  
+                        channelName = applicationInfo.metaData.getString("");  
+                    }  
+                }  
+  
+            }  
+        } catch (PackageManager.NameNotFoundException e) {  
+            e.printStackTrace();  
+        }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+关于友盟统计的*****
+
+个推推送****
+http://blog.csdn.net/zxz_tsgx/article/details/38503917
+
+if(Worker.this.callback != null) {
+                        Worker.this.callback.success(e);
+                    } else {
+                        Worker.this.success(e);
+                    }
+
+Worker.this.callback 不可能为null把，因为在new的时候肯定会传进来一个？？？
+
+
+PhoneInfo里面的
+AppPM = (String)androidId.metaData.get("UMENG_CHANNEL");
+                umengKey = (String)androidId.metaData.get("UMENG_APPKEY");在Manifest里面没有这个<meta-data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

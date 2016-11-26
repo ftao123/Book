@@ -1,0 +1,3 @@
+http://www.ithao123.cn/content-8014942.html  
+
+先把debug.keystore  这个文件搞出来

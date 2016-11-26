@@ -1,0 +1,51 @@
+1.http://blog.csdn.net/linuxcjh/article/details/8798764      Android 调用微信Api
+  http://www.2cto.com/kf/201610/554784.html                  android分享支付经验分享 还可以
+
+ http://www.qingpingshan.com/rjbc/az/147511.html             微信分享与QQ分享功能 
+
+ http://www.myexception.cn/mobile/581927.html
+
+ http://blog.csdn.net/synaric/article/details/52573519     没有跳转到微信支付，而是直接调转到WXPayEntryActivity WXPayEntryActivity中实现的void onReq(BaseReq baseReq)并没有被回调
+
+
+①：WXEntryActivity实现分享功能
+在主包名下建立一个wxapi包，然后再建立一个Activity，命名为：WXEntryActivity，实现IWXAPIEventHandler接口，用于分享后回调
+
+
+
+
+
+
+
+AppUtils中微信发送支付请求一个参数
+package(目前为固定值,直接给@"Sign=WXPay")、
+
+
+
+过程中需要注意的是
+
+1.传个PayReq对象的参数不能少
+
+2.如果工程中使用了友盟,会出现冲突,因为友盟的包里包含了微信sdk,删掉友盟里重复即可,这里网上有相关资料,不再赘述
+
+
+
+a. 可以在你的包名相应目录下新建一个wxapi目录，并在该wxapi目录下新增一个
+WXEntryActivity类，该类继承自Activity（当然这个路径是自定义的，随便你自己）
+
+b. 实现IWXAPIEventHandler接口，微信发送的请求将回调到onReq方法，发送
+到微信请求的响应结果将回调到onResp方法
+
+c. 在WXEntryActivity中将接收到的intent及实现了IWXAPIEventHandler接口的对
+象传递给IWXAPI接口的handleIntent方法：
+                          api.handleIntent(intent, this);
+ok，这三步可以结合时序图一起来理解，都可以一一对应的。
+
+
+
+
+
+
+
+
+

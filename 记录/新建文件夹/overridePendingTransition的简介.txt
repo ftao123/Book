@@ -1,0 +1,45 @@
+1.http://blog.sina.com.cn/s/blog_3e333c4a0101a040.html 
+  注意
+1、必须在 StartActivity()  或 finish() 之后立即调用。
+2、而且在 2.1 以上版本有效
+3、手机设置-显示-动画，要开启状态
+//实现淡入浅出的效果
+startActivity(new Intent(MainActivity.this,SecondActivity.class));
+overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+// 由左向右滑入的效果
+startActivity(new Intent(MainActivity.this,SecondActivity.class));
+overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+// 实现zoommin 和 zoomout (自定义的动画)
+startActivity(new Intent(OverridePendingTransitionActivity.this,SecondActivity.class));
+overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+
+
+http://www.oschina.net/question/97118_34343 （很详细 <translate的设置） http://blog.csdn.net/sun6255028/article/details/6735025
+
+
+
+1 Activity的切换动画指的是从一个activity跳转到另外一个activity时的动画。
+
+它包括两个部分：
+一部分是第一个activity退出时的动画；
+另外一部分时第二个activity进入时的动画；
+在Android的2.0版本之后，有了一个函数来帮我们实现这个动画。这个函数就是overridePendingTransition
+
+这个函数有两个参数，一个参数是第一个activity进入时的动画，另外一个参数则是第二个activity退出时的动画。
+
+这里需要特别说明的是，关于overridePendingTransition这个函数，有两点需要主意
+1.它必需紧挨着startActivity()或者finish()函数之后调用"
+2.它只在android2.0以及以上版本上适用  
+
+此链接帮助大家理解次方法：http://www.oschina.net/question/97118_34343
+
+ 
+
+2  不过有时候overridePendingTransition 这个函数会不起作用，总结下，大概是以下三个方面的原因：
+
+ 1、android系统版本2.0以下，这个没办法，想其他办法解决切换动画吧。
+ 2、在ActivityGroup等的嵌入式Activity中，这个比较容易解决，用如下方法就可以了：
+    this.getParent().overridePendingTransition 就可以解决。
+ 3、在一个Activity的内部类中，或者匿名类中，这时候只好用handler来解决了。
+ 4、手机的显示动画效果被人为或者其他方式给关闭了 现在打开即可 设置->显示->显示动画效果
+ 

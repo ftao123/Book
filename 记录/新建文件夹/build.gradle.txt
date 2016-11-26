@@ -1,0 +1,35 @@
+一、关于buildTypes  怎样自定义BuildConfig字段
+    http://www.cnblogs.com/kangyi/p/4448398.html      
+    http://blog.csdn.net/u011153817/article/details/50772496  
+    http://blog.csdn.net/lzyzsd/article/details/43167359           android-gradle-深入浅出-五:build type
+    http://jingyan.baidu.com/article/bea41d4389bdc3b4c51be6be.html 和详细     http://gold.xitu.io/entry/579af17579bc440054681ae5/promote
+    https://segmentfault.com/a/1190000002439306
+
+1.http://blog.csdn.net/xx326664162/article/details/49247815
+  使用 gradle 在编译时动态设置 Android resValue
+  修改 res value 的方式，比如修改 strings.xml 文件中的 AppName 的值
+  在你的 gradle 文件 buildTypes 或者 productFlavors 下面，如 release 体内写上类似：
+  resValue "string", "AppName", "app1"
+  意为把名为 AppName 的 string value 值改为 app1
+
+  https://my.oschina.net/aibenben/blog/370985
+   release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            //混淆
+            minifyEnabled true
+
+            //Zipalign优化
+            zipAlignEnabled true
+
+            // 移除无用的resource文件
+            shrinkResources true
+            //加载默认混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+            //签名
+            signingConfig signingConfigs.relealse
+        }
+    }
+
+  http://blog.csdn.net/zhanghao_hulk/article/details/8662917        Android获取Manifest中<meta-data>元素的值

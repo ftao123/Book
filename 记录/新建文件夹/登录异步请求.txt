@@ -1,0 +1,170 @@
+
+RunnableExecutor.execute  （）******安卓中多线程的建立，以及线程池
+
+RunnableExecutor （一个单纯的类）-->>静态方法execute，方法里面ThreadPoolUtils.LIMITED_TASK_EXECUTOR.execute(worker)，
+ThreadPoolUtils（一个单纯的类）-->>THREAD_POOL_NUM = 5 （静态属性） ExecutorService（静态线程池对象）
+Executors.newFixedThreadPool(5)创建固定大小是5的线程池
+
+
+RunnableExecutor.execute（work）都做了哪些事情 
+Executors.newFixedThreadPool(5)创建固定小大是5的线程池    execute（work）其实是ExecutorService的方法：在未来某个时间执行给定的命令
+void execute(Runnable command)
+在未来某个时间执行给定的命令。该命令可能在新的线程、已入池的线程或者正调用的线程中执行，这由 Executor实现决定。 
+
+
+Worker里面社会及的 Handler handler = new Handler(Looper.getMainLooper());（把当前Handler与主线程里面的Looper绑定）
+
+Handler一定要在主线程实例化吗?new Handler()和new Handler(Looper.getMainLooper())的区别
+如果你不带参数的实例化：Handler handler = new Handler();那么这个会默认用当前线程的looper
+一般而言，如果你的Handler是要来刷新操作UI的，那么就需要在主线程下跑。
+情况:
+1.要刷新UI，handler要用到主线程的looper。那么在主线程 Handler handler = new Handler();，如果在其他线程，也要满足这个功能的话，要Handler handler = new Handler(Looper.getMainLooper());
+2.不用刷新ui,只是处理消息。 当前线程如果是主线程的话，Handler handler = new Handler();不是主线程的话，Looper.prepare(); Handler handler = new Handler();Looper.loop();或者Handler handler = new Handler(Looper.getMainLooper());
+若是实例化的时候用Looper.getMainLooper()就表示放到主UI线程去处理。
+如果不是的话，因为只有UI线程默认Loop.prepare();Loop.loop();过，其他线程需要手动调用这两个，否则会报错。
+
+
+
+自提订单----DirectOrderFragment
+
+OrderDetailsResponse继承Response  Response是一个泛型类  
+*********
+1.CallbackNetWork<T>实现Callback<T>接口      CallbackNetWork<T>中success方法中的o是从哪里传进来的？ 解决：大神一眼就看出来是从Callback<T>接口里面传进来的
+Worker里面的run方法里面创建了一个e把它传进去了,同样的下面的Exception var2 定义var2传入Callback里面
+在CallbackNetWork<T>的 failure(Exception e)方法里failure(new Response(error)); 这句话给failure(Response response);传入Response对象
+
+2.CallbackNetWork<T>里面的 
+SharedPreferencesHelper.getInstance().putInteger(AppConstants.KEY_RELOGIN, AppConstants.KEY_RELOGIN_VALUE_2); 使用SharedPreferences数据缓存本地
+
+3.RunnableExecutor.execute(new Worker<CollarCouponCenterResponse>(new CallbackNetWork<CollarCouponCenterResponse>() {
+程序先跑线程Worker ，然后在worker的run方法回调callback的方法
+
+4.worker的run方法回调callback的success方法   ：体现回调思想  A把自己传到B里面，然后在B里面用传进来的A执行A的方法 就叫B回调了A的方法
+
+
+OrderPipe.getDirectPurchaseOrderList(1, callback);********重这是怎么获得订单列表的？？？？
+mRecyclerView.addOnScrollListener  
+
+
+
+对手机账号和密码格式进行判断
+
+ mPhone = edPhone.getText().toString().trim();
+        final String password = edPassword.getText().toString().trim();
+        if ( TextUtils.isEmpty(mPhone) ) {
+            showBuilder(getString(R.string.error_field_required));
+            return;
+        }
+        if ( CommonUtils.validatePhone(mPhone) == false ) {
+            showBuilder(getString(R.string.error_field_required_phone));
+            return;
+        }
+        if ( TextUtils.isEmpty(password) ) {
+            showBuilder(getString(R.string.error_password_required));
+            return;
+        } else if ( password.length() > 20 || password.length() < 3 ) {
+            showBuilder("密码长度为3~20");
+            return;
+        }
+
+
+
+ RunnableExecutor.execute(new Worker<LoginResponse>(new CallbackNetWork<LoginResponse>() {
+            @Override
+            public void failure(Response response) {
+                dismissProgressDialog();
+                toast(response.getErrorMessage());
+            }
+
+            @Override
+            public void success(LoginResponse o) {
+                super.success(o);
+                if ( o.isStatusOk() ) {
+                    ZbhrtApp.token = o.getResult().getToken();
+                    ZbhrtApp.onLoginSucess(mPhone, password, ZbhrtApp.token);
+                    ZbhrtApp.onLoginUseInfo(o.getResult().getUserInfo());
+                    SharedPreferencesHelper.getInstance().putBoolean(AppConstants.KEY_IS_FIRST_IN, false);
+                    gotoMainActivity();
+                } else {
+                    showBuilder(o.getResult().getMsg());
+                }
+                dismissProgressDialog();
+
+            }
+        }) {
+            @Override
+            public LoginResponse doInBackground() throws Exception {
+                LoginParams loginParams = new LoginParams(mPhone, password);
+                return ApiClient.getRestCommon().login(loginParams);
+            }
+        });
+
+
+自提订单----DirectOrderFragment
+
+OrderDetailsResponse继承Response  Response是一个泛型类  
+
+
+*********
+1.CallbackNetWork<T>实现Callback<T>接口      CallbackNetWork<T>中success方法中的o是从哪里传进来的？ 解决：大神一眼就看出来是从Callback<T>接口里面传进来的
+Worker里面的run方法里面创建了一个e把它传进去了,同样的下面的Exception var2 定义var2传入Callback里面
+在CallbackNetWork<T>的 failure(Exception e)方法里failure(new Response(error)); 这句话给failure(Response response);传入Response对象
+try没有成功那么进去catch 那是一个系统自己产生一个异常，然后在failure(Exception e)对异常进行处理
+
+然后是failure(new Response(error)); 处理异常之后new一个Response把异常信息装进去，然后在传给那个抽象方法failure(new Response(error)); ，然后实现这个抽象
+方法的时候就可以拿到异常信息的，进行自己想要的处理****************
+
+********
+ try {
+            final Object e = this.doInBackground();
+            this.afterRequest(e);
+            HandlerUtils.post(new Runnable() {
+                public void run() {
+                    if(Worker.this.callback != null) {
+                        Worker.this.callback.success(e);
+                    } else {
+                        Worker.this.success(e);
+                    }
+
+                }
+            });
+        } catch (final Exception var2) {
+            HandlerUtils.post(new Runnable() {
+                public void run() {
+                    if(Worker.this.callback != null) {
+                        Worker.this.callback.failure(var2);
+                    } else {
+                        Worker.this.failure(var2);
+                    }
+
+                }
+            });
+
+正常情况e里面包含了正常登陆的登陆成功和登陆失败的信息，比如说密码错误等等，
+这是正常情况，当遇到catch里面就是出现异常，不如说没有网络等等情况。
+
+2.CallbackNetWork<T>里面的 
+SharedPreferencesHelper.getInstance().putInteger(AppConstants.KEY_RELOGIN, AppConstants.KEY_RELOGIN_VALUE_2); 使用SharedPreferences数据缓存本地
+
+3.RunnableExecutor.execute(new Worker<CollarCouponCenterResponse>(new CallbackNetWork<CollarCouponCenterResponse>() {
+程序先跑线程Worker ，然后在worker的run方法回调callback的方法
+
+4.worker的run方法回调callback的success方法   ：体现回调思想  A把自己传到B里面，然后在B里面用传进来的A执行A的方法 就叫B回调了A的方法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

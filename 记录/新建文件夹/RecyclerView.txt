@@ -1,0 +1,32 @@
+   http://www.jianshu.com/p/7fdfea845937          (和本代码比较类似)***************
+   另外监听器需要自己定义回调接口
+
+1. http://www.apkbus.com/blog-705730-61146.html  (Android RecyclerView使用详解（一）)
+
+   http://frank-zhu.github.io/android/2015/02/25/android-recyclerview-part-2/  (RecyclerView使用详解（二）)
+
+   http://www.jianshu.com/p/7fdfea845937   
+   http://www.jianshu.com/p/7fdfea845937              (很详细对一些方法给出注释)
+  http://www.cnblogs.com/tiantianbyconan/p/4242541.html 
+ 
+           mRecyclerView.setLayoutManager(new LinearLayoutManager(this));//这里用线性显示 类似于listview
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));//这里用线性宫格显示 类似于grid view
+//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
+        mRecyclerView.setAdapter(new NormalRecyclerViewAdapter(this));
+    }
+
+
+
+OrderRecyclerViewAdapter extends RecyclerView.Adapter
+
+1.  //    注意!!: 必须在getItemCount中返回大于0的数,RecycleView才会去调用onCreateViewHolder和onBindViewHolder.
+
+2.   @Override
+    public int getItemCount() {
+
+        Log.e("AboutAdapter", "getItemCount");//        若需要填充多个item, 可用计数来代替,此处由于不需要故写死为1.
+        return 1;
+    }
+
+3.  //自定义的ViewHolder，持有每个Item的的所有界面元素
+    public static class ViewHolder extends RecyclerView.ViewHolder {.....}

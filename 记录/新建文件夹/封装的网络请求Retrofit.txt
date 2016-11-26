@@ -1,0 +1,60 @@
+1.http://www.open-open.com/lib/view/open1464181927873.html#articleHeader2 
+  
+  Retrofit是大名鼎鼎的 Square 公司开源的适用于Android与Java的网络请求库
+  Retrofit将网络请求转变成了Java interface的形式，interface要获得实例调用listRepos(String user)，需要借助Retrofit.java这个类，
+通过Retrofit.Builder来配置Retrofit，再通过retrofit.create(final Class<T> service)获取接口的实例
+
+
+http://www.cnblogs.com/angeldevil/p/3757335.html 
+
+
+http://www.th7.cn/Program/Android/201609/971384.shtml    Retrofit中如何正确的使用https --关于锁定证书
+
+
+
+
+Android上使用retrofit+okhttp时token    
+
+
+
+
+http://www.jianshu.com/p/62ab11ddacc8         Android上使用retrofit+okhttp时token失效的处理方案
+
+
+http://www.open-open.com/lib/view/open1453552147323.html    Retrofit2.0使用 讲解了注解
+
+http://www.jb51.net/article/88542.htm           Android中Retrofit+OkHttp进行HTTP网络编程的使用指南
+
+
+
+
+*****************************************http://www.cnblogs.com/laiqurufeng/p/4484916.html      特别好很详细
+(new Builder())
+              .setEndpoint(host + version)
+              .setRequestInterceptor(interceptor)
+              .setConverter(converter)
+              .setLogLevel(DevUtils.isDebug()?LogLevel.FULL:LogLevel.NONE)
+              .build()
+              .create(clzz);
+    }
+
+*****
+setEndPoint就不说了，接口中定义的都是相对Url，EndPoint就是域名， 
+*****
+RequestInterceptor 请求拦截器
+
+对于网络访问请求的重复操作部分都可以这么做. 拦截器的执行是在执行网络访问前最后执行的. 所以会覆盖前面的某些配置.
+:
+RequestInterceptor requestInterceptor = new RequestInterceptor() {
+  @Override
+  public void intercept(RequestFacade request) {
+    request.addHeader("User-Agent", "Retrofit-Sample-App");
+  }
+}; 
+
+RestAdapter restAdapter = new RestAdapter.Builder()
+  .setEndpoint("https://api.github.com")
+  .setRequestInterceptor(requestInterceptor)
+  .build();
+****
+

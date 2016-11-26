@@ -1,0 +1,63 @@
+1.http://www.cnblogs.com/angeldevil/p/3729808.html         快速Android开发系列网络篇之Android-Async-Http
+  http://www.myexception.cn/android/1533665.html           使用RequestParam讲的比较详细
+  http://blog.csdn.net/hil2000/article/details/13949513    比较详细有重复地方
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+/*成功获取到数据之后的处理:将json串转换为对象*/                      
+login=JSON.parseObject(response.toString(),Login.class);  
+
+
+JSON.parseObject(jsonString, Object.class); 将json字符串转成一个对象
+
+JSON.parseObject(jsonString, Object.class); 
+
+是将jsonString类如 ： "[{supplierId:'',supplierName:'',goodsId:'',goodsName:''}]"
+此种json字符串，转成对象
+JSON.parseObject(参数1，参数2)，参数1代表一个json字符串，参数2则代表一个类，目的是将json字符串转成一个对象
+
+举例：
+
+A a = new A();//A的属性当中有List<B> list
+a.set().....//此处省略
+A aa = JSON.parseObject(a.InfoStr(), A.class);
+还有一个类 B，当a.InfoStr()字符串是B的json字符串时
+JSON.parseObject(a.InfoStr(), A.class);
+会将a.InfoStr()放到aa的List<B>属性中
+
+
+__________________________________________________________________________________________________________________________________________________
+  http://blog.csdn.net/heng615975867/article/details/12166671   Android 网络编程之HttpURLConnection(conn.getResponseCode() != 200,从url读取写入数据)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

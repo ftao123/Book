@@ -1,0 +1,78 @@
+http://blog.csdn.net/u010889616/article/details/51502257
+http://blog.csdn.net/u010889616/article/details/51502257
+
+http://www.lxway.com/291854252.htm
+
+使用SharedPreferences保存数据，其实质是用xml文件存放数据，文件存放在/data/data/<package name>/shared_prefs目录下。
+因为SharedPreferences是使用xml文件保存数据，Context.getSharedPreferences(name, mode)方法的第一个参数用于指定该文件的名称，名称不用指定后缀，
+后缀会由Android自动添加。方法的第二个参数指定文件的操作模式，共有四种操作模式，这四种模式前面介绍使用文件方式保存数据时已经讲解过。
+
+如果希望SharedPreferences实际使用的xml文件能被其他应用读和写，可以指定Context.MODE_WORLD_READABLE和Context.MODE_WORLD_WRITEABLE权限。
+此外Activity还提供了另一个getPreferences(mode)方法操作SharedPreferences，这个方法默认使用当前类不带包名的类名作为文件的名称。
+
+
+
+
+
+
+SharedPreferences 是以键值对来存储应用程序的配置信息的一种方式，它只能存储基本数据类型。一个程序的配置文件仅可以在本应用程序中使用，或者说只能在同一个包内使用，不 能在不同的包之间使用。 实际上SharedPreferences是采用了XML格式将数据存储到设备中，在DDMS中的File Explorer中的/data/data/<package name>/shares_prefs下。
+以下表格为获取SharedPreferences对象的两个方法：
+返回值
+函数
+备注
+SharedPreferences
+Context.getSharedPreferences(String name,int mode)
+name 为本组件的配置文件名（如果想要与本应用程序的其他组件共享此配置文件，可以用这个名字来检索到这个配置文件）。
+mode 为操作模式，默认的模式为0或MODE_PRIVATE，还可以使用MODE_WORLD_READABLE和MODE_WORLD_WRITEABLE。
+
+SharedPreferences
+Activity.getPreferences(int mode)
+配置文件仅可以被调用的Activity使用。
+mode 为操作模式，默认的模式为0或MODE_PRIVATE，还可以使用MODE_WORLD_READABLE和MODE_WORLD_WRITEABLE。
+如 果要读取配置文件信息，只需要直接使用SharedPreferences对象的getXXX()方法即可，而如果要写入配置信息，则必须先调用 SharedPreferences对象的edit()方法，使其处于可编辑状态，然后再调用putXXX()方法写入配置信息，最后调用 commit()方法提交更改后的配置文件。
+
+
+
+Context.getSharedPreferences(String name,int mode)来得到一个SharedPreferences实例
+name：是指文件名称，不需要加后缀.xml，系统会自动为我们添加上。
+mode：是指定读写方式，其值有三种，分别为：
+Context.MODE_PRIVATE：指定该SharedPreferences数据只能被本应用程序读、写
+
+Context.MODE_WORLD_READABLE：指定该SharedPreferences数据能被其他应用程序读，但不能写
+Context.MODE_WORLD_WRITEABLE：指定该SharedPreferences数据能被其他应用程序读写。
+
+
+
+
+http://blog.csdn.net/liuyiming_/article/details/7704923/  自动登录
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
