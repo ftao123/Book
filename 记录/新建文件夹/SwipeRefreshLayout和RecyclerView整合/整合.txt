@@ -1,0 +1,81 @@
+一、添加的监听
+    在RecyclerView中有方法addOnScrollListener：
+该方法类似于ListView的setOnScrollListener方法，OnScrollListener中有两个方法的回调
+
+onScrolled(RecyclerView recyclerView, int dx, int dy) ：滚动的回调，dx和dy表示手指滑动水平和垂直的偏移量。
+
+onScrollStateChanged(RecyclerView recyclerView, int newState)：滑动状态的回调。
+
+因为onScrollStateChanged是在状态改变时的回调，无法时时的获取显示的条目以及位置，所以我们在onScrolled中获取相应位置，
+
+    SwipeRefreshLayout的监听器OnRefreshListener监听器，同时实现里边的onRefresh()方法
+（在该方法中进行网络请求最新数据，然后刷新RecyclerView列表同时设置SwipeRefreshLayout的进度Bar的隐藏或者显示效果等操作）
+
+
+
+
+二、
+   SwipeRefreshLayout
+   基本使用的方法如下:
+
+setOnRefreshListener(OnRefreshListener):添加下拉刷新监听器
+
+setRefreshing(boolean):显示或者隐藏刷新进度条
+
+isRefreshing():检查是否处于刷新状态
+
+setColorSchemeResources():设置进度条的颜色主题，最多设置四种，以前的setColorScheme()方法已经弃用了。
+
+
+
+三、RecyclerView设置Adapter
+    继承RecyclerView.Adapter，例如： HomeAdapter extends RecyclerView.Adapter
+
+   其中的ViewHolder就是拿来负责View的回收和复用的，而且这里的ViewHolder成为了RecyclerView中必须继承的一部分，重写完后就需要放入 RecyclerView.Adapter< >这里来对基类的范型初始化。
+
+   getItemCount()就不必多说了，和ListView是一样的
+
+
+
+   getItemViewType(int position)是用来根据position的不同来实现RecyclerView中对不同布局的要求。从这个方法中所返回的值会在onCreateViewHolder中用到。
+比如头部，尾部，等等的特殊itemView（这里说成ViewHolder比较好）都可以在这里进行判断。
+
+   
+
+ onCreateViewHolder(ViewGroup parent, int viewType)是用来配合写好的ViewHolder来返回一个ViewHolder对象。
+这里也涉及到了条目布局的加载。viewType则表示需要给当前position生成的是哪一种ViewHolder，这个参数也说明了RecyclerView对多类型ItemView的支持。
+
+
+
+   onBindViewHolder(MyViewHolder holder, int position)专门用来绑定ViewHolder里的控件和数据源中position位置的数据。
+
+
+
+
+*******************
+这里注意的一个回调机制：
+在一个类里面定义回调接口，这个类不属于抽象类。
+
+在一个类里面定义一个接口，然后在被的地方new这个类的对象的时候，可以实现这个接口。（这样有什么作用吗？？？）
+在这个类里面用到这个接口的实例。 
+
+
+
+
+
+
+
+
+
+
+    public void onRefresh() {
+
+        //下拉到一定位置松开之后，调用此方法
+        setText("refresh");
+    }
+
+    @Override
+    public void onPrepare() {
+
+        //下拉之前调用此方法
+    }
