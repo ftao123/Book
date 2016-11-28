@@ -1,0 +1,46 @@
+1.进入送货--》直购被创建并且加载好数据--》从送货进入直购，自提被创建   ViewPager的预加载
+  http://www.360doc.com/content/13/1115/23/14218823_329558883.shtml    最下面说了ViewPager的预加载默认值为1
+ 
+  http://www.bubuko.com/infodetail-535920.html                          android Viewpager取消预加载及Fragment方法的学习 
+  特别注意：
+1.在刚开始加载Fragment的时候，setUserVisibleHint这个方法比onCreated方法执行的还要早。预加载的Fragment就不会执行这个方法。
+2.在VIewPager 切换到某个Fragment的时候，还会调用该方法。
+
+  通过在这个方法中去加载数据，我发现可以一定程度的实现预加载问题，保证了预加载不会加载数据，只会加载Fragment中的VIew，这样就可以保证了VIewPager滑动的流畅性，也保证了只有切换到一个Fragment的时候才去加载数据的目的。
+我觉得这种方法比修改V4包中的预加载数量好的多啊。
+
+
+
+ 
+  http://blog.csdn.net/yersterday/article/details/41008551  
+
+
+  http://blog.csdn.net/mr_liabill/article/details/48749807              ViewPager防止Fragment销毁以及取消Fragment的预加载
+   滑动fragment1，此时会预加载fragment2，滑动到fragment2会预加载fragment3，但是滑动到fragment3，此时会调用fragment1的destroyview方法，销毁视图。
+   当重新滑动到fragment1才会重新调用fragment1的oncreateview方法。注意此时并不会销毁实例，不会调用ondestroy方法 
+
+
+
+
+  http://blog.csdn.net/lh0304123457/article/details/50359675
+  当前页面先执行setUserVisibleHint方法，然后再执行onCreatView方法，同时预加载的页面也会按这个顺序执行这两个方法；但是滑动切换到第二个界面时，只会执行第二个界面的setUserVisibleHint这一个方法，
+  而第二个界面的onCreatView在第一个界面预加载时已经执行过，不会再执行。了解了这个过程后就可以实现取消数据预加载：
+
+
+
+
+  http://www.codes51.com/article/detail_3433438.html   对ViewPager方法讲解
+
+
+
+
+
+
+
+
+   ****去实现
+
+
+
+
+

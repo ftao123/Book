@@ -60,7 +60,12 @@ public static synchronized SharedPreferencesHelper getInstance(String fileName) 
 
 
 
-
+并且在程序的Main Activity (应用程序入口)的onCreate方法里调用MobclickAgent.onError(Context):
+public void onCreate(Bundle savedinstanceState) {
+super.onCreate(savedInstanceState);
+MobclickAgent.onError(this);
+...
+}
 
 
 

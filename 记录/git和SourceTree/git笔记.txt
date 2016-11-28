@@ -2,8 +2,12 @@
   http://www.cnblogs.com/lee0oo0/archive/2013/06/28/3161829.html 
   http://www.csdn.net/article/2014-06-17/2820265-git                 Git远程操作详解
 
-  git命令行提交
+  git命令行提交  （进去当前仓库的master）
   git status   
   git add                              选择需要提交的文件名字
   git commit -m "代码提交描述"
   git push origin master  
+
+  从远程更新本地数据
+  git pull origin master 
+ 
