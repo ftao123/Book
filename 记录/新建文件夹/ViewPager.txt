@@ -33,6 +33,11 @@
 
 
 
+ Android viewPage notifyDataSetChanged无刷新      http://www.cnblogs.com/maoyu417/p/3740209.html
+
+ 为什么调用 FragmentPagerAdapter.notifyDataSetChanged() 并不能更新其 Fragment？         http://www.apkbus.com/android-90417-1-1.html
+
+
 
 
 

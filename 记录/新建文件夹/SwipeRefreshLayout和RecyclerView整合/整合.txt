@@ -46,8 +46,48 @@ setColorSchemeResources():设置进度条的颜色主题，最多设置四种，以前的setColorSche
 这里也涉及到了条目布局的加载。viewType则表示需要给当前position生成的是哪一种ViewHolder，这个参数也说明了RecyclerView对多类型ItemView的支持。
 
 
+ onBindViewHolder(MyViewHolder holder, int position)专门用来绑定ViewHolder里的控件和数据源中position位置的数据。
 
-   onBindViewHolder(MyViewHolder holder, int position)专门用来绑定ViewHolder里的控件和数据源中position位置的数据。
+
+
+   Adapter 
+ http://www.aspku.com/kaifa/android/203567.html
+ Adapter是RecyclerView的一个抽象内部类，我们只需要重写它暴露出来的各种回调方法（创建View,绑定View,获取数据内容，通知数据变化......），
+ 就可以达到创建及控制itemView内容的目的。这里挑我们创建Adapter时常用的重写方法讲解：
+
+         onCreateViewHolder:根据需求，创建自定义样式的itemViw，最终return一个ViewHolder类型。由Adapter内部类中的createViewHolder调用。
+//根据需求，创建自定义样式的itemViw
+ @Override
+ public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+   View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item,viewGroup,false);
+   ViewHolder vh = new ViewHolder(view);
+   return vh;
+ }
+
+          onBindViewHolder:将我们传递进来的数据bean与view绑定在一起，即决定我们的itemView的具体内容如何展示，由Adapter内部类中的bindViewHolder调用。同时也可以在这里处理触摸事件的回调，后面会讲到。
+ //将数据与界面进行绑定的操作
+ @Override
+ public void onBindViewHolder(ViewHolder viewHolder, int position) {
+   viewHolder.mTextView.setText(datas[position]);
+ }
+
+                  getItemCount:返回数据bean的数量，即需要的itemView的个数。
+//获取数据的数量
+ @Override
+ public int getItemCount() {
+   return datas.length;
+ }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

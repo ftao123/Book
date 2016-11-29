@@ -1,0 +1,33 @@
+1.@Override
+		public boolean onKeyDown(int keyCode, KeyEvent event) {
+			if (keyCode == KeyEvent.KEYCODE_BACK) {
+				Intent home = new Intent(Intent.ACTION_MAIN);
+					home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					home.addCategory(Intent.CATEGORY_HOME);
+					startActivity(home);				return false;
+			}
+			return super.onKeyDown(keyCode, event);
+		}
+
+
+Android当中，操作home键或是back键是不一样的概念。点击Home键时，当前页面(activity)会处于暂停状态，并没有完全销毁。点击Back键，android将会把当前页面从堆栈中取出，销毁掉
+
+
+
+
+
+
+ (keyCode == KeyEvent.KEYCODE_BACK) {  
+            moveTaskToBack(false);  
+
+
+
+
+
+___________________
+mAdapter.notifyDataSetChanged(); 会执行怎么样的操作？？？
+
+在直购里面
+mAdapter = new OrderRecyclerViewAdapter(getActivity(), dataList);
+        Log.d("<<<<<"," "+dataList.size());
+这个时候dataList为零，那适配器数据从哪里过来？？？

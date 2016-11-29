@@ -1,0 +1,36 @@
+1.final String clientID = SharedPreferencesHelper.getInstance().getString(AppConstants.KEY_CLIENT_ID);
+  这个唯一标示一部手机，
+
+
+
+2. @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if ( event.getKeyCode() == KeyEvent.KEYCODE_BACK ) {
+            if ( event.getAction() == KeyEvent.ACTION_DOWN ) {
+                if ( doubleBackPressed ) {
+                    this.finish();
+                    return true;
+                }
+                doubleBackPressed = true;
+                Toast.makeText(this, "再按一次退出门店助手", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackPressed = false;
+                    }
+                }, 2000);
+            }
+            return true;
+        } else {
+            return super.dispatchKeyEvent(event);
+        }
+    }
+
+这个不同WebView，WebView退出不能保存当前状态
+
+
+3.在直购里面mAdapter.setScanClickListener 这个是自定义方法的监听回调  这个回调是用在new ItemViewHolder中重写onClickScanCode方法里面
+  而这个onClickScanCode方法被调用时在---点击了（收款）之后执行的。  这条路自己走通了。
+
+
+

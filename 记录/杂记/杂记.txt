@@ -23,6 +23,21 @@
 
 
 
+1. ProgressDialog为进度对话框   Android详细的对话框AlertDialog.Builder
+2. Android 圆形进度条MaterialProgressDrawable                            http://blog.csdn.net/tyzlmjj/article/details/50557397
+   
+
+
+
+老大博客   http://blog.csdn.net/u014434239/article/details/50428569
+
+
+1. mAdapter.notifyDataSetChanged(); 直购里面那个callback 删除这句话，那么直购里面则不会显示数据。（但是数据是已经拿到了）
+
+
+2. FooterViewHolder extends RecyclerView.ViewHolder   他里面对一个findViewById是随便拿随便用的，因为它传进来一个view才进行创建，根本不知道view是啥样
+
+
 
 
 

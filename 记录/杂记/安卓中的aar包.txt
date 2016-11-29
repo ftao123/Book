@@ -1,0 +1,39 @@
+1.http://blog.csdn.net/arnozhang12/article/details/45818319                android studio生成aar包并在其他工程引用aar包
+  http://www.2cto.com/kf/201505/400358.html                                比较好
+  http://blog.csdn.net/qiujuer/article/details/39754517?utm_source=tuicool [Android Studio] *.jar 与 *.aar 的生成与*.aar导入项目方法
+  http://blog.csdn.net/getchance/article/details/46844227                   说了一个大概
+  
+  http://www.android-studio.org/index.php/docs/experience/152-android-studio-aar     AndroidStudio如何使用aar依赖包？
+  http://www.cnblogs.com/janehlp/p/3725279.html                                     maven  
+  
+  http://www.jb51.net/article/65524.htm       讲的还好
+   
+  
+  
+  
+  
+  
+  
+  
+  Gradle 的一些基本依赖配置方式如下：
+compile fileTree(dir: 'xxx', include: ['*.jar', "*.xxx"])：将某个目录下所有符合扩展名的文件作为依赖；
+compile 'com.xx.xx:ProjectName:Version'：配置Maven` 库作为依赖；在 Maven 库中心 可以搜索自己想用的库进行依赖；
+compile project(':AnotherModule')：配置另一个 Module 作为本 Module 的依赖，被依赖的 Module 必须被导入到当前工程中；
+compile files('xxx.jar')：配置某个 jar 包作为依赖。
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
