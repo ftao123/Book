@@ -96,12 +96,18 @@ setColorSchemeResources():设置进度条的颜色主题，最多设置四种，以前的setColorSche
 这里注意的一个回调机制：
 在一个类里面定义回调接口，这个类不属于抽象类。
 
-在一个类里面定义一个接口，然后在被的地方new这个类的对象的时候，可以实现这个接口。（这样有什么作用吗？？？）
-在这个类里面用到这个接口的实例。 
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0327/2647.html    为RecyclerView添加item的点击事件
 
-
-
-
+   @Override
+    public void onClick(View v) {
+        if (mOnItemClickListener != null) {
+            //注意这里使用getTag方法获取数据
+            mOnItemClickListener.onItemClick(v,(String)v.getTag());
+        }
+    }
+********
+拿这个说一下：我们自定义的监听：onItemClick，这是利用系统的监听，然后在系统的监听里面实现我们自己的监听的转移。
+也就是说，我们自己定义的监听，必须通过系统的监听这个桥梁来实现。
 
 
 

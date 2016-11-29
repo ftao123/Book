@@ -1,0 +1,12 @@
+1.Android四大组件之BroadcastReceiver       http://blog.csdn.net/u011748648/article/details/51003939
+  IntentFilter intentFilte = new IntentFilter(AppConstants.NEW_ORDER_ACTION);
+LocalBroadcastManager.getInstance(this).registerReceiver(mainOrderRemind, intentFilte);
+
+
+
+myReceive = new BroadCastReceive2();
+        filter = new IntentFilter();
+        filter.addAction(ACTION);
+ LocalBroadcastManager.getInstance(this).registerReceiver(myReceive, filter);
+给BroadCastReceive2注册了一个ACTION动作的广播。其实就是给你BroadCastReceive2注册了一个ACTION动作的广播
+BroadCastReceive2一般都是内部类用来接收这个广播的，

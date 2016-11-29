@@ -36,31 +36,10 @@ mHandler.sendEmptyMessageDelayed(GO_GUIDE, 1000);
 
 
 
-DirectPurchaseOrderFragment(直购里面)
-SwipeRefreshLayout-->>RecyclerView
-mRecyclerView.setLayoutManager(mLinearLayoutManager = new LinearLayoutManager(getActivity()));
- 
-ScanClickListener
+
 
 getPersonalInformation 
-_________________________________________________________________________________________________________
-IntentFilter intentFilte = new IntentFilter(AppConstants.NEW_ORDER_ACTION);
-LocalBroadcastManager.getInstance(this).registerReceiver(mainOrderRemind, intentFilte);
-
-
-
-
-
-
-
-
-
-----------------解
-mViewPager.addOnPageChangeListener    监听viewPager的变化，ViewPager的变化会同步到ActionBar的tab页
-
-getSupportActionBar().hide();隐藏ActionBar 
-new FragmentPagerAdapter    FragmentPagerAdapter  viewPager
-mViewPager.addOnPageChangeListener 
+______________________________________________________________________________________________________
 
 
 ScrollView 卷轴视图是指当拥有很多内容，一屏显示不完时，需要通过滚动跳来显示的视图.的使用： 

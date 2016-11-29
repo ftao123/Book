@@ -31,3 +31,6 @@ mAdapter.notifyDataSetChanged(); 会执行怎么样的操作？？？
 mAdapter = new OrderRecyclerViewAdapter(getActivity(), dataList);
         Log.d("<<<<<"," "+dataList.size());
 这个时候dataList为零，那适配器数据从哪里过来？？？
+
+1. //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
+        mRecyclerView.setHasFixedSize(true);
