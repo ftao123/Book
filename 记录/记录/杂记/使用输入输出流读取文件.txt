@@ -1,0 +1,43 @@
+1.
+   InputStream inputStream = getAssets().open("updateLog.txt");
+            int size = inputStream.available();
+            byte[] bytes = new byte[size];
+            inputStream.read(bytes);
+            inputStream.close();
+            text = new String(bytes, "UTF-8").split("&");
+把本地文件updateLog.txt读取出来。
+
+ ListView listView = (ListView) findViewById(R.id.about_ybzf_mylistview);
+        MyAdapter adapter = new MyAdapter(text);
+        listView.setAdapter(adapter);
+
+MyAdapter 一个自定义适配器
+把读取来的数据用作ListView的数据源。下面给出源文件内容，然后使用split("&")分离出每一项数据，这里注意的是，因为第一项数据定格，所以它的数据显示没有空
+一行，感觉不好看，其他数据是因为&       ，所以在显示的时候就空了一行，才开始显示数据。
+
+*【优化】在线咨询功能
+&
+  2.0.0 版本更新信息
+*【新增】新增联系人列表,好友可设置用户昵称且快速帮忙创建订单
+*【新增】查看聊天记录
+*【优化】在线咨询功能优化
+*【优化】今日注册量和今日销售量移至首页
+&
+  1.7.6 版本更新信息
+*【优化】可以用密码进行登录APP了
+*【新增】密码忘记找回,重新设置密码
+*【新增】语音获取验证码
+&
+  1.7.4 版本更新信息
+*【新增】个人中心可查看销售量、注册量
+*【新增】下单时候可以使用商品编码进行搜索了
+*【优化】系统性能优化
+&
+  1.7.3 版本更新信息
+*【优化】对登录经常出现的 你的令牌已经失效 进行了修复
+&
+  1.7.2 版本更新信息
+*【新增】登录号码段(14几)
+*【新增】优惠券中心
+*【优化】对所有支付的环节进行了优化
+

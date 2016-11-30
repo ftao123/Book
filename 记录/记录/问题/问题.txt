@@ -25,7 +25,10 @@ type : 1 截获 0 释放
 
 
 ***********
-
+ 别人webView中遇到的问题                            https://segmentfault.com/q/1010000006257669/a-1020000006261601
+使用WebView控件时，H5页面跳转后返回键处理           http://blog.csdn.net/zhengbin_mei/article/details/50680752
+Android模块化编程——WebView使用之系统返回键设置    http://blog.csdn.net/u013475983/article/details/51848406   （这个是解决我们那个问题的一个方法）
+this.mWebView.loadUrl("javascript:backClick()");//调用当前HTML页的JS方法
 
 if(!webView.getUrl().equals(URL)){
             Log.d("<<<<<","判断URL");
@@ -122,14 +125,78 @@ if(!webView.getUrl().equals(URL)){
         Log.d("<<<<<","onBackPressed()");    没有做任何处理
 }
 
-                                                
+———————————————————— ********************************************                                              
+修改
+定义一个全局变量
+a；
+
+webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if ( url.startsWith("http:") || url.startsWith("https:") ) {
+                    return false;
+                }
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                a=url；
+                startActivity(intent);
+                return true;
+            }
+        });
+
+onKeyDown在这里面对a的url进行判断  （定义一个文件是所用的URL），可以用webView.loadUrl(URL)来控制装载哪个URL
+case a：
+     
+     break；
+
+
+
+做过一下的尝试：
+1.@Override
+		public boolean onKeyDown(int keyCode, KeyEvent event) {
+			if (keyCode == KeyEvent.KEYCODE_BACK) {
+				Intent home = new Intent(Intent.ACTION_MAIN);
+					home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					home.addCategory(Intent.CATEGORY_HOME);
+					startActivity(home);				return false;
+			}
+			return super.onKeyDown(keyCode, event);
+		}
+
+
+Android当中，操作home键或是back键是不一样的概念。点击Home键时，当前页面(activity)会处于暂停状态，并没有完全销毁。点击Back键，android将会把当前页面从堆栈中取出，销毁掉
+
+
+2.
+ (keyCode == KeyEvent.KEYCODE_BACK) {  
+            moveTaskToBack(false);  
+
+
+Android 单个Activity后台运行，及Activity隐藏但是不调用OnDestory方法 
+最近由于项目需要，需要实现一个Activity隐藏的功能，再次点击按钮进去Activity的时候不用重绘，折腾了好几天都没有解决，最后二行代码就搞定了这个问题，真是验证了Android开的一句经典话语：没有你不会的，只有你不知道的。要是知道的话，开发起来就很快。就不废话了，直接上代码，经验证，肯定是没有问题的。
+1、直接上代码，在你需要隐藏Activity的时候，调用moveTaskToBack函数。
+ public boolean onKeyDown(int keycode, KeyEvent event) {
+  Log.i(TAG, "Key_Stuta = " + event.getAction());
+  if (keycode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+   // 右键处理
+    moveTaskToBack(true); } 
+  return true;
+}
+2、在manifest文件中加上Activity的启动模式，如下代码：
+        <activity
+            android:name=".presentation.SessionActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+android:launchMode="singleInstance"这句话是关键，告诉系统是用单例模式启动，及如果Activity没有OnDestory，就不需要再次创建Activity。
 
 
 
 
 
 
-
+***************************************************************************************
 
 
 
@@ -140,50 +207,8 @@ if(!webView.getUrl().equals(URL)){
 AndroidManifest.xml中WXPayEntryActivity的android:exported="true"
 这个类的完整路径是你的包名.wxapi.WXPayEntryActivity，其中包名是在微信开放平台设置的包名
 应用apk需要被签名，签名和微信开放平台上的应用签名要一致，附包名检查工具
-在void onCreate(Bundle savedInstanceState)和void onNewIntent(Intent intent)中需要调用IWXAPI.handleIntent(intent, context)，重要！！如果漏了，是调不起微信的！！
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+在void onCreate(Bundle savedInstanceState)和void onNewIntent(Intent intent)中需要调用IWXAPI.handleIntent(intent, context)，
+重要！！如果漏了，是调不起微信的！！
 
 
 
@@ -238,27 +263,6 @@ private class MyWebViewClient extends WebViewClient {
 
  
 
-
-*******************
-Android 单个Activity后台运行，及Activity隐藏但是不调用OnDestory方法 
-最近由于项目需要，需要实现一个Activity隐藏的功能，再次点击按钮进去Activity的时候不用重绘，折腾了好几天都没有解决，最后二行代码就搞定了这个问题，真是验证了Android开的一句经典话语：没有你不会的，只有你不知道的。要是知道的话，开发起来就很快。就不废话了，直接上代码，经验证，肯定是没有问题的。
-1、直接上代码，在你需要隐藏Activity的时候，调用moveTaskToBack函数。
- public boolean onKeyDown(int keycode, KeyEvent event) {
-  Log.i(TAG, "Key_Stuta = " + event.getAction());
-  if (keycode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-   // 右键处理
-    moveTaskToBack(true); } 
-  return true;
-}
-2、在manifest文件中加上Activity的启动模式，如下代码：
-        <activity
-            android:name=".presentation.SessionActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
-android:launchMode="singleInstance"这句话是关键，告诉系统是用单例模式启动，及如果Activity没有OnDestory，就不需要再次创建Activity。
 
 
 

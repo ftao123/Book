@@ -1,26 +1,19 @@
-1.@Override
-		public boolean onKeyDown(int keyCode, KeyEvent event) {
-			if (keyCode == KeyEvent.KEYCODE_BACK) {
-				Intent home = new Intent(Intent.ACTION_MAIN);
-					home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					home.addCategory(Intent.CATEGORY_HOME);
-					startActivity(home);				return false;
-			}
-			return super.onKeyDown(keyCode, event);
-		}
 
+退出登录清空的数据：
+token = null;
+userInfo = null;
+pharmacistId = null;
 
-Android当中，操作home键或是back键是不一样的概念。点击Home键时，当前页面(activity)会处于暂停状态，并没有完全销毁。点击Back键，android将会把当前页面从堆栈中取出，销毁掉
+在APP的入口
+ /**
+     * 初始化药师信息
+     */
+    private void initPharmacistInfo() {
+        //token = SharedPreferencesHelper.getInstance().getString(KEY_TOKEN);
+        //userInfo = SharedPreferencesHelper.getInstance().getObject(KEY_PHARMACIST, UserInfo.class);
+        //pharmacistId = SharedPreferencesHelper.getInstance().getString(KEY_PHARMACIST_ID);
 
-
-
-
-
-
- (keyCode == KeyEvent.KEYCODE_BACK) {  
-            moveTaskToBack(false);  
-
-
+将上面三个注释，如果杀死程序，那么按下返回键，杀死程序，再次点击APP图标不能保存登录状态。
 
 
 
@@ -31,6 +24,67 @@ mAdapter.notifyDataSetChanged(); 会执行怎么样的操作？？？
 mAdapter = new OrderRecyclerViewAdapter(getActivity(), dataList);
         Log.d("<<<<<"," "+dataList.size());
 这个时候dataList为零，那适配器数据从哪里过来？？？
+
+___________________________________
+通过IntelliJ IDEA从.class文件重新创建的源代码
+//（powered by Fernflower decompiler）
+____________________________________
+我们可以通过ImageLoaderConfiguration 的内部类builder，构建一个ImageLoaderConfiguration ，这是builder模式
+
+
+
+
+intent.addFlags
+
+
+
+
+
+
+ /**
+     * 初始化本来
+     */
+    private void initAppFile() {
+        File appfile = new File(APP_LOAD_URI);
+        if ( !appfile.exists() ) {
+            appfile.mkdirs();
+        }
+        File imagefile = new File(MYIMAGE_URI);
+        File voicefile = new File(MYVOICE_URI);
+        if ( !imagefile.exists() ) {
+            imagefile.mkdirs();
+        }
+        if ( !voicefile.exists() ) {
+            voicefile.mkdirs();
+        }
+
+    }
+____________________________________________________________________________
+getAssets()
+
+
+http://www.cnblogs.com/neillee/p/5402091.html
+ getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用 
+actionBar.setHomeButtonEnabled(true);//或者使用actionBar.setDisplayHomeAsUpEnabled(true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 1. //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         mRecyclerView.setHasFixedSize(true);

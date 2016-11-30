@@ -26,8 +26,7 @@ export KEYSTORE_PASSWORD="5ad4531b05812dfe12f73587f29cd9fe"
 export KEYSTORE="/Users/tablee/.ssh/51jk.jks"
 
 
-                                                                         <<<<<<<<<<<<<<<<<<<<<<<技术岗位的同学实行弹性工作时间，早上9点~10点，晚上6点~7点，午饭时间一样
-
+                                                                       
 
 model api http 
 
@@ -41,7 +40,6 @@ Intel HAXM is required to run this AVD.
 VT-x is disabled in BIOS.
 
 Enable VT-x in your BIOS security settings (refer to documentation for your computer).
-
 
 
 

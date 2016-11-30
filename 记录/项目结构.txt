@@ -33,6 +33,3 @@ PharmacistApp-->onCreate()--> PhoneInfo.initialize(this, PHONE_APPNAME);        
 
 
 
-
-http://www.mamicode.com/info-detail-1126359.html 这是git在安卓中的应用，文章最后是把类修改进行提交，先把类放到git里面，然后Git->COmmit File..   然后是>Git->Repository->Push
-和之前一样了

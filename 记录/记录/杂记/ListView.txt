@@ -1,0 +1,10 @@
+1.android:divider android给listview设置分割线Divider样式    http://www.blogjava.net/anchor110/articles/362299.html
+  android ListView几个比较特别的属性                        http://www.cnblogs.com/cnsanshao/archive/2011/08/19/2145210.html
+
+
+
+
+  设置LinearLayout android:scrollbars属性有什么作用
+改属性是继承view的， 目的设置滚动条显示，有以下设置none（隐藏），horizontal（水平），vertical（垂直）(这三个值是设置滚动条的效果，滚动条可以水平可以垂直)，
+并不是所有的view设置就有效果，LinearLayout 设置也没有效果， 要想在超过一屏时拖动效果，在最外层加上ScrollView 
+		 

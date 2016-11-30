@@ -1,0 +1,13 @@
+
+ PharmacistApp程序APP的入口--》
+
+ SplashActivity--》程序进入的第一个活动SplashActivity中judgment()进行判断是否是第一次安装AppConstants.KEY_IS_FIRST_IN（默认为true）
+
+ judgment()里面做了判断：
+           1.如果是第一次安装进入--》AboutYbzfActivity活动，会保存KEY_IS_FIRST_IN，当点击我知道进入--》LoginActivity活动
+           2.!TextUtils.isEmpty(PharmacistApp.getToken()) && PharmacistApp.getUserInfo() != null 为true那么进入AutomaticLanding()
+             这个方法里面会拿到phone和password进行登录操作，和LoginActivity活动里面的Login()方法一样
+             登录成功之后跳转到--》MainTabPageActivity活动
+          3.不是第一次安装，也没有token和userInfo那么进入--》LoginActivity活动
+             
+ MainTabPageActivity就是我们进入的第一个页面--》

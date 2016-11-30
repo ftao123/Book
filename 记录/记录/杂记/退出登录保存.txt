@@ -1,0 +1,9 @@
+1. 
+        token = null;
+        userInfo = null;
+        pharmacistId = null;
+        SharedPreferencesHelper.getInstance().removeByKey(KEY_TOKEN);
+        SharedPreferencesHelper.getInstance().removeByKey(KEY_PHARMACIST);
+        SharedPreferencesHelper.getInstance().removeByKey(KEY_PHARMACIST_ID);
+
+在PharmacistApp里面有一个登陆保存：onLoginSucess
