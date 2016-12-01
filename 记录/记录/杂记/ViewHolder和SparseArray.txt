@@ -1,0 +1,68 @@
+1.android中view控件的setTag()和getTag()用法和功能介绍      http://www.th7.cn/Program/Android/201406/213551.shtml
+  http://blog.csdn.net/pi9nc/article/details/39394393
+  对BaseAdapter中ViewHolder编写简化                       http://www.cnblogs.com/tiantianbyconan/p/3642849.html
+  SparseArray代替Map实现高效ViewPool                      https://my.oschina.net/ososchina/blog/337295?p=1 （特别很好）
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+解读代码：
+        public class MyViewHolder {
+    public static <T extends View> T get(View view, int id) {
+        SparseArray<View> viewSparseArray = (SparseArray<View>) view.getTag();
+        if (viewSparseArray == null) {                                                
+            viewSparseArray = new SparseArray<>();
+            view.setTag(viewSparseArray);
+        }
+        View childview = viewSparseArray.get(id);
+        if (childview == null) {
+            childview = view.findViewById(id);
+            viewSparseArray.put(id, childview);
+        }
+        return (T) childview;
+    }
+}
+
+注意这里传进来的view是一个布局，如果这个布局设置了Tag，那么可以通过view.getTag()来获取它对应的SparseArray，如果获取不到，那么就new一个SparseArray，给布局
+设置标签view.setTag(viewSparseArray)
+ 
+childview：子布局。如果上面的是新建的SparseArray，那么就通过viewSparseArray.put(id, childview);不这个子布局放到SparseArray里面缓存起来。下次可以通过id
+直接拿到。
+
+(T) childview：相当于进行强转了吧。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

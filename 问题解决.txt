@@ -66,19 +66,23 @@ getAssets()
 http://www.cnblogs.com/neillee/p/5402091.html
  getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用 
 actionBar.setHomeButtonEnabled(true);//或者使用actionBar.setDisplayHomeAsUpEnabled(true);
+-------------------------------------------------------------------------------------
+https://my.oschina.net/ososchina/blog/337295?p=1
+看不懂？？？在这里可知: key=>value所构成的映射中，他们的索index是完全相同的，即知道value,可通过indexOfValue->keyAt得到key值，也可以通过索引得到key和value
+
+------
+(CommonUtils.getTimeByDate(System.currentTimeMillis()))      自己定义的方法对时间进行处理
 
 
 
+Android Framework 记录之二     http://www.tuicool.com/articles/Qz2M7za
 
 
+_________________________________________________________________________________________________
 
+ImageLoader       
 
-
-
-
-
-
-
+IMessage implements Parcelable, Cloneable, Comparable<IMessage>
 
 
 
@@ -88,3 +92,23 @@ actionBar.setHomeButtonEnabled(true);//或者使用actionBar.setDisplayHomeAsUpEnabl
 
 1. //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         mRecyclerView.setHasFixedSize(true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

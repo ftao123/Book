@@ -1,0 +1,33 @@
+1. Android Parcelable和Serializable的区别，androidparcelable          http://www.android100.org/html/201509/05/179247.html
+   http://www.verydemo.com/demo_c131_i139585.html
+   实现Comparable接口                                                     http://www.cnblogs.com/android-html5/archive/2012/02/14/2533954.html
+   Android学习之使用Comparable或Comparator比较和排序元素     比较好     http://blog.csdn.net/qq_23940659/article/details/51013626
+   http://www.php100.com/html/it/biancheng/2015/0316/8790.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

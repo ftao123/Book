@@ -1,4 +1,4 @@
-
+一、
  PharmacistApp程序APP的入口--》
 
  SplashActivity--》程序进入的第一个活动SplashActivity中judgment()进行判断是否是第一次安装AppConstants.KEY_IS_FIRST_IN（默认为true）
@@ -11,3 +11,43 @@
           3.不是第一次安装，也没有token和userInfo那么进入--》LoginActivity活动
              
  MainTabPageActivity就是我们进入的第一个页面--》
+
+
+
+二、
+   ChatFragment：
+   这里主要就两个：ListView lvChatMessaage, lvSystemMessage;   使用的适配器也不一样
+                  点击lvChatMessaage的列表项（也就是聊天消息的列表项）会启动--》ChatActivity（加载的就是类似微信的聊天界面）
+   点击搜索和右上角那个东西会启动--》ChatDialogActivity
+
+   
+   联系人
+   ContactsFragment：
+   
+
+
+
+三、
+   关于容联：
+   SplashActivity中的loginECMessageSDK()：初始化初始化SDK 。判断SDK是否已经初始化 ：if(!ECDevice.isInitialized()
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

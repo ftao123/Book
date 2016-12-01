@@ -1,0 +1,21 @@
+1. Android中Notification的framework层讲解【安卓源码解析四】       http://blog.csdn.net/wdaming1986/article/details/7081787
+   
+   Android Framework的启动方法及原理详解                          http://www.maiziedu.com/article/11008/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
