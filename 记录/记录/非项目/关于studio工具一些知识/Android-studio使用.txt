@@ -1,0 +1,2 @@
+1.添加mipmap图片 new--》Image  Asset  添加png矢量图，可以添加外部图片
+                    --》Vector Asset  添加系统自带的xml矢量图

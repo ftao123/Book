@@ -1,4 +1,9 @@
 
+1. //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
+        mRecyclerView.setHasFixedSize(true);
+
+一、
+
 退出登录清空的数据：
 token = null;
 userInfo = null;
@@ -15,30 +20,29 @@ pharmacistId = null;
 
 将上面三个注释，如果杀死程序，那么按下返回键，杀死程序，再次点击APP图标不能保存登录状态。
 
+二、
 
-
-___________________
 mAdapter.notifyDataSetChanged(); 会执行怎么样的操作？？？
+
+http://www.cnblogs.com/neillee/p/5402091.html
+ getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用 
+actionBar.setHomeButtonEnabled(true);//或者使用actionBar.setDisplayHomeAsUpEnabled(true);
+****************************************************************************
 
 在直购里面
 mAdapter = new OrderRecyclerViewAdapter(getActivity(), dataList);
         Log.d("<<<<<"," "+dataList.size());
 这个时候dataList为零，那适配器数据从哪里过来？？？
 
-___________________________________
+三、
+
 通过IntelliJ IDEA从.class文件重新创建的源代码
 //（powered by Fernflower decompiler）
-____________________________________
+
 我们可以通过ImageLoaderConfiguration 的内部类builder，构建一个ImageLoaderConfiguration ，这是builder模式
 
 
-
-
 intent.addFlags
-
-
-
-
 
 
  /**
@@ -59,13 +63,12 @@ intent.addFlags
         }
 
     }
-____________________________________________________________________________
+
+四、
+
 getAssets()
 
 
-http://www.cnblogs.com/neillee/p/5402091.html
- getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用 
-actionBar.setHomeButtonEnabled(true);//或者使用actionBar.setDisplayHomeAsUpEnabled(true);
 -------------------------------------------------------------------------------------
 https://my.oschina.net/ososchina/blog/337295?p=1
 看不懂？？？在这里可知: key=>value所构成的映射中，他们的索index是完全相同的，即知道value,可通过indexOfValue->keyAt得到key值，也可以通过索引得到key和value
@@ -85,13 +88,45 @@ ImageLoader
 IMessage implements Parcelable, Cloneable, Comparable<IMessage>
 
 
+____________________
+
+token和userInfo，pharmacistId
+————————————————
+PharmacistApp-->onCreate()--> PhoneInfo.initialize(this, PHONE_APPNAME);               这几个Class的功能是啥？
+                              DevUtils.initialize(this);
+                              DevUtils.setDebug(BuildConfig.DEBUG);
+                              SharedPreferencesHelper.initialize(this);
+                              initApiCommInfo();
+                              initStatistics();
+                              initImageLoader();
+                              initPharmacistInfo();
+                              initAppFile();
+
+
+PhoneInfo获得APP各种信息
+SharedPreferencesHelper封装了SharedPreferences存储键值对 
+initApiCommInfo()方法里面这个两个不懂：？？？
+                                      LogApiClient.init(BuildConfig.API_HOST, "");
+                                      ApiClient.init(BuildConfig.API_HOST, "");
+
+
+
+大多数跳转都是用意图实现的
+
+
+
+——————————————————————————————
+ RestBuilder 接口返回对象都会用到它？？？属于那个retrofit框架的，之前看过给忘记了。
 
 
 
 
 
-1. //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
-        mRecyclerView.setHasFixedSize(true);
+
+http://blog.csdn.net/zht666/article/details/8673609     IntelliJ IDEA 12创建Maven管理的Java Web项目（图解）
+
+
+**********Java中反射原理
 
 
 
@@ -103,6 +138,40 @@ IMessage implements Parcelable, Cloneable, Comparable<IMessage>
 
 
 
+
+
+
+http://www.maiziedu.com/course/875/ Android第三方框架使用-Volley和xUtils的使用
+                                    Android第三方框架使用-Volley和xUtils的使用
+
+http://blog.csdn.net/jdsjlzx/article/details/42387213
+
+比如aidl、remoteviews、android内部的运行机制等
+
+初级安卓开发工程师必备技能
+
+要掌握扎实的java基础，了解各种设计模式，熟练掌握Android UI控件、Android Java层API的相关使用。当你想往中级层次发展时，一定要在继续深入学习java编程技术，掌握更多Android开发需要的库，还要精通ml、json解析，会做socket c/s端的程序。
+
+中级安卓开发工程师必备技能
+
+除了上面提到的必备技能外，中级开发人员需要延伸到精通NDK JNI方式的开发，熟悉Android framework，会移植类似Fmpeg、Mplayer这样的开源项目，并在Android上运行。
+
+
+
+初级
+1. 拥有娴熟的Java基础，理解设计模式，比如OOP语言的工厂模式要懂得。
+2. . 掌握Android UI控件、Android Java层API相关使用。
+迈向中级，再次掌握相关的Java技术，掌握Java concurrent库、nio库，精通xml、json解析，做过socket c/s端的程序。
+中级
+1. 熟练掌握NDK JNI方式的开发，对Android framework十分了解。
+2. 移植一些开源项目，比如FFmpeg、Mplayer到Android上运行。
+迈向高级，熟悉android开源代码的结构，中间件下层的库，比如webkit、opencore、opengl。
+三、高级
+1. 熟练的Linux驱动开发，精通Linux内核结构。
+2. 掌握Android移植，比如常见的TI OMAP、Qualcomm MSM的硬件移植
+迈向顶，发现Android系统中的0day漏洞，可以轻松的找出Root系统的10种方法，帮助Google改进Android操作系统。
+从以上的安卓工程师的要求条件中，我们不难看出安卓工程师最开始要学校的开发语言就是Java。Java语言的编程思想应该是所有语言中最强的了，即使将来不用Java做程序，用它去设计模型恐怕它的地位也是其它语言提到不了的。现在做程序开发，尤其是安卓开发，即使不会用c语言，也要必须会Java，即使其它语言都会而唯独不会Java，也不能称得上是一名合格的程序员。Java语言之所以具有这么大的市场，肯定有它的优势所在。
+对于比较懂行的人都知道，安卓主要使用Java作为编程语言的，所以说学好Java才是安卓入门开发必备的技能。你之前不懂得可以理解，现在北大青鸟的老师把问题帮你解决了，可一定要记牢哦。
 
 
 

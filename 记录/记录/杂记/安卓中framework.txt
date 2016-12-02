@@ -1,6 +1,9 @@
 1. Android中Notification的framework层讲解【安卓源码解析四】       http://blog.csdn.net/wdaming1986/article/details/7081787
    
    Android Framework的启动方法及原理详解                          http://www.maiziedu.com/article/11008/
+   Android framework层JNI的使用浅析                               http://blog.csdn.net/yuanzeyao/article/details/42418977
+   JAVA基础之理解JNI原理                                          http://www.cnblogs.com/mandroid/archive/2011/06/15/2081093.html
+   Android Framework浅析                                          http://blog.csdn.net/column/details/android-framework.html
 
 
 

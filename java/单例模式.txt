@@ -1,1 +1,19 @@
 1.http://blog.sina.com.cn/s/blog_75247c770100yxpb.html       线程安全的单例模式
+  单例的完美写法：
+   public final class A 
+{  
+    private static A a = null;  
+  
+    private A(){  
+    }  
+  
+    public static A getSingleInstance(){  
+        if(null == a ) {
+              Synchronized(A.class){
+                     if(null == A)
+                           a = new A();
+              }
+         }
+       return a；
+    }  
+}  
