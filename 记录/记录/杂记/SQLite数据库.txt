@@ -1,3 +1,49 @@
 1.http://blog.csdn.net/x605940745/article/details/12651945     自己借鉴的代码
   http://www.doc88.com/p-148805530471.html
   
+
+
+
+
+
+
+*********
+
+在运行中报错：
+
+一、
+
+android.database.CursorIndexOutOfBoundsException:Index -1 requested, with a size of 1
+
+
+android中数据库处理使用cursor时，游标不是放在为0的下标，而是放在为-1的下标处开始的。
+也就是说返回给cursor查询结果时，不能够马上从cursor中提取
+
+解决：
+http://www.verydemo.com/demo_c89_i28079.html
+
+cursor.moveToFirst();
+
+Android中数据库处理使用cursor时，游标不是放在为0的下标，而是放在为-1的下标处开始的。
+也就是说返回给cursor查询结果时，不能够马上从cursor中提取值。
+
+http://blog.csdn.net/competerh_programing/article/details/7396542
+
+二、
+
+ android.content.res.Resources$NotFoundException: String resource ID #0x4d3
+ 这是因为setText（）的问题
+
+http://blog.sina.com.cn/s/blog_5e58565701012ox7.html：
+textView.setText(int resId);
+......
+如果不小心将一个int值传给了它，那它不会显示该int值，而是跑到工程下去找一个对应的resource的id,当然是找不到的，于是就报错啦。
+
+所以需要我们把int只包装成String去显示
+
+只要将更改为
+count+"" 或者 Integer.toString(count) 即可
+
+
+
+

@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="#8a2be2"
+        android:textSize="35dp"
+        android:text="查询界面" />
+    <TextView
+        android:id="@+id/txtname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="28dp"
+        android:text="单车号码:"/>
+    <EditText
+        android:id="@+id/edname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/login"
+        android:layout_toRightOf="@id/txtname"
+        android:layout_alignParentRight="true"
+        android:hint="请输入车牌号"
+        android:textSize="28dp"/>
+    <TextView
+        android:id="@+id/txtpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtname"
+        android:layout_marginRight="5dp"
+        android:textSize="28dp"
+        android:text="车辆密码:"/>
+    <TextView
+        android:id="@+id/edpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edname"
+        android:layout_toRightOf="@id/txtpassword"
+        android:layout_alignParentRight="true"
+        android:textSize="28dp"/>
+    <LinearLayout
+        android:layout_below="@id/edpassword"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" >
+        <Button
+            android:id="@+id/btregister"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="密码保存"/>
+        <Button
+            android:id="@+id/btlogin"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="密码查询"/>
+    </LinearLayout>
+
+</RelativeLayout>
