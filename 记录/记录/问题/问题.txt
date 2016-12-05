@@ -261,9 +261,23 @@ private class MyWebViewClient extends WebViewClient {
 
 或者 "document.body.removeChild(document.getElementsByClassName(\"header\")[0])";
 
- 
+——————————————————————————————————
+  client.networkInterceptors().add(new StethoInterceptor());
+        这是使用facebook的开源stetho来进行查看网络访问情况的一个工具。
+
+okhttp可以通过chrome的开发工具来查看手机的网络访问情况，就和web开发人员一样可以在浏览器中查看手机访问网络的实时信息，查看提交和返回结果，
+大大的方便了开发，这个工具的使用将会专门写一篇博客来进行讲解。
+http://www.cnblogs.com/peiandsky/
+ ___________________________________________________
 
 
 
+1.ChatFragment中的List<JoinSession> listChat刚开始它的数据从哪里获得的？？？
+
+2.动态代理？？？
+
+3.学习了解那些设计模式。
+
+4.layout_alignTop理解这些东西，到时候可以通过代码来调节布局
 
 

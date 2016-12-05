@@ -41,6 +41,10 @@ http://www.jb51.net/article/88542.htm           Android中Retrofit+OkHttp进行HTTP
 *****
 setEndPoint就不说了，接口中定义的都是相对Url，EndPoint就是域名， 
 *****
+
+http://www.open-open.com/news/view/1ee4456
+
+
 RequestInterceptor 请求拦截器
 
 对于网络访问请求的重复操作部分都可以这么做. 拦截器的执行是在执行网络访问前最后执行的. 所以会覆盖前面的某些配置.
@@ -57,4 +61,26 @@ RestAdapter restAdapter = new RestAdapter.Builder()
   .setRequestInterceptor(requestInterceptor)
   .build();
 ****
+*****************************************************************************************
+
+讲解的更加深入：
+       30分钟上手最火android网络请求框架Retrofit        http://blog.csdn.net/qq_35224673/article/details/52055610  （文章里面也推荐了一些文章）
+                                                                                                                                                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

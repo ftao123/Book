@@ -49,13 +49,18 @@ ________________________________________________________________________________
 
 2.   先把debug.keystore  这个文件搞出来      http://www.ithao123.cn/content-8014942.html   配置dubug文件
 
-
-
-
-
-
-
-
+3.Activity之间传递数据：
+            Person mPerson = new Person();    
+            mPerson.setName("frankie");    
+            mPerson.setAge(25);    
+            Intent mIntent = new Intent(this,ObjectTranDemo1.class);
+    
+            Bundle mBundle = new Bundle();    
+            mBundle.putSerializable(SER_KEY,mPerson); 
+   
+            mIntent.putExtras(mBundle);    
+使用Bundle来存数据，然后把Bundle放到意图里面传递过去。
+在ObjectTranDemo1中拿数据 Person mPerson = (Person)getIntent().getSerializableExtra(ObjectTranDemo.SER_KEY);  
 
 
 

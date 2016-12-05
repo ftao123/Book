@@ -1,7 +1,9 @@
 1.http://blog.csdn.net/x605940745/article/details/12651945     自己借鉴的代码
   http://www.doc88.com/p-148805530471.html
   
-
+在使用完 db = SQLiteDatabase.openOrCreateDatabase(MainActivity.this.getFilesDir().toString()
+                + "/test.dbs", null);
+的时候不要随便关闭，因为还有其他现成需要访问它，游标用完尽量就关闭了。
 
 
 

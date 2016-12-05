@@ -1,0 +1,26 @@
+一、已经解决的问题
+
+1.（已经解决）
+  错误：Dropping event due to no window focus
+        没有窗口焦点，没有执行KEY EVENT 事件。  
+  问题就出现在这里：
+
+                          DialogInterface.OnClickListener ss = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                // 跳转到登录界面
+                                Intent in = new Intent();
+                                in.setClass(RegistersActivity.this,
+                                        MainActivity.class);
+                                startActivity(in);
+                            }
+                        };
+    就是它在跳转的时候没有销毁RegistersActivity，导致我们在MainActivity退出程序的时候不能退出程序，重新返回到了RegistersActivity，但是我们已经在MainActivity
+关闭了db，从而导致查询会出现异常。
+
+
+
+二、未解决的问题
+
+1.不能在onCreate等其他地方进行数据库创建？？？  只能在异常里面进行创建？？？

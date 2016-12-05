@@ -5,6 +5,45 @@
    http://www.php100.com/html/it/biancheng/2015/0316/8790.html
 
 
+   http://blog.csdn.net/chenguang79/article/details/11043391    （使用例子） Android中Intent传递序列化对象的两种方法(Serializable,Parcelable)
+   http://www.cnblogs.com/yezhennan/p/5527506.html                这两个讲的差不多  （讲了一些原理）
+   但是：虽然Parcelable的性能要强于Serializable,但是仍然有特殊的情况需要使用Serializable,而不去使用Parcelable,因为Parcelable无法将数据进行持久化,
+因此在将数据保存在磁盘的时候,仍然需要使用后者,因为前者无法很好的将数据进行持久化.(原因是在不同的Android版本当中,Parcelable可能会不同,因此数据的持久化方面
+仍然是使用Serializable)。
+
+  实现Parcelable接口的，在重写方法的时候，注意写入和读取的数据顺序一定不能乱
+
+  如果元素数据是list类型的时候需要： lits = new ArrayList<?> in.readList(list); 否则会出现空指针异常.并且读出和写入的数据类型必须相同.如果不想对部分关
+键字进行序列化,可以使用transient关键字来修饰以及static修饰.
+
+
+
+2.关于Comparable 
+  java集合中对象某属性比较排序Comparable与Comparator    http://blog.csdn.net/jbgtwang/article/details/6952459
+  http://blog.163.com/zhou_411424/blog/static/1973621562011102673351941/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
