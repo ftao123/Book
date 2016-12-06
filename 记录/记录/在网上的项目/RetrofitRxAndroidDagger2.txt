@@ -1,0 +1,10 @@
+
+Android开发中，强烈推荐使用retrolambda这个gradle插件，这样你就可以在你的代码中使用lambda了。？？？   有时间去了解
+
+1.
+   apiService.getIpInfo("63.223.108.42")  返回的是一个Observable（观察者，Rxjava里面的）
+   
+   深入浅出RxJava（一：基础篇）  （解释Rxjava） http://blog.csdn.net/lzyzsd/article/details/41833541
+
+2.
+   它并没有实现异步加载，所以一直点击会出错

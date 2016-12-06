@@ -2,3 +2,9 @@
   Dynamic Proxy (动态代理模式)           http://www.cnblogs.com/android-html5/archive/2012/03/11/2533680.html
   Java动态代理一——动态类Proxy的使用    http://www.cnblogs.com/linjiqin/archive/2011/02/18/1957600.html  
   设计模式之 动态代理模式                http://blog.csdn.net/leilu2008/article/details/6724098
+
+
+
+
+
+  Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）       http://blog.csdn.net/luanlouis/article/details/24589193

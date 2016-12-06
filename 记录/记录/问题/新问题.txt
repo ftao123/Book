@@ -1,0 +1,2 @@
+1.
+  Android-studio中project目录下--app--build里面--generated--source--r   这些文件是哪里来的，做什么用的。

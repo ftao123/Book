@@ -62,9 +62,10 @@ ________________________________________________________________________________
 使用Bundle来存数据，然后把Bundle放到意图里面传递过去。
 在ObjectTranDemo1中拿数据 Person mPerson = (Person)getIntent().getSerializableExtra(ObjectTranDemo.SER_KEY);  
 
-
-
-
+4.Google官方的解释是性能优化，占用内存小等等（自己百度mipmap的概念。。），总之mipmap这个形式比drawable好。So，推荐我们在Android Studio中使用mipmap。
+那好，我们把图片放在mipmap文件夹下，那怎么在xml中使用呢？
+  
+   android:src=@mipmap/pic
 
 
 

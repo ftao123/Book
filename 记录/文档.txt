@@ -2,6 +2,13 @@ C:\Program Files\Java\jdk1.8.0_60  JDK的安装目录
 
 为了增加复用性和灵活性，我们还是定义一个接口来做监听滚动到底部的回调，这样你就可以把它用在listview，scrollView中去。********
 
+在门店助手里面引入async-http-1.4.7.jar就是为了使用它里面的RequestParams，图片上传的时候用到**************
+
+
+
+
+ApiClient.getRestCommon()返回RestCommon 接口的一个动态代理
+
 
 
 1. MainTabPageActivity  门店助手主页面

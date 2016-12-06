@@ -60,23 +60,51 @@ RestAdapter restAdapter = new RestAdapter.Builder()
   .setEndpoint("https://api.github.com")
   .setRequestInterceptor(requestInterceptor)
   .build();
-****
+
 *****************************************************************************************
 
 讲解的更加深入：
        30分钟上手最火android网络请求框架Retrofit        http://blog.csdn.net/qq_35224673/article/details/52055610  （文章里面也推荐了一些文章）
                                                                                                                                                        
+****************************************
+
+http://www.cnblogs.com/angeldevil/p/3757335.html
+
+首先定义请求接口，即程序中都需要什么请求操作
+
+public interface GitHubService {
+  @GET("/users/{user}/repos")
+  List<Repo> listRepos(@Path("user") String user);
+}
+
+ 然后通过RestAdapter生成一个刚才定义的接口的实现类，使用的是动态代理。
+
+RestAdapter restAdapter = new RestAdapter.Builder()
+    .setEndpoint("https://api.github.com")
+    .build();
+
+GitHubService service = restAdapter.create(GitHubService.class);
+
+现在就可以调用接口进行请求了
+
+List<Repo> repos = service.listRepos("octocat");                    （想说的是这里就在进行网络请求了（具体请求的细节被封装了），List<Repo> repos是请求后返回的数据）
+
+new Callback这个回调的使用是用来处理请求后返回的东西。
 
 
 
 
 
 
+**********************自己使用他们代码跑起来的：
+1.
+  Android应用架构之Retrofit使用            http://blog.csdn.net/liuhongwei123888/article/details/50375283   
+  Retrofit 基本使用教程                    http://blog.csdn.net/jiangxuqaz/article/details/50759239
 
 
 
 
-
+http://www.cnblogs.com/angeldevil/p/3757335.html  这个网址自己之前也保存过，上面有那个返回Jeson数据的网址，怎么传入参数来访问。
 
 
 
