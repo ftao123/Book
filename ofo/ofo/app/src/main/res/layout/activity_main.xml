@@ -12,7 +12,7 @@
         android:gravity="center_horizontal"
         android:textColor="#8a2be2"
         android:textSize="35dp"
-        android:text="查询界面" />
+        android:text="喵喵查询" />
     <TextView
         android:id="@+id/txtname"
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="30dp"
         android:textSize="28dp"
-        android:text="单车号码:"/>
+        android:text="喵喵账号:"/>
     <EditText
         android:id="@+id/edname"
         android:layout_width="wrap_content"
@@ -30,8 +30,9 @@
         android:layout_below="@id/login"
         android:layout_toRightOf="@id/txtname"
         android:layout_alignParentRight="true"
-        android:hint="请输入车牌号"
-        android:textSize="28dp"/>
+        android:hint="请输入喵喵帐号"
+        android:textSize="28dp"
+        android:maxLength="14"/>
     <TextView
         android:id="@+id/txtpassword"
         android:layout_width="wrap_content"
@@ -39,15 +40,26 @@
         android:layout_below="@id/txtname"
         android:layout_marginRight="5dp"
         android:textSize="28dp"
-        android:text="车辆密码:"/>
+        android:text="喵喵密码:"/>
     <TextView
         android:id="@+id/edpassword"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edname"
-        android:layout_toRightOf="@id/txtpassword"
+        android:textSize="28dp"
+        android:textColor="#8a2be2"
+        android:gravity="left"
+        android:layout_alignTop="@+id/txtpassword"
+        android:layout_toRightOf="@+id/txtpassword" />
+    <TextView
+        android:id="@+id/edpassword2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textSize="28dp"
+        android:textColor="#FF1CAE"
+        android:layout_alignTop="@+id/txtpassword"
         android:layout_alignParentRight="true"
-        android:textSize="28dp"/>
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"/>
     <LinearLayout
         android:layout_below="@id/edpassword"
         android:orientation="horizontal"
@@ -60,12 +72,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="密码保存"/>
+            android:text="喵喵喂养"/>
         <Button
             android:id="@+id/btlogin"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="密码查询"/>
+            android:text="喵喵查询"/>
     </LinearLayout>
+
+
 
 </RelativeLayout>

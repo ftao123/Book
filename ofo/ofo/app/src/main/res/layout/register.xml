@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:gravity="center_horizontal"
-        android:text="注册界面"
+        android:text="快来喂养喵喵"
         android:textColor="#8a2be2"
         android:textSize="35dp" />
 
@@ -21,7 +21,7 @@
         android:layout_below="@id/txt1"
         android:layout_marginBottom="30dp"
         android:layout_marginRight="5dp"
-        android:text="单车号码:"
+        android:text="食物账号:"
         android:textSize="28dp" />
 
     <EditText
@@ -32,7 +32,8 @@
         android:layout_below="@id/txt1"
         android:layout_toRightOf="@id/txtname1"
         android:layout_marginBottom="30dp"
-        android:hint="请输入车牌号"/>
+        android:hint="请输入喵喵帐号"
+        android:maxLength="14"/>
 
     <TextView
         android:id="@+id/txtpassword1"
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtname1"
         android:layout_marginRight="5dp"
-        android:text="车辆密码:"
+        android:text="食物密码:"
         android:textSize="28dp" />
 
     <EditText
@@ -50,7 +51,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/edname1"
         android:layout_toRightOf="@id/txtpassword1"
-        android:hint="请输入单车密码"/>
+        android:hint="请输入喵喵密码"
+        android:maxLength="11"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +67,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="提交数据" />
+            android:text="开始喂养" />
     </LinearLayout>
 </RelativeLayout>

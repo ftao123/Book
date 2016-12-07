@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.method.NumberKeyListener;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,6 +28,11 @@ public class RegistersActivity extends Activity {
     SQLiteDatabase db;
 
     public static final char[] numberChars = new char[]{'1',
+            '0', '9', '8', '7', '6', '5', '4', '3', '2'};
+
+    public static final char numberAllChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+            'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1',
             '0', '9', '8', '7', '6', '5', '4', '3', '2'};
 
     @Override
@@ -47,20 +53,20 @@ public class RegistersActivity extends Activity {
                 String password = edpassword1.getText().toString();
                 if (!(name.equals("") || password.equals(""))) {
                     if (addUser(name, password)) {
-                        DialogInterface.OnClickListener ss = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                // 跳转到登录界面
-                                Intent in = new Intent();
-                                in.setClass(RegistersActivity.this,
-                                        MainActivity.class);
-                                startActivity(in);
-                            }
-                        };
+//                        DialogInterface.OnClickListener ss = new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog,
+//                                                int which) {
+//                                // 跳转到登录界面
+//                                Intent in = new Intent();
+//                                in.setClass(RegistersActivity.this,
+//                                        MainActivity.class);
+//                                startActivity(in);
+//                            }
+//                        };
                         new AlertDialog.Builder(RegistersActivity.this)
-                                .setTitle("好样的").setMessage("数据保存成功")
-                                .setPositiveButton("确定", ss).show();
+                                .setTitle("谢谢小主!!!").setMessage("喵喵吃饱了。")
+                                .setPositiveButton("确定", null).show();
 
                     } else {
                         new AlertDialog.Builder(RegistersActivity.this)
@@ -70,7 +76,7 @@ public class RegistersActivity extends Activity {
                 } else {
                     Log.d("<<<<","帐号密码不能为空");
                     new AlertDialog.Builder(RegistersActivity.this)
-                            .setTitle("帐号密码不能为空").setMessage("帐号密码不能为空")
+                            .setTitle("小主你又马虎啦！！！").setMessage("你不爱喵喵了吗？喵喵伤心了。")
                             .setPositiveButton("确定", null).show();
                 }
 
@@ -86,23 +92,25 @@ public class RegistersActivity extends Activity {
         edname1.setKeyListener(new NumberKeyListener() {
             @Override
             protected char[] getAcceptedChars() {
-                return numberChars;
+                return numberAllChars;
             }
 
             @Override
             public int getInputType() {
-                return android.text.InputType.TYPE_CLASS_PHONE;
+                return  InputType.TYPE_TEXT_VARIATION_PASSWORD;
+//                return android.text.InputType.TYPE_CLASS_PHONE;
             }
         });
         edpassword1.setKeyListener(new NumberKeyListener() {
             @Override
             protected char[] getAcceptedChars() {
-                return numberChars;
+                return numberAllChars;
             }
 
             @Override
             public int getInputType() {
-                return android.text.InputType.TYPE_CLASS_PHONE;
+                return InputType.TYPE_TEXT_VARIATION_PASSWORD;
+//                return android.text.InputType.TYPE_CLASS_PHONE;
             }
         });
     }
@@ -114,10 +122,9 @@ public class RegistersActivity extends Activity {
         db = SQLiteDatabase.openOrCreateDatabase(this.getFilesDir().toString()
                 + "/test.dbs", null);
         main.db = db;
-     if (isUserinfo(name,password,db)){
+     if (isUserinfo(name,db)){
          try {
              db.execSQL(str, new String[] { name, password });
-             db.close();
              return true;
          } catch (Exception e) {
              main.createDb();
@@ -130,20 +137,22 @@ public class RegistersActivity extends Activity {
 
 
     // 判断数据是否已经存在
-    public Boolean isUserinfo(String name,String password,SQLiteDatabase db) {
+    public Boolean isUserinfo(String name,SQLiteDatabase db) {
         try{
             Log.d("<<<<","判断账号是否已经存在");
-            String str="select * from tb_user where name=? and password=? ";
-            Cursor cursor = db.rawQuery(str, new String []{name,password});
+            String str="select * from tb_user where name=?  ";
+            Cursor cursor = db.rawQuery(str, new String []{name});
             if(cursor.getCount()<=0){
               //这个说明账号和密码不存在
                 Log.d("<<<<","账号和密码不存在");
+                cursor.close();
                 return true;
             }else {
                 Log.d("<<<<","账号和密码已经存在");
                 new AlertDialog.Builder(RegistersActivity.this)
-                        .setTitle("帐号已经存在").setMessage("请添加新的账号")
+                        .setTitle("小主你又马虎啦！！！").setMessage("账号已经存在了，要添加新的账号哦。")
                         .setPositiveButton("确定", null).show();
+                cursor.close();
                 return false;
                 }
         }catch(SQLiteException e){
@@ -152,16 +161,16 @@ public class RegistersActivity extends Activity {
         return false;
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            RegistersActivity.this.finish();
-            Intent intent=new Intent();
-            intent.setClass(RegistersActivity.this,MainActivity.class);
-            startActivity(intent);
-            return  true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if(keyCode == KeyEvent.KEYCODE_BACK){
+//            RegistersActivity.this.finish();
+//            Intent intent=new Intent();
+//            intent.setClass(RegistersActivity.this,MainActivity.class);
+//            startActivity(intent);
+//            return  true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
 }

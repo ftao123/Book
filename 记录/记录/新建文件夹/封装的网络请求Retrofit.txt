@@ -1,3 +1,13 @@
+
+
+  网络请求框架现在都是使用Retrofit，关于异步加载看网上比较多的就是OKHttp，Async异步加载推荐的很少了。
+
+  看了文章目前比较好的结合是Retrofit和RxJava(异步加载)**********************************
+                                                    **********************************
+
+
+
+
 1.http://www.open-open.com/lib/view/open1464181927873.html#articleHeader2 
   
   Retrofit是大名鼎鼎的 Square 公司开源的适用于Android与Java的网络请求库
@@ -96,16 +106,19 @@ new Callback这个回调的使用是用来处理请求后返回的东西。
 
 
 
+
 **********************自己使用他们代码跑起来的：
 1.
   Android应用架构之Retrofit使用            http://blog.csdn.net/liuhongwei123888/article/details/50375283   
   Retrofit 基本使用教程                    http://blog.csdn.net/jiangxuqaz/article/details/50759239
 
+  网络请求框架现在都是使用Retrofit，关于异步加载看网上比较多的就是OKHttp，Async异步加载推荐的很少了。
 
-
+  看了文章目前比较好的结合是Retrofit和RxJava(异步加载)
+  
+ 
 
 http://www.cnblogs.com/angeldevil/p/3757335.html  这个网址自己之前也保存过，上面有那个返回Jeson数据的网址，怎么传入参数来访问。
-
 
 
 

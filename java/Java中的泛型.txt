@@ -1,0 +1,56 @@
+
+1.
+  Java总结篇系列：Java泛型          http://www.cnblogs.com/lwbqqyumidi/p/3837629.html
+  由此，我们发现，在使用泛型类时，虽然传入了不同的泛型实参，但并没有真正意义上生成不同的类型，传入不同泛型实参的泛型类在内存上只有一个，即还是原来的最基本的类型（本实例中为Box），当然，在逻辑上我们可以理解成多个不同的泛型类型。
+
+究其原因，在于Java中的泛型这一概念提出的目的，导致其只是作用于代码编译阶段，在编译过程中，对于正确检验泛型结果后，会将泛型的相关信息擦出，也就是说，成功编译过后的class文件中是不包含任何泛型信息的。泛型信息不会进入到运行时阶段。
+
+对此总结成一句话：泛型类型在逻辑上看以看成是多个不同的类型，实际上都是相同的基本类型。
+   
+   上面这段话，有时间再去看看。
+
+
+2.
+ http://www.cnblogs.com/iyangyuan/archive/2013/04/09/3011274.html
+
+3.
+ class hello<T, V>  
+        hello<String, Integer> he = new hello<String, Integer>();
+        he.setAge(10);
+        he.setName("Rollen Holt");
+
+  http://www.cnblogs.com/rollenholt/archive/2011/08/21/2147671.html      （只给出例子，不给说明，搞明白它的例子就可以了）
+
+4.
+  这一篇讲的挺好的  （把基础的说了）      http://blog.csdn.net/lonelyroamer/article/details/7864531
+
+  http://blog.csdn.net/love_javc_you/article/details/38306341
+
+
+
+
+
+  泛型的限定：
+？ 是通配符 指代 任意类型
+
+泛型的限定上限：
+<？ extends E> 接受 E 或者 E 的子类型。
+泛型的限定下限：
+<?  super   E>  接收  E 或者 E 的父类。
+
+
+
+
+
+
+
+
+
+ Java泛型中的标记符含义： 
+ E - Element (在集合中使用，因为集合中存放的是元素)
+ T - Type（Java 类）
+ K - Key（键）
+ V - Value（值）
+ N - Number（数值类型）
+？ -  表示不确定的java类型
+ S、U、V  - 2nd、3rd、4th types

@@ -1,10 +1,38 @@
 
 1.
-  深入浅出RxJava（一：基础篇）  （解释Rxjava） http://blog.csdn.net/lzyzsd/article/details/41833541
+  深入浅出RxJava（一：基础篇）  （解释Rxjava）  （它是3的一部分）   http://blog.csdn.net/lzyzsd/article/details/41833541
+
+2.
+  给 Android 开发者的 RxJava 详解      (特别好的一片文章自己要多看看)        http://gank.io/post/560e15be2dca930e00da1083#toc_1
+
+3.
+  一般般，但是找不到其他文章了               http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0305/2545.html
 
 
 
 
+
+
+
+
+
+Observable 即被观察者，它决定什么时候触发事件以及触发怎样的事件。 RxJava 使用 create() 方法来创建一个 Observable ，并为它定义事件触发规则：
+
+Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
+    @Override
+    public void call(Subscriber<? super String> subscriber) {
+        subscriber.onNext("Hello");
+        subscriber.onNext("Hi");
+        subscriber.onNext("Aloha");
+        subscriber.onCompleted();
+    }
+});
+
+可以看到，这里传入了一个 OnSubscribe 对象作为参数。OnSubscribe 会被存储在返回的 Observable 对象中，它的作用相当于一个计划表，当 Observable 被订阅的时候，
+OnSubscribe 的 call() 方法会自动被调用，事件序列就会依照设定依次触发（对于上面的代码，就是观察者Subscriber 将会被调用三次 onNext() 和一次 onCompleted()）。
+这样，由被观察者调用了观察者的回调方法，就实现了由被观察者向观察者的事件传递，即观察者模式。
+
+也就是说程序会先走OnSubscribe里面的call放发
 
 
 
