@@ -9,7 +9,6 @@
    
    上面这段话，有时间再去看看。
 
-
 2.
  http://www.cnblogs.com/iyangyuan/archive/2013/04/09/3011274.html
 
@@ -26,6 +25,9 @@
 
   http://blog.csdn.net/love_javc_you/article/details/38306341
 
+
+5.
+  java 泛型详解（普通泛型、 通配符、 泛型接口）   http://iteye.blog.163.com/blog/static/18630809620131472312201/   (里面的例子比较好)
 
 
 
