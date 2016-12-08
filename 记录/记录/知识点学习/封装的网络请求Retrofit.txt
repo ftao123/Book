@@ -1,10 +1,22 @@
 
 
+   Rxjava+ReTrofit+okHttp深入浅出-终极封装二（网络请求） http://blog.csdn.net/wzgiceman/article/details/51939574
+
+
+
+
+
+
+
+http://www.jianshu.com/p/c1a3a881a144  源码分析
+
+
   网络请求框架现在都是使用Retrofit，关于异步加载看网上比较多的就是OKHttp，Async异步加载推荐的很少了。
 
   看了文章目前比较好的结合是Retrofit和RxJava(异步加载)**********************************
                                                     **********************************
 
+ 
 
 
 
@@ -116,9 +128,144 @@ new Callback这个回调的使用是用来处理请求后返回的东西。
 
   看了文章目前比较好的结合是Retrofit和RxJava(异步加载)
   
- 
 
 http://www.cnblogs.com/angeldevil/p/3757335.html  这个网址自己之前也保存过，上面有那个返回Jeson数据的网址，怎么传入参数来访问。
+
+https://api.github.com/   一些返回Gson数据的网址
+
+Retrofit2.0使用详解   （有源码不过自己还没有试过，下次有时间试一试）  http://blog.csdn.net/ljd2038/article/details/51046512
+
+
+
+
+************************************************************************
+http://blog.csdn.net/ljd2038/article/details/51046512
+取消请求
+
+　　我们可以终止一个请求。终止操作是对底层的httpclient执行cancel操作。即使是正在执行的请求，也能够立即终止。
+
+call.cancel()
+
+
+　　在这里baseUrl是在创建retrofit实力的时候定义的，我们也可以在API接口中定义完整的url。在这里建议在创建baseUrl中以”/”结尾，在API中不以”/”开头和结尾
+也就是说在接口里面定义路径的时候。
+
+
+
+
+***************************************************************************************
+
+关于Retrofit里面的注解：
+   
+ http://blog.csdn.net/jiangxuqaz/article/details/50759239  讲解了一部分，自己再去补充一下。
+
+
+ @Query：就是URL中的？
+
+ @Body ：可以传入一个对象
+ 
+ @Path：动态改变URL，传入一个参数
+  @GET("users/{user}/repos")
+  Call<List<Repo>> listRepos(@Path("user") String user);
+
+
+添加请求头
+
+　　我们可以通过@Headers来添加请求头。
+
+@Headers({
+        "Accept: application/vnd.github.v3.full+json",
+        "User-Agent: RetrofitBean-Sample-App",
+        "name:ljd"
+})
+@GET("repos/{owner}/{repo}/contributors")
+Call<List<Contributor>> contributorsAndAddHeader(@Path("owner") String owner,@Path("repo") String repo);
+
+
+
+
+而且在Retrofit 2.0中我们还可以在@Url里面定义完整的URL：
+
+public interface APIService {
+ 
+    @POST("http://api.nuuneoi.com/special/user/list")
+    Call<Users> loadSpecialUsers();
+ 
+}
+这种情况下Base URL会被忽略。
+
+
+
+
+
+
+http://www.cnblogs.com/peitong/p/5981207.html
+五、总结小细节
+当@GET或@POST注解的url为全路径时（可能和baseUrl不是一个域），会直接使用注解的url的域。
+如果请求为post实现，那么最好传递参数时使用@Field、@FieldMap和@FormUrlEncoded。因为@Query和或QueryMap都是将参数拼接在url后面的，而@Field或@FieldMap传递的参数时放在请求体的。
+使用@Path时，path对应的路径不能包含”/”，否则会将其转化为%2F。在遇到想动态的拼接多节url时，还是使用@Url吧。
+
+
+
+
+
+
+异步请求
+
+
+
+Call<Repo> call = service.loadRepo();
+
+call.enqueue(new Callback<Repo>() {
+
+    @Override
+
+    public void onResponse(Response<Repo> response) {
+
+        // Get result Repo from response.body()
+
+    }
+
+    @Override
+
+    public void onFailure(Throwable t) {
+                            }
+});
+
+以上代码发起了一个在后台线程的请求并从response 的response.body()方法中获取一个结果对象。注意这里的onResponse和onFailure方法是在主线程中调用的。
+
+
+
+最后你就可以用这个call对象获得数据了，enqueue方法是异步发送http请求的，如果你想用同步的方式发送可以使用execute()方法，call对象还提供cancel()、isCancel()等方法获取这个Http请求的状态
+
+
+Call是Retrofit中重要的一个概念，代表被封装成单个请求/响应的交互行为
+通过调用Retrofit2的execute（同步）或者enqueue（异步）方法，发送请求到网络服务器，并返回一个响应（Response）。
+
+独立的请求和响应模块
+从响应处理分离出请求创建
+每个实例只能使用一次。
+Call可以被克隆。
+支持同步和异步方法。
+能够被取消。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

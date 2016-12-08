@@ -1,2 +1,35 @@
+
 1.
   Android-studio中project目录下--app--build里面--generated--source--r   这些文件是哪里来的，做什么用的。
+
+2.
+  retrofit中异步请求：
+
+Call<Repo> call = service.loadRepo();
+call.enqueue(new Callback<Repo>() {
+    @Override
+    public void onResponse(Response<Repo> response) {
+        // Get result Repo from response.body()
+    }
+ 
+    @Override
+    public void onFailure(Throwable t) {
+ 
+    }
+});
+
+Call<Repo> call = service.loadRepo();获得接口方法返货的结果，然后再进行call.enqueue进行异步处理请求结果。
+
+门店助手直接把请求结果处理放到一个线程池里面：RunnableExecutor.execute（.....）
+
+
+retrofit的请求都是异步，所谓的同步与异步说的是多返回来的数据处理是异步还是同步吧？？？
+
+Call<Repo> call = service.loadRepo();在调用接口方法后，返回的是一个什么对象?应该是一个Call类型的泛型对象吧，然后在使用new Callback<Repo>把数据转换成
+Repo对象进行处理 ？？？
+
+
+ 获取数据的代码就是这句:
+
+Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
+这个意思就是这样就获得数据了。 

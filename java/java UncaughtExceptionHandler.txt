@@ -1,0 +1,6 @@
+
+1.
+ java UncaughtExceptionHandler 处理线程意外中止  http://www.cnblogs.com/freeliver54/archive/2011/10/17/2215423.html
+
+
+ http://blog.csdn.net/wangbole/article/details/8161524
