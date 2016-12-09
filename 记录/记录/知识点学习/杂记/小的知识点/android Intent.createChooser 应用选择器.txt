@@ -1,0 +1,23 @@
+
+
+1.
+  android Intent.createChooser Ó¦ÓÃÑ¡ÔñÆ÷      http://blog.csdn.net/heng615975867/article/details/18983317
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

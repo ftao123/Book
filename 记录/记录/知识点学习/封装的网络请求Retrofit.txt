@@ -2,10 +2,15 @@
 
    Rxjava+ReTrofit+okHttp深入浅出-终极封装二（网络请求） http://blog.csdn.net/wzgiceman/article/details/51939574
 
+   开始使用Retrofit2+RXjava+Gson                         http://www.jianshu.com/p/1a88fb2a1eb6
 
+   Retrofit 2.0 + OkHttp 3.0 配置                        http://www.open-open.com/lib/view/open1456904039046.html   （讲解一些配置代表什么意思）
+   Retrofit – Java(Android) 的REST 接口封装类库         http://www.tuicool.com/articles/NnuIva                     （讲解retrofit的注解）
 
+   Retrofit 2.0 超能实践（三） （轻松实现多文件/图片上传/Json字符串/表单）  http://www.jianshu.com/p/acfefb0a204f     （讲解比较深了，好几篇）
 
-
+   谜之RxJava（四）—— Retrofit和RxJava的基情           https://segmentfault.com/a/1190000004077117
+ 
 
 
 http://www.jianshu.com/p/c1a3a881a144  源码分析
@@ -251,7 +256,11 @@ Call可以被克隆。
 
 
 
+_________________________________________________________________________________________________________________________________________________________
 
+下面自己想一下retrofit1.9和retrofit2.0
+ 上面自己那个多都是讲的是retrofit2.0，而自己公司工程师retrofit1.9，
+ http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0915/3460.html   讲了一些他们的区别。
 
 
 

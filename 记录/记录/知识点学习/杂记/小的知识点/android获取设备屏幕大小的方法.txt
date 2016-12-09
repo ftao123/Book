@@ -1,0 +1,18 @@
+
+1.
+  android获取设备屏幕大小的方法        http://blog.csdn.net/congqingbin/article/details/7474276/
+
+  http://ju.outofmemory.cn/entry/126186
+  http://www.cnblogs.com/franksunny/p/3849758.html
+
+
+
+
+
+
+
+
+
+
+
+

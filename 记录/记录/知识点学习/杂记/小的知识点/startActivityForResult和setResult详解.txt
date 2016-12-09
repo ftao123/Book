@@ -1,0 +1,14 @@
+
+
+1.
+  startActivityForResult和setResult详解           http://www.cnblogs.com/lijunamneg/archive/2013/02/05/2892616.html
+
+2. 
+  startActivityForResult用法详解      (讲的很好，把请求码和应答码讲的很详细)    http://www.cnblogs.com/linjiqin/archive/2011/06/03/2071956.html
+
+
+
+
+
+
+

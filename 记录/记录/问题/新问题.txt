@@ -33,3 +33,25 @@ Repo对象进行处理 ？？？
 
 Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
 这个意思就是这样就获得数据了。 
+
+3.
+  http://blog.csdn.net/sk719887916/article/details/51597816里面的  4 支持https那段没看懂。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

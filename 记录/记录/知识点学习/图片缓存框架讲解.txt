@@ -65,7 +65,11 @@ http://www.jb51.net/article/79833.htm     AndroidÊµÏÖBanner½çÃæ¹ã¸æÍ¼Æ¬Ñ­»·ÂÖ²¥£
 
 
 
+*****************************************************
 
+1.        
+  AndroidÑ§Ï°Ö®PhotoViewÔÚEclipseÉÏµÄÊ¹ÓÃ            http://blog.csdn.net/u012561176      £¨Í¼Æ¬Ë«Ö¸·Å´ó¹¦ÄÜ£©
+           
 
 
 
