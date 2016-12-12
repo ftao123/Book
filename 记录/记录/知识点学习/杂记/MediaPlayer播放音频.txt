@@ -1,0 +1,25 @@
+
+注意的是raw文件是在res文件下面创建的
+
+1.从头学Android之多媒体--使用MediaPlayer播放音频       http://blog.csdn.net/worker90/article/details/7016495 （给出了几种播放例子）
+  没事也可以看看他的其他文章。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,181 @@
+
+源文件：
+
+apply plugin: 'com.android.application'
+
+//定义打包时间函数
+def packageTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+    defaultConfig {
+        applicationId "com.ybzf.mobile.pharmacist"
+        minSdkVersion 15
+        targetSdkVersion 22
+        // dex突破65535的限制
+        multiDexEnabled true
+        versionCode 1150090
+        versionName "2.0.5"
+        manifestPlaceholders = [
+                UMENG_CHANNEL_VALUE  : "alchemist",
+                UMENG_APPKEY_VALUE   : "56026672e0f55ab6c30037e1",
+                GETTUI_PUSH_APPID    : "3CF3zVF2PP74msdqd2amx4",
+                GETTUI_PUSH_APPKEY   : "3HyjhdO2oS9BwLPOVFmwf9",
+                GETTUI_PUSH_APPSECRET: "g9QqoFJsGa7lsr1QoK5mg3"
+        ]
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+    }
+    signingConfigs {
+
+        debug {
+            keyAlias '51jk'
+            keyPassword '123456'
+            storeFile file('debug.jks')
+            storePassword '123456'
+        }
+        prerelease {
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file(System.getenv("KEYSTORE") + "")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+        }
+        release {
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file(System.getenv("KEYSTORE") + "")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+        }
+    }
+    buildTypes {
+        debug {
+            manifestPlaceholders = [
+                    UMENG_CHANNEL_VALUE  : "alchemist",
+                    UMENG_APPKEY_VALUE   : "56026672e0f55ab6c30037e1",
+                    GETTUI_PUSH_APPID    : "3CF3zVF2PP74msdqd2amx4",
+                    GETTUI_PUSH_APPKEY   : "3HyjhdO2oS9BwLPOVFmwf9",
+                    GETTUI_PUSH_APPSECRET: "g9QqoFJsGa7lsr1QoK5mg3",
+                    IC_LAUNCHER_VALUE    : "@mipmap/ic_launcher_beta"
+            ]
+//            buildConfigField "String", "API_HOST", "\"http://172.20.10.241:9001/\"" //API HOST
+            buildConfigField "String", "API_HOST", "\"http://api.mobile.dev.51jk.com/\"" //API HOST
+            buildConfigField "String", "API_PUSH_HOST", "\"http://push.dev.51jk.com:80\"" //API HOST
+            buildConfigField "String", "CDN_HOST", "\"http://img01.pic.12306pc.cn\"" //API HOST
+            signingConfig signingConfigs.debug
+            jniDebuggable true
+            zipAlignEnabled true
+            applicationIdSuffix ".debug"
+        }
+
+        prerelease {
+            manifestPlaceholders = [
+                    UMENG_CHANNEL_VALUE  : "alchemist",
+                    IC_LAUNCHER_VALUE    : "@mipmap/ic_launcher_pre_release",
+                    UMENG_APPKEY_VALUE   : "56026672e0f55ab6c30037e1",
+                    GETTUI_PUSH_APPID    : "3CF3zVF2PP74msdqd2amx4",
+                    GETTUI_PUSH_APPKEY   : "3HyjhdO2oS9BwLPOVFmwf9",
+                    GETTUI_PUSH_APPSECRET: "g9QqoFJsGa7lsr1QoK5mg3"
+            ]
+            buildConfigField "String", "API_HOST", "\"http://api.app.pre.51jk.com/\"" //API HOST
+            buildConfigField "String", "API_PUSH_HOST", "\"http://push.app.51jk.com:80\"" //API HOST
+            buildConfigField "String", "CDN_HOST", "\"http://img01.pic.12306pc.cn\"" //API HOST
+            signingConfig signingConfigs.prerelease
+            zipAlignEnabled true
+        }
+
+        release {
+            manifestPlaceholders = [
+                    UMENG_CHANNEL_VALUE  : "alchemist",
+                    IC_LAUNCHER_VALUE    : "@mipmap/ic_launcher",
+                    UMENG_APPKEY_VALUE   : "56026672e0f55ab6c30037e1",
+                    GETTUI_PUSH_APPID    : "3CF3zVF2PP74msdqd2amx4",
+                    GETTUI_PUSH_APPKEY   : "3HyjhdO2oS9BwLPOVFmwf9",
+                    GETTUI_PUSH_APPSECRET: "g9QqoFJsGa7lsr1QoK5mg3"
+            ]
+            buildConfigField "String", "API_HOST", "\"http://api.app.51jk.com/\"" //API HOST
+            buildConfigField "String", "API_PUSH_HOST", "\"http://push.app.51jk.com:80\"" //API HOST
+            buildConfigField "String", "CDN_HOST", "\"http://img01.pic.12306pc.cn\"" //API HOST
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
+        }
+    }
+
+    productFlavors {
+        "default" {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    //修改生成的最终文件名
+    applicationVariants.all { variant ->
+        def appName
+        if (project.hasProperty("applicationName")) {
+            appName = applicationName
+        } else {
+            appName = parent.name
+        }
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                File outputDirectory = new File(outputFile.parent);
+                def fileName
+
+                if (variant.buildType.name == "release") {
+                    // 输出apk名称为alchemist_v1.0.0_playStore.apk
+                    if (output.zipAlign) {
+                        fileName = "${appName}-v${defaultConfig.versionName}-${variant.productFlavors[0].name}-release.apk"
+                    } else {
+                        fileName = "${appName}-v${defaultConfig.versionName}-${variant.productFlavors[0].name}-release-unaligned.apk"
+                    }
+                } else if (variant.buildType.name == "prerelease") {
+
+                    if (output.zipAlign) {
+                        fileName = "${appName}-v${defaultConfig.versionName}-${variant.productFlavors[0].name}-prerelease.apk"
+                    } else {
+                        fileName = "${appName}-v${defaultConfig.versionName}-${variant.productFlavors[0].name}-prerelease-unaligned.apk"
+                    }
+                } else {
+                    if (output.zipAlign) {
+                        fileName = "${appName}-v${defaultConfig.versionName}-${variant.productFlavors[0].name}-debug.apk"
+                    } else {
+                        fileName = "${appName}-v${defaultConfig.versionName}-${variant.productFlavors[0].name}-debug-unaligned.apk"
+                    }
+                }
+                output.outputFile = new File(outputDirectory, fileName)
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile(name: 'commonutils-release', ext: 'aar')
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:multidex:1.0.0'
+    compile files('libs/fastjson-1.2.4.jar')
+    compile files('libs/retrofit-1.9.0.jar')
+    compile files('libs/universal-image-loader-1.9.4.jar')
+    compile files('libs/umeng-analytics-v5.5.3.jar')
+    compile files('libs/zxing.jar')
+    compile files('libs/xUtils-2.6.14.jar')
+    compile files('libs/GetuiExt-2.0.3.jar')
+    compile files('libs/GetuiSdk2.4.1.0.jar')
+    compile files('libs/android-smart-image-view-1.0.0.jar')
+    compile files('libs/Yuntx_IMLib_v5.2.2r.jar')
+    compile files('libs/android-async-http-1.4.7.jar')
+    compile 'com.android.support:recyclerview-v7:22.1.0'
+}

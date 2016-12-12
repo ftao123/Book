@@ -1,3 +1,6 @@
+
+html页面的注解标签 <!--......-->
+
 1. http://blog.sina.com.cn/s/blog_6f5641ac0101bvao.html  Java中split的用法详解及实例
    http://www.jb51.net/article/68766.htm
 

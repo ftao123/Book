@@ -8,3 +8,7 @@
 
 
   Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）       http://blog.csdn.net/luanlouis/article/details/24589193
+
+
+   java动态代理中的invoke方法是如何被自动调用的    http://www.android100.org/html/201603/27/222733.html        这两个结合看理解
+   设计模式之 动态代理模式                         http://blog.csdn.net/leilu2008/article/details/6724098

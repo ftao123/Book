@@ -1,0 +1,95 @@
+
+
+1.android开发中关于VersionCode和VersionName     http://www.android100.org/html/201406/04/18079.html  (告诉版本号VersionCode的怎么会那么大)
+
+2：解读：// dex突破65535的限制   multiDexEnabled true
+   美团Android DEX自动拆包及动态加载简介        http://blog.csdn.net/gitzzp/article/details/51691097
+   Google Multidex使用方法                      http://www.th7.cn/Program/Android/201612/1046936.shtml
+   http://www.open-open.com/lib/view/open1452264136714.html
+
+3：解读：manifestPlaceholders
+    Android Gradle manifestPlaceholders 的妙用      http://blog.csdn.net/qq_21793463/article/details/52069127
+
+4： Android官方技术文档翻译——清单合并  http://blog.csdn.net/maosidiaoxian/article/details/42671999  （将的特别详细）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//替换AndroidManifest.xml的default字符串为渠道名称
+android.applicationVariants.all{ variant ->
+    variant.processManifest.doLast{
+        //之前这里用的copy{}，我换成了文件操作，这样可以在v1.11版本正常运行，并保持文件夹整洁
+        //${buildDir}是指build文件夹
+        //${variant.dirName}是flavor/buildtype，例如GooglePlay/release，运行时会自动生成
+        //下面的路径是类似这样：build/manifests/GooglePlay/release/AndroidManifest.xml
+        def manifestFile = "${buildDir}/intermediates/manifests/${variant.dirName}/AndroidManifest.xml"
+
+        //将字符串default替换成flavor的名字
+        def updatedContent = new File(manifestFile).getText('UTF-8').replaceAll("default", "${variant.productFlavors[0].name}")
+        new File(manifestFile).write(updatedContent, 'UTF-8')
+
+        //将此次flavor的AndroidManifest.xml文件指定为我们修改过的这个文件
+        variant.processResources.manifestFile = file("${buildDir}/intermediates/manifests/${variant.dirName}/AndroidManifest.xml")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

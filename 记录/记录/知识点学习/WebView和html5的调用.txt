@@ -1,4 +1,26 @@
 
+//设置编码　　
+　　mWebView.getSettings().setDefaultTextEncodingName("utf-8");
+
+下面这五个网址比较全了
+   
+Android之Android WebView常见问题及解决方案汇总         http://blog.sina.com.cn/s/blog_5da93c8f0102wgds.html
+Android混合开发之WebView使用总结 http://www.cnblogs.com/whoislcj/p/5645025.html
+android 中webview基本使用的方法小结http://blog.csdn.net/abc__d/article/details/51683511
+android中WebView加载网页居中显示http://www.open-open.com/lib/view/open1429772758729.html
+android webview让内容充满屏幕的方法http://blog.csdn.net/chniccs/article/details/49665363
+
+
+
+
+
+
+
+
+
+
+
+               Android WebView加载html5页面实例教程                                        http://www.111cn.net/sj/android/92781.htm
 
               Android WebView如何加载assets下的html文件                                    http://www.cnphp6.com/archives/58922
 
