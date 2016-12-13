@@ -1,0 +1,23 @@
+
+
+1. 更优雅的 Android 发布自动版本号方案          http://www.race604.com/android-auto-version/
+
+2.Android Studio 多渠道打包、自动版本号及 gradlew 命令的基本使用        http://www.jianshu.com/p/44d40f8e67c9
+
+3. Android studio 多渠道打包(超简洁版)   http://www.cnblogs.com/0616--ataozhijia/p/4203997.html
+
+4.Android studio 使用心得(四)---android studio 多渠道打包     (说了一些属性代表什么****)     http://www.open-open.com/lib/view/open1430730874085.html
+  楼主还有一些关于Studio的使用的文章也是挺好的
+
+5.http://blog.csdn.net/ljchlx/article/details/43059467
+
+
+
+
+
+
+
+
+
+
+

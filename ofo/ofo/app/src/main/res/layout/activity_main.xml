@@ -78,8 +78,12 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="喵喵查询"/>
-    </LinearLayout>
 
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textv"/>
 
 
 </RelativeLayout>

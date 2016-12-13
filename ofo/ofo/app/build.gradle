@@ -1,4 +1,25 @@
 apply plugin: 'com.android.application'
+//Android 发布自动版本号方案,使用git自动升级版本号
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+}
+
+def gitVersionTag() {
+    def cmd = 'git describe --tags'
+    def version = cmd.execute().text.trim()
+
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+
+    return version
+}
 
 android {
     compileSdkVersion 23
@@ -16,6 +37,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+
+//自动获取版本号
+android.applicationVariants.all { variant ->
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
     }
 }
 

@@ -2,7 +2,10 @@ package ft.com.ofo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -26,13 +29,16 @@ public class MainActivity extends Activity {
 
     // 帐号和密码
     private EditText edname;
-    private TextView edpassword,edpassword2;
+    private TextView edpassword,edpassword2,textv;
 
     private Button btregister;
     private Button btlogin;
     // 创建SQLite数据库
     public static SQLiteDatabase db;
     public Cursor cursor;
+
+    private String versionName;
+    private int versionCode;
 
     public static final char numberAllChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
@@ -58,9 +64,24 @@ public class MainActivity extends Activity {
             }
         });
         btlogin.setOnClickListener(new LoginListener());
+
+        //获得版本号
+        PackageInfo info=null;
+        PackageManager manager = this.getPackageManager();
+        try {
+            info = manager.getPackageInfo(this.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        versionName=info.versionName;
+        versionCode=info.versionCode;
+        textv.setText("versionName:"+versionName+"<<<<"+"versionCode:"+versionCode);
+
+
     }
 
     public void initViews() {
+        textv= (TextView) findViewById(R.id.textv);
         edname = (EditText) findViewById(R.id.edname);
         edpassword = (TextView) findViewById(R.id.edpassword);
         edpassword2= (TextView) findViewById(R.id.edpassword2);

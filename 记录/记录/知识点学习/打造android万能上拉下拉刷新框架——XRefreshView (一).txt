@@ -1,0 +1,5 @@
+
+
+1. https://github.com/huxq17/XRefreshView 
+
+2.打造android万能上拉下拉刷新框架——XRefreshView (一)   http://blog.csdn.net/footballclub/article/details/46422703
