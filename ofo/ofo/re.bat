@@ -1,1 +1,1 @@
-@powershell ./gradlew assembleRelease -b ofo\build.gradle --info
+@powershell ./gradlew assembleRelease -b app\build.gradle --info

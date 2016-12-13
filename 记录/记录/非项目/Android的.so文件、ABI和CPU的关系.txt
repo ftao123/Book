@@ -1,0 +1,11 @@
+
+
+1.Android的.so文件、ABI和CPU的关系        http://blog.csdn.net/xx326664162/article/details/51163905
+
+
+
+
+
+
+
+

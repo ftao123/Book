@@ -9,3 +9,7 @@ APP多渠道打包 http://www.jianshu.com/p/44d40f8e67c9
 
 3. Android Studio添加引用第三方Library
 右键Module - Open Module Settings - Dependencies, 找到"+"按钮，选择Library dependency，弹出对话框，
+
+Android Studio实战技巧      http://www.cnblogs.com/qianxudetianxia/p/3987395.html  (关于Android-studio的一些用法)
+
+4. Android 项目中文件夹的作用        http://blog.csdn.net/goodshot/article/details/11529731
