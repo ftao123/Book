@@ -43,3 +43,12 @@ git stash pop
 
 然后在按照 https://segmentfault.com/a/1190000002951154 这个网址进行外部合并（需要下载） Beyond Compare 下载网址（http://www.scootersoftware.com/download.php?zz=dl4）
 上面是英文版的，应该可以找到中文版的。
+
+
+
+
+
+
+
+
+

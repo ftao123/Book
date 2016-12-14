@@ -1,4 +1,6 @@
 
+Android Studio之gradle的配置与介绍           http://blog.csdn.net/loongggdroid/article/details/47037413
+                                             https://my.oschina.net/u/1471093/blog/341990
 
 1.android开发中关于VersionCode和VersionName     http://www.android100.org/html/201406/04/18079.html  (告诉版本号VersionCode的怎么会那么大)
 

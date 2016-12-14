@@ -1,5 +1,14 @@
 
 
+打开Android Studio内置的终端，在输入如下命令查看gradle版本：
+gradlew -v
+
+
+讲解通过gradle 导入gar包 http://www.th7.cn/Program/Android/201507/495477.shtml   还说了点其他东西
+
+
+
+
 1. 更优雅的 Android 发布自动版本号方案          http://www.race604.com/android-auto-version/
 
 自己在使用过程中遇到的坑，报错：
@@ -31,12 +40,47 @@ android.applicationVariants.all { variant ->
 
 6.Android官方技术文档翻译——Gradle 插件用户指南（7）         http://blog.csdn.net/maosidiaoxian/article/details/42417779
 
+7.Android studio如何更改gradle版本？        http://jingyan.baidu.com/article/3c343ff7f84e950d36796357.html
+  这个网址前提是需要我们自己下载gradle      
+  学到的知识就是 ：
+  定位到Android studio 里面的项目，找到项目下面的build.gradle文件，
+  gradle 2.4版本所对应的 com.android.tools.build:gradle插件为1.3.0，  gradle 2.10对应的插件版本是2.1.0（******这个对于是官方规定的，我是我们自己瞎搞的）
+  并且这个是加载的本地的Gradle
 
 
 
 
 
 
+
+
+//    yingyongbao {} // 腾讯应用宝
+//    wandoujia {} // 豌豆荚
+//        baidu {} // 百度手机助手
+//        miui {} // 小米
+//        flyme {} // 魅族
+//        lenovo {} // 联想-乐商店
+//        oppo {} // Oppo-可可软件商店
+//        huawei {} // 华为
+//        vivo {} // vivo
+//        hiapk {} // 安卓市场
+//        sj91 {} // 91手机助手
+//        sogou {} // 搜狗手机市场
+//        sohu {} // 搜狐应用中心
+
+//        taobao {} // 淘宝手机助手
+//        gfan {} // 机锋
+//        appchina {} // 应用汇
+//        mumayi {} // 木蚂蚁
+//        wangyi163 {} // 网易应用
+//        nduoa {} // N多市场
+//        mm10086 {} // MM商城-中国移动
+//        wostore {} // WO商店
+//        youyi {} // 优异
+//        uc {} // UC+开发平台
+//        anzhi {} // 安智市场
+//        google {} // google play
+//        amazon {} // 亚马逊
 
 
 

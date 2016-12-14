@@ -1,6 +1,9 @@
 
 APP多渠道打包 http://www.jianshu.com/p/44d40f8e67c9    
 平时自己用的可以在Terminal下面--》直接输入gradlew assemble进行打包。然后在自己的工程下面:app\build\outputs\apk 下面有自己打包的安装包
+4. Android 项目中文件夹的作用        http://blog.csdn.net/goodshot/article/details/11529731
+
+位置:File->Settings->Editor->Colors & Fonts, 选择界面风格;
 
 
 1.添加mipmap图片 new--》Image  Asset  添加png矢量图，可以添加外部图片
@@ -12,4 +15,8 @@ APP多渠道打包 http://www.jianshu.com/p/44d40f8e67c9
 
 Android Studio实战技巧      http://www.cnblogs.com/qianxudetianxia/p/3987395.html  (关于Android-studio的一些用法)
 
-4. Android 项目中文件夹的作用        http://blog.csdn.net/goodshot/article/details/11529731
+4.Android-studio设置Gradle  http://jingyan.baidu.com/article/3c343ff7f84e950d36796357.html
+  File--》Settings-->Build，Execution，Deployment--》Build Tools--》Gradle
+  其实自己在进入Setting页面直接在搜索里面输入Gradle就可以收到了。
+
+

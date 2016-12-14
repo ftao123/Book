@@ -1,4 +1,7 @@
 
+gradlew assembleRelease 
+
+
 1.
   Android-studio中project目录下--app--build里面--generated--source--r   这些文件是哪里来的，做什么用的。
 
@@ -42,7 +45,7 @@ Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
 4.
   WebView加载html页面不会显示html页面的音乐？？？
 
-
+5.什么是AS？？、 什么是DSL？？、什么是集成？？
 
 
 
