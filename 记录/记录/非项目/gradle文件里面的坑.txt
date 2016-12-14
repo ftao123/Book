@@ -1,0 +1,84 @@
+
+自己打包的时候遇到的坑。
+
+一、
+ 更优雅的 Android 发布自动版本号方案          http://www.race604.com/android-auto-version/
+
+自己在使用过程中遇到的坑，报错：
+
+* What went wrong:          
+A problem occurred evaluating project ':app'.
+> Could not find property 'applicationVariants' on project ':app'.
+
+
+解决：在applicationVariants.all 前面加一个android即：
+
+  //自动获取版本号
+android.applicationVariants.all { variant ->
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
+    }
+}
+
+******因为自己用的Gradle是2.10的版本，所以那个前面都要加一个android.applicationVariants.all, android.productFlavors ,android.productFlavors.all
+
+不然程序会报错，说找不到applicationVariants或者productFlavors或者android.productFlavors.all
+自己公司那个工程用的是Gradle那个Tools这个版本比较低，不这样可以打包。
+
+还有就是在修改了上面完成后还是报应错，查了网上的说，把项目关闭重启就可以了。这是坑啊！！！
+
+第二个坑：
+二、
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+网上大家遇到的一些坑：
+1.
+   Android Studio Gradle编译时『No resource found that matches the given name』解决方法（windows系统的坑） 
+   http://www.cnblogs.com/renkangke/p/4646838.html
+
+2.
+  初次打开Gradle工程特别慢，一直提示下载更新Gradle
+
+解决办法：打开Gradle工程子目录：“\gradle\wrapper” 下的 “gradle-wrapper.properties” 文件，找到其中的文件 
+“distributionUrl=https\://services.gradle.org/distributions/gradle-2.14.1-all.zip” ，用下载工具Download下来，
+然后放到 “C:\Users\Administrator\.gradle\wrapper\dists\gradle-2.14.1-all\4cj8p00t3e5ni9e8iofg8ghvk7” 目录下，
+重新打开Gradle工程就好了！后面的那个目录名是随机生成的，可能不一样。
+
+3.
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
