@@ -1,0 +1,149 @@
+import java.util.jar.Attributes
+
+apply plugin: 'groovy'
+
+archivesBaseName = "gradle-${name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }}"
+
+sourceCompatibility = 1.7
+
+ext {
+    compileTasks = tasks.matching { it instanceof JavaCompile || it instanceof GroovyCompile }
+    testTasks = tasks.withType(Test)
+    generatedResourcesDir = file("$buildDir/generated-resources/main")
+    generatedTestResourcesDir = file("$buildDir/generated-resources/test")
+    jarTasks = tasks.withType(Jar)
+}
+
+dependencies {
+    testCompile libraries.junit, libraries.jmock, libraries.spock
+}
+
+// Extracted as it's also used by buildSrc
+apply from: "$rootDir/gradle/compile.gradle"
+
+task classpathManifest(type: ClasspathManifest)
+
+sourceSets {
+    main.output.dir generatedResourcesDir, builtBy: classpathManifest
+}
+
+testTasks.all { task ->
+    maxParallelForks = rootProject.maxParallelForks
+    if (isCiServer) {
+        systemProperties['org.gradle.test.maxParallelForks'] = maxParallelForks
+        systemProperties['org.gradle.ci.agentCount'] = 2
+        systemProperties['org.gradle.ci.agentNum'] = rootProject.agentNum
+        doFirst {
+            println "maxParallelForks for '$task.path' is $task.maxParallelForks"
+        }
+    }
+    if (javaVersion.java7) {
+        // enable class unloading
+        task.jvmArgs '-XX:+UseConcMarkSweepGC', '-XX:+CMSClassUnloadingEnabled'
+    }
+}
+
+jarTasks.all { jar ->
+    jar.manifest.mainAttributes(
+        (Attributes.Name.IMPLEMENTATION_TITLE.toString()): 'Gradle',
+        (Attributes.Name.IMPLEMENTATION_VERSION.toString()): version,
+    )
+}
+
+// Configures the project to use the test fixtures from another project, which by default is core.
+// Note this is not used to create test fixtures in this project, see gradle/testFixtures.gradle for that
+ext.useTestFixtures = { params = [:] ->
+    def projectPath = params.project ?: ":core"
+    def sourceSet = params.sourceSet ?: "test"
+    def compileConfiguration = sourceSet == "main" ? "compile" : "${sourceSet}Compile"
+    def runtimeConfiguration = sourceSet == "main" ? "runtime" : "${sourceSet}Runtime"
+
+    dependencies {
+        add(compileConfiguration, project(path: projectPath, configuration: "testFixturesUsageCompile"))
+        add(compileConfiguration, project(':internalTesting'))
+        add(runtimeConfiguration, project(path: projectPath, configuration: "testFixturesUsageRuntime"))
+    }
+}
+
+if (file("src/testFixtures").exists()) {
+    apply from: "$rootDir/gradle/testFixtures.gradle"
+}
+
+apply from: "$rootDir/gradle/integTest.gradle"
+
+
+if (file("src/performanceTest").exists()) {
+    apply from: "$rootDir/gradle/performanceTest.gradle"
+}
+
+if (file("src/jmh").exists()) {
+    apply from: "$rootDir/gradle/jmh.gradle"
+}
+
+@CacheableTask
+class ClasspathManifest extends DefaultTask {
+
+    @Classpath
+    FileCollection input = project.configurations.runtime
+
+    @Input
+    List<String> optionalProjects = []
+
+    @OutputFile
+    File getManifestFile() {
+        return new File(project.generatedResourcesDir, "${project.archivesBaseName}-classpath.properties")
+    }
+
+    @Input
+    String getRuntime() {
+        return input.fileCollection {
+            (it instanceof ExternalDependency) || (it instanceof FileCollectionDependency)
+        }.collect { it.name }.join(',')
+    }
+
+    @Input
+    String getProjects() {
+        return input.allDependencies.withType(ProjectDependency).collect {
+            it.dependencyProject.archivesBaseName
+        }.join(',')
+    }
+
+    Properties createProperties() {
+        def properties = new Properties()
+        properties.runtime = getRuntime()
+        properties.projects = getProjects()
+        if (!getOptionalProjects().empty) {
+            properties.optional = getOptionalProjects().join(',')
+        }
+        return properties
+    }
+
+    @TaskAction
+    def generate() {
+        // Remove Properties timestamp for reproducible build
+        def sw = new StringWriter()
+        createProperties().store(sw, "")
+        def content = sw.toString().split(/\n/).findAll { !it.startsWith("#") }.join("\n")
+        manifestFile.setText(content, "utf-8")
+    }
+}
+
+ext.ClasspathManifest = ClasspathManifest
+
+// This is here mostly for the TravisCI build.
+// It advertises as an ANSI capable terminal but isn't, so we run with -q there to make
+// the output legible, but we still want test result info
+if (buildTypes.pullRequestValidation.active) {
+    tasks.withType(Test) {
+        testLogging {
+            quiet {
+                events "failed"
+                exceptionFormat "full"
+            }
+        }
+    }
+}
+
+task compileAll {
+    dependsOn tasks.matching { it instanceof JavaCompile || it instanceof GroovyCompile }
+}

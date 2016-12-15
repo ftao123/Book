@@ -1,0 +1,88 @@
+import org.gradle.build.*
+
+// GradleConnector entry point requires Java 5
+sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
+
+dependencies {
+    compile project(':core')
+    compile project(':messaging')
+    compile project(':wrapper')
+    compile project(':baseServices')
+    publishCompile libraries.slf4j_api
+
+    testFixturesCompile project(':baseServicesGroovy')
+    testFixturesCompile project(':internalIntegTesting')
+    testCompile libraries.groovy
+
+    // Need these to be loaded into the integTestRuntime, so that the modules are available on the classpath and the services can be registered
+    // I think this is only really required for the TAPI tests in embedded mode, where we use `GradleConnector.useClasspathDistribution()`.
+    integTestRuntime project(':ide')
+    integTestRuntime project(':buildInit')
+    integTestRuntime project(':buildComparison')
+    integTestRuntime project(":ivy")
+    integTestRuntime project(":maven")
+    integTestRuntime project(":compositeBuilds")
+
+    integTestRuntime project(":toolingApiBuilders")
+}
+
+useTestFixtures()
+useTestFixtures(project: ":logging")
+useTestFixtures(project: ':dependencyManagement')
+useTestFixtures(project: ':ide')
+
+integTestTasks.all {
+    dependsOn({ rootProject.getTasksByName('publishLocalArchives', true) }, ':distributions:binZip')
+}
+
+forkingIntegTest {
+    if (isCiServer) {
+        maxParallelForks = Math.min(2, rootProject.maxParallelForks)
+    }
+}
+
+parallelIntegTest {
+    enabled = false //tooling integ tests use parallel settings, don't run
+}
+
+daemonIntegTest {
+    enabled = false //tooling integ tests use daemon anyway, don't rerun
+}
+
+task shadedJar(type: ShadedJar) {
+    ext.outputDir = file("$buildDir/shaded-jar")
+    sourceFiles = jar.inputs.files + files {(configurations.runtime - configurations.publishCompile).collect { zipTree(it) } }
+    analysisFile = file("$outputDir/analysis.txt")
+    classesDir = file("$outputDir/classes")
+    jarFile = file("$outputDir/gradle-tooling-api-shaded-${version}.jar")
+    keepPackages = ["org.gradle.tooling"]
+    unshadedPackages = ["org.gradle", "org.slf4j"]
+    ignorePackages = ["org.gradle.tooling.provider.model"]
+    shadowPackage = "org.gradle.internal.impldep"
+}
+
+apply from: 'buildship.gradle'
+
+sourceJar {
+    configurations.compile.allDependencies.withType(ProjectDependency).each {
+        from it.dependencyProject.sourceSets.main.groovy.srcDirs
+        from it.dependencyProject.sourceSets.main.java.srcDirs
+    }
+}
+
+artifacts {
+    publishRuntime file: shadedJar.jarFile, name: archivesBaseName, type: 'jar', builtBy: shadedJar
+}
+
+eclipse {
+    classpath {
+        file.whenMerged { classpath ->
+            //**TODO
+            classpath.entries.removeAll { it.path.contains('src/test/groovy') }
+            classpath.entries.removeAll { it.path.contains('src/integTest/groovy') }
+        }
+    }
+}
+
+verifyTestFilesCleanup.errorWhenNotEmpty = false
+

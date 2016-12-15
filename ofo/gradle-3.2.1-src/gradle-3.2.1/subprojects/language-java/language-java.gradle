@@ -1,0 +1,24 @@
+// Compiler daemon
+sourceCompatibility = 1.6
+
+dependencies {
+    compile libraries.groovy
+    compile project(":core")
+    compile project(":platformJvm")
+    compile project(":languageJvm")
+
+    // TODO - get rid of this cycle
+    integTestRuntime project(':plugins')
+}
+
+// These public packages have classes that are tangled with the corresponding internal package.
+useClassycle(exclude: ["org/gradle/api/tasks/compile/**", "org/gradle/external/javadoc/**", ])
+
+strictCompile()
+useTestFixtures()
+useTestFixtures(project: ":languageJvm", sourceSet: 'testFixtures')
+useTestFixtures(project: ":platformBase")
+useTestFixtures(project: ":launcher")
+
+verifyTestFilesCleanup.errorWhenNotEmpty = false
+

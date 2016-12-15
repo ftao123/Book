@@ -1,0 +1,20 @@
+/*
+    This project contains various native operating system integration utilities.
+*/
+
+sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
+
+dependencies {
+    compile project(':baseServices')
+    compile libraries.commons_io
+    compile libraries.slf4j_api
+    compile libraries.nativePlatform
+    compile module('org.fusesource.jansi:jansi:1.14')
+    compile libraries.guava
+    compile libraries.jcip
+    testCompile libraries.groovy
+}
+
+useTestFixtures()
+useTestFixtures(project: ":logging")
+useClassycle()

@@ -11,21 +11,6 @@ gradlew -v
 
 1. 更优雅的 Android 发布自动版本号方案          http://www.race604.com/android-auto-version/
 
-自己在使用过程中遇到的坑，报错：
-* What went wrong:          
-A problem occurred evaluating project ':app'.
-> Could not find property 'applicationVariants' on project ':app'.
-
-解决：在applicationVariants.all 前面加一个android即：
-  //自动获取版本号
-android.applicationVariants.all { variant ->
-    if (variant.buildType.name.equals('release')) {
-        variant.mergedFlavor.versionCode = gitVersionCode()
-        variant.mergedFlavor.versionName = gitVersionTag()
-    }
-}
-
-
 
 
 

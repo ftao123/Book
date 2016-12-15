@@ -1,0 +1,88 @@
+import org.gradle.testing.IntegrationTest
+
+apply plugin: 'java'
+apply from: "${rootDir}/gradle/distributionTesting.gradle"
+
+sourceSets {
+    integTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+configurations {
+    integTestCompile.extendsFrom testCompile
+    integTestRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+    integTestCompile project(":internalIntegTesting")
+
+    //so that implicit help tasks are available:
+    integTestRuntime project(':diagnostics')
+
+    //So that the wrapper and init task are added when integTests are run via commandline
+    integTestRuntime project(':buildInit')
+    //above can be removed when we implement the auto-apply plugins
+}
+
+ext.integTestTasks = tasks.withType(IntegrationTest)
+
+integTestTasks.all { IntegrationTest task ->
+    testClassesDir = sourceSets.integTest.output.classesDir
+    classpath = sourceSets.integTest.runtimeClasspath
+}
+
+task integTest(type: IntegrationTest) {
+    def defaultExecuter = project.hasProperty("defaultIntegTestExecuter") ? project.defaultIntegTestExecuter : "embedded"
+    systemProperties['org.gradle.integtest.executer'] = defaultExecuter
+    if (project.hasProperty('org.gradle.integtest.debug')) {
+        systemProperties['org.gradle.integtest.debug'] = 'true'
+        testLogging.showStandardStreams = true
+    }
+    if (project.hasProperty('org.gradle.integtest.verbose')) {
+        testLogging.showStandardStreams = true
+    }
+}
+check.dependsOn(integTest)
+
+['embedded', 'forking', 'daemon', 'embeddedDaemon', 'parallel'].each { mode ->
+    def taskName = "${mode}IntegTest"
+    tasks.create(taskName, IntegrationTest).configure {
+        systemProperties['org.gradle.integtest.executer'] = mode
+    }
+}
+
+task crossVersionIntegTest {
+    description "Runs the cross version tests against all Gradle versions"
+}
+
+releasedVersions.testedVersions.each { targetVersion ->
+    tasks.create("gradle${targetVersion}IntegTest", IntegrationTest).configure {
+        crossVersionIntegTest.dependsOn path
+        description "Runs the cross version tests against Gradle ${targetVersion}"
+        systemProperties['org.gradle.integtest.versions'] = targetVersion
+        systemProperties['org.gradle.integtest.executer'] = 'forking'
+        include '**/*CrossVersion*'
+    }
+}
+
+plugins.withType(org.gradle.plugins.ide.idea.IdeaPlugin) { // lazy as plugin not applied yet
+    idea {
+        module {
+            testSourceDirs += sourceSets.integTest.groovy.srcDirs
+            testSourceDirs += sourceSets.integTest.resources.srcDirs
+            scopes.TEST.plus.add(configurations.integTestCompile)
+            scopes.TEST.plus.add(configurations.integTestRuntime)
+        }
+    }
+}
+
+plugins.withType(org.gradle.plugins.ide.eclipse.EclipsePlugin) { // lazy as plugin not applied yet
+    eclipse {
+        classpath {
+            plusConfigurations.add(configurations.integTestCompile)
+            plusConfigurations.add(configurations.integTestRuntime)
+        }
+    }
+}

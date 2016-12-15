@@ -1,0 +1,77 @@
+/*
+ * Copyright 2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+if (plugins.hasPlugin("com.gradle.build-scan")) {
+    if (gradle.startParameter.taskNames == ["verifyTestFilesCleanup"]) {
+        buildScan.publishOnFailure()
+    } else {
+        buildScan.publishAlways()
+    }
+
+    String commitId
+    if (System.getenv("CI")) {
+        buildScan.tag "CI"
+        buildScan.link "TeamCity Build", System.getenv("BUILD_URL")
+        buildScan.value "Build ID", System.getenv("BUILD_ID")
+        commitId = System.getenv("BUILD_VCS_NUMBER")
+    } else {
+        buildScan.tag "LOCAL"
+
+        try {
+            commitId = 'git rev-parse --verify HEAD'.execute().text.trim()
+        } catch (ignore) {
+            // ignore
+        }
+
+        try {
+            def status = 'git status --porcelain'.execute().text
+            if (status) {
+                buildScan.tag "dirty"
+                buildScan.value "Git Status", status
+            }
+        } catch (ignore) {
+            // ignore
+        }
+    }
+
+    if (commitId) {
+        buildScan.value "Git Commit ID", commitId
+        buildScan.link "Source", "https://github.com/gradle/gradle/tree/" + commitId
+    }
+
+    // Capture reports from Reporting tasks
+    if (System.getenv("CI")) {
+        def capturedReportingTypes = ['html'] // can add xml, text, junitXml if wanted
+        def basePath = "${System.getenv("BUILD_SERVER_URL")}/repository/download/${System.getenv("BUILD_TYPE_ID")}/${System.getenv("BUILD_ID")}:id"
+
+        gradle.taskGraph.afterTask { Task task, TaskState state ->
+            if (task instanceof Reporting && state.failure) {
+                (task.reports as ReportContainer<Report>)
+                    .findAll { it.name in capturedReportingTypes && it.enabled && it.destination.exists() }
+                    .each {
+                        def linkName = "${task.class.simpleName.split('_')[0]} Report (${task.path})" // Strip off '_Decorated' addition to class names
+                        def reportPath = task.project.rootProject.relativePath(it.destination)
+                        def reportLink = "$basePath/$reportPath"
+                        task.project.buildScan.link linkName, reportLink
+                    }
+            }
+        }
+    }
+
+    if (gradle.startParameter.taskOutputCacheEnabled) {
+        buildScan.tag 'CACHED'
+    }
+}

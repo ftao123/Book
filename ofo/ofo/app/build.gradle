@@ -34,12 +34,18 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
-    defaultConfig {
+        defaultConfig {
         applicationId "ft.com.ofo"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 2
         versionName "2.0"
+
+
+//            // dex突破65535的限制
+//            multiDexEnabled true
+//            // 默认是umeng的渠道
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
 
         sourceSets {
             main {
@@ -49,11 +55,30 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled true
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "bo1_v${defaultConfig.versionName}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
+
     }
 }
+
 
 
 android.applicationVariants.all { variant ->
@@ -62,15 +87,15 @@ android.applicationVariants.all { variant ->
         variant.mergedFlavor.versionCode = gitVersionCode()
         variant.mergedFlavor.versionName = gitVersionTag()
     }
-    variant.outputs.each { output ->
-        def outputFile = output.outputFile
-        if (outputFile != null && outputFile.name.endsWith('.apk')) {
 
-            // apk_渠道名-版本号-版本名称-编译时间.apk
-            // fileName = "apk_${}-${releaseTime2()}-${variant.productFlavors[0].name}.apk"
-            output.outputFile = new File(outputFile.parent, fileName)
-        }
-    }
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+//                def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
 }
 
 
@@ -78,6 +103,7 @@ android.productFlavors {
 
 
     qihu360 {} // 360手机助手
+    aaa{}
 
 
 

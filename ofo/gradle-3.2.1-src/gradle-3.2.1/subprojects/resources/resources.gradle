@@ -1,0 +1,19 @@
+/*
+ * A set of general-purpose resource abstractions.
+ */
+apply plugin: "groovy"
+
+sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
+
+dependencies {
+    compile libraries.slf4j_api
+    compile project(':baseServices')
+    compile project(':messaging')
+    compile libraries.commons_io
+    testCompile libraries.groovy
+    integTestCompile project(':internalIntegTesting')
+}
+
+useTestFixtures()
+useClassycle()
+

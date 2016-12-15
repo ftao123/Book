@@ -1,0 +1,295 @@
+
+http://blog.csdn.net/ljchlx/article/details/43059467  其实这个网址上面写的是正确的。自己需要加android那是自己把人家写在android标签里面了。
+
+
+1. 关于adnroidStudio一直提示Task 'generateDebugSources' not found in project ':app'  http://blog.csdn.net/u014449096/article/details/52298856
+这个报错有点坑,关闭程序再次打开就OK了。
+
+
+自己在使用过程中遇到的坑，报错：
+* What went wrong:          
+A problem occurred evaluating project ':app'.
+> Could not find property 'applicationVariants' on project ':app'.
+
+解决：在applicationVariants.all 前面加一个android即：
+  //自动获取版本号
+android.applicationVariants.all { variant ->
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
+    }
+}
+
+
+*******************
+一、在自己的清单文件里面自己并没有写<meta-data    android:name="UMENG_CHANNEL"    android:value="${UMENG_CHANNEL_VALUE}" /> 但是依然可以打包成功
+    打包后的apk名字分别是：1.boohee_v_2016-12-15_aaa.apk  2. boohee-v_2016-12-15_qihu360.apk
+
+//定义打包时间函数
+def releaseTime()  {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+**对应的打包：boohee_v2.0_12151023_aaa.apk
+
+def releaseTime2() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+**对应的打包：boohee-v2.0_2016-12-15_aaa.apk  
+   
+
+自己gradle源码：
+apply plugin: 'com.android.application'
+//定义打包时间函数
+def releaseTime()  {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+
+
+def releaseTime2() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+//Android 发布自动版本号方案,使用git自动升级版本号
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+}
+
+def gitVersionTag() {
+    def cmd = 'git describe --tags'
+    def version = cmd.execute().text.trim()
+
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+
+    return version
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+        defaultConfig {
+        applicationId "ft.com.ofo"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 2
+        versionName "2.0"
+
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+android.applicationVariants.all { variant ->
+    //自动获取版本号
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
+    }
+
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                def fileName = "boohee_v_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+
+
+    }
+}
+
+
+android.productFlavors {
+
+
+    qihu360 {} // 360手机助手
+    aaa{}
+
+
+
+}
+
+
+android.productFlavors.all {
+    flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+}
+
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/umeng-analytics-v5.5.3.jar')
+}
+ 
+
+**但是自己下吧打包有一个问题：
+                                  在android.applicationVariants.all里面使用${defaultConfig.versionName}
+                                  就会报错：Could not find property 'defaultConfig' on com.android.build.gradle.internal.api.ApplicationVariant
+                                  说是找不到defaultConfig
+**修改：
+     apply plugin: 'com.android.application'
+//定义打包时间函数
+def releaseTime()  {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+
+
+def releaseTime2() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+//Android 发布自动版本号方案,使用git自动升级版本号
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+}
+
+def gitVersionTag() {
+    def cmd = 'git describe --tags'
+    def version = cmd.execute().text.trim()
+
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+
+    return version
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+        defaultConfig {
+        applicationId "ft.com.ofo"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 2
+        versionName "2.0"
+
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled true
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "boo_v${defaultConfig.versionName}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+
+
+android.productFlavors {
+
+
+    qihu360 {} // 360手机助手
+    aaa{}
+
+
+
+}
+
+
+android.productFlavors.all {
+    flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+}
+
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/umeng-analytics-v5.5.3.jar')
+}
+
+*****这里需要注意的在buildTypes里面的applicationVariants.all前面不加android并不会报错，并且这里面的defaultConfig.versionName也不会报错。
+这个也就是说当applicationVariants.all写在android标签下面那么它的前面必须加android，defaultConfig.versionName不能在外面引用。
+
+
+但是在外面加上：
+
+android.applicationVariants.all { variant ->
+    //自动获取版本号
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
+    }
+}
+也不会应该打包。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

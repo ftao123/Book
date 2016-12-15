@@ -1,0 +1,42 @@
+
+
+1.Android官方技术文档翻译——Gradle 插件用户指南（1-3）       http://blog.csdn.net/maosidiaoxian/article/details/41944325
+  sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+
+注： srcDir实际上会将给定的文件夹添加到现有的源文件夹列表中 （这在Gradle 文档中没有提及，但这是实际的行为）。
+这里对照自己的ofo工程和门店助手 ofo里面没有sourceSet所以也就没有lib这个文件夹 
+门店助手里面的：
+         sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

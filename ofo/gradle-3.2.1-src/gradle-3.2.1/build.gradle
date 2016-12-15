@@ -1,0 +1,393 @@
+/*
+ * Copyright 2010 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import org.gradle.build.Install
+import org.gradle.cleanup.EmptyDirectoryCheck
+
+defaultTasks 'assemble'
+apply plugin: 'java-base'
+apply plugin: 'build-types'
+archivesBaseName = 'gradle'
+
+buildTypes {
+    sanityCheck {
+        tasks "classes", "doc:checkstyleApi", "codeQuality", "docs:check"
+    }
+
+    // The minimum to be run before check-in
+    preCommitBuild {
+        tasks "doc:checkstyleApi", "docs:check", "codeQuality", "test"
+    }
+    quickCheck {
+        tasks "doc:checkstyleApi", "docs:check", "codeQuality", "test"
+    }
+
+    // For testing pull requests
+    pullRequestValidation {
+        tasks "doc:checkstyleApi", "docs:check", "codeQuality", "core:test", "dependencyManagement:test"
+    }
+
+    // A full (in-process) test
+    developerBuild {
+        tasks "check"
+    }
+
+    // Used by the first phase of the build pipeline, running only last version on multiversion - tests
+    quickTest {
+        tasks "runtimeTests", "runtimeIntegTests"
+    }
+
+    // Used for builds to run all tests, but not necessarily on all platforms
+    fullTest {
+        tasks "runtimeTests", "runtimeForkingIntegTests"
+        projectProperties useIncomingDistributions: true, testAllVersions: true
+    }
+
+    // Used for builds to test the code on certain platforms
+    platformTest {
+        tasks "runtimeTests", "runtimeForkingIntegTests"
+        projectProperties useIncomingDistributions: true, testAllVersions: true, testAllPlatforms: true
+    }
+
+    // Tests using the daemon mode
+    daemonTest {
+        tasks "runtimeDaemonIntegTests"
+        projectProperties useIncomingDistributions: true
+    }
+
+    // Run the integration tests using the parallel executer
+    parallelTest {
+        tasks "runtimeParallelIntegTests"
+        projectProperties useIncomingDistributions: true
+    }
+
+    performanceTests {
+        tasks "performance:performanceTest"
+        projectProperties useIncomingDistributions: true
+    }
+
+    performanceExperiments {
+        tasks "performance:performanceExperiments"
+        projectProperties useIncomingDistributions: true
+    }
+
+    fullPerformanceTests {
+        tasks "performance:fullPerformanceTest"
+        projectProperties useIncomingDistributions: true
+    }
+
+    distributedPerformanceTests {
+        tasks "performance:distributedPerformanceTest"
+        projectProperties useIncomingDistributions: true
+    }
+
+    distributedPerformanceExperiments {
+        tasks "performance:distributedPerformanceExperiment"
+        projectProperties useIncomingDistributions: true
+    }
+
+    distributedFullPerformanceTests {
+        tasks "performance:distributedFullPerformanceTest"
+        projectProperties useIncomingDistributions: true
+    }
+
+    // Used for cross version tests on CI
+    crossVersionTest {
+        tasks "crossVersionIntegTest"
+        projectProperties useIncomingDistributions: true
+    }
+
+    // Used to build production distros and smoke test them
+    packageBuild {
+        tasks "verifyIsProductionBuildEnvironment", "clean", "buildDists", "distributions:integTest"
+    }
+
+    // Used to build (experimental) production distros and smoke test them
+    packageBuildExperimental {
+        tasks "verifyIsProductionBuildEnvironment", "buildDists", "distributions:integTest"
+    }
+
+    // Used to build production distros and smoke test them
+    promotionBuild {
+        tasks "verifyIsProductionBuildEnvironment", "clean", "docs:check", "buildDists", "distributions:integTest", "uploadArchives"
+    }
+
+    //Initial smoke test for java 9
+    java9Build {
+        tasks "java9Test", "java9IntegTest"
+        projectProperties useIncomingDistributions: true
+    }
+
+    soakTest {
+        tasks "soak:soakTest"
+        projectProperties testAllVersions: true
+    }
+}
+
+apply from: "gradle/testGroupings.gradle"
+apply from: 'gradle/buildSplits.gradle'
+apply from: 'gradle/buildScanUserData.gradle'
+ext {
+    jvm = org.gradle.internal.jvm.Jvm.current()
+    javaVersion = JavaVersion.current()
+    isCiServer = System.getenv().containsKey("TEAMCITY_VERSION")
+    isWindows = org.gradle.internal.os.OperatingSystem.current().windows
+
+    if (project.hasProperty("maxParallelForks")) {
+        project.maxParallelForks = Integer.valueOf(project.maxParallelForks, 10)
+    } else {
+        ext.maxParallelForks = 1
+    }
+
+    if (project.hasProperty("useIncomingDistributions")) {
+        project.useIncomingDistributions = true
+    } else {
+        ext.useIncomingDistributions = false
+    }
+
+    agentNum = 1
+    if (System.getenv().containsKey("USERNAME")) {
+        def agentNumEnv = System.getenv("USERNAME") - "tcagent"
+        if (agentNumEnv ==~ /\d+/) {
+            agentNum = agentNumEnv
+        }
+    }
+
+    internalProjects = subprojects.findAll { it.name.startsWith("internal") || it.name in ["integTest", "distributions", "performance", "buildScanPerformance"] }
+    groovyProjects = subprojects
+    publicGroovyProjects = groovyProjects - internalProjects
+    pluginProjects = [
+        'plugins', 'codeQuality', 'jetty', 'antlr', 'wrapper', 'osgi', 'maven',
+        'ide', 'announce', 'scala', 'signing', 'ear', 'javascript', 'buildComparison',
+        'diagnostics', 'reporting', 'publish', 'ivy', 'jacoco', 'buildInit', 'platformBase',
+        'platformJvm', 'languageJvm', 'languageJava', 'languageGroovy', 'languageScala',
+        'platformNative', 'platformPlay', 'idePlay', 'languageNative', 'ideNative', 'testingBase',
+        'testingNative', 'testingJvm', 'pluginDevelopment', 'pluginUse', 'resourcesHttp',
+        'resourcesSftp', 'resourcesS3', 'toolingApiBuilders', 'compositeBuilds', 'taskCacheHttp'
+    ].collect {
+        project(it)
+    }
+    publishedProjects = [
+        project(':logging'),
+        project(':core'),
+        project(':toolingApi'),
+        project(':wrapper'),
+        project(':baseServices'),
+        project(':baseServicesGroovy'),
+        project(':dependencyManagement'),
+        project(':messaging'),
+        project(':processServices'),
+        project(':resources')
+    ]
+    removedProjects = ['sonar']
+}
+
+apply from: "gradle/buildReceipt.gradle"
+apply from: "gradle/incomingDistributions.gradle"
+apply from: "gradle/versioning.gradle"
+apply from: "gradle/dependencies.gradle"
+apply from: "gradle/wrapper.gradle"
+apply from: "gradle/idea.gradle"
+apply from: "gradle/eclipse.gradle"
+apply from: "gradle/classycle.gradle"
+apply from: "gradle/strictCompile.gradle"
+apply from: "gradle/noDependencyResolutionDuringConfiguration.gradle"
+apply from: "gradle/testSetup.gradle"
+apply from: "gradle/taskOrdering.gradle"
+apply from: "gradle/fix-GRADLE-2492.gradle"
+apply from: 'gradle/customM2Check.gradle'
+
+allprojects {
+    group = 'org.gradle'
+
+    repositories {
+        maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+        maven { url 'https://repo.gradle.org/gradle/libs-milestones' }
+    }
+}
+
+subprojects {
+    version = rootProject.version
+
+    if (project in groovyProjects) {
+        apply from: "$rootDir/gradle/groovyProject.gradle"
+        apply from: "$rootDir/gradle/testWithUnknownOS.gradle"
+        apply from: "$rootDir/gradle/java9.gradle"
+        check.dependsOn ":docs:checkstyleApi"
+        check.dependsOn "codeQuality"
+    }
+
+    if (project in publishedProjects) {
+        apply from: "$rootDir/gradle/publish.gradle"
+    }
+
+    apply from: "$rootDir/gradle/codeQuality.gradle"
+
+    if (isCiServer) {
+        reporting.baseDir "$rootProject.reporting.baseDir/${path.replaceFirst(':', '').replaceAll(':', '.')}"
+    }
+}
+
+configurations {
+    coreRuntime {
+        visible = false
+    }
+    externalModules {
+        visible = false
+    }
+    // Configuration used to resolve external modules before patching them with versions from core runtime
+    externalModulesRuntime {
+        visible = false
+        extendsFrom coreRuntime
+        extendsFrom externalModules
+    }
+    // Combines the 'coreRuntime' with the patched external module jars
+    runtime {
+        visible = false
+        extendsFrom coreRuntime
+    }
+    gradlePlugins {
+        visible = false
+    }
+    testRuntime {
+        extendsFrom runtime
+        extendsFrom gradlePlugins
+    }
+}
+
+def patchedExternalModulesDir = "$rootProject.buildDir/external/files"
+def patchedExternalModules = fileTree(patchedExternalModulesDir) {
+    builtBy 'patchExternalModules'
+}
+
+dependencies {
+    externalModules 'org.gradle:gradle-script-kotlin:0.4.0'
+    coreRuntime project(':launcher')
+    runtime project(':wrapper')
+    runtime project(":installationBeacon")
+    runtime patchedExternalModules
+    gradlePlugins pluginProjects
+    gradlePlugins project(':dependencyManagement')
+    gradlePlugins project(':testKit')
+}
+
+task patchExternalModules(type: Sync) {
+    description 'Patches the classpath manifests of external modules such as gradle-script-kotlin to match the Gradle runtime configuration.'
+    // Include any dependency jars that are not available in the core runtime
+    from configurations.externalModulesRuntime.minus(configurations.coreRuntime)
+    into patchedExternalModulesDir
+    outputs.cacheIf { true }
+    doLast {
+        new ClasspathManifestPatcher(rootProject, configurations.externalModulesRuntime, configurations.externalModules)
+            .writePatchedFilesTo(destinationDir)
+        new ExcludeEntryPatcher(rootProject, configurations.externalModulesRuntime, "kotlin-compiler-embeddable")
+            .exclude("META-INF/services/java.nio.charset.spi.CharsetProvider")
+            .writePatchedFilesTo(destinationDir)
+    }
+}
+
+task verifyIsProductionBuildEnvironment {
+    doLast {
+        assert javaVersion.java7: "Must use a Java 7 compatible JVM to perform this build. Current JVM is ${jvm}"
+        def systemCharset = java.nio.charset.Charset.defaultCharset().name()
+        assert systemCharset == "UTF-8": "Platform encoding must be UTF-8. Is currently $systemCharset. Set -Dfile.encoding=UTF-8."
+    }
+}
+
+task waitForDaemonsToDie {
+    if (!project.hasProperty("noWaitForDaemonsToDie")) {
+        if (isWindows && isCiServer && buildTypes.crossVersionTest.active) {
+            gradle.startParameter.taskNames.add(0, it.path)
+        }
+        doLast {
+            def mins = 2
+            println "I'm waiting for $mins mins so that existing daemons can die with honour. It's a workaround until we fix it properly."
+            sleep mins * 60 * 1000
+        }
+    }
+}
+
+evaluationDependsOn ":distributions"
+
+task install(type: Install) {
+    description = 'Installs the minimal distribution into directory $gradle_installPath'
+    group = 'build'
+    with project(":distributions").binDistImage
+    installDirPropertyName = 'gradle_installPath'
+}
+
+task installAll(type: Install) {
+    description = 'Installs the full distribution into directory $gradle_installPath'
+    group = 'build'
+    with project(":distributions").allDistImage
+    installDirPropertyName = 'gradle_installPath'
+}
+
+clean {
+    dependsOn ':killExistingDaemons'
+}
+
+apply from: "gradle/intTestImage.gradle"
+apply from: 'gradle/pullRequestBuild.gradle'
+
+// Generate a report showing which tests in a subproject are leaving
+// files around.
+//
+// Once a subproject's report is "clean" we should add the following to that
+// subproject's buildscript:
+//
+// verifyTestFilesCleanup.errorWhenNotEmpty = true
+//
+subprojects { prj ->
+    task verifyTestFilesCleanup(type: EmptyDirectoryCheck) {
+        targetDir = prj.fileTree("${prj.buildDir}/tmp/test files")
+        report = prj.file("${prj.buildDir}/reports/remains.txt")
+        errorWhenNotEmpty = true
+    }
+}
+
+task cleanUpRemovedProjects(type: Delete) {
+    delete removedProjects.collect { "subprojects/$it" }
+}
+clean.dependsOn(cleanUpRemovedProjects)
+
+/*
+ * When run from a Continuous Integration environment HTML test reports will usually only be inspected
+ * if the build failed e.g. due to failed or flaky tests.
+ *
+ * Deletes HTML test reports so they are not archived on TeamCity and use up unnecessary disk space.
+ */
+if (isCiServer) {
+    gradle.buildFinished { buildResult ->
+        if (!buildResult.failure) {
+            logger.quiet "Deleting HTML test reports..."
+
+            subprojects {
+                def htmlTestReportDirs = tasks.withType(Test).collect { it.reports.html.destination }.unique()
+
+                htmlTestReportDirs.each { htmlReportDir ->
+                    logger.info "Deleting test reports directory '$htmlReportDir'."
+                    def success = htmlReportDir.deleteDir()
+
+                    if (!success) {
+                        logger.warn "Unable to delete test report directory '$htmlReportDir'."
+                    }
+                }
+            }
+        }
+    }
+}
+
