@@ -1,1 +1,3 @@
 1.http://blog.csdn.net/danielinbiti/article/details/39996065  Integer的==比较
+
+2.Java String.equalsIgnoreCase()方法用法实例教程, 比较字符串到另一个字符串，忽略大小写因素。

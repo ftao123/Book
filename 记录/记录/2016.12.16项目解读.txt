@@ -1,0 +1,17 @@
+
+DevUtils
+
+ public static void setDebug(boolean isDebug) {
+        isDebug = isDebug;
+    }
+
+
+
+1.项目中SharedPreferencesHelper类的作用，正常情况下是使用SharedPreferences来存储键值对的，这个是用SharedPreferencesHelper类对SharedPreferences进行了包装，
+  如果包名不同，那么就new 不同的SharedPreferences。SharedPreferencesHelper类里面有一个Map<String, SharedPreferencesHelper> sInstance = new HashMap();
+  用来存储因为包名不同而new出来的SharedPreferences对象。这样不同包下面的SharedPreferences来存储本包下的数据。
+
+2. 初始化API
+        LogApiClient.init(BuildConfig.API_HOST, "");  初始化interface RestLog 日志接口 （被集成在aar中）
+        ApiClient.init(BuildConfig.API_HOST, "");     初始化interface RestCommon接口 （正常请求接口，后面自己写的）
+  

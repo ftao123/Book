@@ -1,4 +1,48 @@
 
+public class SingleExecutor {
+    private static ExecutorService executor = Executors.newSingleThreadExecutor(new ThreadFactory() {
+        private final AtomicInteger count = new AtomicInteger();
+
+        public Thread newThread(Runnable r) {
+            int c = this.count.incrementAndGet();
+            String name = "app_single_thread:" + c;
+            Thread t = new Thread(r, name);
+            t.setPriority(5);
+            t.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+                public void uncaughtException(Thread thread, Throwable ex) {
+                    String e = ex != null?ex.getMessage():"未知";
+                    String log = String.format("来自线程%1$s发生未捕获异常：%2$s", new Object[]{thread.getName(), e});
+                    DevUtils.v("app_single_thread", log);
+                }
+            });
+            return t;
+        }
+    });
+    private static final String THREAD_TAG = "app_single_thread";
+
+    public SingleExecutor() {
+    }
+
+    public static void execute(Runnable r) {
+        executor.execute(r);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         mRecyclerView.setHasFixedSize(true);
 

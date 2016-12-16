@@ -1,0 +1,7 @@
+
+1.Gradle语法基础解析 http://blog.csdn.net/weizaishouex2010/article/details/49864847 
+  这个讲的太不详细了，不过要想在Android-studio下面执行这里面说的gradle命令必须是gradlew  比如：gradlew -a hello  (gradlew是对gradle一些语句的封装)
+
+  http://www.kuqin.com/shuoit/20150720/347135.html
+ 
+   Android实战技巧之十一：Android Studio和Gradle      http://blog.csdn.net/lincyang/article/details/43853259

@@ -1,3 +1,48 @@
+
+
+
+
+
+
+1,在DeUtils这个类里面那个：
+                            public static void setDebug(boolean isDebug) {
+        isDebug = isDebug;
+    }
+是不是应该为this.isDebug=isDebug
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1.在订单管理里面，送货到直购不出现ProgressDialog，自提到直购出现ProgressDialog？ 
   点击点单管理进入点单管理-->会同时执行送货里面的ProgressDialog，再去执行直购里面的ProgressDialog：送货和直购切换自己的打印没有出来
   从自提到直购运行的是送货里面的ProgressDialog*****
@@ -36,4 +81,4 @@
 
 
 
-     ViewPager的预加载顺序？？？
+  

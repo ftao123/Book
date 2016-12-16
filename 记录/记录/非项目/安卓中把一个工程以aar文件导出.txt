@@ -1,0 +1,55 @@
+
+****什么是aar文件：
+    aar
+
+何为aar？大家都知道jar文件把，如果你有一个Android Library项目，可以很容易的导出jar文件，然后在其他项目中很方便的引用，aar和jar类似，
+区别就是一个Android Library项目导出的jar文件不能包含资源文件，比如一些drawable文件、xml资源文件之类的，所以这就有很大的限制，
+在gradle之前我们要引用带资源文件的Android Library必须要把整个library导入进来进行引用，但是有了gradle之后，Android Library项目可以直接导出成aar，
+然后其他项目像引用jar的方式直接方便的引用。
+
+
+
+
+1. android studio生成aar包并在其他工程引用aar包      http://blog.csdn.net/getchance/article/details/47257389
+   自己根据这个搞下来报了一个错：
+   居然是因为是：compile(name:'mylibrary-debug', ext:'aar') mylibrary-debug这个名字要写成自己生产的那个aar文件名字。
+
+   自己在网上看到这么一个错： Android Studio错误Error:(23, 17) Failed to resolve: junit:junit:4.12解决方案  http://blog.csdn.net/u013443865/article/details/50243193
+    一般都会把这句话删掉：testCompile 'junit:junit:4.12' （虽然这次对自己的工程不影响）。
+
+   aar的另一个打包是通过最右边，右上角那个Gradle命令进行打包，也可以进行apk打包，不过这样操作不知道打包的东西到哪里去了？？*****
+
+
+2. Android Studio如何删除module      http://blog.csdn.net/hyr83960944/article/details/37519299
+
+
+aar打包的文件包含：
+                  aapt
+                  aidl
+                  assets
+                  jars
+                  jin
+                  libs
+                  res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+
+
+JSONObject对象的key（）获得一个Iterator（游标对象），利用Iterator来进行遍历。
+JSONObject对象的iterator()也是获得一个Iterator
+
+Java学习之Iterator(迭代器)的一般用法      http://www.cnblogs.com/amboyna/archive/2007/09/25/904804.html
+Java中的Iterator功能比较简单，并且只能单向移动：
+
+　　(1) 使用方法iterator()要求容器返回一个Iterator。第一次调用Iterator的next()方法时，它返回序列的第一个元素。注意：iterator()方法是java.lang.Iterable接口,被Collection继承。
+
+　　(2) 使用next()获得序列中的下一个元素。
+
+　　(3) 使用hasNext()检查序列中是否还有元素。
+
+　　(4) 使用remove()将迭代器新返回的元素删除。
+
+
+
+1.在JAVA中使用JSONObject生成json         http://www.cnblogs.com/chenmj/archive/2012/04/01/2428008.html    (举出一些例子怎么生成json)
+  JAVA中使用JSONObject对象必备           http://www.2cto.com/kf/201108/101118.html                         （和上面一样）
+  一个java处理JSON格式数据的通用类       http://www.233.com/Java/zhuanye/20101228/112820983.html
+  JSONObject和HashMap 转换               http://blog.sina.com.cn/s/blog_ae829c5c0101fvt7.html
+
+2.JSONObject简介                         http://www.cnblogs.com/java-pan/archive/2012/04/07/JSONObject.html (说了它的方法)
+
+
+    
+

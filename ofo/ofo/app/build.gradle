@@ -29,7 +29,12 @@ def gitVersionTag() {
 
     return version
 }
-
+//在Terminal下面输入gradlew -q hello  会输出：Hello world!
+task hello {
+    doLast {
+        println 'Hello world!'
+    }
+}
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -38,14 +43,8 @@ android {
         applicationId "ft.com.ofo"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 2
-        versionName "2.0"
-
-
-//            // dex突破65535的限制
-//            multiDexEnabled true
-//            // 默认是umeng的渠道
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
+        versionCode gitVersionCode()
+        versionName gitVersionTag()
 
         sourceSets {
             main {
@@ -63,17 +62,16 @@ android {
             // 移除无用的resource文件
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
-                        def fileName = "bo1_v${defaultConfig.versionName}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+                        def fileName = "bo3_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }
-            }
+             }
         }
 
     }

@@ -1,0 +1,140 @@
+
+下面自己根据网上完成了自己的//Android 发布自动版本号方案,使用git自动升级版本号 以及多渠道打包的Gradle文件。自己测试过可以完成自己的需求。
+***奇怪的是自己搞了那么，始终没有在清单文件里面添加：
+ <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="${UMENG_APPKEY_VALUE}"/>
+        <!-- 友盟渠道统计:values 为您的自定义的渠道号， name的值不要更改 -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+****依然可以打包成功，完善有的多渠道打包也没有说这一步，这说明这个只是给友盟来做统计的，并不影响APP的打包。
+
+
+**********
+apply plugin: 'com.android.application'
+//定义打包时间函数
+def releaseTime()  {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+
+
+def releaseTime2() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+//Android 发布自动版本号方案,使用git自动升级版本号
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+}
+
+def gitVersionTag() {
+    def cmd = 'git describe --tags'
+    def version = cmd.execute().text.trim()
+
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+
+    return version
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+        defaultConfig {
+        applicationId "ft.com.ofo"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode gitVersionCode()
+        versionName gitVersionTag()
+
+
+//            // dex突破65535的限制
+//            multiDexEnabled true
+//            // 默认是umeng的渠道
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
+
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled true
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "bo3_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+android.applicationVariants.all { variant ->
+    //自动获取版本号
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
+    }
+
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+//                def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+}
+
+
+android.productFlavors {
+
+
+    qihu360 {} // 360手机助手
+    aaa{}
+
+
+
+}
+
+
+android.productFlavors.all {
+    flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+}
+
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/umeng-analytics-v5.5.3.jar')
+}
