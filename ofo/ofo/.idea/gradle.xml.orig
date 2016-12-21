@@ -13,8 +13,17 @@
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
+<<<<<<< HEAD
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/aarlibrary" />
+            <option value="$PROJECT_DIR$/app" />
+          </set>
+        </option>
+=======
+        <option name="resolveModulePerSourceSet" value="false" />
+>>>>>>> ea7153ece543832c79f7ada0e8e9b52fb54bb986
       </GradleProjectSettings>
     </option>
   </component>

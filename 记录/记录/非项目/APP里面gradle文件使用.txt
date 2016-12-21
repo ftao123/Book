@@ -1,7 +1,21 @@
 
 
 打开Android Studio内置的终端，在输入如下命令查看gradle版本：
-gradlew -v
+gradlew -v  如果没有会帮你自动下载的。                       还有就是Gradle版本和他对应的一个工具版本不同，Gradle里面有很多jar包，那个对应
+                                                              的工具很小。
+
+//定义打包时间函数
+def releaseTime()  {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+显示的时间类型：
+
+def releaseTime2() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+
+
 
 
 讲解通过gradle 导入gar包 http://www.th7.cn/Program/Android/201507/495477.shtml   还说了点其他东西
