@@ -1,0 +1,145 @@
+
+******************
+如果资源 出问题，但是你又确定没问题，就按我那个步骤。在app-->build-->outputs-->apk 在build文件里面把.apk那个文件删除。
+
+删除apk是因为as在你小改动的时候，默认不帮你重新编译你去查查，能设置成每次都重新编译的，as 2.0以后，为了编译速度，如果你只做了小的改动，默认不重新编译，其实就是搞事情
+
+把及时编译关了就好了没什么鸟用的功能
+
+
+
+1.运行android studio时出现 
+  Error running app:Instant Run requires 'Tools | Android | Enable ADB integration' to be enabled ;
+  解决方法:http://www.th7.cn/Program/Android/201604/843875.shtml
+
+2.android studio 导入项目时
+  Error:SSL peer shut down incorrectly
+  解决方法;http://www.cnblogs.com/Jieth/p/5160409.html
+
+3.Error:(1, 0) Your project path contains non-ASCII characters. This will most likely cause the build to fail on Windows. 
+  Please move your project to a different directory. See http://b.android.com/95744 for details.
+  解决方法：http://www.voidcn.com/blog/qq_32452623/article/p-6056624.html
+
+4.Retrofitrxandroiddagger2在这个工程里面自己新建了一个接口和工程里面的接口一模一样，就是在返回获得数据的时候，自己是：
+
+  public class GetGitHubResponse extends BaseResponse{
+   public GitHubInfo data;
+}
+ 工程里面是：
+  public class GetIpInfoResponse extends BaseResponse {
+    public IpInfo data;
+}
+  
+都继承了
+public class BaseResponse {
+    public int code;
+}
+
+GitHubInfo data2;和IpInfo data;这个两个类里面的字段是一模一样的。
+
+重点：下面给出服务端返回给出的数据格式：
+
+ 
+ {"code":0,"data":{"country":"\u7f8e\u56fd","country_id":"US","area":"","area_id":"","region":"","region_id":"","city":"","city_id":"","county":"","county_id":"","isp":"","isp_id":"","ip":"63.223.108.42"}}
+
+这是Gson数据
+
+下面来分析一下怎么处理返回来的Gson数据
+
+里面有两个字段code和data，这里注意了返回的Gson是code和data那么在接受数据的时候定义的属性就必须是code和data。
+
+然后data可以被解析成一个对象。
+data里面的属性名字：
+    public String country;
+    public String country_id;
+    public String area;
+    public String area_id;
+    public String ip;
+
+注意字段的名字都严格和返回Gson数据的字段名字是一样的（*********）
+
+   Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(ENDPOINT)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                        .build();
+                ApiService apiService = retrofit.create(ApiService.class);
+                apiService.getGitHub("63.223.108.42")
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<GetGitHubResponse>() {
+                            @Override
+                            public void onCompleted() {
+                                Log.d("<<<<","执行了--onCompleted()");
+                                mProgressBar.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d("<<<<","执行了--onError(Throwable e)");
+                                Log.d("<<<<","错误信息打印:"+e.getMessage());
+                                mProgressBar.setVisibility(View.GONE);
+                                mTvContent.setText(e.getMessage());
+                            }
+
+                            @Override
+                            public void onNext(GetGitHubResponse getGitHubResponse) {
+                                Log.d("<<<<","执行了--onNext(GetIpInfoResponse getIpInfoResponse)");
+                                mTvContent.setText(getGitHubResponse.hashCode()+"");
+                                Log.d("<<<<","正确信息打印:"+getGitHubResponse.data.country);
+
+                                Log.d("<<<<","正确信息打印:"+getGitHubResponse.data2.country);
+
+                            }
+                        });
+
+
+这里会报错：
+ Attempt to read from field 'java.lang.String com.micky.retrofitrxandroiddagger2.data.api.model.GitHubInfo.country' on a null object reference
+
+ on a null object reference  对空引用
+ 说的意思就是data2.country是空的，然后自己打印data2.hashCode()其实也是一个空的。但是打印的getGitHubResponse.hashCode()不为空，就说明确实是返回数据。
+
+ 后来自己把:
+           public class GetGitHubResponse extends BaseResponse{
+   public GitHubInfo data2;
+}
+
+里面的data2换成data就可以打印出从服务返回来的数据了。这个坑太大了！！！
+
+
+
+
+5.
+    Retrofit中GET请求的一些报错
+     @GET
+    Observable<GetGitHubResponse> getGitHub(@Url String url);
+在 
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://ip.taobao.com/service/getIpInfo.php?ip=63.223.108.42")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                        .build();
+                ApiService apiService = retrofit.create(ApiService.class);
+                apiService.getGitHub("http://ip.taobao.com/service/getIpInfo.php?ip=63.223.108.42")
+都要传入URL， 
+去掉  .baseUrl("http://ip.taobao.com/service/getIpInfo.php?ip=63.223.108.42") 这句话会报错：
+                                                                                           java.lang.IllegalStateException: Base URL required.
+
+把接口改成： 
+              @GET
+              Observable<GetGitHubResponse> getGitHub();
+    apiService.getGitHub()会报错：
+                                java.lang.IllegalArgumentException: Missing either @GET URL or @Url parameter.
+    http://blog.csdn.net/csdn_yang123/article/details/52943321
+
+总之关于这个测试有时间再去搞搞吧，太特么复杂了。
+
+
+6.
+   报错： Must have one-pixel frame that is either transparent or white.
+   处理：http://www.2cto.com/kf/201310/253182.html
+    
+
+
+

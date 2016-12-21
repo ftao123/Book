@@ -1,5 +1,11 @@
 
+
+本项目中缓存是使用xUtils框架使用SQLite来存储缓存的对象，这个对象里面存储了我们缓存的数据******？？？？
+
+
 gradlew assembleRelease 
+
+
 
 
 1.
@@ -47,14 +53,23 @@ Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
 
 5.什么是AS？？、 什么是DSL？？、什么是集成？？
 
+6.自己再讲ofo拷贝出来运行的时候会报错，因为自己工程不在git仓库下面，然后自己通过Settings下面的Version Control添加git但是还是不能运行。
+   报错：
+        Error:(14, 0) For input string: ""
 
+7.数据库的触发器还需要理解。
 
+8.图片处理时候遇到的问题，自定义组件的时候： Drawable之getIntrinsicWidth()和getIntrinsicHeight()
+  
+  Drawable 中getIntrinsicWidth
+返回固定宽度 也就是视图实际上表现出来的宽度...
 
+也就是表现出来的宽度...   不是图片实际大小的宽度         这个描述对吗？？？
 
+9.paint有绘制效果                 实现文字镂空效果？？？
+  描边，充满，充满加描边
 
-
-
-
+10.有时间去详细了解一下安卓的动画效果？？？
 
 
 

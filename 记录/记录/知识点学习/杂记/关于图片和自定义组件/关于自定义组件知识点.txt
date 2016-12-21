@@ -1,0 +1,116 @@
+
+
+Android自定义控件实现带有清除按钮的EditText  （这篇文章也非常好）        http://www.cnblogs.com/luhan/p/5956708.html
+这篇文章应该是所有里面最好的了吧
+
+http://blog.csdn.net/u014128885/article/details/45131807  自己下载它的代码
+
+
+关于android Drawable对象 getIntrinsicHeight获取高度变化的有关问题     http://www.myexception.cn/android/1453837.html  （从原理对图片进行了讲解）
+它还推荐一篇文章： android中的dp,px深度解析    http://zhangkun716717-126-com.iteye.com/blog/1772696
+
+
+
+format 参考:
+1. reference：参考某一资源ID
+2. color：颜色值
+3. boolean：布尔值
+4. dimension：尺寸值
+5. float：浮点值
+6. integer：整型值
+7. string：字符串
+8. fraction：百分数
+9. enum：枚举值
+
+1. declare-styleable中format详解                    http://blog.csdn.net/lihengfang/article/details/8290754
+   Android 之 自定义标签 和 自定义组件              http://www.2cto.com/kf/201309/247326.html
+
+   http://blog.csdn.net/xiaanming/article/details/11066685  （这个也将的挺好的）
+
+   Android 自定义扩展控件 一：ClearEditText         http://blog.csdn.net/lengqi0101/article/details/50634803   (网上代码例子都一样，但是他讲的很详细)
+ 
+2.Drawable之getIntrinsicWidth()和getIntrinsicHeight()    http://blog.sina.com.cn/s/blog_4c0706560102wk67.html  （下面评论说不对，姑且看看吧）
+
+  http://www.cnblogs.com/zrui513/p/4854480.html  (这个说了原因)           http://blog.csdn.net/voiceofnet/article/details/49947975
+
+
+
+
+
+
+
+
+
+
+
+
+**********这里写了这么多，其实就是对上面代码的一一解读：
+
+
+
+1. Drawable的setBounds方法有四个参数，setBounds(int left, int top, int right, int bottom),这个四参数指的是drawable将在被绘制在canvas的哪个矩形区域内。
+前面两个参数是坐标，后面连个是宽高。
+  
+2.   我们可以为我们的输入框在上下左右设置图片，所以我们可以利用属性android:drawableRight设置我们的删除小图标，例如：
+   android:drawableBottom="@drawable/ic_launcher"
+   android:drawableLeft="@drawable/ic_launcher"
+   android:drawableRight="@drawable/ic_launcher"
+   android:drawableTop="@drawable/ic_launcher"
+   //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片  
+   mClearDrawable = getCompoundDrawables()[2];  
+
+3.   测试getCompoundDrawables()方法.：Drawable [] drawables=mTextView.getCompoundDrawables(); 返回一个数组
+   Returns drawables for the left, top, right, and bottom borders.
+   该方法返回包含控件左,上,右,下四个位置的Drawable的数组 那么分别对应数组里面的0,1，2,3   所以getCompoundDrawables()[2]对应的就是右边的图片。
+
+
+
+4. android中getCompoundDrawables()方法中的数据从哪来的，或者说是在哪给这个getCompoundDrawables()方法添加数据的
+答：
+比如在textView里面，想加入一张图片，那么要调用textView.setCompoundDrawables(Drawable left, Drawable top, Drawable right, Drawable bottom)
+这个看你设定的是在哪个方向了，就把drawable放在哪个对应的位置。
+get的数据就是这么来的。是一个drawable数据，对应的就是这四个方向的drawable.
+
+
+5. setCompoundDrawables和setCompoundDrawablesWithIntrinsicBounds区别 (2011-11-25 09:34:22)
+手工设置文本与图片相对位置时，常用到如下方法：
+setCompoundDrawables(left, top, right, bottom)；
+setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)
+意思是设置Drawable显示在text的左、上、右、下位置。 
+可以在上、下、左、右设置图标，如果不想在某个地方显示，则设置为null。图标的宽高将会设置为固有宽高，既自动通过getIntrinsicWidth和getIntrinsicHeight获取。
+（Textview、Button都可以）
+但是两者有些区别：
+setCompoundDrawables 画的drawable的宽高是按drawable.setBound()设置的宽高，所以才有The Drawables must already have had setBounds(Rect) called.意思是说使用之前必须使用Drawable.setBounds设置Drawable的长宽。
+而setCompoundDrawablesWithIntrinsicBounds是画的drawable的宽高是按drawable固定的宽高，即通过getIntrinsicWidth()与getIntrinsicHeight()获得，所以才有The Drawables' bounds will be set to their intrinsic bounds.这句话之说！
+
+
+ 第二种方法：setCompoundDrawables(Drawable left, Drawable top, Drawable right, Drawable bottom)
+
+可以在上、下、左、右设置图标，如果不想在某个地方显示，则设置为null。但是Drawable必须已经setBounds(Rect)。意思是你要添加的资源必须已经设置过初始位置、宽和高等信息。
+这下就明白了，这个方法要先给Drawable设置setBounds(x,y,width,height);
+x:组件在容器X轴上的起点 y:组件在容器Y轴上的起点 width:组件的长度 height:组件的高度。
+http://blog.csdn.net/wulianghuan/article/details/24421179
+
+
+6. android MotionEvent中getX()和getRawX()的区别    http://blog.csdn.net/ztp800201/article/details/17218067  （涨知识了）
+
+   MotionEvent的getX()，getY()与getRawX(),getRawY()区别  http://www.cnblogs.com/wanyakun/archive/2012/03/20/3403296.html 
+   
+   你的某个Activity中实现OnTouchListener接口，需要重写：
+onTouch(View view，MotionEvent event)这个方法：
+getRawX()和getRawY()获得的是相对屏幕的位置，getX()和getY()获得的永远是view的触摸位置坐标 （这两个值不会超过view的长度和宽度）。 
+
+如果重写Activity的onTouchEvent(MotionEvent event)  ：
+这个时候获得的是屏幕点击位置的坐标。event.getX() 与 event.getRawX()获取的值是一样的，event.getY() 与 event.getRawY()获取的值是一样，
+还能获取触摸标题栏时的坐标位置，但是触摸状态栏时的坐标位置不能获得。 （注：Activity上有两段宽度：一个是状态栏，一个是标题栏，每一个宽度都占了25像素） 
+
+7.****************************************
+   Android开发之getMeasuredWidth和getWidth区别从源码分析       http://blog.csdn.net/dmk877/article/details/49734869
+  （强烈推荐，写的特别好，里面还有两篇文章自己有时间再去看看***************************************************）
+
+
+
+
+
+
+

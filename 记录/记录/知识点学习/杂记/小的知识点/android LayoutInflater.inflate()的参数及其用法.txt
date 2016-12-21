@@ -1,0 +1,2 @@
+
+1. android LayoutInflater.inflate()的参数及其用法  http://blog.csdn.net/lovexieyuan520/article/details/9036673

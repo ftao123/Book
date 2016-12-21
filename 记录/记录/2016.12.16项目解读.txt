@@ -1,10 +1,10 @@
 
-DevUtils
+DevUtils  这个类是一个错误日志打印类
 
  public static void setDebug(boolean isDebug) {
         isDebug = isDebug;
     }
-
+这里是不是写错了？
 
 
 1.项目中SharedPreferencesHelper类的作用，正常情况下是使用SharedPreferences来存储键值对的，这个是用SharedPreferencesHelper类对SharedPreferences进行了包装，
@@ -14,4 +14,6 @@ DevUtils
 2. 初始化API
         LogApiClient.init(BuildConfig.API_HOST, "");  初始化interface RestLog 日志接口 （被集成在aar中）
         ApiClient.init(BuildConfig.API_HOST, "");     初始化interface RestCommon接口 （正常请求接口，后面自己写的）
-  
+3.DBSingle ：数据库单例 
+  数据库操作，使用xUtils中的DbUtils创建了一些表,为对应的类创建了对应的表。
+  还使用了触发器  

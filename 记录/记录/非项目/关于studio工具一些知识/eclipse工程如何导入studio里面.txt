@@ -1,0 +1,18 @@
+
+
+之前自己都是复制代码，错误慢慢修改，如今可以直接导入然后跑起来。
+
+1.Android Sutido：[2]导入eclipse项目篇   http://jingyan.baidu.com/article/bea41d43698ca3b4c51be68e.html
+  看不懂这个        http://blog.csdn.net/royyeah/article/details/43266603
+
+
+
+
+
+
+
+
+
+
+
+

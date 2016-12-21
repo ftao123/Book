@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <!--item里面的drawable属性表示当文本框长度不为零的时候显示的图片 -->
+    <item android:state_pressed="true" android:drawable="@drawable/search_clear_normal" />
+    <!-- item里面的drawable属性表示当文本框长度为零的时候显示的图片，这里都是一样的图片，大家可以测试一下 -->
+    <item android:drawable="@drawable/search_clear_normal" />
+</selector>

@@ -1,4 +1,7 @@
 
+
+Android WebView « ≤√¥£ø  http://www.2cto.com/kf/201410/344172.html
+
 //…Ë÷√±‡¬Î°°°°
 °°°°mWebView.getSettings().setDefaultTextEncodingName("utf-8");
 

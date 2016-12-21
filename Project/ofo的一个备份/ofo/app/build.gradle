@@ -1,0 +1,124 @@
+apply plugin: 'com.android.application'
+//定义打包时间函数
+def releaseTime()  {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+
+
+def releaseTime2() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+//Android 发布自动版本号方案,使用git自动升级版本号
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+}
+
+def gitVersionTag() {
+    def cmd = 'git describe --tags'
+    def version = cmd.execute().text.trim()
+
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+
+    return version
+}
+//在Terminal下面输入gradlew -q hello  会输出：Hello world!
+task hello {
+    doLast {
+        println 'Hello world!'
+    }
+}
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+        defaultConfig {
+        applicationId "ft.com.ofo"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode gitVersionCode()
+        versionName gitVersionTag()
+
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled true
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "bo3_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+             }
+        }
+
+    }
+}
+
+
+
+android.applicationVariants.all { variant ->
+    //自动获取版本号
+    if (variant.buildType.name.equals('release')) {
+        variant.mergedFlavor.versionCode = gitVersionCode()
+        variant.mergedFlavor.versionName = gitVersionTag()
+    }
+
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+//                def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime2()}_${variant.productFlavors[0].name}.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+}
+
+
+android.productFlavors {
+
+
+    qihu360 {} // 360手机助手
+    aaa{}
+
+
+
+}
+
+
+android.productFlavors.all {
+    flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+}
+
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/umeng-analytics-v5.5.3.jar')
+}

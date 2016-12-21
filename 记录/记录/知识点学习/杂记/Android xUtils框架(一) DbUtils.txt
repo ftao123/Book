@@ -1,3 +1,8 @@
+
+****（这个作者从源码进行分析写的很好）               http://blog.csdn.net/u012832314/article/details/45196303
+
+
+
 1.xUtils框架介绍（三）                               https://my.oschina.net/jack1900/blog/174125
   Android 最火的快速开发框架XUtils                   http://blog.csdn.net/dj0379/article/details/38356773
   Android 最火框架XUtils之注解机制详解               http://blog.csdn.net/rain_butterfly/article/details/37931031
@@ -7,12 +12,14 @@ https://github.com/wyouflf/xUtils
 
 
 
-http://www.bubuko.com/infodetail-657365.html
+
+
+Android xUtils框架(一) DbUtils                       http://blog.csdn.net/jjwwmlp456/article/details/44084411   （讲解了一些方法的使用）
 
 
 
 
 
+（自己换了目录，没有了git所以会报空指针异常）
 
-
-
+最火Android开源项目LoopViewPage使用

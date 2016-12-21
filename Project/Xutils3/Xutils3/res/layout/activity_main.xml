@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下载图片" />
+
+    <Button
+        android:id="@+id/btnHttp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn"
+        android:text="调用httpUtils" />
+
+    <Button
+        android:id="@+id/btnDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnHttp"
+        android:text="演示数据库" />
+
+    <ImageView
+        android:id="@+id/imgv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnDB" />
+
+    <TextView
+        android:id="@+id/txtv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnDB" />
+
+</RelativeLayout>

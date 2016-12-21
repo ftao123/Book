@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.example.clearedittext.ClearEditText
+        android:id="@+id/username"
+        android:layout_marginTop="60dp"
+        android:layout_width="fill_parent"
+        android:drawableLeft="@drawable/icon_user"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:singleLine="true"
+        android:drawableRight="@drawable/delete_selector"
+        android:hint="输入用户名"
+        android:layout_height="wrap_content" >
+
+    </com.example.clearedittext.ClearEditText>
+
+    <com.example.clearedittext.ClearEditText
+        android:id="@+id/password"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="10dip"
+        android:drawableLeft="@drawable/account_icon"
+        android:hint="输入密码"
+        android:singleLine="true"
+        android:password="true"
+        android:drawableRight="@drawable/delete_selector"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username" >
+    </com.example.clearedittext.ClearEditText>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="25dp"
+        android:text="登录" />
+
+</RelativeLayout>

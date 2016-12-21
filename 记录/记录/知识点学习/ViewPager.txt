@@ -1,3 +1,12 @@
+
+
+******(专门讲ViewPage，其他文章也写的挺好的）
+ ViewPager 详解（三）---PagerTabStrip与PagerTitleStrip添加标题栏的异同   http://blog.csdn.net/harvic880925/article/details/38521865
+
+
+
+
+
 1.进入送货--》直购被创建并且加载好数据--》从送货进入直购，自提被创建   ViewPager的预加载
   http://www.360doc.com/content/13/1115/23/14218823_329558883.shtml    最下面说了ViewPager的预加载默认值为1
  
