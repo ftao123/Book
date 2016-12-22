@@ -140,6 +140,7 @@ data里面的属性名字：
    报错： Must have one-pixel frame that is either transparent or white.
    处理：http://www.2cto.com/kf/201310/253182.html
     
-
+7.报错： Gradle sync failed: failed to find Build Tools revision 24.0.2
+  http://blog.csdn.net/u012964796/article/details/42519515
 
 

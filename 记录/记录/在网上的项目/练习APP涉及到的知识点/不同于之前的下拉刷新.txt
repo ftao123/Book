@@ -1,0 +1,13 @@
+
+
+1.Android M新控件之AppBarLayout，NavigationView，CoordinatorLayout，CollapsingToolbarLayout的使用  
+  http://www.2cto.com/kf/201506/409067.html
+
+
+
+
+AppBarLayout:Toolbar 和Tablayout的组合部分共同构成 AppBar的效果
+
+Toolbar:http://blog.csdn.net/mchenys/article/details/51533689
+
+
