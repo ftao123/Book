@@ -71,6 +71,7 @@ Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
 
 10.有时间去详细了解一下安卓的动画效果？？？
 
-
+11.有TabLayout, NavigationView,Floating labels for editing text,Floating Action Button,Snackbar, CoordinatorLayout, CollapsingToolbarLayout
+    都要去学习
 
 

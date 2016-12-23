@@ -11,3 +11,57 @@ AppBarLayout:Toolbar 和Tablayout的组合部分共同构成 AppBar的效果
 Toolbar:http://blog.csdn.net/mchenys/article/details/51533689
 
 
+相信Fragment+ViewPager+FragmentPagerAdapter的组合，大家已经用得很熟悉了，在这里我就不介绍了。这个自己尝试一下。
+
+
+
+
+
+1.Android DrawerLayout的使用  http://blog.csdn.net/u012570402/article/details/50915582
+  挺好的，很本工程很像了。
+
+
+
+
+Android 使用DrawerLayout快速实现侧滑菜单 http://www.05935.com/83/1016858/
+
+当你使用DrawerLayout的时候，DrawerLayout的第一个元素就是主要内容区域（在本案例中是ListView），它的宽高必须是match_parent。 
+在主要内容区域的后面添加侧滑视图（在本案例中是drawer_content.xml），并且通过设置layout_gravity来决定它是左滑还是右滑，
+通常这个侧滑视图的高度设为match_parent。
+
+drawer_content.xml                                                                                                                  
+这个布局文件就是侧滑视图
+由于这里的侧滑视图是从右侧滑动出现的，因此侧滑视图的layout_gravity设置为right或者end，如果是左滑就设置为left或者start。
+当我们手动控制侧滑视图的打开或者关闭的时候，需要执行以下代码：
+//closedrawerLayout.closeDrawer(Gravity.RIGHT);//opendrawerLayout.openD
+
+
+
+tablayout方法setupWithViewPager()慎用       http://www.jianshu.com/p/896b149aaa43
+
+****************TabLayout使用setupWithViewPager()方法绑定Viewpager后不显示文字 https://my.oschina.net/oschenxiaomo/blog/649239
+               （写的挺好的）
+
+ViewPager实现页卡的最新方法--简洁的TabLayout（谷歌支持包） http://www.bubuko.com/infodetail-977938.html
+
+Android Material Design控件学习（一）——TabLayout的用法  http://www.cnblogs.com/JohnTsai/p/4715454.html
+
+
+使用TabLayout实现底部Tab布局      https://www.aswifter.com/2015/08/09/implements-bottom-tab-with-tablayout/
+
+Android解惑 - 为什么要用Fragment.setArguments(Bundle bundle)来传递参数 http://blog.csdn.net/buaaroid/article/details/49911821
+************
+
+
+
+Android5.0+(CoordinatorLayout)     https://my.oschina.net/kooeasy/blog/484593
+
+
+
+
+
+
+
+
+
+
