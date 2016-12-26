@@ -1,0 +1,88 @@
+
+
+
+1.用到那个计时类
+    /* 定义一个倒计时的内部类 */
+    class MyCount extends CountDownTimer {
+        public MyCount() {
+            super(15000, 1000);
+        }
+
+        //倒计时结束
+        @Override
+        public void onFinish() {
+            textView_description2.setVisibility(View.GONE);
+            show_time.setVisibility(View.GONE);
+            edpassword.setText("");
+            mc.cancel();
+        }
+
+        //倒计时中
+        @Override
+        public void onTick(long millisUntilFinished) {
+            show_time.setVisibility(View.VISIBLE);
+            textView_description2.setVisibility(View.VISIBLE);
+            show_time.setText(millisUntilFinished / 1000 + "s");
+        }
+    }
+   注意这是这是是从15秒开始，但是真正无法从15秒开始，因为有延迟吧，那个值传给millisUntilFinished的时候就只有14995或者是其他值，反正就是不够15，所以
+   millisUntilFinished / 1000在刚开始的时候就只能等于14，还有就是millisUntilFinished减小规律并不是每秒减少1000，总会比1000多那么几秒，所以最好那个值会是
+   1000多，那么millisUntilFinished/1000就会一直停留在1s。
+  *****：
+  CountDownTimer timer = new CountDownTimer(10000, 1000)中，第一个参数表示总时间，第二个参数表示间隔时间。意思就是每隔一秒会回调一次方法onTick，然后10秒之后会回调onFinish方法。
+
+   因为是给用户看，所以自己就是把时间设置成15100，那么就会从15开始，然后到达1秒之后把显示的控件隐藏。
+
+
+网上的一个写法：
+
+  /*定义一个倒计时的内部类*/  
+    class MyCount extends CountDownTimer {     
+        public MyCount(long millisInFuture, long countDownInterval) {     
+            super(millisInFuture, countDownInterval);     
+        }     
+        @Override     
+        public void onFinish() {     
+            tv.setText("finish");        
+        }     
+        @Override     
+        public void onTick(long millisUntilFinished) {     
+            tv.setText("请等待30秒(" + millisUntilFinished / 1000 + ")...");     
+            Toast.makeText(NewActivity.this, millisUntilFinished / 1000 + "", 
+                Toast.LENGTH_LONG).show();//toast有显示时间延迟        
+        }    
+    }     
+}
+主要是重写onTick和onFinsh这两个方法，onFinish()中的代码是计时器结束的时候要做的事情；onTick(Long m)中的代码是你倒计时开始时要做的事情，
+参数m是直到完成的时间，构造方法MyCount()中的两个参数中，前者是倒计的时间数，后者是倒计每秒中间 的间隔时间，都是以毫秒为单位。例如要倒计时30秒，
+每秒中间间隔时间是1秒，两个参数可以这样写MyCount(30000,1000)。 将后台线程的创建和Handler队列封装成为了一个方便的类调用。
+
+当你想取消的时候使用mc.cancel()方法就行了。
+
+
+
+
+2.
+   Android SQLite数据库判断某张表是否存在的语句              http://blog.csdn.net/lizhenmingdirk/article/details/17561471
+
+3.Android开发中定时器的3种方法   http://blog.csdn.net/xiangyong_1521/article/details/51307646
+
+
+
+
+
+
+
+
+
+
+这种计时是不太精确的。还有一种计时就是来执行线程任务：
+ 
+
+
+
+
+
+
+
+

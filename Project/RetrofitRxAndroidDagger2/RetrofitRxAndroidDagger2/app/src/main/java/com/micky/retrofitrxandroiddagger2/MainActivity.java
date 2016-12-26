@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               /*Retrofit retrofit = new Retrofit.Builder()
+               Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(ENDPOINT)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         mProgressBar.setVisibility(View.GONE);
                         mTvContent.setText(t.getMessage());
                     }
-                });*/
+                });
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(ENDPOINT)
