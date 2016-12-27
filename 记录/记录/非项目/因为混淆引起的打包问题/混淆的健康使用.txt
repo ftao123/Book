@@ -1,0 +1,32 @@
+
+
+自己的理解：
+
+-libraryjars libs/weibosdkcore.jar  
+-dontwarn com.sina.weibo.sdk.**  
+-keep class com.sina.weibo.sdk.** { *; }  
+
+-libraryjars libs/weibosdkcore.jar 这个是第三方库或者包，自己公司这个就没写。Keep是保持不能混淆。
+dontwarn是防止使用第三方库的时候有些方法没有使用到而出现错误的引用。意思就是：这个库里面有很多方法，但是我们不能把每个方法都用到，系统就是我们还有错误的引用。
+
+1.自己在工程中使用混淆导致无法打包，并报错：android代码混淆报错总结:java.io.IOException: Please correct the above warnings first
+
+网上给出混淆的健康使用：
+
+android 通过eclipse混淆代码 打包 + proguard 总结   http://blog.sina.com.cn/s/blog_4e1e357d0101cjz8.html
+
+android代码混淆报错总结:java.io.IOException: Please correct the above   http://blog.csdn.net/dajian790626/article/details/17099321
+Android 混淆代码总结     http://blog.csdn.net/lovexjyong/article/details/24652085
+
+
+Android 项目的代码混淆，Android proguard 使用说明    http://blog.csdn.net/catoop/article/details/47208833（*****这篇文章很好了）
+
+
+
+
+
+Android代码混淆 http://www.cnblogs.com/jason-star/archive/2012/09/07/2674906.html （这里提到反编译）
+
+混淆   http://blog.csdn.net/jddkdd2/article/details/8858909
+
+

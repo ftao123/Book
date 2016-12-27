@@ -1,0 +1,33 @@
+
+******progressdialog旋转轮形状的进度动画 （以后要这么去搜索）
+
+
+数据库的创建不能在初始化的时候执行********
+
+Android 屏幕旋转 处理 AsyncTask 和 ProgressDialog 的最佳方案  http://blog.csdn.net/lmj623565791/article/details/37936275  (有时间可以去看看)
+
+
+1.ProgressDialog.show(MyMenu.this, "请稍等", "数据正在加载中...", false,false)的五个参数分别代表什么
+
+第一个参数代表你在哪个界面显示
+第二个参数代表显示的标题
+第三个参数代表显示的信息
+第四个参数代表indeterminate（不定的）如果为true，左边会有一个圆形的标示
+第五个参数代表cancelable（撤销）
+
+2. Android学习笔记之ProgressDialog         http://blog.csdn.net/sjf0115/article/details/7255280  （还不错）
+
+
+
+
+3.使用旋转动画和帧动画实现自定义ProgressDialog   http://blog.csdn.net/oqihaogongyuan/article/details/50908934
+  ****（自己下载了他的源码）
+
+Android 自定义ProgressDialog进度条对话框用法详解     http://www.jb51.net/article/78504.htm  （说了一堆方法的使用）
+
+
+
+
+使用旋转动画和帧动画实现自定义ProgressDialog http://blog.csdn.net/oqihaogongyuan/article/details/50908934 ***********
+（自己下载了他的demo可以用，很好）
+

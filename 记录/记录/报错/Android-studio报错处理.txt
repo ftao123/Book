@@ -6,6 +6,31 @@
 
 把及时编译关了就好了没什么鸟用的功能
 
+————————————————————————————————————————————————————————————————————————————
+自己在使用混淆打包的时候出错：
+                     * What went wrong:
+Execution failed for task ':app:transformClassesAndResourcesWithProguardForRelease'.
+> java.io.IOException: Please correct the above warnings first.
+
+自己把混淆关闭之后就可以打包成功了。
+就是把这句注销：
+                //            minifyEnabled true
+
+*****？？？？？如何处理这个错误进行混淆打包？？？
+Android 混淆打包标准proguard 配置  http://blog.csdn.net/xiyushiyi/article/details/41707221
+proguard文件在app目录下面：proguard-rules.pro
+
+Android Studio上如何混淆打包  apkhttp://www.xuebuyuan.com/1769742.html   执行一个命令会告诉我们哪里出错了。
+关于AndroidStudio混淆配置，简单的整理  http://blog.csdn.net/wo392942362/article/details/52168959
+
+
+
+GreenDao 在 Android Studio 中的配置使用 http://blog.csdn.net/bingshushu/article/details/51221827
+一个异常与Android Studio系列教程参考   http://www.cnblogs.com/haochuang/p/4676510.html
+
+————————————————————————————————————————————————————————————————————————---
+
+
 
 
 1.运行android studio时出现 
@@ -142,5 +167,39 @@ data里面的属性名字：
     
 7.报错： Gradle sync failed: failed to find Build Tools revision 24.0.2
   http://blog.csdn.net/u012964796/article/details/42519515
+
+8.
+ What went wrong:
+Execution failed for task ':app:processDebugResources'.
+> com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process 'command 'C:\Users\Administrator\AppData\Local\Android\Sdk\build-tools\23.0.3\aapt.exe'' finished w
+ith non-zero exit value 1
+
+自己一个引用没有值，自己网址重新编译了。
+
+
+9.
+Android
+ studio 混淆时报错：
+
+Warning:Exception while processing task Java.io.IOException: Please correct the above warnings first.
+:transformClassesAndResourcesWithProguardForRelease FAILED
+Error:Execution failed for task ':transformClassesAndResourcesWithProguardForRelease'.
+
+java.io.IOException: Please correct the above warnings first.
+
+
+可以运行如下命令后再次尝试
+
+gradle
+ clean assembleRelease -d
+
+
+
+
+
+
+
+
+
 
 
