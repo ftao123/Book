@@ -1,0 +1,12 @@
+
+
+
+1.ButterKnife使用详解 http://blog.csdn.net/itjianghuxiaoxiong/article/details/50177549
+  自己引入Xutils3可能由于版本问题，网上提供的初始化方法自己不能使用。但是自己在网上的项目MDs2中遇到的ButterKnife，这个可以实现注解
+
+
+
+
+
+
+1.ButterKnife基本使用      http://www.cnblogs.com/mengdd/archive/2015/06/23/4595973.html

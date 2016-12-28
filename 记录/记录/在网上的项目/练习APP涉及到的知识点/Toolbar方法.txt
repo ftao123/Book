@@ -1,0 +1,33 @@
+
+
+1.Androd Toolbar 的简单使用二    http://blog.csdn.net/mr_wanggang/article/details/42299563(这个写的很好****)
+
+  注意：setNavigationIcon(),setOnMenuItemClickListener() 需要放在 setSupportActionBar之后才会生效
+
+2.android：ToolBar详解（手把手教程）  http://www.cnblogs.com/huangjianboke/p/5386860.html （翻译一个繁体文章，写的也很详细）
+
+3.Toolbar使用详解 http://www.jianshu.com/p/b3a40a55826e
+
+  ActionBar详解和toolbar详解     http://www.imooc.com/article/2844
+
+
+
+
+
+
+
+android中ToolBar设置setNavigationOnClickListener()方法不起作用
+
+toolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_arrow));  
+setSupportActionBar(toolbar);  
+toolbar.setNavigationOnClickListener(this);  
+
+这里要注意的就是需要将setSupportActionBar(toolbar)放在setNavigationOnClickListener()之前设置才行。
+
+
+ScrollView内容不足的时候如何充满屏幕呢？
+
+当ScrollView内容不足的时候，设置其height="match_parent"属性，结果还是wrap_content。
+
+使用Android:fillViewport="true"就可以了。
+

@@ -1,0 +1,21 @@
+
+
+
+然而, 相对于实现DrawerLayout.DrawerListener, 如果你的Activity包括工具栏, 可以代替继承ActionBarDrawerToggle类. 
+ActionBarDrawerToggle实现了DrawerLayout.DrawerListener. 所以你仍然可以覆盖这些回调, 但它也有助于正确的交互行为, 在工具栏的图标和导航抽屉之间
+
+
+让ActionBarDrawerToggle工作, 创建一个它的实例用它的构造方法, 这就需要以下参数:
+
+持有抽屉的Activity.
+DrawerLayout对象.
+一个Drawable资源作为抽屉指示器.
+字符串资源描述"打开抽屉"动作.
+字符串资源描述"关闭抽屉"动作.
+
+
+1.创建抽屉导航    http://www.open-open.com/lib/view/open1369880871769.html
+
+2.ActionBarDrawerToggle的简要介绍  http://www.nowamagic.net/academy/detail/50161533
+
+3. Android中ActionBarDrawerToggle、DrawerLayout、ActionBar 使用说明  http://blog.csdn.net/lovoo/article/details/51737369讲的挺细的。

@@ -55,30 +55,30 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(ENDPOINT)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                ApiService apiService = retrofit.create(ApiService.class);
-
-                mProgressBar.setVisibility(View.VISIBLE);
-
-                Call<GetIpInfoResponse> call = apiService.getIpInfo("63.223.108.42");
-                call.enqueue(new Callback<GetIpInfoResponse>() {
-                    @Override
-                    public void onResponse(Response<GetIpInfoResponse> response, Retrofit retrofit) {
-                        mProgressBar.setVisibility(View.GONE);
-                        GetIpInfoResponse getIpInfoResponse = response.body();
-                        mTvContent.setText(getIpInfoResponse.data.country);
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-                        mProgressBar.setVisibility(View.GONE);
-                        mTvContent.setText(t.getMessage());
-                    }
-                });
+//
+//               Retrofit retrofit = new Retrofit.Builder()
+//                        .baseUrl(ENDPOINT)
+//                        .addConverterFactory(GsonConverterFactory.create())
+//                        .build();
+//                ApiService apiService = retrofit.create(ApiService.class);
+//
+//                mProgressBar.setVisibility(View.VISIBLE);
+//
+//                Call<GetIpInfoResponse> call = apiService.getIpInfo("63.223.108.42");
+//                call.enqueue(new Callback<GetIpInfoResponse>() {
+//                    @Override
+//                    public void onResponse(Response<GetIpInfoResponse> response, Retrofit retrofit) {
+//                        mProgressBar.setVisibility(View.GONE);
+//                        GetIpInfoResponse getIpInfoResponse = response.body();
+//                        mTvContent.setText(getIpInfoResponse.data.country);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Throwable t) {
+//                        mProgressBar.setVisibility(View.GONE);
+//                        mTvContent.setText(t.getMessage());
+//                    }
+//                });
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(ENDPOINT)

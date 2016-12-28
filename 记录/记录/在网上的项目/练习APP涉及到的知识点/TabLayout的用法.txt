@@ -1,0 +1,32 @@
+
+
+
+1.android design library提供的TabLayout的用法  https://segmentfault.com/a/1190000003500271
+  这篇文章上面说：
+  setupWithViewPager必须在ViewPager.setAdapter()之后调用
+
+  查看下源码就知道了：
+public void setupWithViewPager(ViewPager viewPager) {
+    PagerAdapter adapter = viewPager.getAdapter();
+    if(adapter == null) {
+        throw new IllegalArgumentException("ViewPager does not have a PagerAdapter set");
+    } else {
+        ...
+    }
+}
+
+
+2.TabLayout用法，android顶部导航栏，android底部导航栏       http://blog.csdn.net/tianyaleixiaowu/article/details/50820257
+
+3.Android Material Design控件学习（一）——TabLayout的用法  http://www.cnblogs.com/JohnTsai/p/4715454.html
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+
+
+一般情况下都是他们两个一起使用
+
+1.通过 Navigation View 创建导航抽屉（Android）        http://www.tuicool.com/articles/uaaaEbI
+
+ Android Design Support Library初探，NavigationView实践 http://www.jianshu.com/p/76e30f87a4ed
+ 这两篇文章差不多
+
+
+
+Android Material Design控件学习（二）——NavigationView的学习和使用   http://www.open-open.com/lib/view/open1454227630308.html
+

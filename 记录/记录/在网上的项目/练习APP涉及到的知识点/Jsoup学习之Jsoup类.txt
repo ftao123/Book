@@ -1,0 +1,12 @@
+
+
+
+1.Jsoup学习之Jsoup类  http://blog.csdn.net/xyw_blog/article/details/9142865  (***类似文档讲的比较细)----其实自己可以在网上去搜Jsoup的文档
+
+  Jsoup介绍及解析常用方法    http://blog.csdn.net/woshishui6501/article/details/8465364
+  Jsoup类  http://www.2cto.com/kf/201401/275046.html
+
+2.Jsoup 爬取页面的数据和 理解HTTP消息头 http://blog.csdn.net/hu948162999/article/details/40372383
+  
+  我的Android笔记（八）—— 使用Jsoup解析Html  http://blog.csdn.net/barryhappy/article/details/7366654
+

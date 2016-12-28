@@ -1,0 +1,8 @@
+
+1.
+  
+*******************但是自己那个工程里面并不是这样，反而是setupWithViewPager在前，ViewPager.setAdapter()在后
+
+在activity的onCreate()方法中，调用setSupportActionBar()方法，并传入toolbar，这样就会将toolbar设置为activity的操作栏了。
+？？、？ setSupportActionBar(toolbar);但是自己所在的工程里面就没有这句话
+
