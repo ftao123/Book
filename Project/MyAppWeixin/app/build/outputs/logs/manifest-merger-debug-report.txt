@@ -1,0 +1,133 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:1:1-42:12
+	package
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:2:5-31
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:4:5-30
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+	android:versionCode
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:3:5-28
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:1:11-69
+uses-sdk
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:6:5-8:41
+	android:targetSdkVersion
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:8:9-38
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:7:9-35
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+		INJECTED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.VIBRATE
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:10:5-66
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:10:22-63
+application
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:13:5-40:19
+	android:label
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:15:9-41
+	android:icon
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:14:9-38
+activity#cn.buaa.myweixin.Appstart
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:17:9-26:20
+	android:label
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:19:13-56
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:20:13-47
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:18:13-37
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:21:13-25:29
+action#android.intent.action.MAIN
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:24:17-77
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:24:27-74
+activity#cn.buaa.myweixin.WhatsnewDoor
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:27:9-85
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:27:48-82
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:27:19-47
+activity#cn.buaa.myweixin.MainWeixin
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:28:9-83
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:28:46-80
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:28:19-45
+activity#cn.buaa.myweixin.Login
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:29:9-92
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:29:42-89
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:29:19-40
+activity#cn.buaa.myweixin.Welcome
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:30:9-82
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:30:44-78
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:30:19-42
+activity#cn.buaa.myweixin.Whatsnew
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:31:9-82
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:31:45-79
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:31:19-43
+activity#cn.buaa.myweixin.ChatActivity
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:32:9-99
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:32:49-96
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:32:19-47
+activity#cn.buaa.myweixin.ShakeActivity
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:33:9-100
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:33:50-97
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:33:19-48
+activity#cn.buaa.myweixin.InfoXiaohei
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:34:9-98
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:34:48-95
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:34:19-46
+activity#cn.buaa.myweixin.Exit
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:35:9-78
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:35:39-75
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:35:19-38
+activity#cn.buaa.myweixin.ExitFromSettings
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:36:9-96
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:36:51-93
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:36:19-50
+activity#cn.buaa.myweixin.InfoXiaoheiHead
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:37:9-85
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:37:50-82
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:37:19-49
+activity#cn.buaa.myweixin.LoadingActivity
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:38:9-89
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:38:50-86
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:38:19-49
+activity#cn.buaa.myweixin.MainTopRightDialog
+ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:39:9-95
+	android:theme
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:39:53-92
+	android:name
+		ADDED from D:\githubproject\github\Project\MyAppWeixin\app\src\main\AndroidManifest.xml:39:19-52

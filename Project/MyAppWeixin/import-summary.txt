@@ -1,0 +1,307 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea\
+* .idea\.name
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\misc.xml
+* .idea\workspace.xml
+* app\
+* app\build.gradle
+* app\src\
+* app\src\main\
+* app\src\main\AndroidManifest.xml
+* app\src\main\java\
+* app\src\main\java\cn\
+* app\src\main\java\cn\buaa\
+* app\src\main\java\cn\buaa\myweixin\
+* app\src\main\java\cn\buaa\myweixin\Appstart.java
+* app\src\main\java\cn\buaa\myweixin\ChatActivity.java
+* app\src\main\java\cn\buaa\myweixin\ChatMsgEntity.java
+* app\src\main\java\cn\buaa\myweixin\ChatMsgViewAdapter.java
+* app\src\main\java\cn\buaa\myweixin\Exit.java
+* app\src\main\java\cn\buaa\myweixin\ExitFromSettings.java
+* app\src\main\java\cn\buaa\myweixin\InfoXiaohei.java
+* app\src\main\java\cn\buaa\myweixin\InfoXiaoheiHead.java
+* app\src\main\java\cn\buaa\myweixin\LoadingActivity.java
+* app\src\main\java\cn\buaa\myweixin\Login.java
+* app\src\main\java\cn\buaa\myweixin\MainTopRightDialog.java
+* app\src\main\java\cn\buaa\myweixin\MainWeixin.java
+* app\src\main\java\cn\buaa\myweixin\ShakeActivity.java
+* app\src\main\java\cn\buaa\myweixin\ShakeListener.java
+* app\src\main\java\cn\buaa\myweixin\Welcome.java
+* app\src\main\java\cn\buaa\myweixin\Whatsnew.java
+* app\src\main\java\cn\buaa\myweixin\WhatsnewDoor.java
+* app\src\main\res\
+* app\src\main\res\anim\
+* app\src\main\res\anim\fade_in.xml
+* app\src\main\res\anim\fade_out.xml
+* app\src\main\res\anim\head_in.xml
+* app\src\main\res\anim\head_out.xml
+* app\src\main\res\anim\hold.xml
+* app\src\main\res\anim\hold_long.xml
+* app\src\main\res\anim\push_bottom_in.xml
+* app\src\main\res\anim\push_bottom_out.xml
+* app\src\main\res\anim\push_top_in.xml
+* app\src\main\res\anim\push_top_in2.xml
+* app\src\main\res\anim\push_top_out.xml
+* app\src\main\res\anim\push_top_out2.xml
+* app\src\main\res\drawable-hdpi\
+* app\src\main\res\drawable-hdpi\bottom_bar.9.png
+* app\src\main\res\drawable-hdpi\btn_cancle_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_cancle_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_close.png
+* app\src\main\res\drawable-hdpi\btn_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_alert_dialog_button_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_alert_dialog_button_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_alert_dialog_cancel_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_alert_dialog_special_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_alert_dialog_special_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_five_focused.9.png
+* app\src\main\res\drawable-hdpi\btn_style_five_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_five_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_four_focused.9.png
+* app\src\main\res\drawable-hdpi\btn_style_four_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_four_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_one_disabled.9.png
+* app\src\main\res\drawable-hdpi\btn_style_one_focused.9.png
+* app\src\main\res\drawable-hdpi\btn_style_one_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_one_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_two_focused.9.png
+* app\src\main\res\drawable-hdpi\btn_style_two_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_two_pressed.9.png
+* app\src\main\res\drawable-hdpi\btn_style_zero_focused.9.png
+* app\src\main\res\drawable-hdpi\btn_style_zero_normal.9.png
+* app\src\main\res\drawable-hdpi\btn_style_zero_pressed.9.png
+* app\src\main\res\drawable-hdpi\chat_bg_default.jpg
+* app\src\main\res\drawable-hdpi\chat_footer_bg.png
+* app\src\main\res\drawable-hdpi\chatfrom_bg_focused.9.png
+* app\src\main\res\drawable-hdpi\chatfrom_bg_normal.9.png
+* app\src\main\res\drawable-hdpi\chatfrom_bg_pressed.9.png
+* app\src\main\res\drawable-hdpi\chatto_bg_focused.9.png
+* app\src\main\res\drawable-hdpi\chatto_bg_normal.9.png
+* app\src\main\res\drawable-hdpi\chatto_bg_pressed.9.png
+* app\src\main\res\drawable-hdpi\confirm_dialog_bg.9.png
+* app\src\main\res\drawable-hdpi\confirm_dialog_bg2.9.png
+* app\src\main\res\drawable-hdpi\copyright.png
+* app\src\main\res\drawable-hdpi\exit_dialog_bg.9.png
+* app\src\main\res\drawable-hdpi\find_more_friend_addfriend_icon.png
+* app\src\main\res\drawable-hdpi\find_more_friend_shake.png
+* app\src\main\res\drawable-hdpi\ic_action_search.png
+* app\src\main\res\drawable-hdpi\ic_launcher.png
+* app\src\main\res\drawable-hdpi\ic_preference_first_normal.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_first_pressed.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_last_normal.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_last_pressed.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_normal.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_pressed.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_single_normal.9.png
+* app\src\main\res\drawable-hdpi\ic_preference_single_pressed.9.png
+* app\src\main\res\drawable-hdpi\icon.png
+* app\src\main\res\drawable-hdpi\load.png
+* app\src\main\res\drawable-hdpi\loading.png
+* app\src\main\res\drawable-hdpi\loading_bg.9.png
+* app\src\main\res\drawable-hdpi\login_edit_normal.9.png
+* app\src\main\res\drawable-hdpi\login_edit_pressed.9.png
+* app\src\main\res\drawable-hdpi\login_error_icon.png
+* app\src\main\res\drawable-hdpi\menu_bg.9.png
+* app\src\main\res\drawable-hdpi\menu_bg_normal.9.png
+* app\src\main\res\drawable-hdpi\menu_bg_normal2.9.png
+* app\src\main\res\drawable-hdpi\menu_bg_pressed.9.png
+* app\src\main\res\drawable-hdpi\mini_avatar_shadow.png
+* app\src\main\res\drawable-hdpi\mm_listitem_grey_normal.9.png
+* app\src\main\res\drawable-hdpi\mm_listitem_normal.9.png
+* app\src\main\res\drawable-hdpi\mm_listitem_pressed.9.png
+* app\src\main\res\drawable-hdpi\mm_listitem_simple.9.png
+* app\src\main\res\drawable-hdpi\mm_submenu_normal.png
+* app\src\main\res\drawable-hdpi\mm_submenu_pressed.png
+* app\src\main\res\drawable-hdpi\mm_title_back_focused.9.png
+* app\src\main\res\drawable-hdpi\mm_title_back_normal.9.png
+* app\src\main\res\drawable-hdpi\mm_title_back_pressed.9.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_compose_normal.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_contact_normal.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_focused.9.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_keyboard_normal.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_menu_disable.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_menu_normal.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_normal.9.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_pressed.9.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_qrcode_normal.png
+* app\src\main\res\drawable-hdpi\mm_title_btn_receiver_normal.png
+* app\src\main\res\drawable-hdpi\my_wx.jpg
+* app\src\main\res\drawable-hdpi\renma.png
+* app\src\main\res\drawable-hdpi\right.png
+* app\src\main\res\drawable-hdpi\search_bar_bg.9.png
+* app\src\main\res\drawable-hdpi\search_bar_edit_normal.9.png
+* app\src\main\res\drawable-hdpi\search_bar_edit_pressed.9.png
+* app\src\main\res\drawable-hdpi\search_bar_icon_normal.png
+* app\src\main\res\drawable-hdpi\shake_bg.jpg
+* app\src\main\res\drawable-hdpi\shake_line_up.png
+* app\src\main\res\drawable-hdpi\shake_logo_down.png
+* app\src\main\res\drawable-hdpi\shake_logo_up.png
+* app\src\main\res\drawable-hdpi\shake_report_dragger_down_normal.png
+* app\src\main\res\drawable-hdpi\shake_report_dragger_down_pressed.png
+* app\src\main\res\drawable-hdpi\shake_report_dragger_up_normal.png
+* app\src\main\res\drawable-hdpi\shake_report_dragger_up_pressed.png
+* app\src\main\res\drawable-hdpi\shakehideimg_man.png
+* app\src\main\res\drawable-hdpi\shakehideimg_man2.png
+* app\src\main\res\drawable-hdpi\tab_address_normal.png
+* app\src\main\res\drawable-hdpi\tab_address_pressed.png
+* app\src\main\res\drawable-hdpi\tab_bg.9.png
+* app\src\main\res\drawable-hdpi\tab_bg2.png
+* app\src\main\res\drawable-hdpi\tab_find_frd_normal.png
+* app\src\main\res\drawable-hdpi\tab_find_frd_pressed.png
+* app\src\main\res\drawable-hdpi\tab_settings_normal.png
+* app\src\main\res\drawable-hdpi\tab_settings_pressed.png
+* app\src\main\res\drawable-hdpi\tab_weixin_normal.png
+* app\src\main\res\drawable-hdpi\tab_weixin_pressed.png
+* app\src\main\res\drawable-hdpi\title_bar.9.png
+* app\src\main\res\drawable-hdpi\title_btn_function.png
+* app\src\main\res\drawable-hdpi\title_function_bg.9.png
+* app\src\main\res\drawable-hdpi\voice_rcd_btn_nor.9.png
+* app\src\main\res\drawable-hdpi\voice_rcd_btn_pressed.9.png
+* app\src\main\res\drawable-hdpi\w01.jpg
+* app\src\main\res\drawable-hdpi\w02.jpg
+* app\src\main\res\drawable-hdpi\w03.jpg
+* app\src\main\res\drawable-hdpi\w04.jpg
+* app\src\main\res\drawable-hdpi\w05.jpg
+* app\src\main\res\drawable-hdpi\w_left.png
+* app\src\main\res\drawable-hdpi\w_right.png
+* app\src\main\res\drawable-hdpi\welcome.jpg
+* app\src\main\res\drawable-hdpi\whats_new_start_btn_normal.9.png
+* app\src\main\res\drawable-hdpi\whats_new_start_btn_pressed.9.png
+* app\src\main\res\drawable-hdpi\xiaohei.png
+* app\src\main\res\drawable-hdpi\xiaohei_big.jpg
+* app\src\main\res\drawable-ldpi\
+* app\src\main\res\drawable-ldpi\ic_launcher.png
+* app\src\main\res\drawable-ldpi\welcome.jpg
+* app\src\main\res\drawable-mdpi\
+* app\src\main\res\drawable-mdpi\ic_action_search.png
+* app\src\main\res\drawable-mdpi\ic_launcher.png
+* app\src\main\res\drawable-mdpi\page.png
+* app\src\main\res\drawable-mdpi\page_now.png
+* app\src\main\res\drawable-xhdpi\
+* app\src\main\res\drawable-xhdpi\ic_action_search.png
+* app\src\main\res\drawable-xhdpi\ic_launcher.png
+* app\src\main\res\drawable\
+* app\src\main\res\drawable\btn_style_alert_dialog_button.xml
+* app\src\main\res\drawable\btn_style_alert_dialog_cancel.xml
+* app\src\main\res\drawable\btn_style_alert_dialog_special.xml
+* app\src\main\res\drawable\btn_style_blue.xml
+* app\src\main\res\drawable\btn_style_green.xml
+* app\src\main\res\drawable\btn_style_red.xml
+* app\src\main\res\drawable\btn_style_white.xml
+* app\src\main\res\drawable\chat_send_btn.xml
+* app\src\main\res\drawable\chatfrom_bg.xml
+* app\src\main\res\drawable\chatto_bg.xml
+* app\src\main\res\drawable\login_editbox.xml
+* app\src\main\res\drawable\menu_btn_bg.xml
+* app\src\main\res\drawable\mm_listitem.xml
+* app\src\main\res\drawable\mm_submenu.xml
+* app\src\main\res\drawable\mm_title_btn_menu.xml
+* app\src\main\res\drawable\my_progress_bar_drawable.xml
+* app\src\main\res\drawable\preference_first_item.xml
+* app\src\main\res\drawable\preference_item.xml
+* app\src\main\res\drawable\preference_last_item.xml
+* app\src\main\res\drawable\preference_single_item.xml
+* app\src\main\res\drawable\search_bar_edit_bg.xml
+* app\src\main\res\drawable\shake_report_dragger_down.xml
+* app\src\main\res\drawable\shake_report_dragger_up.xml
+* app\src\main\res\drawable\tab_address.xml
+* app\src\main\res\drawable\tab_find_frd.xml
+* app\src\main\res\drawable\tab_settings.xml
+* app\src\main\res\drawable\tab_weixin.xml
+* app\src\main\res\drawable\title_btn_back.xml
+* app\src\main\res\drawable\title_btn_right.xml
+* app\src\main\res\layout\
+* app\src\main\res\layout\appstart.xml
+* app\src\main\res\layout\chat_xiaohei.xml
+* app\src\main\res\layout\chatting_item_msg_text_left.xml
+* app\src\main\res\layout\chatting_item_msg_text_right.xml
+* app\src\main\res\layout\exit_dialog.xml
+* app\src\main\res\layout\exit_dialog_from_settings.xml
+* app\src\main\res\layout\info_xiaohei.xml
+* app\src\main\res\layout\info_xiaohei_head.xml
+* app\src\main\res\layout\loading.xml
+* app\src\main\res\layout\login.xml
+* app\src\main\res\layout\main.xml
+* app\src\main\res\layout\main_menu.xml
+* app\src\main\res\layout\main_tab_address.xml
+* app\src\main\res\layout\main_tab_friends.xml
+* app\src\main\res\layout\main_tab_settings.xml
+* app\src\main\res\layout\main_tab_weixin.xml
+* app\src\main\res\layout\main_top_right_dialog.xml
+* app\src\main\res\layout\main_weixin.xml
+* app\src\main\res\layout\shake_activity.xml
+* app\src\main\res\layout\welcome.xml
+* app\src\main\res\layout\whats1.xml
+* app\src\main\res\layout\whats2.xml
+* app\src\main\res\layout\whats3.xml
+* app\src\main\res\layout\whats4.xml
+* app\src\main\res\layout\whats5.xml
+* app\src\main\res\layout\whats6.xml
+* app\src\main\res\layout\whats_door.xml
+* app\src\main\res\layout\whatsnew_viewpager.xml
+* app\src\main\res\menu\
+* app\src\main\res\menu\main.xml
+* app\src\main\res\values\
+* app\src\main\res\values\colors.xml
+* app\src\main\res\values\strings.xml
+* app\src\main\res\values\styles.xml
+* build.gradle
+* gradle\
+* gradle\wrapper\
+* gradle\wrapper\gradle-wrapper.jar
+* gradle\wrapper\gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* proguard-project.txt
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

@@ -1,0 +1,20 @@
+
+
+
+
+1.SurfaceView的一些简单记录 http://blog.csdn.net/getchance/article/details/47189117
+
+
+Android使用SurfaceView画图 http://www.linuxidc.com/Linux/2014-04/100855.htm
+Android之SurfaceView使用总结 http://www.cnblogs.com/devinzhang/archive/2012/02/03/2337559.html
+SurfaceView类的使用 http://blog.sina.com.cn/s/blog_6f3ff2c90100srqj.html
+
+
+
+
+
+
+
+
+
+Android 手把手带你玩转自定义相机 http://www.2cto.com/kf/201604/498336.html

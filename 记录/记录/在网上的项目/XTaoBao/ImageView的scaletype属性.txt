@@ -1,0 +1,7 @@
+
+
+
+1.保持长宽比 对背景图像进行修改android:scaleType="fitXY"  http://www.cnblogs.com/tc310/p/3952460.html
+  Android开发学习：ImageView的scaletype属性  http://liangruijun.blog.51cto.com/3061169/807963/
+  ImageView的属性android:scaleType作用   http://www.cnblogs.com/yejiurui/archive/2013/02/25/2931767.html
+

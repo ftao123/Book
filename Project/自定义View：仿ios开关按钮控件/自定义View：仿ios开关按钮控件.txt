@@ -1,0 +1,14 @@
+
+
+
+1.自定义View：仿ios开关按钮控件  http://blog.csdn.net/gengqiquan/article/details/51699976  (demo已经下载好)
+
+
+
+2.Android中Adapter的notifyDataSetInvalidated()和notifyDataSetChanged()的区别！ http://www.2cto.com/kf/201309/246931.html
+
+
+http://blog.csdn.net/u011240877/article/details/51200715 
+ 
+
+

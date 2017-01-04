@@ -1,0 +1,9 @@
+
+
+
+1.
+  他把ViewPage设置适配器放到了ActHomePresenterImpl这个里面
+
+
+
+

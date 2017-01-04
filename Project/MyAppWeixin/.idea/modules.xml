@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyAppWeixin/MyAppWeixin.iml" filepath="$PROJECT_DIR$/MyAppWeixin/MyAppWeixin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyAppWeixin.iml" filepath="$PROJECT_DIR$/MyAppWeixin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

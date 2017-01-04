@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\githubproject\\github\\Project\\MyAppWeixin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\welcome.jpg",
+        "source": "D:\\githubproject\\github\\Project\\MyAppWeixin\\app\\src\\main\\res\\drawable-ldpi\\welcome.jpg"
+    },
+    {
+        "merged": "D:\\githubproject\\github\\Project\\MyAppWeixin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
+        "source": "D:\\githubproject\\github\\Project\\MyAppWeixin\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+    }
+]

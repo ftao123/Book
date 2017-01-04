@@ -1,0 +1,44 @@
+
+
+1.关于AndroidManifest.xml http://www.cnblogs.com/pilang/archive/2011/04/20/2022932.html (讲的很详细）
+
+  sharedUserId：Android给每个APK分配一个唯一的UserID，就是你每安装一个程序安装系统（也就是我们自己的手机系统）就会分配一个ID
+
+2.为什么AndroidManifest.xml中android:debuggable="false"时还是可以调试呢！   http://blog.163.com/lyzaily@126/blog/static/42438837201322675026995/
+
+3.android:debuggable="false"  http://blog.csdn.net/yun90/article/details/8290956
+
+
+
+
+
+
+
+
+
+
+属性理解：
+
+allowBackup：
+1.Android属性allowBackup安全风险浅析  http://www.2cto.com/article/201503/382610.html 
+
+android:hardwareAccelerated="true"：
+2.android图形系统详解四：控制硬加速   http://blog.csdn.net/niu_gao/article/details/7443574  （可以看看作者的其他文章）
+
+android:largeHeap="true"
+3.android:largeHeap="true"的作用http://blog.csdn.net/liushuai01a/article/details/44039099
+  Android OOM-调整Heap大小  http://blog.sina.com.cn/s/blog_621c16b10102v88m.html
+
+  探究android:largeHeap http://droidyue.com/blog/2015/08/01/dive-into-android-large-heap/ （*****讲的特别好，还有推荐了一些好东西）
+
+
+
+
+
+
+
+
+
+
+
+

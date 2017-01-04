@@ -1,0 +1,21 @@
+
+
+            // 透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // 透明导航栏 
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+
+
+
+
+
+
+
+
+
+
+
+1.Android状态栏微技巧，带你真正理解沉浸式模式   http://blog.csdn.net/guolin_blog/article/details/51763825  (可以看看他的文章)
+
+2.更简单更全的material design状态栏 http://blog.csdn.net/u013260551/article/details/51150336

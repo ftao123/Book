@@ -1,0 +1,18 @@
+
+
+
+1.聊聊Android优秀的图片加载缓存的开源框架？UIL、Glide、Picasso  http://www.cnblogs.com/xianglinglong/p/5578466.html
+  (只是简单讲了一些方法，不过他的其他文章可以去看看)
+
+   
+
+
+
+2.Android图片加载框架Glide用法  http://www.cnblogs.com/guilin-hu/p/5706916.html  （讲的很好，把方法怎么使用将的很详细）
+  
+  Android中Glide加载库的图片缓存配置究极指南   http://www.jb51.net/article/83156.htm （这个也讲的不错）
+
+
+
+http://www.jb51.net/article/83155.htm 
+http://blog.csdn.net/easkshark/article/details/51374049

@@ -1,0 +1,10 @@
+
+
+
+1. 群主说的，设置不滑动的ViewPage
+settouchlitenner(null)
+一句搞定
+试试看
+
+
+2.

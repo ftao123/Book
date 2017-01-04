@@ -1,4 +1,8 @@
 
+
+http://www.itnose.net/st/6221934.html （专注于各种报错的网址）
+
+
 ******************
 如果资源 出问题，但是你又确定没问题，就按我那个步骤。在app-->build-->outputs-->apk 在build文件里面把.apk那个文件删除。
 
@@ -162,7 +166,7 @@ data里面的属性名字：
 
 
 6.
-   报错： Must have one-pixel frame that is either transparent or white.
+   报错： Must have one-pixel frame that is either transparent or white.       ***(因为.9图片引起的错误) http://blog.csdn.net/wj_november/article/details/51495842
    处理：http://www.2cto.com/kf/201310/253182.html
     
 7.报错： Gradle sync failed: failed to find Build Tools revision 24.0.2
@@ -194,6 +198,10 @@ gradle
  clean assembleRelease -d
 
 
+10.报错：
+        failed to find build tools revision 24.0.1
+   解决：http://blog.csdn.net/qq_28637193/article/details/52549622  
+         http://blog.csdn.net/kimyo8337373/article/details/47005157
 
 
 

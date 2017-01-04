@@ -75,3 +75,7 @@ Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
     都要去学习
 
 12.关于客服的第三方：UDesk
+
+13.有时间去了解一下Android中Adapter的notifyDataSetInvalidated()和notifyDataSetChanged()的区别！以及使用handle后可能导致notifyDataSetChanged()无效，
+   onDraw方法不被执行，onDrawn什么时候执行
+14.自定义控件中MeasureSpec是怎么拿到测量值的？是通过xml文件吗？？？

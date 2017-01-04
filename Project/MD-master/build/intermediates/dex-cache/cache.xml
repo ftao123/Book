@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.2.1_bcb7ba9c4317de6b1eb59ab51d10249ecf1e58b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.0\support-annotations-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.0_30daec22830c0347c0448e721b4e48260a5bb425.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_64f757fa5e8487be14863d954714e3df4f178a67.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-exo\0.5.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="ff8b85ac4f2da86f81ff957e33938c584fc3d7dd">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\tv.danmaku.ijk.media-ijkplayer-exo-0.5.1_84ac35a6095679b25f77b1d38ccbc78fd428cc74.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_db4a9a8744381ed3c5d2df14f7662d591e25c507.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.github.chrisbanes\PhotoView\1.3.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="a6b765967c8091ebb45f2c02972a2fa9cba5dd87">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.github.chrisbanes-PhotoView-1.3.1_06e709b539d3459487f93c3ed566298e1df716b8.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_0a5df344224f74974652a579723d89e8a6e35c02.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_44cd6a5e1153ba28ff3304c0e5b5b9076812dd0f.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-armv5\0.5.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="ce3183eceacb4ee423c681218bdb3093a1e56400">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\tv.danmaku.ijk.media-ijkplayer-armv5-0.5.1_ca2ef0e7cbd71b8688314401c6b0fb1230deb1e6.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-armv7a\0.5.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="a77a7185614a8450144b47642b72137befae74c4">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\tv.danmaku.ijk.media-ijkplayer-armv7a-0.5.1_fba0a12cfaca8f2b2c217893eda9e7638d4ce5fd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\glide-3.7.0_1f3ddf859a86296da03fddcf50d19f29d652df81.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_245118371127730f3166a1bbefac3391bc0aa2d0.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.0_d545b6a41c84d25fc000300b9dc9ad46f385ed5e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\gson-2.7_2e85dbf641c4a16c73925139bd4ff50ebb0450dd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_fc6d109c83c05cddded4b5ea732ed5dd7c938086.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_b97f9b14df8a0ca10b7661957216051ddf4662c7.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.0_b424b96a5dc9c5e3ebf6c611d9325a14d7f37974.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-24.2.1_b531d6d5d9e77565bc7302772523feabb1026f2d.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_da8d27ab0ea795930077e1bbf89bc2b89da30483.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_df8426c525212b6d8eebdad236e65d0f1205b414.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-java\0.5.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="b9dfb4c439a4b87583a2621fa4e3832b32ae4a62">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\tv.danmaku.ijk.media-ijkplayer-java-0.5.1_d0aa406130de55c06200efc5f436d45b592bfae0.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_e3842ee6289d356a3f7f30c6c74f947edbfff8c7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\5.1.1\b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8\butterknife-5.1.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\butterknife-5.1.1_4e4ce574f3d72998b594448756183a3048e0c38d.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\tv.danmaku.ijk.media\ijkplayer-x86\0.5.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="db91c22aab89b869755f616005efc0ad19dc9e3c">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\tv.danmaku.ijk.media-ijkplayer-x86-0.5.1_5e663c5dd6dea7dce8ee09fade300bb1d4d0f0f5.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_5d5f3d06b07b523eca4429b619bef94bfd7fc028.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_839e9c7786bdb9aa6321172c637ae0fa69a635e6.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.0_55c96906e7280fe3aa37562b1d0c670520cbd8e3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.0\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\okhttp-3.3.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\okhttp-3.3.0_01cc990dcf2d17d688f9fc2e7c93ea22339e41ab.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_8b0e122429d891494e90e4a659d290361a9de236.jar" />
+    </item>
+    <item
+        jar="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\exploded-aar\com.google.android.exoplayer\exoplayer\r1.5.7\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="f156a33c2991564977dc8514b709d8cbd1d43adc">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\com.google.android.exoplayer-exoplayer-r1.5.7_76e1239fde7076d062892ccd3cf22ae68234bb41.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\retrofit-2.1.0_02cdaa5f093e78b272a8b951b62057cb62740b8d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\okio-1.8.0_06f7f952010e37a20e0067d81e65675288b9e24f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.jsoup\jsoup\1.10.1\645f1ad2f6f4cbad1cde4c483eae71e4051be6ef\jsoup-1.10.1.jar"
+        jumboMode="false"
+        revision="24.0.2"
+        sha1="645f1ad2f6f4cbad1cde4c483eae71e4051be6ef">
+        <dex dex="D:\githubproject\github\Project\MyAppWeixin\MD-master\app\build\intermediates\pre-dexed\debug\jsoup-1.10.1_2a86fbfc876000034a1d2d14504e24f8dc81a9df.jar" />
+    </item>
+
+</items>

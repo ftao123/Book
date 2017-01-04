@@ -1,0 +1,12 @@
+
+
+
+1.对Thread.interrupt()方法很详细的介绍   http://blog.sina.com.cn/s/blog_6ca570ed01016mti.html
+  
+  多线程编程 实战篇 (四)   http://blog.csdn.net/axman/article/details/562249
+
+
+
+
+
+

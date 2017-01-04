@@ -1,0 +1,40 @@
+
+
+
+MVP自己的理解：Model一般就是bean类都是实体类， 剩下的有M，V，P交互的接口。浅谈 MVP in Android  http://blog.csdn.net/lmj623565791/article/details/46596109
+这篇文章就写的特别好，接下来就参照这篇文章分析一下：
+
+IUserBiz：业务逻辑接口
+UserBiz implements IUserBiz：业务逻辑接口实现类
+OnLoginListener：因为登录是在子线程中执行，所以又定义了 OnLoginListener接口使用回调来通知登录状态（由于是耗时操作，所以我们通过一个回调接口来通知登录的状态）
+
+
+IUserLoginView：Presenter与View交互是通过接口（这个接口里面方法定义：既然是和View进行交互，那么就可以拿到view的数据或者对View进行更新等方面考虑接口中的方法）
+
+UserLoginPresenter：这是一个实体类，只是他通过接口回调来链接Model和View
+
+
+
+
+一个重要的思想就是引用的持有：主活动实现IUserLoginView，通过UserLoginPresenter构造方法将IUserLoginView传给UserLoginPresenter
+
+****逻辑处理类持有主活动的引用****主活动里面也new了一个逻辑处理类
+
+（感觉就是方法主活动你写好就可以了（重写接口的方法），怎么调用到UserLoginPresenter，反正UserLoginPresenter里面有你主活动的引用）
+
+
+
+
+
+1.Retrofit源码分析以及MVP框架封装使用   http://blog.csdn.net/zhanggang740/article/details/51745402  (有源码可以下载)
+
+
+MVP :  https://segmentfault.com/a/1190000003927200    http://www.cnblogs.com/liuling/archive/2015/12/23/mvp-pattern-android.html
+
+
+2.浅谈 MVP in Android  http://blog.csdn.net/lmj623565791/article/details/46596109
+
+
+3.android中MVP模式（一）  http://blog.csdn.net/knxw0001/article/details/39637273
+
+
