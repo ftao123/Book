@@ -57,4 +57,43 @@
 
 
 
+***************
+Android ViewPager多页面滑动切换以及动画效果  http://www.cnblogs.com/dwinter/archive/2012/02/27/AndroidViewPager多页面滑动切换以及动画效果.html
+
+https://my.oschina.net/summerpxy/blog/210026  ViewPager的基本使用
+
+
+Android ViewPager使用详解  http://blog.csdn.net/wangjinyu501/article/details/8169924
+
+
+上面这个两个真的左右滑都没事吗？自己去实现看看。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

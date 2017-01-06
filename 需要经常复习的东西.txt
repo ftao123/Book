@@ -1,0 +1,72 @@
+
+
+conatiner？？？？？？？
+
+1.ScrollView
+
+2.viewpager
+
+3.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ViewPager：可以用于管理多个布局（一般是管理多个Fragment）
+
+PageAdapter ：
+boolean isViewFromObject(View arg0, Object arg1)
+int getCount() 
+void destroyItem(ViewGroup container, int position,Object object)
+Object instantiateItem(ViewGroup container, int position)
+
+getCount():返回要滑动的VIew的个数
+destroyItem（）：从当前container中删除指定位置（position）的View;
+instantiateItem()：做了两件事，第一：将当前视图添加到container中，第二：返回当前View
+isViewFromObject():对于这个函数就先不做讲解，大家目前先知道它要这样重写就行了，后面我们会对它进行改写。
+
+
+关于ViewPage自动播放图片的缓存：
+在destroyItem（）方法中不做任何处理，不移除当前View。或者用一个list储存起来再移除。
+
+
+
+getCount()这里自己要重点说一下，返回要滑动的VIew的个数：不是说我只有三个数据就只能滑动三次了，假如我有3个数据我想滑动十下（一直往前滑），那么就返回10，当时
+当到达位置4的时候因为只有三个数据，如果不做处理会报数据越界，因为数据不够，所以就需要我们复用前面的视图，这样就实现滑动多次。
+
+伪轮播就是这样实现：设置返回Integer.MAX_VALUE（最大的一个数），对postion进行处理然后填充前面的视图，就实现无线轮播。
+
+当有4个数据，但是getCount()只返回2，那么就只能滑动两次。
+
+ViewPage有预加载机制：
+  因为预加载，自己写的测试类在刚刚打开的时候，就执行了两次 instantiateItem，打印分别是：instantiateItem:0 instantiateItem:1
+
+也就是给ViewGroup添加了两个View（这里ViewPager的缓存机制自己就不说了），当滑动一下，打印instantiateItem:2。当自己往回滑动打印destroyItem:2
+
+
+
+
+
+
+
+ android图片轮播效果，RollViewPager的简单使用  http://blog.csdn.net/double2hao/article/details/51328824 （一个开源的框架，有demo）
+
+
+
+
+
+
+
+

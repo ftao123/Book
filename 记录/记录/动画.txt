@@ -1,0 +1,22 @@
+
+
+
+1.Animation动画详解(七)——ObjectAnimator基本使用   http://www.07net01.com/2016/01/1196415.html
+
+
+
+
+http://www.cnblogs.com/punkisnotdead/p/5139372.html（挺好的）
+
+
+
+
+
+
+对属性进行了源码分析，有时间再看看
+android:backgroundTint="@color/colorAccent"
+android:backgroundTintMode="multiply"
+
+浅谈 Android L 的 Tint（着色） http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0128/3923.html
+
+Android background tint颜色渲染 http://blog.csdn.net/lintcgirl/article/details/51509267
