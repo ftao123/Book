@@ -2,7 +2,32 @@
 
 打开Android Studio内置的终端，在输入如下命令查看gradle版本：
 gradlew -v  如果没有会帮你自动下载的。                       还有就是Gradle版本和他对应的一个工具版本不同，Gradle里面有很多jar包，那个对应
-                                                              的工具很小。
+ 
+gradlew assembleDebug 编译并打Debug包
+
+gradlew assemblexiaomiDebug 编译并打xiaomi的debug包，其他类似
+
+gradlew assembleRelease 编译并打Release的包
+
+gradlew assemblexiaomiRelease 编译并打xiaomi的Release包，其他类似
+
+gradlew installRelease Release模式打包并安装
+
+gradlew uninstallRelease 卸载Release模式包
+
+
+或者是在右上角那个Gradle里面直接进行操作。
+
+
+
+
+
+
+
+
+
+
+                                                             的工具很小。
 
 //定义打包时间函数
 def releaseTime()  {
@@ -28,7 +53,7 @@ def releaseTime2() {
 
 
 
-2.Android Studio 多渠道打包、自动版本号及 gradlew 命令的基本使用        http://www.jianshu.com/p/44d40f8e67c9
+2.Android Studio 多渠道打包、自动版本号及 gradlew 命令的基本使用        http://www.jianshu.com/p/44d40f8e67c9(*********)
 
 3. Android studio 多渠道打包(超简洁版)   http://www.cnblogs.com/0616--ataozhijia/p/4203997.html
 

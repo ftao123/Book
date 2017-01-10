@@ -1,0 +1,13 @@
+
+
+
+关于混淆的再看看，没看完http://blog.csdn.net/guolin_blog/article/details/50451259
+Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/47803149
+
+
+1.ott开发
+
+
+
+
+

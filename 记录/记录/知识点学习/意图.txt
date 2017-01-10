@@ -1,0 +1,15 @@
+
+1.android intent和intent action大全       http://www.cnblogs.com/playing/archive/2010/09/15/1826918.html
+
+2.Intent Flag介绍 intent.addFlags（）    http://63230860.blog.163.com/blog/static/658809962013225111720880/
+
+3.intent.setDataAndType()  http://blog.csdn.net/umyanswer/article/details/12021683   (仅仅是例子)
+  http://android.tgbus.com/Android/tutorial/201204/422728.shtml
+
+
+Android 通过intent.setComponent()方法启动程序  
+
+调用方法为
+intent.setComponent(new ComponentName(packageName, activityName));
+然后再start intent即可
+这个方法需要加上包名 和 第一个启动的activity名
