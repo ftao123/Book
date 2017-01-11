@@ -1,0 +1,23 @@
+
+
+1.Android 中Parcelable的作用  http://blog.csdn.net/myxmu/article/details/7937160
+  http://blog.csdn.net/caowenbin/article/details/6532238 (这个人的博客还是不错的***************)
+
+Android---intent传递参数 http://www.cnblogs.com/mmy0925/archive/2013/01/24/2874902.html
+
+2. Android之Notification的多种用法 http://blog.csdn.net/loongggdroid/article/details/17616509
+   Android消息通知（notification）和PendingIntent传值  http://www.cnblogs.com/zenfly/archive/2012/02/09/2343923.html （把通知的方法讲的很细）
+
+   pi = PendingIntent.getActivity(this, 0, intent, 0);//用户点击该notification后才启动该activity
+
+3.Android中pendingIntent的深入理解 http://blog.csdn.net/yuzhiboyi/article/details/8484771
+
+4.Android 结合AlarmManager浅谈Intent和PendingIntent http://www.linuxidc.com/Linux/2013-06/85498.htm
+
+5.关于android读取ICCID、IMSI和IMEI  http://blog.sina.com.cn/s/blog_560e7f660101gzw1.html
+
+6.Android 自定义通知Notification 适配不同背景颜色 http://blog.csdn.net/bitian123/article/details/52913325
+
+7.使用自定义的 Notification http://blog.csdn.net/zhoujiyu123/article/details/7034845
+
+8. Android之Notification的多种用法 http://blog.csdn.net/loongggdroid/article/details/17616509

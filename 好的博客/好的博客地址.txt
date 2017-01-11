@@ -3,10 +3,10 @@
 源码下载：http://www.javaapk.com/life/ec/57805.html
 
 
-1.
+1.郭霖
   http://blog.csdn.net/guolin_blog/article/details/51763825
 
-2.
+2.鸿洋
   http://blog.csdn.net/lmj623565791/article/details/46596109
 
 3.
@@ -15,14 +15,69 @@
 4. http://blog.csdn.net/gengqiquan/article/details/51699976
 
 
-5.http://blog.csdn.net/xiaanming/article/details/9011193
+5.夏安明的博客
+  http://blog.csdn.net/xiaanming/article/details/9011193
 
-6.http://blog.csdn.net/harvic880925/article/details/38453725    QQ群号二：554244703  http://blog.csdn.net/harvic880925/article/details/38521865
+6.启舰 2013/11 开始安卓
+  http://blog.csdn.net/harvic880925/article/details/38453725    QQ群号二：554244703  http://blog.csdn.net/harvic880925/article/details/38521865
 
 7.http://blog.csdn.net/lfdfhl QQ群: 183899857
 
 8.http://blog.csdn.net/qq_26787115/article/details/53943312 
 
+9.刘某人程序员 (这个自己加了群)
+  http://blog.csdn.net/qq_26787115
+
 鸿洋_
 我看两年慕课，一直听到那位稚嫩而且生动声音hyman，现在才知道是你，深感愧疚。
 497438697
+
+
+10.作者：扔物线
+  http://gank.io/post/560e15be2dca930e00da1083#toc_1
+
+
+
+
+
+
+
+
+
+
+优化布局
+https://mp.weixin.qq.com/s/APNmoiKtQ8pRivMLbbNrDA
+
+
+spanstring
+Html.fromHtml
+
+
+if ( !TextUtils.isEmpty(ordersNumber) )
+tvTop1.setText(Html.fromHtml("送货订单"+"<font color=\"#3388ff\">"+ordersNumber+"</font>笔"));
+
+
+tablayout
+
+
+你布局全会画了？
+什么布局都能画出来了？
+你数据库操作都会了？
+数据处理都会了？
+视频操作会了？
+文件操作会了？
+
+
+
+
+http://blog.sina.com.cn/s/blog_465918fc0101ehf2.html
+http://www.360doc.com/content/12/0910/11/7662927_235323525.shtml
+
+https://mp.weixin.qq.com/s/APNmoiKtQ8pRivMLbbNrDA
+
+
+
+
+
+
+

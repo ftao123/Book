@@ -37,4 +37,87 @@ OnSubscribe 的 call() 方法会自动被调用，事件序列就会依照设定依次触发（对于上面的
 
 
 
+RxJava本质:异步
+
+相对于其他的异步：随着程序逻辑变得越来越复杂，它依然能够保持简洁。 是一条从上到下的链式调用，没有任何嵌套。（当需求变得复杂的时候代码更加强壮）
+好在那把什么复杂逻辑都能穿成一条线的简洁
+
+
+RxJava 不仅把每个事件单独处理，还会把它们看做一个队列
+
+
+Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
+    @Override
+    public void call(Subscriber<? super String> subscriber) {
+        subscriber.onNext("Hello");
+        subscriber.onNext("Hi");
+        subscriber.onNext("Aloha");
+        subscriber.onCompleted();
+    }
+});
+
+这里传入了一个 OnSubscribe 对象作为参数。OnSubscribe 会被存储在返回的 Observable 对象中，它的作用相当于一个计划表，
+当 Observable 被订阅的时候，OnSubscribe 的 call() 方法会自动被调用。
+
+
+public Subscription subscribe(Subscriber subscriber) {
+    subscriber.onStart();
+    onSubscribe.call(subscriber);
+    return subscriber;
+}
+
+在订阅的时候执行了onSubscribe.call(subscriber);
+
+
+将传入的 Subscriber 作为 Subscription 返回。这是为了方便 unsubscribe().
+
+Subscriber相比Observer增加了 onStart()方法和unsubscribe() 
+
+unsubscribe(): 这是 Subscriber 所实现的另一个接口 Subscription 的方法，用于取消订阅。在这个方法被调用后，Subscriber 将不再接收事件。一般在这个方法调用前，
+可以使用 isUnsubscribed() 先判断一下状态。 unsubscribe() 这个方法很重要，因为在 subscribe() 之后， Observable 会持有 Subscriber 的引用，这个引用如果不能
+及时被释放，将有内存泄露的风险。所以最好保持一个原则：要在不再使用的时候尽快在合适的地方（例如 onPause() onStop() 等方法中）调用 unsubscribe() 来解除引用
+关系，以避免内存泄露的发生。
+
+
+
+
+在 RxJava 的默认规则中，事件的发出和消费都是在同一个线程的。也就是说，如果只用上面的方法，实现出来的只是一个同步的观察者模式。
+观察者模式本身的目的就是『后台处理，前台回调』的异步机制，因此异步对于 RxJava 是至关重要的。而要实现异步，则需要用到 RxJava 的另一个概念： Scheduler 。
+
+
+
+
+Subscriber<String> subscriber = new Subscriber<String>() {
+    @Override
+    public void onNext(String s) {
+        Log.d(tag, "Item: " + s);
+    }
+
+    @Override
+    public void onCompleted() {
+        Log.d(tag, "Completed!");
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        Log.d(tag, "Error!");
+    }
+};
+
+
+
+
+RxJava 提供了对事件序列进行变换的支持，这是它的核心功能之一，也是大多数人说『RxJava 真是太好用了』的最大原因。所谓变换，
+就是将事件序列中的对象或整个序列进行加工处理，转换成不同的事件或事件序列。概念说着总是模糊难懂的，来看 API。
+
+
+
+
+
+
+
+
+
+
+
 

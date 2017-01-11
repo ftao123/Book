@@ -1,6 +1,5 @@
    
 
-1.http://www.cnblogs.com/tiantianbyconan/p/4232560.html                                        (RecyclerView)
 2.http://www.cnblogs.com/Ryandroid/archive/2011/11/25/2263226.html                             (ActivityInfo)
 3.http://www.2cto.com/kf/201512/455409.html                                                    (Toolbar)
 4.http://www.linuxidc.com/Linux/2012-02/55500.htm                                              (Menu)
@@ -79,45 +78,7 @@ http://blog.sina.com.cn/s/blog_5688414b01011bud.html       £¨AndroidÑ§Ï°ËÄ_Áù£ºÒ
 
 
 
-  £¨¶¼ÊÇ¹ØÓÚÏÂÀ­Ë¢ĞÂµÄ£© http://blog.csdn.net/lisdye2/article/details/51384159                     (ºÜ½Ó½üÁË)
- http://www.cnblogs.com/krislight1105/p/5251893.html                                             (±È½ÏºÃ)
-  http://blog.csdn.net/as_jon/article/details/51149688                                        £¨ºÍ±¾´úÂëºÜÏàËÆ£© // dx>0Ôò±íÊ¾ÓÒ»¬, dx<0±íÊ¾×ó»¬, dy<0±íÊ¾ÉÏ»¬, dy>0±íÊ¾ÏÂ»¬
-  http://blog.csdn.net/gaidandan/article/details/50817083
-  http://www.jianshu.com/p/85bf072bfeed
-  http://www.open-open.com/lib/view/open1438786351692.html                                    £¨AndroidË®µÎĞ§¹ûµÄÏÂÀ­Ë¢ĞÂ£©
-  http://www.cnblogs.com/JinyaoLi/p/3852424.html                                              £¨SwipeRefreshLayoutÏÂÀ­Ë¢ĞÂ£©
-  http://blog.csdn.net/lmj623565791/article/details/24521483
-  http://blog.csdn.net/jwzhangjie/article/details/26359837                                     SwipeRefreshLayout²¼¾ÖÀïÃæÒ»°ã¶¼ÊÇListView»òÕßÆäËûµÄ
-  http://blog.csdn.net/shineflowers/article/details/41802661                                   Android SwipeRefreshLayout ¹Ù·½ÏÂÀ­Ë¢ĞÂ¿Ø¼ş½éÉÜ
-  http://www.cnblogs.com/jerehedu/p/4446351.html                                               £¨SwipRefreshLayoutÉèÖÃ½²µÄ±È½ÏÏêÏ¸£©
-  https://my.oschina.net/u/2406628/blog/496249                                                  £¨SwipRefreshLayoutÀïÃæÊ¹ÓÃScrollView£©
-  http://blog.csdn.net/richiezhu/article/details/50958259    
 
-  http://blog.csdn.net/qq_22491765/article/details/50663303                                     ºÍ±¾´úÂëºÜÏàËÆ
-  http://blog.csdn.net/lisdye2/article/details/51384159                                           £¨¶Ô¼àÌıµÄ½²½â£©    
-
-
-convertView = LayoutInflater.from(getContext()).inflate(listCellId, null);  
-½âÊÍ£ºÍ¨¹ıLayoutInflater´Ó×ÊÔ´ÎÄ¼şÖĞÕÒ³öidÎªlistcellidµÄ²¼¾Ö¡£Ó³Éäµ½convertviewÉÏÊ¹ÓÃ¡£
-
-http://www.cnblogs.com/HighFun/p/3281674.html £º
-Èç¹û½«(LinearLayout) LayoutInflater.from(context).inflate(R.layout.contentitem, null);
-ĞŞ¸ÄÎª(LinearLayout) LayoutInflater.from(context).inflate(R.layout.contentitem, this);
-ÏÔÊ¾¾Í»áÕı³£
-
-http://blog.csdn.net/u013754742/article/details/39050215£º
-Adapter.getViewÖĞinflater.inflate(R.layout.pending_list_item, parent, false);·½·¨´¦Àí
-http://www.2cto.com/kf/201407/313054.html    £¨LayoutInflaterµÄinflate·½·¨£¬Õâ¸ö·½·¨ÖØÔØÁËËÄÖÖµ÷ÓÃ·½Ê½£©
-
-
-
-
-
-
-
-
-
-______________________________________________________________________________________
 EditText
 http://www.cnblogs.com/fly_binbin/archive/2012/08/18/2645236.html       android ²ÎÊıº¬Òå
 http://www.cnblogs.com/weixing/p/3257058.html                           Android¿ª·¢Ö®EditTextÊôĞÔÏê½â

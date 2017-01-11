@@ -7,7 +7,9 @@ Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/4780314
 
 1.ott开发
 
+2.IntentService
 
+3.至于如何去压缩图片，以及更多在图片方面节省内存的技术
 
-
+4.使用优化过的数据集合 Android API当中提供了一些优化过后的数据集合工具类，如SparseArray，SparseBooleanArray，以及LongSparseArray等
 

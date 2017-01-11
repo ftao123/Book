@@ -1,0 +1,22 @@
+
+
+1.有没有人碰到过这种情况,通过intent启动一个activity,在activity中通过getIntent().getParcelableExtra(*)取这个intent的数据, 
+  奇怪的现象是第二次启动这个activity后,取到的数据是第一次传过来的,而不是第二次的正确数据,这个太诡异拉,有人碰到过吗
+
+2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
