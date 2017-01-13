@@ -1,0 +1,11 @@
+
+
+
+1.ScrollView 
+
+2. Calendar calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+
+
+3.layout_marginRight
+

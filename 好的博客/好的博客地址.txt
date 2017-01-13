@@ -27,6 +27,7 @@
 
 9.刘某人程序员 (这个自己加了群)
   http://blog.csdn.net/qq_26787115
+  http://blog.csdn.net/qq_26787115/article/details/53954262 (Rxjava)
 
 鸿洋_
 我看两年慕课，一直听到那位稚嫩而且生动声音hyman，现在才知道是你，深感愧疚。
@@ -37,7 +38,7 @@
   http://gank.io/post/560e15be2dca930e00da1083#toc_1
 
 
-
+巧用第三方快速开发 移动端App 独立开发完整移动端 App _课程  http://coding.imooc.com/learn/list/81.html
 
 
 
@@ -77,7 +78,10 @@ https://mp.weixin.qq.com/s/APNmoiKtQ8pRivMLbbNrDA
 
 
 
+http://blog.csdn.net/qq_15950325/article/details/54379148
 
 
 
 
+自己平时收藏的一些Android面试题，希望能帮助到大家，觉得有用的话就star一下吧！
+https://github.com/m7775223/AndroidResources/tree/master/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E5%A4%A7%E5%85%A8

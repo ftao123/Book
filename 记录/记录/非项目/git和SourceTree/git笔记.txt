@@ -83,4 +83,27 @@ git pull
 
 
 
+
+
+
+
+3. GitLab: You don't have permission
+   Gitlab的develop角色的人没有权限无法提交的问题解决方案  http://www.cnblogs.com/xxcanghai/p/5009926.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
