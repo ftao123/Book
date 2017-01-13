@@ -1,4 +1,6 @@
 
+http://blog.csdn.net/u012950099/article/details/51812430
+
 
 
 关于混淆的再看看，没看完http://blog.csdn.net/guolin_blog/article/details/50451259
@@ -12,4 +14,45 @@ Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/4780314
 3.至于如何去压缩图片，以及更多在图片方面节省内存的技术
 
 4.使用优化过的数据集合 Android API当中提供了一些优化过后的数据集合工具类，如SparseArray，SparseBooleanArray，以及LongSparseArray等
+
+5.DecimalFormat
+
+6. window.setGravity(Gravity.CENTER);
+
+7. setFinishOnTouchOutside(false);
+
+
+
+
+
+
+
+
+
+************************
+
+网上查阅
+
+
+1.setFinishOnTouchOutside(false);
+  void android.app.Activity.setFinishOnTouchOutside(boolean finish)。
+//设置窗口activity点击窗口外面，activity不销毁
+this.setFinishOnTouchOutside(false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

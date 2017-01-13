@@ -1,0 +1,17 @@
+
+
+1.android 中 系统日期时间的获取  http://blog.csdn.net/feifei454498130/article/details/6540133
+   SimpleDateFormat formatter = new  SimpleDateFormat    ("yyyy年MM月dd日    HH:mm:ss     ");
+        Date             curDate   = new  Date(System.currentTimeMillis());//获取当前时间
+        String           str       = formatter.format(curDate);
+        Log.d("<<<<SplashActivity",str);
+
+2.找到一个布局在哪个代码里面被引用方法： 点击当前布局右键-->点击Find Usages 就可以显示出来了。
+
+
+3.
+在使用ViewPager常用设置
+1）mViewPager.setOffscreenPageLimit(2);//设置缓存view 的个数（实际有3个，缓存2个+正在显示的1个）
+2）mViewPager.setPageMargin((int)getResources().getDimensionPixelOffset(R.dimen.ui_5_dip));//设置viewpager每个页卡的间距，与gallery的spacing属性类似
+3）ViewPager更新数据问题：
+直接使用notifyDataSetChanged是无法更新，需要同时重写getItemPosition返回常量 POSITION_NONE (此常量为viewpager带的)。

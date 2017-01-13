@@ -1,0 +1,10 @@
+
+
+在微信平台注册可以进行微信支付：http://info.hhczy.com/article/20140306/19614.shtml
+
+
+
+
+1.手把手教你在APP上面实现微信支付功能，跟着做就能做出来  http://blog.sina.com.cn/s/blog_b6d177350102wf2q.html
+
+2.如何在app应用中添加支付宝支付功能   https://segmentfault.com/a/1190000004119979
