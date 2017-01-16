@@ -7,7 +7,6 @@ http://blog.csdn.net/u012950099/article/details/51812430
 Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/47803149
 
 
-1.ott开发
 
 2.IntentService
 
@@ -21,7 +20,7 @@ Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/4780314
 
 7. setFinishOnTouchOutside(false);
 
-
+8.overridePendingTransition
 
 
 
@@ -40,13 +39,19 @@ Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/4780314
 this.setFinishOnTouchOutside(false);
 
 
+2.http://blog.sina.com.cn/s/blog_696084050100qie8.html
+
+  // dialog.getWindow().setGravity(Gravity.CENTER);写在 show()之前也是显示在顶部
+           dialog.getWindow().setGravity(Gravity.CENTER);
 
 
 
 
 
+text = new String(bytes, "UTF-8").split("&");
 
-
+ DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
 
 

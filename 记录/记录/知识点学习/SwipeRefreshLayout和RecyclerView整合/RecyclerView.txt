@@ -5,7 +5,7 @@
 
    http://frank-zhu.github.io/android/2015/02/25/android-recyclerview-part-2/  (RecyclerView使用详解（二）)
 
-   http://www.jianshu.com/p/7fdfea845937   
+  
    http://www.jianshu.com/p/7fdfea845937              (很详细对一些方法给出注释)
   http://www.cnblogs.com/tiantianbyconan/p/4242541.html 
  

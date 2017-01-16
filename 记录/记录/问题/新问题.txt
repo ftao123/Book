@@ -79,3 +79,27 @@ Call<ZhuanLanAuthor> call = api.getAuthor("qinchao");
 13.有时间去了解一下Android中Adapter的notifyDataSetInvalidated()和notifyDataSetChanged()的区别！以及使用handle后可能导致notifyDataSetChanged()无效，
    onDraw方法不被执行，onDrawn什么时候执行
 14.自定义控件中MeasureSpec是怎么拿到测量值的？是通过xml文件吗？？？
+
+15.自己通过onCreateViewHolder一个方法来实现RecycleView显示不同的item？？？
+
+16. int size = inputStream.available();
+    byte[] bytes = new byte[size]; 这个拿到的文件大小不一定准确吧？  http://www.cnblogs.com/MyFavorite/archive/2010/10/19/1855758.html
+
+
+*****
+
+17.System.getenv("Path")+"")这个自己打印为空，可能是自己安卓环境没有进行配置，自己PATH打印不为空？？？很奇怪，搞了很久安卓环境没有配置好，下班好好搞搞。
+
+
+
+
+
+
+
+
+
+
+
+
+
+

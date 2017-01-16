@@ -41,7 +41,7 @@
 巧用第三方快速开发 移动端App 独立开发完整移动端 App _课程  http://coding.imooc.com/learn/list/81.html
 
 
-
+11.http://www.liuling123.com/2016/10/jenkins-gradle-auto-build.html Jenkins+Gradle实现Android自动化构建
 
 
 

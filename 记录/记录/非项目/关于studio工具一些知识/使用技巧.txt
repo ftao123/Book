@@ -1,0 +1,4 @@
+Error:Some problems were found with the configuration of task ':app:packageDefaultPrerelease'.
+> No value has been specified for property 'signingConfig.storePassword'.
+> No value has been specified for property 'signingConfig.keyAlias'.
+> File 'D:\work\pharmacist\app\null' specified for property 'signingConfig.storeFile' does not exist.

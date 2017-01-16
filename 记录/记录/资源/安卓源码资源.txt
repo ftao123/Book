@@ -1,5 +1,12 @@
 
 
+坚果云大量源码下载：http://www.javaapk.com/demo/ 
+http://www.javaapk.com/demo/mulu/
+
+
+
+
+
 1.
   微信开发          http://lib.csdn.net/base/wechat
 
@@ -28,4 +35,9 @@
 http://www.javaapk.com/
 
 
+安卓巴士
+Wex5
+A5源码下载
+源码天堂
 
+系统源码：http://jingyan.baidu.com/article/a378c96092df56b328283016.html

@@ -1,2 +1,6 @@
 
+1.java.lang.System.getenv(String name)·½·¨ÊµÀý  http://www.yiibai.com/java/lang/system_getenv_string.html
+
+  
+
 
