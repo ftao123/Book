@@ -8,7 +8,16 @@ conatiner？？？？？？？
 
 2.viewpager
 
-3.
+3.获取屏幕的宽高的两种方法
+ 方法一：
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        width = dm.widthPixels;
+        height = dm.heightPixels;
+ 方法二：
+        Display display = getWindowManager().getDefaultDisplay();
+        width = display.getWidth();
+        height = display.getHeight();
 
 
 

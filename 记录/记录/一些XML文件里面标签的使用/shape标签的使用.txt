@@ -1,0 +1,4 @@
+
+
+1.Android中资源文件的Shape使用总结  http://blog.csdn.net/easkshark/article/details/51062430
+  http://blog.csdn.net/watermusicyes/article/details/24791253

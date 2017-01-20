@@ -7,6 +7,9 @@
 
  http://blog.csdn.net/synaric/article/details/52573519     没有跳转到微信支付，而是直接调转到WXPayEntryActivity WXPayEntryActivity中实现的void onReq(BaseReq baseReq)并没有被回调
 
+http://www.2cto.com/kf/201605/508631.html  Android 集成微信支付和支付宝 
+
+
 
 ①：WXEntryActivity实现分享功能
 在主包名下建立一个wxapi包，然后再建立一个Activity，命名为：WXEntryActivity，实现IWXAPIEventHandler接口，用于分享后回调

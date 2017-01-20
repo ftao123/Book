@@ -1,0 +1,3 @@
+
+1.
+drawable里面 new一个 Drawable resource xml 一般打开是selector ，把selector改成shape就OK了

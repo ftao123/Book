@@ -1,6 +1,6 @@
 
-1.java.lang.System.getenv(String name)方法实例  http://www.yiibai.com/java/lang/system_getenv_string.html
-
+1.
+ 手机连接AS安装的包是debug包。
   
 
 

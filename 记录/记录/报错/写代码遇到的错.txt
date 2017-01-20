@@ -1,0 +1,14 @@
+
+1.
+ @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                break;
+        }
+        
+        return  true;
+    }
+
+自己这样写会报错是因为没有把 return super.onTouchEvent(event);这句话删除，至于为啥自己也不知道。

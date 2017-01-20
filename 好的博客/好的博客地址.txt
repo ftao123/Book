@@ -29,6 +29,9 @@
   http://blog.csdn.net/qq_26787115
   http://blog.csdn.net/qq_26787115/article/details/53954262 (Rxjava)
 
+10.《Android开发艺术探索》这本书的作者博客
+  http://blog.csdn.net/singwhatiwanna/article/details/48439621          http://blog.csdn.net/singwhatiwanna/article/details/42343847 （成长之路）
+
 鸿洋_
 我看两年慕课，一直听到那位稚嫩而且生动声音hyman，现在才知道是你，深感愧疚。
 497438697
@@ -43,7 +46,7 @@
 
 11.http://www.liuling123.com/2016/10/jenkins-gradle-auto-build.html Jenkins+Gradle实现Android自动化构建
 
-
+12.http://blog.csdn.net/hudashi/article/details/7060837
 
 
 优化布局

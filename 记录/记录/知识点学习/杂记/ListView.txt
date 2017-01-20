@@ -1,3 +1,8 @@
+
+都是一些基础的用法
+Android listview与adapter用法 http://www.cnblogs.com/zhengbeibei/archive/2013/05/14/3078805.html
+
+
 1.android:divider android给listview设置分割线Divider样式    http://www.blogjava.net/anchor110/articles/362299.html
   android ListView几个比较特别的属性                        http://www.cnblogs.com/cnsanshao/archive/2011/08/19/2145210.html
 
