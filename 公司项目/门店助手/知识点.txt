@@ -1,0 +1,14 @@
+
+
+1. NetworkUtils.isNetworkAvailable
+
+网络判断(Wifi和3G)工具类 http://blog.csdn.net/a1215445590/article/details/38535617
+
+网络连接类型 ConnectivityManager http://www.cnblogs.com/wangtianxj/archive/2011/04/21/2023619.html
+                                 http://blog.csdn.net/linxuan0206/article/details/8165779
+
+
+
+
+
+

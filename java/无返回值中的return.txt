@@ -1,0 +1,20 @@
+
+
+1.我们经常接触的都是有返回值的return，return是跳出这个方法，当在无返回值中使用return：
+  
+  Java中的return语句总是和方法有密切关系，return语句总是用在方法中，有两个作用，一个是返回方法指定类型的值（这个值总是确定的），一个是结束方法的执行（仅仅一个return语句）。
+
+以下是无返回值的情况:
+
+public void test1() { 
+       System.out.println("---------无返回值类型的return语句测试--------"); 
+       for (int i = 1; ; i++) { 
+           if (i == 4) return; 
+           System.out.println("i = " + i); 
+       } 
+   } 
+当i=4时,循环结束..
+
+return有一个特性就是一旦调用return 那么直接结束方法.
+
+****只写一个return语句的使用

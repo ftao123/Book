@@ -1,4 +1,5 @@
 
+好像js里面有个histroy.back是网页的返回键
 
 Android WebView是什么？  http://www.2cto.com/kf/201410/344172.html
 

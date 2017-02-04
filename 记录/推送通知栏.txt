@@ -1,0 +1,9 @@
+
+NotificationManager
+
+1.Android状态栏提醒（Notification、NotificationManager）  http://www.cnblogs.com/playing/archive/2011/03/08/1976722.html （例子）
+
+  Android5.x Notification应用解析  http://blog.csdn.net/itachi85/article/details/50096609 (一个很好的例子) 
+
+  状态栏通知Notification、NotificationManager详解   http://blog.csdn.net/feng88724/article/details/6259071 （这个把方法讲的很详细）
+

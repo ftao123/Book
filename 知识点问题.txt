@@ -1,0 +1,11 @@
+
+1.android中的文件操作详解以及内部存储和外部存储 http://blog.csdn.net/androidwifi/article/details/17725989（讲的很好）
+   
+  但是自己下载RE文件管理器，然后进行测试：
+  2.私有文件Private files：其实由于是外部存储的原因即是是这种类型的文件也能被其他程序访问，只不过一个应用私有的文件对其他应用其实是没有访问价值的
+（恶意程序除外）。外部存储上，应用私有文件的价值在于卸载之后，这些文件也会被删除。类似于内部存储。
+ ****并没有成功
+
+ 自己需要测试一下内置SD卡和外置SD同时有的情况下Environment.getExternalStorageDirectory()返回的是谁的路径
+
+2.为什么debug包的包名是：com.ybzf.mobile.pharmacist.debug？？？ 

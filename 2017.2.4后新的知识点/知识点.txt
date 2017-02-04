@@ -1,0 +1,68 @@
+
+一、
+1.Android下intent的setdata、settype和setdataandtype函数 http://blog.csdn.net/gf771115/article/details/7827527
+
+2.intent.setDataAndType()  http://blog.csdn.net/umyanswer/article/details/12021683
+
+  安卓项目的raw资料一个有个视频资源,需要调用系统默认的播放器 intent.setDataAndType(uri, "audio/*");这里需要填uri
+
+3.安卓开发中intent打开文件详解 http://android.tgbus.com/Android/tutorial/201204/422728.shtml(和二差不多)
+
+4.application/vnd.android.package-archive到底是什么 http://www.th7.cn/Program/Android/201505/453343.shtml
+
+二、
+1.Android Environment.getExternalStorageDirectory() 获取的是内部存储还是外部存储？ http://blog.csdn.net/zhouyingge1104/article/details/44311581
+
+2.安卓中的Environment.getExternalStorageDirectory().getAbsolutePath()  http://www.xuebuyuan.com/2190903.html
+
+3.android中如何使用 Environment.getExternalStorageDirectory() http://www.itmmd.com/201412/401.html
+
+4.Android 中 Environment.getExternalStorageDirectory()无效  http://www.cnblogs.com/wytings/p/5226101.html  
+
+5.android如何静默方式来安装apk http://www.open-open.com/lib/view/open1328536451483.html
+
+  public static final String SDPATH = Environment .getExternalStorageDirectory().getAbsolutePath();
+  //获取外部存储的路径返回绝对路径的,其实就是你的SD卡的文件路径
+
+测试：
+File fileExt = new File(Environment.getExternalStorageDirectory(), fileName);
+            Log.d("<<<<",Environment.getExternalStorageDirectory().getAbsolutePath());
+            Log.d("<<<<",fileExt.getAbsolutePath());
+打印结果：
+02-04 11:23:10.229 12111-14108/com.ybzf.mobile.pharmacist.debug D/<<<<: /storage/emulated/0
+02-04 11:23:10.229 12111-14108/com.ybzf.mobile.pharmacist.debug D/<<<<: /storage/emulated/0/51jk204b.apk
+
+Environment.getExternalStorageDirectory()返回一个File类型，然后利用这个File的路径来创建一个新的文件
+
+
+三、
+1.Android File IO    http://tonmly.blog.163.com/blog/static/17471285620116115410515/
+
+2.Android File类 根据官方文档理解  http://blog.csdn.net/ahjxly/article/details/9982855
+
+3. Java I/O 详解 http://blog.csdn.net/carolzhang8406/article/details/6715553
+
+4. 20经典Java片段 http://www.360doc.com/content/13/0625/18/12127276_295471180.shtml
+
+四、
+1. Handler.obtainMessage() http://blog.csdn.net/h3c4lenovo/article/details/7914902
+
+   这里大家应该都明白了。所以以后使用的时候尽量使用 Message msg = handler.obtainMessage();的形式创
+   建Message，不要自己New Message 至于message产生之后你使用obtainMessage 或者是 sendMessage 效率影响
+   并不大.同时我们也要注意以后谈论性能的时候要找准位置,譬如这里性能的问题不是在调用 obtainMessage 和 sen
+   dMessage 的方法上,而是调用他们之前对象的创建问题上。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

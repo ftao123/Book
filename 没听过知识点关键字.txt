@@ -31,6 +31,8 @@ Android静默安装实现方案 http://blog.csdn.net/guolin_blog/article/details/4780314
 12.PendingIntent
 
 13.JNI http://www.cnblogs.com/hoys/archive/2010/10/28/1863612.html  http://www.cnblogs.com/bastard/archive/2012/05/19/2508913.html
+
+14.ffmepg LanSoEditor_common 
 ************************
 
 网上查阅

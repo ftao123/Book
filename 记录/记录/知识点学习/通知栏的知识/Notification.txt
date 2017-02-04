@@ -1,0 +1,45 @@
+
+这个是需要注意API版本不同方法也会不同
+
+
+1.Android中new Notification创建实例的最佳方法  http://www.ctolib.com/topics-73030.html
+
+  Android中通知Notification使用实例（振动、灯光、声音）http://www.jb51.net/article/77725.htm  (一个例子，里面方法已经过时，但是把方法说的挺详细的)
+
+  Android开发之利用MQTT协议实现消息的即时推送  http://blog.sina.com.cn/s/blog_14d17b8ab0102wi7g.html （这个算是课外题）
+
+  Android下setLatestEventInfo警告、Handler警告、SimpleDateFormat警告  http://www.piaoyi.org/mobile-app/Android-setLatestEventInfo-Handler-SimpleDateFormat.html
+
+  ****Android 5.X 新特性详解（五）——Notification  http://blog.csdn.net/tw19911005/article/details/51658724（他是把安卓群英传里面的东西写出来了）
+
+
+
+  RemoteViews完全解析 http://blog.csdn.net/qq_28702545/article/details/51871443（方法使用说的挺详细的，讲到自定义通知源码）
+
+  Android高仿UC浏览器跟360手机卫士消息常驻栏（通知栏） http://www.myexception.cn/android/1964599.html
+
+
+
+
+****
+ builder.setSubText("it is really basic");和builder.build()会报错，要求的API是16以上的，然后自己把最小的API改成16就好了
+ notificationManager.notify(0, builder.build());
+
+在API版本比较低的时候使用Notification nf = new Notification() ;或者notification = new Notification(R.mipmap.ic_launcher, "开始下载", System.currentTimeMillis());
+来创建Notification对象。
+
+在API版本比较高的时候使用： Notification.Builder builder = new Notification.Builder(this); notification=builder.build()来创建Notification对象。
+
+********
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,168 @@
+
+ 
+1.android 获取 内外存储设备路径疑问 http://892848153.iteye.com/blog/1986404
+  
+  Android获取存储卡路径的方式 http://blog.csdn.net/gucun4848/article/details/8255438（可以参考一下）
+
+2.android中的文件操作详解以及内部存储和外部存储 http://blog.csdn.net/androidwifi/article/details/17725989（讲的很好）
+
+  国内手机外部储存根目录路径貌似是：/mnt/sdcard  国外手机外部存储根目录路径貌似是：/storage/emulated/0  不一样
+
+  有人说手机里面的外部存储路径和Sdcard路径一样？？？
+
+****这是很重要一段话。
+  android手机获取自带存储路径和sd卡存储路径的方式是：调用Environment.getExternalStorageDirectory()，返回的存储目录并不是系统内置的SD卡目录。
+1.一部分手机将eMMC存储挂载到 /mnt/external_sd 、/mnt/sdcard2 等节点，而将外置的SD卡挂载到 Environment.getExternalStorageDirectory()这个结点。
+此时，调用Environment.getExternalStorageDirectory()，则返回外置的SD的路径。
+2.而另一部分手机直接将eMMC存储挂载在Environment.getExternalStorageDirectory()这个节点，而将真正的外置SD卡挂载到/mnt/external_sd、/mnt/sdcard2 等节点。
+此时，调用Environment.getExternalStorageDirectory()，则返回内置的SD的路径。
+
+
+****（这篇文章把上面的所有就讲清楚了，太好的文章了） 
+3.彻底了解android中的内部存储与外部存储  http://www.cnblogs.com/jingmo0319/p/5586559.html
+
+  外部存储才是我们平时操作最多的，外部存储一般就是我们上面看到的storage文件夹，当然也有可能是mnt文件夹，这个不同厂家有可能不一样。
+
+  自己用的是摩托罗拉：
+  Environment.getExternalStorageDirectory()的绝对路径打印出来是/storage/emulated/0 同时也是门店助手项目中更新APP的下载路径。
+  这篇文章讲外部存储：一般来说，在storage文件夹中有一个sdcard文件夹，这个文件夹中的文件又分为两类，一类是公有目录，还有一类是私有目录，其中的公有目录有九
+  大类，比如DCIM、DOWNLOAD等这种系统为我们创建的文件夹，私有目录就是Android这个文件夹，这个文件夹打开之后里边有一个data文件夹，打开这个data文件夹，里边有
+  许多包名组成的文件夹。
+
+  ****
+  自己使用RE文件管理器在storage目录下有三个目录：emulated、sdcard0、usbdisk。/storage/emulated/0中可以找到下载的门店助手的更新包，同时在sdcard0里面也可以
+  找到下载的更新包，并且随便删除一个两个目录下的更新包都消失，说明他们指向的是同一个包
+   
+   自己把下载路径修改成：/storage/sdcard0/Android/data/com.ybzf.mobile.pharmacist.debug，果然是下载到了这里，当自己进入应用程序管理把数据清空，自己再去
+data目录下查看，居然连com.ybzf.mobile.pharmacist.debug这个目录都没有了，也就是当清空所有数据，就相当于还安装这个程序，还没有点开程序所有没有啥数据，现在
+不清空数据直接卸载：卸载之后com.ybzf.mobile.pharmacist.debug这个目录不存在，说明和清空数据性质是一样的。
+
+
+****现在我们再来看看我们一开始提出的问题，当我们点击清除数据的时候清除的是哪里的数据呢？毫无疑问，当然是内部存储目录中相应的files和cache文件夹中的文件和外部存储中相应的files和cache文件夹中的文件，至于这些文件夹的路径我想你应该已经明白了。
+
+
+
+4.android获取内置和外置SD卡路径  http://www.2cto.com/kf/201502/377175.html 获取外置内存的路径代码
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 在onCreate方法中 
+    
+        Log.d("System.getenv(\"PATH\")",System.getenv("Path")+"");
+        Log.d("System.getenv(\"TMP\")",System.getenv("TMP")+":TMP");
+        Log.d("System.getenv",System.getenv("B")+"B1111");
+
+        Map env = System.getenv();
+        Set s = env.entrySet();//第一步
+        for (Iterator iterator = s.iterator(); iterator.hasNext();) {
+            Map.Entry me = (Map.Entry)iterator.next();//第二步
+            String str1  = (String)me.getKey();
+            String str2  = (String)me.getValue();
+            System.out.println(str1);
+            System.out.println("========="+str2);
+
+        }
+
+打印结果：
+
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug D/System.getenv("PATH"): null
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug D/System.getenv("TMP"): null:TMP
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug D/System.getenv: nullB1111
+
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_ROOT
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/system
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: EMULATED_STORAGE_SOURCE
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/mnt/shell/emulated
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: LOOP_MOUNTPOINT
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/mnt/obb
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: EMULATED_STORAGE_TARGET
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/storage/emulated
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_BOOTLOGO
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========1
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: EXTERNAL_STORAGE
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/storage/emulated/legacy
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: SYSTEMSERVERCLASSPATH
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/system/framework/pixelpipe.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/system/framework/wifi-service.jar
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_SOCKET_zygote
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========11
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_DATA
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/data
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: PATH
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_ASSETS
+02-04 14:00:38.663 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/system/app
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ASEC_MOUNTPOINT
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/mnt/asec
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: BOOTCLASSPATH
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/system/framework/pixelpipe.jar:/system/framework/core-libart.jar:/system/framework/conscrypt.jar:/system/framework/okhttp.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/apache-xml.jar
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_PROPERTY_WORKSPACE
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========9,0
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: ANDROID_STORAGE
+02-04 14:00:38.664 28369-28369/com.ybzf.mobile.pharmacist.debug I/System.out: =========/storage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

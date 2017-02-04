@@ -1,0 +1,25 @@
+
+未搞懂的
+
+1.Parcelable
+
+2.versionUpdate.getVersion().replace(".", "") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+已经搞懂的
+
+1.overridePendingTransition  http://www.cnblogs.com/bavariama/p/3368515.html
+
+2.Java String.replace()方法  http://blog.csdn.net/jason0539/article/details/9865691

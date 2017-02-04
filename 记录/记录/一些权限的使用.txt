@@ -1,0 +1,29 @@
+
+
+1.(ConnectivityManager)context.getSystemService("connectivity")  
+
+   network: Android 网络判断（wifi、3G与其他） http://www.cnblogs.com/top5/archive/2012/12/28/2837178.html
+
+   Android网络编程（二）ConnectivityManager和NetworkInfo详解  http://blog.csdn.net/oyangyujun/article/details/41723865(把方法的使用讲的比较详细) 
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

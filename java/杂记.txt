@@ -1,3 +1,13 @@
 1.http://blog.csdn.net/danielinbiti/article/details/39996065  Integer的==比较
 
 2.Java String.equalsIgnoreCase()方法用法实例教程, 比较字符串到另一个字符串，忽略大小写因素。
+
+3. 
+  PharmacistApp extends MultiDexApplication
+  public void onCreate() {
+        super.onCreate();
+        _instance = this;
+
+  所以这个_instance=this 意思就是_instance=PharmacistApp（PharmacistApp的自己，也是这个类的一个实例）
+
+4. i.putExtra("VersionUpdate", versionUpdate);   versionUpdate这个一个对象，意图传递数据可以把对象直接装进去。
