@@ -8,4 +8,45 @@
 
  自己需要测试一下内置SD卡和外置SD同时有的情况下Environment.getExternalStorageDirectory()返回的是谁的路径
 
-2.为什么debug包的包名是：com.ybzf.mobile.pharmacist.debug？？？ 
+2.为什么debug包生成的目录的包名是：com.ybzf.mobile.pharmacist.debug？？？ 
+
+3.一个广播的在活动里面发送，那么肯定在会这个活动里面写的关于广播的接受处理？有没有在一个活动里面发送广播，其他活动进行接受然后进行处理？？？
+
+4.shape图片的使用
+
+5.写出容联云通信的demo。
+
+
+
+
+
+
+解决：
+1. Integer progress = Integer.parseInt((count * 100 / length) + "");   length是总长度，这个表示站总长度的百分比，为啥还要*100 ???
+   我懂了，因为count/length一个小数，我们显示的时候单位是%，所以应该是大于1的数所以乘上100
+
+2.安卓中一个活动实现窗口模式：http://www.yjbys.com/bbs/373825.html
+  自己工程里面：
+   <activity
+            android:name=".activity.chat.ChatDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Pharmacist.Dialog.noTitle"/>
+3.为啥不在PharmacistApp里面进行容联的初始化，而是在SplashActivity里面进行判断是否进行初始化？？？
+  因为：
+  初始化不要在application的onCreate方法中进行调用，因为如果android的application没有创建完成时执行初始化方法，将会导致初始化无效，在后续的登录和其他接口的
+  调用中出现问题。
+  
+  上面的注意事项是写在容联云通讯开发者文档里面的。
+
+4.
+
+
+
+
+
+
+
+
+
+
+

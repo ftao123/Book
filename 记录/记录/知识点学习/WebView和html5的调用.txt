@@ -1,4 +1,8 @@
 
+注入 Java 对象到 WebView 中。
+ 
+webView.addJavascriptInterface(new JavascriptHandler(), "handler");_____"handler"这个可以随便写只要和js调用这个对象参数保持一致就可以了。
+
 好像js里面有个histroy.back是网页的返回键
 
 Android WebView是什么？  http://www.2cto.com/kf/201410/344172.html
@@ -86,7 +90,7 @@ webView.getSettings().setDomStorageEnabled(true);
 
 
 
-
+++++++++++++++++++++++++
 (3)实现android与js交互
 默认情况下WebView中的js是禁用的，通过将WebSettings附加到WebView中启动js，可以用getSettings()检索WebSettings,然后用setJavaScriptEnabled()启动js。
 mWebView.getSettings().setJavaScriptEnabled(true);
@@ -105,7 +109,7 @@ mWebView.addJavascriptInterface(new JavaScriptInterface(),"injs");
 实现JavaScriptInterface()类，这里在该类中定义一个方法public void runOnAndroidJavaScript(final String str){...}
 在js中调用java函数
 windows.injs.runOnAndroidJavaScript(str);//调用android的函数 
-
++++++++++++++++++++++++++++++++++++
 
 
 *******************

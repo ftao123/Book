@@ -12,12 +12,15 @@
 
 6.http://www.cnblogs.com/jingmo0319/p/5586559.html
 
+7.http://wiki.jikexueyuan.com/project/material-design/animation/authentic-motion.html 
+  (Google I/O 2014 发布 Material Design设计，中文学习地址)****这个挺好的，没事应该看看
+
+  Android 5.x新特性之elevation(阴影),tinting（着色）以及clipping（剪裁） http://www.cnblogs.com/ai394495243/p/5075758.html
 
 
+8. Android四大组件：Service史上最全面解析 http://blog.csdn.net/carson_ho/article/details/53160049
 
-
-
-
+9.http://blog.csdn.net/qq_30379689
 
 
 

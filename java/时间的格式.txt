@@ -1,0 +1,51 @@
+
+
+
+Calendar类的使用API：http://www.apihome.cn/api/java/Calendar.html （这个API写的很全了）有时候搜索不到就查看API****
+Date now=new Date(); 只知道是得到系统时间
+
+1秒被分成1000毫秒，long time0 = cal0.getTimeInMillis();得到的时间单位是毫秒
+
+System.currentTimeMillis()这个返回的是一串数字
+
+1.Java - SimpleDateFormat格式说明 http://blog.sina.com.cn/s/blog_4e7859dd01009xds.html 
+
+  java日期格式大全 format SimpleDateFormat  http://www.cnblogs.com/loveyakamoz/archive/2011/08/18/2145047.html
+
+2.SimpleDateFormat_parse()  http://www.cnblogs.com/csufulixiang/articles/2331494.html
+
+3.JAVA 的 Date、Calendar的常用用法 http://www.cnblogs.com/redfish/archive/2012/11/20/2779538.html
+
+
+
+
+
+
+
+
+
+
+
+Calendar 与 Date 的转换：
+Calendar calendar = Calendar.getInstance();
+
+// 从一个 Calendar 对象中获取 Date 对象 
+Date date = calendar.getTime();
+ 
+// 将 Date 对象反应到一个 Calendar 对象中，
+// 先获得一个实例，然后设置 Date 对象
+calendar.setTime(date);
+
+月份的起始值为０而不是１，所以要设置八月时，我们用７而不是8。
+calendar.set(Calendar.MONTH, 7);
+ 
+计算2000-01-01是星期几
+calendar.get(calendar.DAY_OF_WEEK )
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+
+1.
+<ScrollView
+        android:id="@+id/user_details_scrollview2"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        android:layout_above="@+id/user_details_ll_bottom2"
+        android:layout_below="@+id/single_fragment_rl_top2">
+
+自己之前把在线性布局里面的ScrollView复制放到相对布局里面没有写android:layout_above="@+id/user_details_ll_bottom2"
+                                                              android:layout_below="@+id/single_fragment_rl_top2">
+ScrollView在布局中间显示，底部一直不能滑动出来被遮挡（特别烦恼）  原因：
+
+android:layout_above这是在相对布局里面才有的属性，  1 2 3 排列。2在1的下面，在3的上面。滑动时候才不会被挡住。如果不写这个滑动的时候就会被遮挡。
+
+2.<View
+        android:id="@+id/single_fragment_view_12"
+        android:layout_width="match_parent"
+        android:background="@color/b2"
+        android:layout_height="1px"
+        android:layout_below="@+id/single_fragment_rl_top2"/>
+自己在写这个线的时候之前一直显示不出来，后面才发现控件都把空间占完了，把线挡住了，所以就不能显示出来，所以下次一定要记得把那个线1dp的空间
+留出来。
+
+3.
+你看哪空指针了.对象.方法,空指针就是这个对象为null,然后找viewpager就好了
+差错方法
+
+4.http://blog.sina.com.cn/s/blog_54516e970100bi6m.html  Replace用法

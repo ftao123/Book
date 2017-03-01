@@ -1,0 +1,18 @@
+
+
+1.  @Override
+    public void onClick(View v) {
+        if (v == btnUpdate) {
+            manager.notify(NOTIFICATION_ID, notification);
+            new ProgressThread().start();
+            SharedPreferencesHelper.getInstance().putBoolean(AppConstants.KEY_IS_FIRST_IN, true);
+            btnUpdate.setVisibility(View.GONE);
+        } else if (v == btnLater) {
+            finish();
+        }
+    }
+
+ SharedPreferencesHelper.getInstance().putBoolean(AppConstants.KEY_IS_FIRST_IN, true);当点击更新，他把第一次进入有重新改为true，然后每次都需要
+重新登录。
+  我个人觉得不妥，像QQ人家更新后不用重新登录的，一起好像需要现在改过来了。所以我觉得应该改成
+  SharedPreferencesHelper.getInstance().putBoolean(AppConstants.KEY_IS_FIRST_IN, false)
