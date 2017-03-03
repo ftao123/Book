@@ -22,15 +22,23 @@
 
 9.http://blog.csdn.net/qq_30379689
 
+10.Android Studio代码调试大全  http://blog.csdn.net/dd864140130/article/details/51560664
+
+11.Fragment学习-----简介与生命周期研究  http://blog.csdn.net/qianfu111/article/details/8948110
+
+12.Android数据库SQLiteDatabase的使用 http://blog.csdn.net/wangjia55/article/details/7429584
+
+13.MVP http://www.open-open.com/lib/view/open1446377609317.html
+
+日志打印：
+Android日志打印类LogUtils，能够定位到类名，方法名以及出现错误的行数并保存日志文件   http://www.2cto.com/kf/201505/397736.html
+android应用如何在发布市场时关掉所有的Log日志输出  http://blog.csdn.net/daguaio_o/article/details/8468035
+
+Google Android中打印日志 http://blog.csdn.net/lcfeng1982/article/details/7168205
 
 
 
-
-
-
-
-
-
-
-
+快速编译教程：
+http://www.jianshu.com/p/46418dd38218
+http://blog.csdn.net/programerxiaoer/article/details/52701124?locationNum=10
 

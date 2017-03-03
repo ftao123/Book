@@ -1,0 +1,12 @@
+
+
+1.  
+
+Bundle bundle = intent.getExtras();
+
+byte[] payload = bundle.getByteArray("payload");
+
+String payloadData = new String(payload) 
+
+JSONObject re = new JSONObject(payloadData);
+

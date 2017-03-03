@@ -1,0 +1,10 @@
+
+
+1.Android xUtils框架(一)DbUtils  http://blog.csdn.net/jjwwmlp456/article/details/44084411(方法讲的很详细)
+
+  @Table(name = "friends")   friends为表名字
+
+https://github.com/dongwq/xUtils/commit/d37aadfe9ba0936b334e941516a5d199679d5ddd
+
+
+xUtils中DBUtils 数据库版本升级 说明  http://blog.csdn.net/u013067184/article/details/48136151

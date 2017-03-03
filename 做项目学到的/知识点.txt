@@ -30,3 +30,18 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓÐµÄÊôÐÔ£¬  1 2 3 ÅÅÁÐ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
 ²î´í·½·¨
 
 4.http://blog.sina.com.cn/s/blog_54516e970100bi6m.html  ReplaceÓÃ·¨
+
+5.¹«Ë¾ÏîÄ¿ÀïÃæµÄ¸÷ÖÖID£º
+   siteID  :´ú±íÒ»¸öÕ¾µã£¬±ÈÈçÀÏ°ÙÐÕ´óÒ©·¿ÊÇÒ»¸öÕ¾µã£¬ºêÈÊÌÃÊÇÁíÒ»¸öÕ¾µã¡£
+   rlToken :´ú±íÈÝÁªtoken,¸Õ¸Õ¿ªÊ¼µÄÕâ¸ötoken±ê¼ÇµÄµêÔ±£¬µ±µêÔ±ºÍ»áÔ±ÁÄÌì»áÄÃµ½»áÔ±µÄrltokenÕâÑù½øÐÐÍ¨Ñ¶
+   
+   UserInfoÀïÃæ pharmacistIdºÍuserId¶¼ÊÇ¶ÔµêÔ±µÄ±ê¼Ç£¬Ò²¾ÍºÍÒ»¸öÔÚ²»Í¬µÄ¹«Ë¾Ò»Ñù£¬¹À¼ÆÊÇ¶ÔÓ¦Á½¸ö²»Í¬µÄ±í£¬ pharmacistId¶ÔÓ¦Ò»¸ö±í£¬userId¶ÔÓ¦Ò»¸ö±í
+   Ò²ÊÇÍ¬Ò»¸öÈËÔÚ²»Í¬µÄ±íÀïÃæµÄ±ê¼Ç¡£
+
+   token ´ú±íÒ»¸öAPPºÍ·þÎñÆ÷µÄÒ»ÖÖÁ¬½ÓÎÒÃÇ¿ÉÒÔÒ»Ö±´æÔÚ±¾µØ£¬µ±ÎÒÏÂ´ÎµÇÂ¼¿ÉÒÔÄÃµ½Õâ¸ötoken£¬Èç¹ûÊ±¼äÌ«³¤£¬ºóÌ¨»á·µ»ØÒ»¸ö½á¹û£¨tokenÊ§Ð§£©ÎÒÃÇ¾Í»áÇ¿ÖÆÍË³ö
+   APP£¬ÈÃÓÃ»§ÖØÐÂµÇÂ¼¡£
+
+6.AndroidÖ®Ê¹ÓÃ¸öÍÆÊµÏÖÈý·½Ó¦ÓÃµÄÍÆËÍ¹¦ÄÜ  http://www.cnblogs.com/RGogoing/p/5773544.html
+  Õâ¸öÊÇÖ®Ç°µÄÐ´·¨£¬ºÍ×Ô¼º¹¤³ÌÀïÃæ´úÂëÒ»Ñù¡£
+
+7.»ñÈ¡Ïà²áÍ¼Æ¬¼°Â·¾¶  http://blog.csdn.net/hugh114/article/details/5765332
