@@ -1,0 +1,6 @@
+
+
+1.Android工作笔记：Android路径大全 http://blog.csdn.net/duancanmeng/article/details/9185689  http://www.2cto.com/kf/201306/223572.html 
+  Environment.getExternalStorageDirectory().getPath() 路径为： /mnt/sdcard 
+
+2.ByteArrayOutputStream及其在IO中的应用   http://blog.sina.com.cn/s/blog_67aaf44401015ufr.html

@@ -45,3 +45,37 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓĞµÄÊôĞÔ£¬  1 2 3 ÅÅÁĞ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
   Õâ¸öÊÇÖ®Ç°µÄĞ´·¨£¬ºÍ×Ô¼º¹¤³ÌÀïÃæ´úÂëÒ»Ñù¡£
 
 7.»ñÈ¡Ïà²áÍ¼Æ¬¼°Â·¾¶  http://blog.csdn.net/hugh114/article/details/5765332
+
+8.×ªÒå×Ö·û£º
+           HTMLµÄ&lt; &gt;&amp;&quot;&copy;·Ö±ğÊÇ<£¬>£¬&£¬"£¬@;µÄ×ªÒå×Ö·û
+           XMLÖ»ÓĞ5¸ö×ªÒå·û: &lt; &gt;&amp; &quot; &apos;
+
+9. String telRegex = "[1][34578]\\d{9}";
+
+10.<string name="weixin_delivery">Î¢ĞÅÖ§¸¶</String>  Ò»Ö±´í²»ÄÜÒıÓÃ£¬ºóÃæ²Å·¢ÏÖ</String>Ê××ÖÄ¸´óĞ´ÁËÓ¦¸ÃÎª</string>
+
+11.ÔÚ¹¤³ÌÀïÃæÓĞÒ»¸öBuildConfigÀà£¬Õâ¸öÀàÊÇ×Ô¶¯Éú³ÉµÄ£¬ÎŞ·¨½øĞĞĞŞ¸Ä£¬ÆäÊµÕâ¸öÀàÀïÃæµÄÊôĞÔµÄÉú³ÉÊÇ¸ù¾İAPPÄ¿Â¼ÏÂbuild.gradleÎÄ¼şÉú³ÉµÄ¡£
+
+12.±¨´í£ºandroid.view.WindowManager$BadTokenException: Unable to add window -- token android.os.BinderProxy@2c5025b1 is not valid
+  http://www.cnblogs.com/gzgg/archive/2011/10/19/2217817.html 
+  http://blog.csdn.net/huangbiao86/article/details/7791786
+
+13.¿ØÖÆ×Ô¶¨ÒåDialogµÄ´óĞ¡ºÍÎ»ÖÃ http://blog.csdn.net/misly_vinky/article/details/19109517
+
+14.android onSaveInstanceState·½·¨   http://blog.sina.com.cn/s/blog_618199e60101g1k5.html
+
+15.Android ¼Ç×¡ÃÜÂëºÍ×Ô¶¯µÇÂ¼½çÃæµÄÊµÏÖ£¨SharedPreferences µÄÓÃ·¨£©  http://blog.csdn.net/liuyiming_/article/details/7704923/
+   androidÑ§Ï°¡ª¡ªSharedPreferencesÀàµÄµÄÊ¹ÓÃ·½·¨ http://blog.csdn.net/janronehoo/article/details/6985849
+
+ ³£¼ûµÄÒ»Ğ©ÉèÖÃ£º
+
+1.
+  setFinishOnTouchOutside(false); ¾Í¿ÉÒÔÉèÖÃµã»÷¶Ô»°¿òÍâ²¿ÊÇ·ñÏûÊ§£¬µ«API11Ö®Ç°Ã»ÓĞÕâ¸ö·½·¨£¬Ò²¾ÍÊÇËµAPI11Ö®Ç°Ã»ÓĞÏÖ³ÉµÄ·½·¨ÄÜ¹»ÊµÏÖµã»÷dialogÑùÊ½ActivityÍâ²¿¶Ô»°¿òÏûÊ§
+  Activity ±ä³É¶Ô»°¿ò£¬È»ºóÔÙÒş²Ø£¿http://www.th7.cn/Program/Android/201311/158019.shtml
+  [Android]¶Ô»°¿òÑùÊ½Activity»ñµÃ´°¿ÚÍâµã»÷ÊÂ¼ş  http://www.th7.cn/Program/Android/201311/159482.shtml
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+
+1.setFinishOnTouchOutside(false); http://blog.163.com/china_uv/blog/static/117137267201431791918388/
+                                  http://www.th7.cn/Program/Android/201311/159482.shtml
+2.window.setGravity(Gravity.CENTER) http://www.open-open.com/lib/view/open1335256482983.html

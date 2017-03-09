@@ -1,0 +1,30 @@
+
+项目：在第一次聊天的时候弹出提示框
+
+基础：for循环  数据结构的使用（增删查询）  两个值是否相等进行判断   活动在不断创建，如何才能保证变量值不被重新创建活动所影响（定义一个常量，关键还是自己基础太差）
+
+数据的读取和写入自己有时间再去好好看看
+
+
+
+
+1.ArrayList用法  http://www.cnblogs.com/skylaugh/archive/2006/09/15/505346.html
+  java List创建方法  http://blog.csdn.net/friendan/article/details/17529683  List<int> list=new ArrayList<int>(13);  错误  List<Integer> list=new ArrayList<Integer>(new Integer(13));正确
+
+2.使用for循环报错（*****）java.util.ConcurrentModificationException  http://blog.sina.com.cn/s/blog_694394d30102v0jw.html
+                                                                     http://blog.sina.com.cn/s/blog_694394d30102v0ou.html
+3.两个值是否相等，自己工程里的判断使用的是==，那是因为那些值为int类型，当值类型为String的时候使用equals  http://blog.csdn.net/willielee/article/details/5804463
+
+4.Log日志打印等级 http://blog.csdn.net/alley_zhang/article/details/5713894
+
+
+
+
+最重要的是自己在写代码之前先把逻辑想好怎么去实现，不然运行一次花费的时间有点长。
+
+有的时候从逻辑上面有两种实现方法，但是不能保证两种方法在代码里面都是行的通的。就拿这次来说，先拷贝所有会话，弹框一次，自己就去掉一个会话，但是这个拷贝就出
+问题了，因为活动一直在重新创建，那么在哪里拷贝才能保证它只执行一次
+
+
+
+ 
