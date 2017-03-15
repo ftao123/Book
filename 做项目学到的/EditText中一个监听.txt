@@ -1,0 +1,6 @@
+
+
+http://blog.csdn.net/jdsjlzx/article/details/51578231
+
+1.android控件EditText的setOnEditorActionListener方法理解  http://blog.csdn.net/liuyuqin1991/article/details/21601881
+  Android EditText的设置  http://www.cnblogs.com/zyw-205520/archive/2013/02/15/2912865.html

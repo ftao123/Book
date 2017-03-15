@@ -1,0 +1,3 @@
+
+
+1.android中保存Bitmap图片到指定文件夹中的方法http://www.cnblogs.com/dyllove98/archive/2013/06/20/3147033.html

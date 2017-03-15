@@ -1,0 +1,120 @@
+
+1.Android 网络框架 Retrofit2.0介绍、使用和封装  http://blog.csdn.net/u014099894/article/details/51441462
+
+2.Retrofit2.0使用 http://www.open-open.com/lib/view/open1453552147323.html 这篇文章中推荐一篇文章也不错
+  Retrofit 2.0：有史以来最大的改进  http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0915/3460.html
+
+
+
+
+
+
+
+
+http://www.jb51.net/web/72554.html
+HTML中数据请求：
+GET POST
+ 1. get是从服务器上获取数据，post是向服务器传送数据。
+   2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
+   3. 对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。
+   4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB。
+   5. get安全性非常低，post安全性较高。
+
+
+
+http://www.tuicool.com/articles/F7bimy
+
+@GET("/s/{wd}")
+Call<PhoneResult> getResult(@Path("wd") String id);
+get请求URL拼在后面
+https://www.baidu.com/s?wd=123
+
+
+
+请求体可以通过@Body注解指定一个对象作为Http请求的请求体
+
+@POST("users/new")
+Call<User> createUser(@Body User user);
+
+该对象将会被Retroofit实例指定的转换器转换，如果没有添加转换器，则只有RequestBody可用。（转换器的添加在后面介绍）
+
+
+https://segmentfault.com/a/1190000004641798
+
+http://blog.csdn.net/u011616514/article/details/45279237
+
+============================================================================
+1.Retrofit2.0中注解使用方式 http://www.cnblogs.com/peitong/p/5981207.html       （最后的小结讲的不错）
+  @POST("/orders/{orderId}/action/arrive")
+  Response confirmOrdersArrive(@Path(AppConstants.KEY_ORDER_ID) String orderId);
+  这个请求也使用GET请求，主要是配合服务器那边需要哪种请求。
+
+2.Retrofit使用 http://blog.csdn.net/u011616514/article/details/45279237  （讲请求头说了点）
+
+
+3.Retrofit自定义Converter之StringConverterFactory http://blog.csdn.net/gengqiquan/article/details/52473334 （居然是自己那个群主）
+  class MyGsonFactory extends Converter.Factory 自定义解析器继承 Converter.Factory 这个是在retrofit2.0版本才有的。
+
+  Retrofit2.0项目中实践 http://www.jianshu.com/p/e438594d9c93  
+ 
+
+
+4。Retrofit：类型安全的REST客户端for 安卓&Java  http://www.bubuko.com/infodetail-281173.html
+
+
+
+
+
+
+
+==================================================================
+源码查看retrofit2和okhttp请求
+
+1.Retrofit2源码分析（一） http://richardcao.me/2016/05/29/Retrofit2%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/
+  Retrofit2 源码解析  http://www.jianshu.com/p/c1a3a881a144
+=================================================================================================================================================
+
+retrofit2源码分析
+1.Retrofit2 源码解析 http://www.jianshu.com/p/c1a3a881a144
+2.java的动态代理机制详解  http://www.cnblogs.com/xiaoluo501395377/p/3383130.html   （这两个网址说的特别明白）
+
+
+
+
+
+==============================================================================(理解)
+用户自定义Converter需实现Converter接口
+
+Converter.Factory的那两个方法返回的是一个Converter类型
+
+
+
+
+Retrofit——Cookie  http://blog.csdn.net/qqyanjiang/article/details/51264296
+
+=========================================================================================================
+
+
+拦截器：
+
+1.Android网络请求--Retrofit2使用方法  http://www.07net01.com/2016/01/1174216.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

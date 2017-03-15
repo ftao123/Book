@@ -1,0 +1,7 @@
+
+1.https://segmentfault.com/a/1190000004883563 Postman 安装及使用入门教程 
+  http://download.csdn.net/download/accordall/9675054 （自己使用的这个版本）
+  http://www.cnblogs.com/alanjl/p/5490922.html （这个教程还可以）
+  
+  http://blog.csdn.net/u010246789/article/details/51481134  (两个网址的插件版本好像不一样) 这个版本感觉不好使
+

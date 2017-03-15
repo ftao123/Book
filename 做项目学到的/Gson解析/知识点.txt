@@ -1,0 +1,12 @@
+
+自己项目中使用的是fastjson
+
+1.Fastjson介绍  http://blog.csdn.net/wutongyu344/article/details/7321591 
+  
+Object
+ o = ...;
+
+String
+ text = JSON.toJSONString(o);
+
+在这个例子中，调用JSON.toJSONString方法，把对象o转化为JSON格式的文本

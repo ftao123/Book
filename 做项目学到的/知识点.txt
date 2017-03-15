@@ -26,20 +26,11 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓÐµÄÊôÐÔ£¬  1 2 3 ÅÅÁÐ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
 Áô³öÀ´¡£
 
 3.
-Äã¿´ÄÄ¿ÕÖ¸ÕëÁË.¶ÔÏó.·½·¨,¿ÕÖ¸Õë¾ÍÊÇÕâ¸ö¶ÔÏóÎªnull,È»ºóÕÒviewpager¾ÍºÃÁË
-²î´í·½·¨
+Äã¿´ÄÄ¿ÕÖ¸ÕëÁË.¶ÔÏó.·½·¨,¿ÕÖ¸Õë¾ÍÊÇÕâ¸ö¶ÔÏóÎªnull,È»ºóÕÒviewpager¾ÍºÃÁË£¨×Ô¼ºviewpagerÒýÓÃ´íÎó£©
+²é´í·½·¨
 
 4.http://blog.sina.com.cn/s/blog_54516e970100bi6m.html  ReplaceÓÃ·¨
 
-5.¹«Ë¾ÏîÄ¿ÀïÃæµÄ¸÷ÖÖID£º
-   siteID  :´ú±íÒ»¸öÕ¾µã£¬±ÈÈçÀÏ°ÙÐÕ´óÒ©·¿ÊÇÒ»¸öÕ¾µã£¬ºêÈÊÌÃÊÇÁíÒ»¸öÕ¾µã¡£
-   rlToken :´ú±íÈÝÁªtoken,¸Õ¸Õ¿ªÊ¼µÄÕâ¸ötoken±ê¼ÇµÄµêÔ±£¬µ±µêÔ±ºÍ»áÔ±ÁÄÌì»áÄÃµ½»áÔ±µÄrltokenÕâÑù½øÐÐÍ¨Ñ¶
-   
-   UserInfoÀïÃæ pharmacistIdºÍuserId¶¼ÊÇ¶ÔµêÔ±µÄ±ê¼Ç£¬Ò²¾ÍºÍÒ»¸öÔÚ²»Í¬µÄ¹«Ë¾Ò»Ñù£¬¹À¼ÆÊÇ¶ÔÓ¦Á½¸ö²»Í¬µÄ±í£¬ pharmacistId¶ÔÓ¦Ò»¸ö±í£¬userId¶ÔÓ¦Ò»¸ö±í
-   Ò²ÊÇÍ¬Ò»¸öÈËÔÚ²»Í¬µÄ±íÀïÃæµÄ±ê¼Ç¡£
-
-   token ´ú±íÒ»¸öAPPºÍ·þÎñÆ÷µÄÒ»ÖÖÁ¬½ÓÎÒÃÇ¿ÉÒÔÒ»Ö±´æÔÚ±¾µØ£¬µ±ÎÒÏÂ´ÎµÇÂ¼¿ÉÒÔÄÃµ½Õâ¸ötoken£¬Èç¹ûÊ±¼äÌ«³¤£¬ºóÌ¨»á·µ»ØÒ»¸ö½á¹û£¨tokenÊ§Ð§£©ÎÒÃÇ¾Í»áÇ¿ÖÆÍË³ö
-   APP£¬ÈÃÓÃ»§ÖØÐÂµÇÂ¼¡£
 
 6.AndroidÖ®Ê¹ÓÃ¸öÍÆÊµÏÖÈý·½Ó¦ÓÃµÄÍÆËÍ¹¦ÄÜ  http://www.cnblogs.com/RGogoing/p/5773544.html
   Õâ¸öÊÇÖ®Ç°µÄÐ´·¨£¬ºÍ×Ô¼º¹¤³ÌÀïÃæ´úÂëÒ»Ñù¡£
@@ -69,6 +60,12 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓÐµÄÊôÐÔ£¬  1 2 3 ÅÅÁÐ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
 
  ³£¼ûµÄÒ»Ð©ÉèÖÃ£º
 
+
+16.Android DialogÓÃ·¨  http://www.cnblogs.com/weeds/archive/2012/01/17/2324238.html
+    DialogÀà½éÉÜ       http://www.cnblogs.com/xirihanlin/archive/2009/08/03/1537791.html
+
+17.tvDialog.setTextColor(mContext.getResources().getColor(R.color.white));
+   µ±ÉèÖÃÑÕÉ«´«ÈëµÄ²ÎÊýÎªintÖµµÄÊ±ºò£¬ÐèÒªÕâÑùÀ´½â¾ö£¬½«°Ë½øÖÆÊý×ª»¯³ÉÒ»¸öintÖµ
 1.
   setFinishOnTouchOutside(false); ¾Í¿ÉÒÔÉèÖÃµã»÷¶Ô»°¿òÍâ²¿ÊÇ·ñÏûÊ§£¬µ«API11Ö®Ç°Ã»ÓÐÕâ¸ö·½·¨£¬Ò²¾ÍÊÇËµAPI11Ö®Ç°Ã»ÓÐÏÖ³ÉµÄ·½·¨ÄÜ¹»ÊµÏÖµã»÷dialogÑùÊ½ActivityÍâ²¿¶Ô»°¿òÏûÊ§
   Activity ±ä³É¶Ô»°¿ò£¬È»ºóÔÙÒþ²Ø£¿http://www.th7.cn/Program/Android/201311/158019.shtml

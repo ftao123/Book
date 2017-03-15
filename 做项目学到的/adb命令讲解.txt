@@ -1,0 +1,6 @@
+
+1. Android adb 命令~图解  http://blog.csdn.net/jiangshide/article/details/7487928
+
+   adb无法使用解决方法 
+   http://bbs.9ria.com/thread-233946-1-1.html
+   http://blog.csdn.net/id19870510/article/details/8489486
