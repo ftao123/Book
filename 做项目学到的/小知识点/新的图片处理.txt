@@ -1,0 +1,66 @@
+
+
+自己工程里面的图片处理已经过时了，确定：只能拿到图库里面的图片，并不能拿到其他地方的图片
+
+1.Android 4.4从图库选择图片,获取图片路径并裁剪   http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1021/1816.html
+
+  通过URI获取的文件路径为null的解决方法  http://blog.csdn.net/dj0379/article/details/50765021
+
+  Android中使用Intent打开本地图库  http://blog.csdn.net/u013718120/article/details/46896457
+
+
+
+2.Android 超高仿微信图片选择器 图片该这么加载   http://blog.csdn.net/lmj623565791/article/details/39943731
+
+ android系统通过图片绝对路径获取URI的三种方法   http://www.2cto.com/kf/201307/231972.html
+ MediaStore.Images.Media.getBitmap从Uri中获得bitmap以及其缺陷  http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/0826/1665.html
+
+ android 多媒体数据库详解  http://blog.csdn.net/fengye810130/article/details/11522741
+
+
+
+
+
+ 
+[android]什么适当替代了过时的"managedQuery"  http://www.itstrike.cn/Question/1cd242b4-4b31-442a-926a-bec4945681d6.html
+
+用 managedQuery() 时需要注意的一个陷阱  http://blog.csdn.net/quaful/article/details/6976768
+
+
+********
+managedQuery过时的解决办法  http://blog.csdn.net/tiramisu_ljh/article/details/47083879
+//            cursor = activity.managedQuery(contentUri, proj, null, null, null);  //过时用下面的方法替代
+            cursor = activity.getContentResolver().query(contentUri, proj, null, null, null);
+
+
+什么适当替代了过时的"managedQuery          (自己还是不会去怎么搜索自己的问题)
+*********
+
+
+
+
+
+
+
+
+
+工程中过时方法的取代：
+
+http://blog.sina.com.cn/s/blog_6261f86901019u5o.html
+旧方法：import android.text.ClipboardManager; -->新方法：import android.content.ClipboardManager;
+
+
+
+
+Error:(286, 56) 警告: [deprecation] MediaRecorder.OutputFormat中的RAW_AMR已过时
+
+
+
+
+
+
+
+
+
+
+

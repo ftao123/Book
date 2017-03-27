@@ -1,13 +1,13 @@
 package com.micky.retrofitrxandroiddagger2.data.api;
 
 import com.micky.retrofitrxandroiddagger2.data.api.response.GetIpInfoResponse;
-import com.squareup.okhttp.ResponseBody;
 
-import retrofit.Call;
-import retrofit.Response;
-import retrofit.http.GET;
-import retrofit.http.Headers;
-import retrofit.http.Query;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -37,8 +37,6 @@ public interface ApiService {
 
     @Headers(a)
     @GET("service/getIpInfo.php")
-    Call<ResponseBody> getIpInfo3(@Query("ip") String ip);
-
-
+    Call<Response> getIpInfo3(@Query("ip") String ip);
 
 }

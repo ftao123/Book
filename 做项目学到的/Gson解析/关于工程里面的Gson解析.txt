@@ -1,0 +1,186 @@
+
+
+
+
+
+1.自己 retrofit 是1.9版本，使用的fast-Gson
+
+public class CreateOrderResponse extends Response<CreateOrderResponse.Infos> {
+
+    public class Infos {
+
+        private String tradesId;
+
+        public String getTradesId() {
+            return tradesId;
+        }
+
+        public void setTradesId(String tradesId) {
+            this.tradesId = tradesId;
+        }
+    }
+
+}
+
+
+public class Response<T> {
+    public static final String STATUS_OK = "OK";
+    public static final String STATUS_ERROR = "ERROR";
+    public static final String STATUS_ERRORCODE = "-1";
+    protected String status;
+    protected String errorMessage;
+    protected String errorCode;
+    protected T results;
+
+
+Response 接受四个字段 ，然后results下面有一个Infos类型，上面这种情况因为只有一个tradesId，那服务器就只传一个字段tradesId的键值对。
+
+如果Infos 里面有一个对象，那服务端需要传一个Map对象，在我这边就对应的是一个对象。如果上面代码如下：
+
+
+public class CreateOrderResponse extends Response<CreateOrderResponse> {
+
+    public class Infos {
+
+        private String tradesId;
+
+        public String getTradesId() {
+            return tradesId;
+        }
+
+        public void setTradesId(String tradesId) {
+            this.tradesId = tradesId;
+        }
+    }
+
+   private infos;
+   String  a;
+}
+
+那么服务器返回的就是一个字段和一个字段里面放一个Map。a=""    infos=",  ,  , ,....."
+
+如果是下面
+
+
+
+
+public class CreateOrderResponse extends Response<CreateOrderResponse> {
+
+    public class Infos {
+
+        private String tradesId;
+
+        public String getTradesId() {
+            return tradesId;
+        }
+
+        public void setTradesId(String tradesId) {
+            this.tradesId = tradesId;
+        }
+    }
+
+ 
+   String  a;
+}
+
+那么服务器就直接返回的是一个字段 a；
+
+
+
+
+================================
+接口：
+ @POST("/member/grcode")
+    FollowQRCodeResponse getMyQRCode(@Body MyQRCode myQRCode);
+
+
+传过去的body ：
+public class MyQRCode {
+    private  String  userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+}
+
+调用：
+public FollowQRCodeResponse doInBackground() throws Exception {
+                        MyQRCode myQRCode=new MyQRCode();
+                        myQRCode.setUserId(PharmacistApp.getUserInfo().getUserId());
+                        return ApiClient.getRestCommon().getMyQRCode(myQRCode);
+                    }
+
+
+
+服务器那么获取body里面的东西是通过body的getUserId方法来获取的。自己之前是这样的：
+
+public class MyQRCode {
+    private  String  userId;
+
+    public String getId() {
+        return userId;
+    }
+
+    public void setId(String userId) {
+        this.userId = userId;
+    }
+}
+
+虽然赋值改了，但是方法名字没有改。所以服务器那边接收的一直是key为Id的值，这边也需要和服务器保持一致。
+
+
+    RunnableExecutor.execute(new Worker<FollowQRCodeResponse>(new CallbackNetWork<FollowQRCodeResponse>() {
+                    @Override
+                    public void failure(Response response) {
+                        visobilityGone(view);
+                        view.tvError.setText(response.getErrorMessage());
+                    }
+
+                    @Override
+                    public void success(FollowQRCodeResponse o) {
+                        super.success(o);
+                        if ( o.isStatusOk() ) {
+                            visobilityVisible(view);
+                            entity.setGrcode(o.getResults().getGrcode());
+                            imageLoader.displayImage(o.getResults().getGrcode(), view.imageView);
+                        } else {
+                            visobilityGone(view);
+                            view.tvError.setText(o.getErrorMessage());
+                        }
+                    }
+                }) {
+                    @Override
+                    public FollowQRCodeResponse doInBackground() throws Exception {
+                        MyQRCode myQRCode=new MyQRCode();
+                        myQRCode.setUserId(PharmacistApp.getUserInfo().getUserId());
+                        return ApiClient.getRestCommon().getMyQRCode(myQRCode);
+                    }
+                });
+
+
+        }
+返回的结果类型是：FollowQRCodeResponse，
+但是FollowQRCodeResponse里面是这样的：
+public class FollowQRCodeResponse extends Response<FollowQRCodeResponse.Infos> {
+    public class Infos {
+        private String grcode;
+
+        public String getGrcode() {
+            return grcode;
+        }
+
+        public void setGrcode(String grcode) {
+            this.grcode = grcode;
+        }
+    }
+}
+
+这个类里面只有一个字段，所以接收的时候服务器那边还是直接传过来一个grcode的键值对。
+
+
+
+

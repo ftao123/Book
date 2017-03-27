@@ -1,0 +1,8 @@
+
+
+
+
+
+1.InputStreamReader和BufferedReader用法及真实案例   http://www.tuicool.com/articles/U7VFFr  
+
+2.Gson对Java嵌套对象和JSON字符串之间的转换   http://blog.sina.com.cn/s/blog_4607d85601012dtp.html

@@ -1,0 +1,64 @@
+
+
+
+1.
+ TextUtils.isEmpty(str) 判断字符串是否为空
+
+TextUtils.isEmpty(str) 判断了两步，先判断 == null，再判断 .length == 0
+
+str.isEmpty(str)只判断了 字符串.length == 0
+
+extUtils.isEmpty(str) 是一个静态方法，而 str.isEmpty() 是 String 类的对象所拥有的方法。
+
+个equals()方法也可以排断，但是当为null的时候equals方法会报错，而TextUtils.isEmpty(str)不会报错。
+
+2.
+ 遍历Map的两种方法：keySet()和entrySet()    http://blog.163.com/fw_long/blog/static/51771186201392982041337/
+
+3.
+ ContentResolver / getContentResolver()
+外界的程序通过ContentResolver接口可以访问ContentProvider提供的数据，在Activity当中通过getContentResolver()可以得到当前应用的 ContentResolver实例
+
+ Android基础 : Android ContentProvider和getContentResolver http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2012/0821/367.html
+
+4.Android ListView.setEmptyView   http://www.2cto.com/kf/201605/511355.html   (当ListView的adapter数据为空的时候显示的数据)
+
+5.Android Build.VERSION.SDK_INT兼容介绍  http://www.2cto.com/kf/201411/352053.html
+  android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.KITKAT   （对这些系统字段进行介绍）
+
+
+6.java.util.List.subList时最好小心点 http://www.cnblogs.com/gaojing/archive/2012/06/17/java-list-sublist-caution.html
+
+  subList(1, 3)  截取下标为1到3的数据，不包括下标为3的数据。
+
+7.getIdentifier获取资源id http://blog.csdn.net/lxj1137800599/article/details/52858756
+
+ ====自己工程获取表情的是通过这种方式，挺好的，不错。
+
+8.java.lang.Class.getField()方法  http://www.yiibai.com/javalang/class_getfield.html
+
+9.android EditText插入字符串到光标所在位置 http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0806/1507.html
+
+   Android中EditText控件的几种使用方法 http://blog.csdn.net/yuxiaohui78/article/details/20351471
+
+10.java反射的field.get(null) http://www.th7.cn/Program/java/201604/819056.shtml  http://www.07net01.com/program/2016/04/1456376.html
+
+   Field field=A.class.getDeclaredField("fild");                           // Field field=A.class.getDeclaredField("fild"); 准备获取 A类下面字段是fild的值
+        int a= (Integer)field.get(new A()) ;  
+//        int c= (Integer)field.get(null) ; //不是静态字段不能传null  
+        System.out.println(a);  
+
+ class A {  
+     int fild=3;  
+    static int staticFild=4;  
+}  
+
+
+11.CharSequence类型 http://www.cnblogs.com/carbs/archive/2012/06/29/2569823.html
+
+
+
+
+
+
+

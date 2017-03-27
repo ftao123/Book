@@ -1,0 +1,76 @@
+
+
+package retrofit;
+
+public interface RequestInterceptor {
+    RequestInterceptor NONE = new RequestInterceptor() {
+        public void intercept(RequestInterceptor.RequestFacade request) {
+        }
+    };
+
+    void intercept(RequestInterceptor.RequestFacade var1);
+
+    public interface RequestFacade {
+        void addHeader(String var1, String var2);
+
+        void addPathParam(String var1, String var2);
+
+        void addEncodedPathParam(String var1, String var2);
+
+        void addQueryParam(String var1, String var2);
+
+        void addEncodedQueryParam(String var1, String var2);
+    }
+}
+
+上面是retrofit 1.9中拦截器的源码
+
+
+/**
+ * Created by Lampo on 16/4/19.
+ */
+public class MyRestRequestInterceptor implements RequestInterceptor {
+    public MyRestRequestInterceptor() {
+    }
+
+    @Override
+    public void intercept(RequestFacade request) {
+        String qtime = getQtime();
+        this.addHeaders(request, qtime);
+        this.addQueryParams(request, qtime);
+    }
+
+    private void addHeaders(RequestFacade request, String qtime) {
+        request.addHeader("AuthToken", RestConfig.getAuthToken());
+        request.addHeader("Accept", "application/json");
+        request.addHeader("Content-type", "application/json");
+
+    }
+
+    public static String getQtime() {
+        Log.e("<<<<MyRestRequestInterceptor:",DateUtils.formatTime(Long.valueOf(System.currentTimeMillis()), "yyyyMMddHHmmss"));
+        return DateUtils.formatTime(Long.valueOf(System.currentTimeMillis()), "yyyyMMddHHmmss");
+    }
+
+    private void addQueryParams(RequestFacade request, String qtime) {
+        HashMap extraParams = ApiUtils.getExtraParamsHashMap(qtime);
+        Iterator var4 = extraParams.keySet().iterator();
+
+        while (var4.hasNext()) {
+            String key = (String) var4.next();
+            if (key.equals("macid") && TextUtils.isEmpty((String) extraParams.get(key))) {
+                MobclickAgent.reportError(DevUtils.getContext(), "login->" + key);
+                extraParams.put(key, Settings.Secure.getString(DevUtils.getContext().getContentResolver(), Settings.Secure.ANDROID_ID));
+            }
+            request.addQueryParam(key, (String) extraParams.get(key));
+        }
+    }
+}
+
+
+上面的是自己工程里面实现的拦截器。
+
+源码在接口的内部又写了一个内部接口：一个类实现一个接口必须要实现这个接口的抽象方法所以上面的
+
+
+

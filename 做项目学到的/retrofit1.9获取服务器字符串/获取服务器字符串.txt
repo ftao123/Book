@@ -1,0 +1,100 @@
+
+1.
+/**
+     * 今日销售 ->销售统计
+     *
+     * @return
+     */
+    @GET("/statistics/tradescount")
+    retrofit.client.Response getTradescount2();
+
+修改为返回Response。
+
+调用方法：
+
+ private void getRegistercount2() {
+        RunnableExecutor.execute(new Worker<retrofit.client.Response>(new CallbackNetWork<retrofit.client.Response>() {
+
+            @Override
+            public void failure(Response response) {
+
+            }
+            @Override
+            public void success(retrofit.client.Response o) {
+                super.success(o);
+                try {
+
+                    InputStream inputStream= o.getBody().in();
+                    InputStreamReader inputStreamReader=new InputStreamReader(inputStream);
+                    BufferedReader bufr = new BufferedReader(inputStreamReader);
+                    String line="";
+                    String line2;
+                    while((line2 = bufr.readLine())!=null){
+                        line=line+line2;
+                    }
+                    bufr.close();
+                    Log.e("NNNNNNN",line);
+
+                   JSONObject re = new JSONObject(line);
+                   JSONObject re2 = new JSONObject(re.getString("results"));
+
+                    tvTodaySaleNum.setText(re2.getString("todaySaleNum") + "笔");
+                    tvTodayAmount.setText(re2.getString("todaySaleCount") + getString(R.string.yuan));
+                    tvMonthSaleCount.setText(re2.getString("monthSaleCount")+ "笔");
+                    tvMonthAmount.setText(re2.getString("monthSaleNum")+ getString(R.string.yuan));
+                    tvSaleCount.setText(re2.getString("saleCount") + "");
+                    tvAmount.setText(re2.getString("amount"));
+
+//                    list = JSON.parseArray(line, cls);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }finally {
+                    dismissProgressDialog();
+                }
+
+
+            }
+
+
+
+
+        }) {
+            @Override
+            public retrofit.client.Response doInBackground() throws Exception {
+                return ApiClient.getRestCommon().getTradescount2();
+            }
+        });
+    }
+
+这个不同于retrofit 2.0版本，可以直接从ResponseBody.body()直接拿到服务器的字符串。
+
+retrofit.client.Response自己也可以去看一下这个源码，里面有几个字段，什么请求的URL，请求头啊都可以在这里拿到，
+
+public final class Response {
+    private final String url;
+    private final int status;
+    private final String reason;
+    private final List<Header> headers;
+    private final TypedInput body;
+
+Response.body()拿到的是一个TypedInput，我们再来看一下TypedInput是什么：
+
+public interface TypedInput {
+    String mimeType();
+
+    long length();
+
+    InputStream in() throws IOException;
+}
+
+一个接口，三个字段，上面两个不管。第三个是一个InputStream，做断点打印，会打印出来一个字节数据数据types,这个types就是通过InputStream 获得的。
+然后我们对这个流进行处理，拿到字节，然后转成字符串，这个字符串就是我们想要的Gson字符串。然后自己上面那个处理是从Gson字符串里面拿值。例如：
+re.getString("results")，拿到Gson字符串key为results对应的值。然后自己就这样慢慢拿值。
+
+
+这个是使用系统提供的Gson方法，不是使用fast-gson。
+
+
+

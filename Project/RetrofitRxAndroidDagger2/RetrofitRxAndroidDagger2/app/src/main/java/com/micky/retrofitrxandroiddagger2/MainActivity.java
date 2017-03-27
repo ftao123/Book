@@ -1,9 +1,7 @@
 package com.micky.retrofitrxandroiddagger2;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -11,26 +9,20 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.micky.retrofitrxandroiddagger2.common.utils.CrashHandler;
 import com.micky.retrofitrxandroiddagger2.data.api.ApiService;
-import com.micky.retrofitrxandroiddagger2.data.api.response.GetIpInfoResponse;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.ResponseBody;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-
-import retrofit.Response;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /**
  * @Project retrofitrxandroiddagger2
@@ -160,36 +152,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button:
-//                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-//                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//                OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                        .addInterceptor(httpLoggingInterceptor)
-//                        .build();
+
+
+                // 查看网络request 和 response 的具体的值
+                HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+                logging.setLevel(HttpLoggingInterceptor.Level.BODY);//设置查看日志的等级
+                OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
+                okHttpBuilder.interceptors().add(logging);// 这句话是重点
+//                okHttpBuilder.addInterceptor(logging);
+                //可以自定义，可以使用okHttp 默认的timeout 10s
+                okHttpBuilder.connectTimeout(5000, TimeUnit.SECONDS);
+
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(ENDPOINT)
-//                        .client(okHttpClient)
-                        .addConverterFactory(new MyGsonFactory())
+                        .client(okHttpBuilder.build())
+                        .addConverterFactory(GsonConverterFactory.create())
                         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                        .baseUrl(ENDPOINT)
                         .build();
                 ApiService apiService = retrofit.create(ApiService.class);
                 try{
                     Call<ResponseBody> call=apiService.getIpInfo2("63.223.108.42");
                     call.enqueue(new Callback<ResponseBody>() {
 
-//                    它内部没这个解析适配器
-//                        它获取到服务器数据已经就不知道怎么解析。
-//                        以后  ResponseBody  自己之前使用Response一直不能成功？？？
                         @Override
-                        public void onResponse(Response<ResponseBody> response, Retrofit retrofit) {
-                            String a=response.body().toString();
-                            textView.setText(a+"");
-                            Log.d("<<<<",response.body().toString()+":::"+a.toString());
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            try {
+                                String a= response.body().string().toString();
+                                textView.setText(a);
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         @Override
-                        public void onFailure(Throwable t) {
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
 
                         }
+
                     });
                 }catch (Exception e){
 

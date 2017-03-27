@@ -1,0 +1,11 @@
+
+
+1.Android 在ListView中嵌套ListView的事件处理   http://www.cnblogs.com/zhujiabin/p/6064335.html 
+  自己的问题是根据这篇文章解决的，后面有时间再好好看。 （自己先自定义控件，然后再调用网上那个改变控件大小的方法）
+
+ （最主要的问题在于自己对于自己的问题不知道在网上怎么搜索）
+
+
+2.Android中LayoutParams总结和用法  http://blog.csdn.net/liuhaomatou/article/details/22899925
+
+3.android 用java代码设置布局、视图View的宽度/高度或自适应  http://www.2cto.com/kf/201408/329547.html

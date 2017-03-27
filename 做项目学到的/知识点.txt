@@ -73,6 +73,8 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓĞµÄÊôĞÔ£¬  1 2 3 ÅÅÁĞ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
 
 
 
+18. Í¼Æ¬´¦Àí¿ò¼Ü
+    Android ¿ªÔ´¿ò¼ÜUniversal-Image-LoaderÍêÈ«½âÎö£¨Ò»£©--- »ù±¾½éÉÜ¼°Ê¹ÓÃ   http://www.cnblogs.com/jycboy/p/5620287.html
 
 
 

@@ -8,3 +8,11 @@ https://github.com/dongwq/xUtils/commit/d37aadfe9ba0936b334e941516a5d199679d5ddd
 
 
 xUtils中DBUtils 数据库版本升级 说明  http://blog.csdn.net/u013067184/article/details/48136151
+
+
+
+
+
+
+
+xUtils框架介绍（三）  https://my.oschina.net/jack1900/blog/174125 

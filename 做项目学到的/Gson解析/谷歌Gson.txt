@@ -1,0 +1,74 @@
+
+
+
+
+1.
+ 自己工程代码：
+
+               byte[] payload = bundle.getByteArray("payload");                      //拿到字节数组
+                JSONObject data = null;
+                String type = null;//数据传送的类型
+                String anchor = null;//传送过来的信息的类型
+                String msg = null;//信息
+                try {
+                    String payloadData = new String(payload);                        //字节数组转成String字符串
+                    JSONObject re = new JSONObject(payloadData);                     //字符串转成JSONObject对象
+                    type = re.getString("type");                                     //从对象里面拿数据  （拿到json字符串里面key为type的键值，类型也是字符串）
+                    data = new JSONObject(re.getString("data"));
+                    anchor = data.getString("anchor");                               //根据这个来判断消息类型
+//                   // anchor = Consts.MSG_TYPE_ORDER_REMIND;                       
+                    msg = data.getString("msg");
+                    //{type:"";data:{anchor:"";msg:"";extras:{post_style:""}}
+
+
+
+2.Lsit转换成gson字符串          ************
+
+   将json字符串中数组节点转换为泛型list集合(gson)  http://blog.csdn.net/typa01_kk/article/details/50894563
+
+ 包下载： http://mvnrepository.com/artifact/com.google.code.gson/gson/2.6.2 下载  gson-2.6.2.jar
+ 
+ http://download.csdn.net/detail/kaixin5588/4978269  下载 commons-lang3-3.1.jar
+
+ java转换json需要导入的jar包，org/apache/commons/lang/exception/NestableRuntimeException   http://blog.csdn.net/zenson_g/article/details/8491436
+
+
+ObjectMapper objectMapper = new ObjectMapper();
+                    JSONArray set=new JSONArray(dataList);
+                    try {
+                        orderListGson= objectMapper.writeValueAsString(dataList);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
+其实使用谷歌自带的org.json就可以，还有就是自己工程里面扩展的SharedPreferencesHelper就可以存一个List，其实就是把这个List转成Gson字符串然后存储起来。
+
+
+public void putHashMap(String key, HashMap<String, String> map) {
+        JSONObject ret = new JSONObject(map);
+        SharedPreferences var4 = this.sSettings;
+        synchronized(this.sSettings) {
+            this.sSettings.edit().putString(key, ret.toString()).commit();
+        }
+    }
+存储HashMap，把HashMap转换成字符串。
+
+
+
+********SharedPreferencesHelper关于gson的转换可以好好看一下这个类
+
+
+
+
+
+
+
+
+
+自己可以写一个工具类，把List泛型转换为gson字符串。

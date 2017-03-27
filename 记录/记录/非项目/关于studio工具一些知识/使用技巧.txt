@@ -2,3 +2,36 @@ Error:Some problems were found with the configuration of task ':app:packageDefau
 > No value has been specified for property 'signingConfig.storePassword'.
 > No value has been specified for property 'signingConfig.keyAlias'.
 > File 'D:\work\pharmacist\app\null' specified for property 'signingConfig.storeFile' does not exist.
+
+
+
+
+
+
+
+
+
+
+
+
+1.
+/**
+ * Created by Lampo on 16/4/19.
+ */
+Lampo可以把这个改成自己的名字：方法
+Settings-->Editor-->File and Code Templates-->File Header里面
+                                                                 /**
+                                                                   * Created by ${USER} on ${DATE}.
+                                                                   */
+把${USER} 改成自己的名字就可以了。
+
+
+
+
+
+
+1.Android Studio使用手册   http://www.cnblogs.com/bluestorm/archive/2013/06/01/3112747.html
+
+
+
+2.//TODO  加载图片时的默认背景图片     //TODO注释会让后面的字体显示为黄色

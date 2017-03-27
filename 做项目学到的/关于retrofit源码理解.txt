@@ -99,7 +99,7 @@ Retrofit——Cookie  http://blog.csdn.net/qqyanjiang/article/details/51264296
 
 1.Android网络请求--Retrofit2使用方法  http://www.07net01.com/2016/01/1174216.html
 
-
+2.retrofit/okhttp添加拦截器公共参数签名，打印详情响应 http://blog.csdn.net/spinchao/article/details/52932145  (写的非常好)
 
 
 

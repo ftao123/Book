@@ -1,0 +1,12 @@
+
+http://www.cnblogs.com/qianxudetianxia/category/312863.html
+
+
+1.《Android深入透析》之常用设计模式经验谈  https://my.oschina.net/u/2249934/blog/343441
+
+   工厂模式：
+   这篇文章我感觉说的不太好，然后我去看BitmapFactory类，创建Bitmap对象，通常使用静态工厂方法。
+   里面全是静态的方法，工厂模式好像还有分类。
+
+
+   建造者模式：那些.方法都是返回this，所以就会一直.方法点下去，而且还是在同一个对象里面进行设计的。 （自己看源码看懂的，哈哈）

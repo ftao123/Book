@@ -1,0 +1,53 @@
+
+
+1.Android剪切板(ClipboardManager) 复制文本    http://blog.sina.com.cn/s/blog_5da93c8f0102uxtb.html
+
+2.android 监听复制粘贴等操作 http://blog.csdn.net/chunlongyuan/article/details/7715819
+
+3.Android开发：自由选择TextView的文字  http://blog.csdn.net/hao201011/article/details/7056030
+
+
+
+
+
+
+
+
+
+
+  public boolean onTextContextMenuItem(int id) {
+        //获取系统剪切板
+        ClipboardManager clip = (ClipboardManager)getContext()
+                .getSystemService(Context.CLIPBOARD_SERVICE);
+ 
+        switch (id) {
+            case ID_COPY :  //复制
+                //获取文本框内容，将里面图片解析成HTML标签
+                String rawData = Html.toHtml(getText());
+                //将数据放到系统剪切板
+                SystemFunctions.doCopy(clip, rawData);
+                return true;
+ 
+            case ID_PASTE:  //粘贴
+                //获取系统剪切板内容（字符串）
+                String sData = String.valueOf(SystemFunctions.doPaster(clip));
+                //解析图片
+                Spanned sRawData = Html.fromHtml(sData, imageGetter, null);
+                //显示在文本框
+                append(sRawData);
+                return true;
+            }
+ 
+        return super.onTextContextMenuItem(id);
+    }
+
+
+
+1.Java String.startsWith()方法  http://www.yiibai.com/javalang/string_startswith.html
+
+
+
+
+
+
+
