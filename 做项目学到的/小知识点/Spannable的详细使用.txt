@@ -1,0 +1,21 @@
+
+
+
+1.android中用Spannable在TextView中设置超链接、颜色、字体   http://blog.csdn.net/yqyiqun/article/details/7729076
+
+  安卓文本样式-Spannable的使用   http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0120/2335.html
+
+  Spannable简介   http://www.iteedu.com/handset/android/spannablediary/intro.php
+
+
+ [android篇]textview中片段响应点击事件(SpannableString) http://www.2cto.com/kf/201406/308962.html
+
+//比较详细，样式比较多
+ android SpannableString使用详解   http://blog.csdn.net/ah200614435/article/details/7914459  （***）
+
+
+ android 图文结合，使用SpannableString和ImageSpan类   http://blog.sina.com.cn/s/blog_766aa3810100u8tx.html  （***）
+
+
+ ImageSpan的使用    http://blog.csdn.net/hjj0212/article/details/8824674
+

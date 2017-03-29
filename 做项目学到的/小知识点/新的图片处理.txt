@@ -19,8 +19,6 @@
 
 
 
-
-
  
 [android]什么适当替代了过时的"managedQuery"  http://www.itstrike.cn/Question/1cd242b4-4b31-442a-926a-bec4945681d6.html
 
@@ -40,19 +38,68 @@ managedQuery过时的解决办法  http://blog.csdn.net/tiramisu_ljh/article/details/47
 
 
 
-
-
-
-
 工程中过时方法的取代：
 
 http://blog.sina.com.cn/s/blog_6261f86901019u5o.html
 旧方法：import android.text.ClipboardManager; -->新方法：import android.content.ClipboardManager;
 
-
-
-
 Error:(286, 56) 警告: [deprecation] MediaRecorder.OutputFormat中的RAW_AMR已过时
+
+
+
+
+
+===================
+图片压缩问题：
+
+1.android之BitmapFactory.Options的使用  http://www.tuicool.com/articles/63emAv
+
+2.BitmapFactory.Options避免 内存溢出 OutOfMemoryError的优化方法  http://www.cnblogs.com/anee/archive/2012/10/11/2719900.html
+  options.inSampleSize = 10;   //width，hight设为原来的十分一 
+
+3. android bitmap compress（图片压缩）  http://blog.csdn.net/luhuajcdd/article/details/8948261 
+
+4.bitmap的用法（浅谈）  http://blog.sina.com.cn/s/blog_9c51ede40100yskx.html
+
+
+/**
+     * 压缩图片大小
+     *
+     * @param image 源Bitmap
+     * @return 压缩后的Bitmap
+     */
+    public static Bitmap compressImage(Bitmap image) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+        int options = 100;
+        while (baos.toByteArray().length / 1024 > 100) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+            baos.reset();// 重置baos即清空baos
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
+            options -= 10;// 每次都减少10
+        }
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+        return bitmap;
+    }
+
+5.Android Bitmap压缩图像的正确方法(compress的误区)  http://blog.csdn.net/adam_ling/article/details/52346741
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -77,4 +77,31 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓĞµÄÊôĞÔ£¬  1 2 3 ÅÅÁĞ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
     Android ¿ªÔ´¿ò¼ÜUniversal-Image-LoaderÍêÈ«½âÎö£¨Ò»£©--- »ù±¾½éÉÜ¼°Ê¹ÓÃ   http://www.cnblogs.com/jycboy/p/5620287.html
 
 
+19.http://www.yiibai.com/javalang/class_getfield.html
+  java.lang.Class.getField()·µ»ØÒ»¸öField¶ÔÏó£¬Ëü·´Ó³´ËClass¶ÔÏóËù±íÊ¾µÄÀà»ò½Ó¿ÚµÄÖ¸¶¨¹«¹²³ÉÔ±×Ö¶Î¡£ name²ÎÊıÊÇÒ»¸ö×Ö·û´®£¬ÓÃÓÚÖ¸¶¨ËùĞèµÄ×Ö¶ÎµÄ¼òµ¥Ãû³Æ¡£
+  ¿´ÁËÏÂÃæµÄÀı×Ó×Ô¼ºÊÇ¶®ÁË£¬
+   cls.getField("string1")
+   public java.lang.String ClassDemo.string1
+   getField·µ»ØµÄÊÇ public java.lang.String ClassDemo¹«¹²µÄ²¿·Ö£¬ºóÃæÊÇstring1ÊÇ¼ÓÔÚºóÃæµÄ¡£
 
+  JAVA·´ÉäÖĞFieldÀàµÄget·½·¨ËµÃ÷¼ÇÂ¼ http://www.cnblogs.com/yhlx/articles/2617001.html
+  Unsafe unsafe = (Unsafe)field.get(null);
+ ¿ªÊ¼ÎŞ·¨Àí½âÎªÊ²Ã´´«ÈënullÒ²ÄÜ»ñÈ¡µ½Unsafe ..²éÁËÏÂ²ÅÖªµÀÕâ¸öÊÇ»ñÈ¡static¶ÔÏóµÄ..  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

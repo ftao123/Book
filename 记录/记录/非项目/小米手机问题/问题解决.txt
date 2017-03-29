@@ -1,0 +1,5 @@
+
+红米账号
+18874035884  18874035884fan               1244450961   
+
+1. installation failed with message install_canceled_by_user应用安装失败    http://blog.csdn.net/u011835956/article/details/53230532 

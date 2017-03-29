@@ -45,20 +45,25 @@ extUtils.isEmpty(str) ÊÇÒ»¸ö¾²Ì¬·½·¨£¬¶ø str.isEmpty() ÊÇ String ÀàµÄ¶ÔÏóËùÓµÓĞµ
 
    Field field=A.class.getDeclaredField("fild");                           // Field field=A.class.getDeclaredField("fild"); ×¼±¸»ñÈ¡ AÀàÏÂÃæ×Ö¶ÎÊÇfildµÄÖµ
         int a= (Integer)field.get(new A()) ;  
-//        int c= (Integer)field.get(null) ; //²»ÊÇ¾²Ì¬×Ö¶Î²»ÄÜ´«null  
+//        int c= (Integer)field.get(null) ; //²»ÊÇ¾²Ì¬×Ö¶Î²»ÄÜ´«null      Field field=A.class.getDeclaredField("staticFild"); Ó¦¸ÃÊÇÕâÑùµÄ£¬Òª²»È»×Ô¼ºÊÇÕæµÄÏë²»³öÀ´¡£    
         System.out.println(a);  
 
  class A {  
      int fild=3;  
-    static int staticFild=4;  
+     static int staticFild=4; 
+     static int staticFild2=4;             µ±ÓĞÁ½¸ö¾²Ì¬ÖµµÄÊ±ºò£¬ÄÇÓ¦¸ÃÈ¡ÄÄÒ»¸ö¾²Ì¬ÖµÄØ£¿£¿£¿
 }  
 
+JavaµÄStringÖĞµÄsubString()·½·¨   http://blog.163.com/cpu_driver/blog/static/117663448201111182341311/ 
+
+****
 
 11.CharSequenceÀàĞÍ http://www.cnblogs.com/carbs/archive/2012/06/29/2569823.html
 
+12.androidÖĞÓÃSpannableÔÚTextViewÖĞÉèÖÃ³¬Á´½Ó¡¢ÑÕÉ«¡¢×ÖÌå   http://blog.csdn.net/yqyiqun/article/details/7729076
 
 
-
+ androidµÄTextViewÊ¹ÓÃHtml£¨Í¼Æ¬ÏÔÊ¾£©¸ñÊ½  http://blog.csdn.net/assassin4824/article/details/7766812
 
 
 

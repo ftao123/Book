@@ -44,6 +44,12 @@ ObjectMapper objectMapper = new ObjectMapper();
                     }
 
 
+**********jackson出现错误 Unrecognized field，几种处理方法   http://blog.csdn.net/dracotianlong/article/details/50506079
+说是字段名字的问题，之前自己还好好的，不知道为啥今天就把IsButton解析成了button,导致发生未知错误，所以最后自己无奈只能把那个字段名字改掉，不过以后名字
+还是需要正规一点，使用驼峰命名法****
+
+
+jackson学习----解析豆瓣的图书信息 http://www.cnblogs.com/wuxinliulei/p/4912824.html
 
 
 

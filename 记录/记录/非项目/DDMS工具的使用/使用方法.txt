@@ -1,0 +1,40 @@
+
+
+
+1..Net转战Android 4.4日常笔记（6）Android Studio DDMS用法   http://www.it165.net/pro/html/201405/13843.html
+   http://wenda.so.com/q/1464764749721643  
+
+2.android studio 用真机运行代码，应该如何获取到创建的sqlite数据库里面的数据呢？  https://segmentfault.com/q/1010000004205151?_ea=531624
+
+3.AndroidStudio 使用技巧:重置Android DDMS 面板 http://blog.csdn.net/johnnycode/article/details/44923797  
+
+4.Android开发工具之DDMS   http://www.cnblogs.com/jerrychoi/archive/2009/09/26/1574422.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

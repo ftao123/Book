@@ -4,7 +4,7 @@
 2.Retrofit2.0使用 http://www.open-open.com/lib/view/open1453552147323.html 这篇文章中推荐一篇文章也不错
   Retrofit 2.0：有史以来最大的改进  http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0915/3460.html
 
-
+3.Retrofit2+Okhttp3+Rxjava通过SOAP协议请求WebService  
 
 
 

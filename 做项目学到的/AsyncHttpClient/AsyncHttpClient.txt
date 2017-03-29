@@ -1,0 +1,7 @@
+
+
+1.android-async-http AsyncHttpClient介绍  http://www.2cto.com/kf/201408/326552.html
+
+2.android-async-http框架库使用基础  http://blog.csdn.net/yanbober/article/details/45307549
+
+3.利用AsyncHttpClient实现图片的上传与下载  http://blog.csdn.net/xinzheng_wang/article/details/38925731 

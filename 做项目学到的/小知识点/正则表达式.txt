@@ -1,0 +1,10 @@
+
+
+1.JAVA正则表达式 Pattern和Matcher  http://www.cnblogs.com/playing/archive/2011/03/15/1984943.html
+  JAVA正则表达式：Pattern类与Matcher类详解(转)  http://www.cnblogs.com/ggjucheng/p/3423731.html 
+
+  Java正则表达式Pattern.quote()方法详解   http://blog.csdn.net/yin380697242/article/details/52050023
+
+  java Map及Map.Entry详解   http://www.cnblogs.com/guanjie20/p/3769772.html 
+
+  java中的 Map.Entry接口与map的遍历方式   http://blog.csdn.net/afeiluo/article/details/12319815 
