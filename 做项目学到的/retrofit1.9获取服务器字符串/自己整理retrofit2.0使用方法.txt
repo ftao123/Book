@@ -1,0 +1,23 @@
+
+
+
+
+1.retrofit 2.0中拦截器已经不放在new Retrofit.Builder()后面了，而是放在OkHttpClient里面。
+
+
+
+
+
+
+
+http://blog.csdn.net/io_field/article/details/52263224   （在拦截器里面如何添加请求头参数）
+http://www.07net01.com/2016/01/1174216.html
+http://www.2cto.com/kf/201605/510999.html （也讲了拦截器的一些设置）
+次要文章：
+http://blog.csdn.net/io_field/article/details/52263224
+
+
+日志拦截器：
+ http://www.cnblogs.com/zhang-cb/p/6074176.html
+ okhttp日志拦截器LoggingInterceptor  http://blog.csdn.net/bunny1024/article/details/53504556  （可以按照这个来写）
+ http://blog.csdn.net/lbbmxc2088/article/details/53742630

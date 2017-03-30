@@ -49,7 +49,7 @@ http://blog.csdn.net/u011616514/article/details/45279237
   Response confirmOrdersArrive(@Path(AppConstants.KEY_ORDER_ID) String orderId);
   这个请求也使用GET请求，主要是配合服务器那边需要哪种请求。
 
-2.Retrofit使用 http://blog.csdn.net/u011616514/article/details/45279237  （讲请求头说了点）
+2.Retrofit使用 http://blog.csdn.net/u011616514/article/details/45279237  （讲请求头说了点****这个说的是1.9版本的）
 
 
 3.Retrofit自定义Converter之StringConverterFactory http://blog.csdn.net/gengqiquan/article/details/52473334 （居然是自己那个群主）
@@ -106,8 +106,10 @@ Retrofit——Cookie  http://blog.csdn.net/qqyanjiang/article/details/51264296
 
 
 
+请教如何将URI转换成正常的字符串路径
+String src=URLDecoder.decode(code,"UTF-8");//注意编码和输入时一致 
 
-
+从URL中提取参数与将对象转换为URL查询参数  http://www.cnblogs.com/xesam/archive/2012/01/12/2320068.html
 
 
 
