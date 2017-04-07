@@ -10,3 +10,148 @@ String payloadData = new String(payload)
 
 JSONObject re = new JSONObject(payloadData);
 
+
+2.
+
+package com.ybzf.mobile.pharmacist.model.response;
+
+import com.ybzf.mobile.commonutils.entities.Response;
+
+/**
+ * Created by Lampo on 2015/10/13.
+ */
+public class LumpSumResponce extends Response<LumpSumResponce> {
+
+
+        //可用优惠卷个数
+            private int couponNum;
+
+            public int getCouponNum() {return couponNum;}
+
+            public void setCouponNum(int couponNum) {
+                this.couponNum = couponNum;
+            }
+
+
+        //可用积分数
+            private int discountIntegral;
+
+            public int getDiscountIntegral() {
+                return discountIntegral;
+            }
+
+            public void setDiscountIntegral(int discountIntegral) {
+                this.discountIntegral = discountIntegral;
+            }
+
+
+        private double integralDiscount;//使用积分对应的金额
+        private double totalOriginalPrice;//商品原价总计            (不用)
+        private double totalDiscountPrice;// 商品原价打折后价格总计
+        private double totalFeePromotion130DiscountPrice;//  计算满减，减去的金额
+        private double totalFee;// 实际需支付金额
+        private double preferentialPrice;//优惠总计
+        private double shippingFee;//实际需要支付的运费
+
+        public double getIntegralDiscount() {
+            return integralDiscount / 100.0;
+        }
+
+        public void setIntegralDiscount(double integralDiscount) {
+            this.integralDiscount = integralDiscount;
+        }
+
+        public double getShippingFee() {
+            return shippingFee;
+        }
+
+        public void setShippingFee(double shippingFee) {
+            this.shippingFee = shippingFee / 100.0;
+        }
+
+        public double getPreferentialPrice() {
+            return preferentialPrice;
+        }
+
+        public void setPreferentialPrice(double preferentialPrice) {
+            this.preferentialPrice = preferentialPrice / 100.0;
+        }
+
+        public double getTotalOriginalPrice() {
+            return totalOriginalPrice;
+        }
+
+        public void setTotalOriginalPrice(double totalOriginalPrice) {
+            this.totalOriginalPrice = totalOriginalPrice / 100.0;
+        }
+
+        public double getTotalDiscountPrice() {
+            return totalDiscountPrice;
+        }
+
+        public void setTotalDiscountPrice(double totalDiscountPrice) {
+            this.totalDiscountPrice = totalDiscountPrice / 100.0;
+        }
+
+
+        public double getTotalFeePromotion130DiscountPrice() {
+            return totalFeePromotion130DiscountPrice;
+        }
+
+        public void setTotalFeePromotion130DiscountPrice(double totalFeePromotion130DiscountPrice) {
+            this.totalFeePromotion130DiscountPrice = totalFeePromotion130DiscountPrice / 100.0;
+        }
+
+        public double getTotalFee() {
+            return totalFee;
+        }
+
+        public void setTotalFee(double totalFee) {
+            this.totalFee = totalFee / 100.0;
+        }
+
+
+}
+
+
+public void setTotalDiscountPrice(double totalDiscountPrice) {
+            this.totalDiscountPrice = totalDiscountPrice / 100.0;
+        }
+在自己工程里面虽然这个方法没用被调用，但是这个值确实被设置了。也就是说调用：
+public double getTotalDiscountPrice() {
+            return totalDiscountPrice;
+        }
+这个方法的值是除了100的，（****这个好像是java里面影射然后把值设置进去了）
+
+
+
+****还有就是自己在传对象的时候，里面的get和set方法要和服务器一致，不然服务器拿到自己传过去的值。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

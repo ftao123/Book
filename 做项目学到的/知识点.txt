@@ -89,8 +89,14 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓĞµÄÊôĞÔ£¬  1 2 3 ÅÅÁĞ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
  ¿ªÊ¼ÎŞ·¨Àí½âÎªÊ²Ã´´«ÈënullÒ²ÄÜ»ñÈ¡µ½Unsafe ..²éÁËÏÂ²ÅÖªµÀÕâ¸öÊÇ»ñÈ¡static¶ÔÏóµÄ..  
 
 
+20. Google¿ªÔ´ÏîÄ¿ZXing£¨¶şÎ¬ÌõÂë±à½âÂë£©¼òµ¥Ê¹ÓÃ    http://blog.csdn.net/benweizhu/article/details/7069403
 
-
+21.BigDecimalÀàµÄ¼Ó¼õ³Ë³ı  http://blog.sina.com.cn/s/blog_6a0cd5e501011soa.html 
+   public static double mul(double v1, double v2) {
+        BigDecimal b1 = new BigDecimal(Double.toString(v1));
+        BigDecimal b2 = new BigDecimal(Double.toString(v2));
+        return b1.multiply(b2).doubleValue();
+    }
 
 
 

@@ -65,5 +65,5 @@ Java的String中的subString()方法   http://blog.163.com/cpu_driver/blog/static/117
 
  android的TextView使用Html（图片显示）格式  http://blog.csdn.net/assassin4824/article/details/7766812
 
-
+13.Android之Service与Activity通信机制 https://segmentfault.com/a/1190000002400391
 

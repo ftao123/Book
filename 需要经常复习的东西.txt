@@ -68,14 +68,10 @@ ViewPage有预加载机制：
 
 
 
-
-
-
-
  android图片轮播效果，RollViewPager的简单使用  http://blog.csdn.net/double2hao/article/details/51328824 （一个开源的框架，有demo）
 
 
-
+===============================================================
 
 
 
