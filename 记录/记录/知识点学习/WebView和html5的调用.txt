@@ -18,7 +18,7 @@ android 中webview基本使用的方法小结http://blog.csdn.net/abc__d/article/details/5
 android中WebView加载网页居中显示http://www.open-open.com/lib/view/open1429772758729.html
 android webview让内容充满屏幕的方法http://blog.csdn.net/chniccs/article/details/49665363
 
-
+Android WebView使用基础 http://www.cnblogs.com/mengdd/archive/2013/03/01/2938295.html
 
 
 
@@ -211,13 +211,67 @@ private static Stack<MainActivity> mStack;
 
 
 
+================================2017/4/11
+自己的测试工程师API24，所以使用宏仁堂的项目中的方法：
+webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if ( url.startsWith("http:") || url.startsWith("https:") ) {
+                    return false;
+                }
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                return true;
+            }
+        });
 
+shouldOverrideUrlLoading是过时的方法，所以导致自己捕获https:请求在webView里面显示失败，然后自己使用了：
+webView.setWebViewClient(new WebViewClient(){
 
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                if(request.getUrl().toString().startsWith("https://www.baidu.com/")){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, request.getUrl());
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
+这样写就可以了。宏仁堂是API 22
 
+android之webview使用 http://blog.csdn.net/xiangjai/article/details/8306276
 
-
-
-
+=====================================================================================
+Android 利用WebViewJavascriptBridge 实现js和java的交互（一） http://blog.csdn.net/sk719887916/article/details/47189607 
+(解读)：
+在js中我们同样可以直接注册一个回调函数，通过 bridge.registerHandler（）来注册，接着调用 responseCallback(responseData)来返回数据给java代码的同名函数
+也可以直接调用init()来指定网页首次加载上面注册java代码：
+connectWebViewJavascriptBridge(function(bridge) {                                           ①
+          bridge.init(function(message, responseCallback) {  
+              console.log('JS got a message', message);  
+              var data = {  
+                  'Javascript Responds': 'Wee!'  
+              };  
+              console.log('JS responding with', data);  
+              responseCallback(data);  
+          });  
+  
+          bridge.registerHandler("functionInJs", function(data, responseCallback) {  
+              document.getElementById("show").innerHTML = ("data from Java: = " + data);  
+              var responseData = "Javascript Says Right back aka!";  
+              responseCallback(responseData);  
+          });  
+      })  
+上面这段代码会在页面首次加载的时候执行：
+webView.callHandler("functionInJs", new Gson().toJson(user), new CallBackFunction() {         ②
+            @Override
+            public void onCallBack(String data) {
+                Toast.makeText(WebViewJSBridge.this,"网页在获取你的位置",Toast.LENGTH_SHORT).show();
+            }
+        });
+②处的代码是在收到①处的代码返回值后，回调执行。
 
 
 

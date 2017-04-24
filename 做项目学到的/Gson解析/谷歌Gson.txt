@@ -1,5 +1,5 @@
 
-
+自己工程里面使用的fastgson，如果这边定义一个类，然后后天不用大括号把那个字段括起来，直接传过来是一个字符串，那么就会报错，fastgson无法解析。
 
 
 1.
@@ -78,3 +78,26 @@ public void putHashMap(String key, HashMap<String, String> map) {
 
 
 自己可以写一个工具类，把List泛型转换为gson字符串。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

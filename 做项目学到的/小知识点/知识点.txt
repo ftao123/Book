@@ -67,3 +67,5 @@ Java的String中的subString()方法   http://blog.163.com/cpu_driver/blog/static/117
 
 13.Android之Service与Activity通信机制 https://segmentfault.com/a/1190000002400391
 
+
+14.Android实现计时与倒计时的常用方法小结   http://www.jb51.net/article/74092.htm

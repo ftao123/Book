@@ -1,0 +1,81 @@
+
+
+
+                    layoutButtom.setFocusable(true);
+                    layoutButtom.setFocusableInTouchMode(true);
+                    layoutButtom.requestFocus();
+                    layoutButtom.requestFocusFromTouch();
+
+
+
+setFocusable这个是用键盘是否能获得焦点
+setFocusableInTouchMode这个是触摸是否能获得焦点
+
+setClickable  设置为true时，表明控件可以点击，如果为false，就不能点击；“点击”适用于鼠标、键盘按键、遥控器等；
+注意，setOnClickListener方法会默认把控件的setClickable设置为true。
+
+setEnabled  使能控件，如果设置为false，该控件永远不会活动，不管设置为什么属性，都无效；
+设置为true，表明激活该控件，控件处于活动状态，处于活动状态，就能响应事件了，比如触摸、点击、按键事件等；
+setEnabled就相当于总开关一样，只有总开关打开了，才能使用其他事件。
+
+setFocusable 使能控件获得焦点，设置为true时，并不是说立刻获得焦点，要想立刻获得焦点，得用requestFocus；
+使能获得焦点，就是说具备获得焦点的机会、能力，当有焦点在控件之间移动时，控件就有这个机会、能力得到焦点。
+
+
+
+
+
+举个例子，根据条件判断是否禁用editText：  if(a > 3) { editText.setFocusableInTouchMode(false); //editText.setFocusable (false);  editText.clearFocus(); } else { editText.setFocusableInTouchMode(true); //editText.setFocusable (true);  editText.requestFocus(); }   一开始我使用的是setFocusable (),但测试发现，当执行了setFocusable (false)后，再执行 setFocusable (true) 无法输入，也获取不了焦点了。 郁闷了，后来试了一下setFocusableInTouchMode(false)后，再执行setFocusableInTouchMode(true)，可以正常输入，也能正常获取焦点。 setFocusableInTouchMode 与 setFocusable 之间有什么区别，我不太清楚，但经过测试发现这个区别。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.Android关于ListView中item与控件抢夺焦点的那些事   http://www.cnblogs.com/exmyth/p/4466179.html
+
+  android 布局 控件 焦点冲突问题  http://blog.csdn.net/lcugym/article/details/22723359
+
+  关于ScrollView中嵌套listview焦点滑动问题 解决   http://www.cnblogs.com/1426837364qqcom/p/5388902.html
+
+  android 布局 控件 焦点冲突问题  http://blog.csdn.net/lcugym/article/details/22723359
+
+  了解控制焦点顺序   http://www.gaixue.com/lesson/1756_187
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

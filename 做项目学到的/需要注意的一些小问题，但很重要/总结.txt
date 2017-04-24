@@ -1,0 +1,9 @@
+
+
+
+
+
+1.details.getBarndName()!=null  不能这样写   还有就是自己应该写一个工具类进行空的排断,当时取值进行排断空的时候应该要把null写在前面，因为如果
+ details.getBarndName()为null再去调用他的.equals()方法肯定会错
+
+2.还有就是 Integer之间比较相当是不能用==的，需要使用.equals()，是对象和对象进行比较。

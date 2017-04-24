@@ -1,0 +1,12 @@
+
+
+之前三星手机怎么都连不上AS，然后自己就下载一个豌豆荚（或者应用宝）然后再连AS就可以，豌豆荚会自动下载手机驱动，坑爹啊。
+
+
+1. eclipse、ddms、android studio连接不上手机问题解决  http://blog.csdn.net/w690333243/article/details/51187159
+
+2.android studio 连不上真机  http://www.xue163.com/588880/39094/390949289.html
+
+3.android studio连接不上手机的解决办法 http://blog.csdn.net/peak5154411/article/details/52118838
+
+  Android Studio 连接真机不识别   http://www.mamicode.com/info-detail-471776.html

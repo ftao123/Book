@@ -1,0 +1,29 @@
+
+
+
+
+
+
+
+
+1.ScrollView里面嵌套ListView和Listview 里面嵌套ListView不能显示完全问题：
+  网上有很多方法都大多相同。
+  ScrollView中嵌套ListView时显示不全的解决方案   http://blog.csdn.net/itachi85/article/details/7726962 
+
+  ListView嵌套ListView问题，自己在自己聊天页面显示订单详情的时候做过。
+
+
+
+
+   @Override
+    public int getCount() {
+        if (datalist.size() > 3) {
+            return 3;
+        } else
+            return datalist.size();
+    }
+   
+   自己代码是专门控制只显示前三个，自己傻逼还搞了一天。
+
+
+ 
