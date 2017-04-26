@@ -98,6 +98,14 @@ git pull
 
 
 
+*******************
+Git SSH Key 生成步骤  http://blog.csdn.net/hustpzb/article/details/8230454/
+Git设置及GitHub的使用  http://www.cnblogs.com/peterzd/archive/2012/04/22/2465230.html
+
+注意人家提示，人家有可能是让写yes或者no的，不要一股脑往下。
+
+
+
 
 
 
