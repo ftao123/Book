@@ -69,3 +69,7 @@ Java的String中的subString()方法   http://blog.163.com/cpu_driver/blog/static/117
 
 
 14.Android实现计时与倒计时的常用方法小结   http://www.jb51.net/article/74092.htm
+
+15 A06_RelativeLayout的属性设置 http://www.tuicool.com/articles/Y7byAj6
+
+16.安卓通知栏自定义布局提示(NotificationCompat.Builder)  http://blog.csdn.net/wd4871/article/details/50722655

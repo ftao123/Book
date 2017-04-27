@@ -105,6 +105,26 @@ Git设置及GitHub的使用  http://www.cnblogs.com/peterzd/archive/2012/04/22/2465230
 注意人家提示，人家有可能是让写yes或者no的，不要一股脑往下。
 
 
+Gitlab的develop角色的人没有权限无法提交的问题解决方案  http://www.cnblogs.com/xxcanghai/p/5009926.html
+
+
+____________
+
+
+2017.4.27  自己前两天git抽风了，然后解决办法。
+
+ git remote set-url origin http://git.local.ybzf.com/android/pharmacist.git
+
+ git push
+
+ git pull
+
+ git push
+
+
+后面弹出来让自己输入git 账号和密码然后就可以了。
+
+
 
 
 

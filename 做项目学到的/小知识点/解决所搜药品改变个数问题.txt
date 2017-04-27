@@ -1,0 +1,8 @@
+
+
+
+
+自己的listView子项目中有一个EditText，然后这个EditText是死活不能弹出数字键盘，只有自己把android:inputType="phone"这个属性去掉才能进行编辑，不知道为啥？？？
+自己想到正则表达都没有解决，最后自己使用android:digits="0123456789"这个属性来控制，但是自己设置的 android:maxLength="16"并没有生效。
+
+

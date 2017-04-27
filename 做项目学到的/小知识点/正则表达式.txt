@@ -1,5 +1,7 @@
 
 
+ 比较常用的几个正则表达式(匹配数字)  http://blog.csdn.net/wangjia55/article/details/7877915
+
 1.JAVA正则表达式 Pattern和Matcher  http://www.cnblogs.com/playing/archive/2011/03/15/1984943.html
   JAVA正则表达式：Pattern类与Matcher类详解(转)  http://www.cnblogs.com/ggjucheng/p/3423731.html 
 

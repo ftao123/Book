@@ -281,21 +281,6 @@ webView.callHandler("functionInJs", new Gson().toJson(user), new CallBackFunctio
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 在android开发中，当不满足触发条件就按返回键的时候，就要对此进行检测。尤其是当前Activity需要往前一个Activity传送消息时。即Activity1跳转到Activity3如果采用的是startActivityForResult这种方式，如果不重写返回键，程序不知道要返回给Activity1什么内容就会报错。因此，必须对Activity3的返回按键重写，这里让他传一个“ERROR”信息：
 
 复制代码 代码如下:
@@ -312,5 +297,33 @@ webView.callHandler("functionInJs", new Gson().toJson(user), new CallBackFunctio
         //super.onBackPressed();               
     }
 http://blog.csdn.net/linuxcjh/article/details/8116309 
+
+
+
+
+*******************************遇到问题与解决
+
+webview网页自适应手机屏幕大小 http://blog.sina.com.cn/s/blog_51d070860101ftcn.html
+
+Android中如何判别WebView加载完毕并使用ProgressDialog进行提示    http://www.2cto.com/kf/201204/126794.html  （排断这个页面是否加载完毕）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
