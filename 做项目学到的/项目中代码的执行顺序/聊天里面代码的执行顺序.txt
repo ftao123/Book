@@ -1,0 +1,139 @@
+
+
+
+ if ( bodyitem.getIs_question() == 1 ) {
+            if ( !DialogActivity.diaLogIsOpen && !CommonUtils.isAppOpen() && message != null&&PharmacistApp.isDialog) {
+                Intent start = new Intent(DevUtils.getContext(), DialogActivity.class);
+                start.putExtra(DialogActivity.KEY_CONTEXT, DialogActivity.FEATURES_RESPONDER);
+                start.putExtra(DialogActivity.KEY_CONTENT, bodyitem.getMsg_content());
+                start.putExtra("ECMessage", message);
+                start.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                DevUtils.getContext().startActivity(start);
+
+            } else {
+                ecMessageList.add(message);
+            }
+
+//            SharedPreferencesHelper.getInstance().putLong(message.getMsgId(),Long.valueOf(System.currentTimeMillis()));
+//            //也是需要求，在需要的时候展示出来
+//            ecMessageList.add(message);
+//            sendBroadCast();
+        } else {
+            MessageUtils.saveMessage(message, message.getForm());
+        }
+
+
+ start.putExtra(DialogActivity.KEY_CONTEXT, DialogActivity.FEATURES_RESPONDER);在这个地方打一个断点
+
+有意思的是，容联推送过来三个抢答，然后第一次走括号里面的，但是并没有发生跳转，然后导致第二次和第三次的推送过来的抢答没有走  ecMessageList.add(message);
+这个方法，然后点击抢答之后ecMessageList是空的。
+自己方法断点弹框弹出来，后面那两个抢答就会走 ecMessageList.add(message);？？？有意思但是不知道原因！！！
+
+
+
+
+for ( ECMessage m : SplashActivity.ecMessageList ) {
+                                if ( (m.getForm()).equals(message.getForm()) ) {
+                                    MessageUtils.saveMessage(message, o.getResults().getMemberId());
+                                    mList.add(m);
+                                }
+                            }
+
+for ( ECMessage ma : mList ) {
+                                SplashActivity.ecMessageList.remove(ma);
+                            }
+
+ 如果遇到条件符合的就执行MessageUtils.saveMessage(message, o.getResults().getMemberId());
+然后在这个方法里面：
+
+public static void saveMessage(final ECMessage message, final String friendMemberId) throws DbException {
+        if ( message == null ||friendMemberId==null)
+            return;
+
+        final String friendId = message.getForm();
+        final String myId = message.getTo();
+
+            if ( !FriendDBOper.checkIsFriend(myId, friendId) ) {  //检查好友是否存在
+                final List<String> friendIds = new ArrayList<>();
+                friendIds.add(friendId);
+                final List<String> memberIds = new ArrayList<>();
+                memberIds.add(friendMemberId);
+                RunnableExecutor.execute(new Worker<FriendInfosResponse>(new CallbackNetWork<FriendInfosResponse>() {
+                    @Override
+                    public void failure(Response response) {
+
+                    }
+
+                    @Override
+                    public void success(FriendInfosResponse o) {
+                        super.success(o);
+                        try {
+                            if ( o.isStatusOk() ) {
+                                for ( final FriendInfo friendInfo : o.getResults() ) {
+                                    friendInfo.setUserType(Constant.FRIEND_NOT_ATTENTION);
+                                    final Friend friend = new Friend();
+                                    friend.setUser_type(Constant.FRIEND_NOT_ATTENTION);
+                                    friend.setSelf_uid(myId);
+                                    friend.setUser_id(friendId);
+                                    friend.setMember_id(friendMemberId);
+                                    friend.setNickname(friendInfo.getNickname());
+                                    friend.setPhone(friendInfo.getPhone());
+                                    friend.setHead_img_url(friendInfo.getHeadImgUrl());
+                                    friend.setCreated_at(System.currentTimeMillis());
+                                    //防止并发问题
+                                    //if(!FriendDBOper.checkIsFriend(myId, friendId)){
+                                    //    FriendDBOper.addFriend(friend);
+                                    //}
+                                    FriendDBOper.addFriend(friend);
+                                    toast("抢答成功");
+                                }
+
+                            }
+                            sendBroadCastFriend();
+                            saveMessageBefore(message);
+                        } catch ( DbException e ) {
+                            e.printStackTrace();
+                        }
+                    }
+                }) {
+                    @Override
+                    public FriendInfosResponse doInBackground() throws Exception {
+                        String member_ids="member_ids=";
+                        for(String m:memberIds){
+                            member_ids=member_ids+m+",";
+                        }
+                        return ApiClient.getRestCommon().getFriendInfos(member_ids);
+                    }
+                });
+            } else {
+                saveMessageBefore(message);
+            }
+
+    }
+
+检查是否是好友，如果不是那么就会调节扣。
+
+过程是这样的， for循环出现符合条件的，那么就执行saveMessage，但是并不会立马去调用接口，然后for循环继续，然后再去执行saveMessage方法，也不会去调用接口，当for
+循环完成之后，然后：
+for ( ECMessage ma : mList ) {
+                                SplashActivity.ecMessageList.remove(ma);
+                            }
+这个循环执行完毕之后才会去一一去执行调用接口之后的回调。
+
+
+
+因为会做一个!FriendDBOper.checkIsFriend(myId, friendId)这排断，但是这个排断是在调用接口成功之后才会改变状态，那么就造成后面的都进去了。
+
+                                    //防止并发问题（这样确实是解决了）
+                                    if(!FriendDBOper.checkIsFriend(myId, friendId)){
+                                        FriendDBOper.addFriend(friend);
+                                        toast("抢答成功");
+                                    }
+上面的代码确实解决了多次接口调用造成的并发问题， FriendDBOper.addFriend(friend);当第一个访问接口成功之后执行这行代码，然后这里
+再去执行!FriendDBOper.checkIsFriend(myId, friendId)就解决这个并发问题了。
+
+
+
+
+
+

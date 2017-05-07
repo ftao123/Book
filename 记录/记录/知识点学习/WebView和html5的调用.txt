@@ -20,8 +20,7 @@ android webview让内容充满屏幕的方法http://blog.csdn.net/chniccs/article/details/
 
 Android WebView使用基础 http://www.cnblogs.com/mengdd/archive/2013/03/01/2938295.html
 
-
-
+Java WebView 交互（互传参数）   http://blog.csdn.net/jjyyhema/article/details/6545640  (这个讲了如何交互js从java中获取数据)
 
 
 

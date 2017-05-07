@@ -103,12 +103,52 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓĞµÄÊôĞÔ£¬  1 2 3 ÅÅÁĞ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
       Ò²¾ÍÊÇÖ»Òª¸Ä±äedittext»òÕßÖØĞÂ¸´ÖÆ¸²¸ÇÖ®Ç°µÄÖµ¾Í»áÖ´ĞĞÕâ¸ö¼àÌıµÄÄÇÈı¸ö·½·¨¡£
 
 
+23 TextViewµÄ×ÖÌåÑÕÉ«ÉèÖÃµÄ¶àÖÖ·½·¨ http://blog.csdn.net/a7a9a68/article/details/7778752
+
+24 ×Ô¼ºÔÚ×Ô¼ºµÄ¹¤³ÌÀïÃæµÄÀà±íÀïÃæÌí¼Ó×Ö¶Î£¬È·ÊµÊÇ¿ÉÒÔÌí¼Ó£¬¶øÇÒ¿ÉÒÔÊ¹ÓÃget·½·¨¡£
+
+25 ÏûÏ¢Ä£Ê½Toast.makeTextµÄ¼¸ÖÖ³£¼ûÓÃ·¨  http://www.cnblogs.com/ycxyyzw/archive/2013/03/12/2955845.html (ToastµÄ¼¸ÖÖÑùÊ½)
+
+26 ½âÎöTokenµÄ·½·¨
+   //½âÎöToken
+    public AuthToken parseAccessToken(String accessToken){
+        String token = EncryptUtil.base64DecodeToString(accessToken.getBytes());
+        AuthToken authToken = null;
+        try {
+            authToken = JacksonUtils.json2pojo(token,AuthToken.class);
+        } catch (Exception e) {
+            logger.error("½âÎöAccessTokenÊ§°Ü",e);
+        }
+
+        return authToken;
+    }
+public static String base64DecodeToString(final byte[] bytes) {
+            return new String(Base64.decodeBase64(bytes));
+        }
 
 
+String AuthTokenString = new String(Base64.decodeFast(RestConfig.getAuthToken()));
+                    String storeId = null;
+                    String messageStoreId = null;
+                    try {
+                        JSONObject AuthToken = new JSONObject(AuthTokenString);
+                        storeId = AuthToken.getString("storeId");
 
+                        JSONObject messageJS = new JSONObject(message);
+                        messageStoreId = messageJS.getString("storeId");
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
+27. Android studioÈçºÎ¸ü¸Ägradle°æ±¾   Android studioÈçºÎ¸ü¸Ägradle°æ±¾
+    Android Gradle²å¼ş£¨plugin£©°æ±¾£¨version£©ÓëGradle¡¢SDK Build Tools°æ±¾¹ØÏµ  http://blog.csdn.net/u012964796/article/details/51159554
+    ¿ÉÒÔ·­Òë¿´Ô­ÎÄ¡£
 
+28  Calling startActivity() from outside of an Activity context requires the FLAG_ACTIVITY_NEW_TASK fla
+    http://www.th7.cn/Program/Android/201611/1012778.shtml
+    http://blog.csdn.net/wike163/article/details/6678073
+    
 
 
  

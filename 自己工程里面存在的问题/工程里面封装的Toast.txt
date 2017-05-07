@@ -1,0 +1,5 @@
+
+自己工程里面自己封装了一个BaseNoActionBarActivity 是专门用来显示AlertDialog.Builder 和Toast，但是这个有一个不合理的地方就是Toast重复执行的问题。
+然后自己在百度上找打的解决问题的方法：
+android 关于Toast重复显示解决方法  http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0302/944.html
+android 关于Toast重复显示解决方法  http://blog.csdn.net/onlyonecoder/article/details/8624942

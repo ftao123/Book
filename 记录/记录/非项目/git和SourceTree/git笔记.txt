@@ -126,10 +126,7 @@ ____________
 
 
 
-
-
-
-
+如何向git账号上提交代码 http://www.cnblogs.com/wangkongming/p/4158664.html  (这里告诉如何使用https进行提交)
 
 
 

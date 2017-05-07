@@ -10,3 +10,6 @@
 
 1.Java中的内部接口   http://www.cnblogs.com/chenpi/p/5518400.html#_label0    (搞清楚静态类或者静态方法可以调用东西的范围)
   java中外部接口与内部接口的使用   http://blog.csdn.net/u012842688/article/details/50939533
+
+
+2.Android开发记录    http://blog.sina.com.cn/s/blog_9cbe84040100zxtt.html

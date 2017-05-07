@@ -1,0 +1,36 @@
+
+
+Android 自定义主题和风格   http://www.cnblogs.com/shang53880/archive/2011/06/20/2085102.html
+
+
+
+Android中获取软键盘状态和软键盘高度  http://blog.csdn.net/ccpat/article/details/46730771
+
+
+
+
+
+
+
+
+
+
+
+
+
+弹框：
+把活动的主体设置成，
+<style name="Theme.MyCeShi.Dialog.noTitle" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+这样活动就变成窗口模式了。通过window.setGravity();来设置弹框的也，页面的位置。
+Toast也可以设置setGravity()。
+
+android 对话框弹出位置和透明度的设置 http://www.open-open.com/lib/view/open1335256482983.html
+
+
+droid 自定义Dialog 控制 http://www.cnblogs.com/ok-lanyan/archive/2012/08/02/2619962.html （对Dialog位置的控制做了很详细的说明了）。
+  
+Dialog 位置一般设置   http://blog.sina.com.cn/s/blog_ac843e3301011ev3.html
+
+如何设置对话框的宽度和高度  http://blog.csdn.net/shangs2010/article/details/8261254

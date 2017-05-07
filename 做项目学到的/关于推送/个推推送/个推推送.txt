@@ -1,0 +1,7 @@
+
+
+1.自己使用新版本的个推推送之后，使用Service来接受数据必须这样写。
+  PushManager.getInstance().initialize(this.getApplicationContext(), GetuiPushService.class);
+  PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), GetuiIntentService.class);
+
+  初始化那个自定义服务,再加上注册接受消息的服务.
