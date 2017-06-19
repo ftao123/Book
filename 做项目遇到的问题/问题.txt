@@ -87,3 +87,128 @@
 
 原来是因为android:layout_alignParentRight="true"只有在相对布局里面才能生效。
 
+
+
+2***
+  Handler (android.os.Handler) {2706995e} sending message to a Handler on a dead thread
+ java.lang.IllegalStateException: Handler (android.os.Handler) {2706995e} sending message to a Handler on a dead thread
+ 报错原因：
+ 个推推送强制登出提醒，然后我弹了一个Toast，我会把个推进程杀死，所以导致有概率问题：个推进程被杀死之前Toast还没有弹出来就会报错。
+ 但是Toast弹出来也会错，因为进程都杀了ｃｏｎｔｅｎｔ被回收了，导致Toast无法消失（个人推测）
+ 
+ 在个推服务里面的解决方法：http://www.itstrike.cn/Question/d3ccd6ca-d78b-42a4-8620-32074653cfd6.html
+ http://stackoverflow.com/questions/20059188/java-lang-runtimeexception-handler-android-os-handler-sending-message-to-a-ha （翻译一下）
+
+ 缩略信息是： sending message to a Handler on a dead thread 我是用IntentService时报的
+  http://www.cnblogs.com/longhs/p/5557711.html  (这个已经把问题说很明白了，自己以后要注意或者研究一下)
+ 
+ 
+
+
+ 其实自己有时间可以百度一个使用token来实现。
+
+
+
+3***
+  Unable to add window -- token android.os.BinderProxy@42e861f8 is not valid; is your activity running
+
+  http://stackoverflow.com/questions/25554279/unable-to-add-window-token-android-os-binderproxy4250d6d8-is-not-valid-is-your（把这篇文章翻译一下就可以了）
+
+
+
+4***
+   自己的工程里面存在大量的所谓的并发问题：
+    1.之前那个订单提醒显示个数的问题，个推在推送消息之后会我会调用接口然后进行UI更新，因为调用接口需要时间，返回结果进行UI更新的顺序不可控制，导致更新UI
+   出现逻辑错误，因为有可能是应该后更新的由于接口返回结果比较快，导致他先更新UI。最后自己代码加上同步锁：
+     private void getPersonalInformation() {
+        RunnableExecutor.execute(new Worker<PersonalCenterResponse>(new CallbackNetWork<PersonalCenterResponse>() {
+            @Override
+            public void failure(Response response) {
+                toast(response.getErrorMessage());
+                dismissProgressDialog();
+            }
+
+            @Override
+            public void success(PersonalCenterResponse o) {
+                super.success(o);
+                if ( o.isStatusOk() ) {
+                    orderRemindCount = o.getResults().getOrderRemindCount();
+                    perOrderCount = o.getResults().getPreOrderCount();
+                    mHistoricalRevenue = o.getResults().getTotalIncome();
+                    setMsgCount(perOrderCount + orderRemindCount + msgCount);
+                    if ( o.getResults().getIsOnline() == 1 ) {
+                        PharmacistApp.isOnline = true;
+                    } else {
+                        PharmacistApp.isOnline = false;
+                    }
+                    if ( o.getResults().getIsRemind() == 1 ) {
+                        PharmacistApp.isRemind = true;
+                    } else {
+                        PharmacistApp.isRemind = false;
+                    }
+
+                } else {
+                    toast(o.getErrorMessage());
+                }
+                LocalBroadcastManager.getInstance(MainTabPageActivity.this).sendBroadcast(new Intent(AppConstants.REFRESH_ACTION));
+                dismissProgressDialog();
+            }
+        }) {
+            @Override
+            public PersonalCenterResponse doInBackground() throws Exception {
+                //解决多次同时请求的并发问题，因为无法对返回结果进行更新
+                synchronized (MainTabPageActivity.class){
+                    return  ApiClient.getRestCommon().getPersonalInformation();
+                }
+            }
+        });
+    }
+
+
+   public PersonalCenterResponse doInBackground() throws Exception {
+                //解决多次同时请求的并发问题，因为无法对返回结果进行更新
+                synchronized (MainTabPageActivity.class){
+                    return  ApiClient.getRestCommon().getPersonalInformation();
+                }
+            }
+  
+同时这个需要自己对retrofit非常熟悉，自己百度上面说这个方法里面就是来执行子线程进行调用接口的。所以自己这个地方添加了同步锁。目前是解决问题。
+
+
+2.在点击门店直购进行调用接口跳转，返回成功就进行跳转因为调用接口需要时间，所以所以在进行跳转之前多次点击，造成多次调用同一个接口，所以是进行了多次跳转，最
+关键的自己代码里面***使用静态变量***因为执行三次导致静态变量赋值也执行三次，因为是共享所以导致取值错误。
+ 
+  所以这个需要自己控制在点击跳转的时候只要让用户点击一次，剩余多次点击不触发。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

@@ -276,7 +276,7 @@ android.applicationVariants.all { variant ->
 
 
 
-
+http://blog.csdn.net/zly921112/article/details/52156165   Gradle≥£”√≈‰÷√
 
 
 

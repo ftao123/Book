@@ -1,0 +1,10 @@
+
+
+AndroidLogCollector  https://github.com/DrJia/AndroidLogCollector
+
+上面说是已经打包成jar但是一直找不到，解压之后会有源码的，而且也不多，自己直接复制到工程里就可以使用。
+
+LogCollector这个下面就是源码。
+
+
+然后里面使用的Http.client上传到服务器的，所以自己另外下载了，http的包

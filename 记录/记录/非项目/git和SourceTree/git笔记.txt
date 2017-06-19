@@ -67,7 +67,7 @@ Aborting
 
 如果希望保留生产服务器上所做的改动,仅仅并入新配置项:
 
-git stash
+git stash   (应该是缓存本地)                     先缓存本地，然后再拉去远程的代码，最后再一起提交。（*******）
 
 git pull
 
@@ -113,7 +113,7 @@ ____________
 
 2017.4.27  自己前两天git抽风了，然后解决办法。
 
- git remote set-url origin http://git.local.ybzf.com/android/pharmacist.git
+ git remote set-url origin http://git.local.ybzf.com/android/pharmacist.git     (使用这个貌似不需要自己再去输入密码啥的)
 
  git push
 
@@ -130,5 +130,3 @@ ____________
 
 
 
-
- 

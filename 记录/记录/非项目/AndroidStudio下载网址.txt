@@ -1,0 +1,79 @@
+  
+ http://www.androiddevtools.cn/    代理啊啊什么的都有
+
+
+https://developer.android.com/studio/preview/index.html
+
+
+https://developer.android.google.cn/studio/releases/sdk-tools.html 类似官网
+https://developer.android.google.cn/studio/releases/index.html  各种版本的Android studio
+http://www.android-studio.org/index.php/download/hisversion
+
+
+
+Error:Minimum supported Gradle version is 2.14.1. Current version is 2.10.原因分析和解决。  http://blog.csdn.net/wanglaohushiwo/article/details/53413478
+ 
+Error:Could not determine the dependencies of task ':app:transformClassesWithInstantRunForDebug'. http://blog.csdn.net/qq_32365567/article/details/52954805
+
+解决Android中No resource found that matches android:TextAppearance.Material.Widget.Button.Inverse问题   http://blog.csdn.net/u012336923/article/details/48289485
+
+
+在这里自己就好好的分析一下gradle，（Error:Minimum supported Gradle version is 2.14.1. Current version is 2.10.原因分析和解决。），这个已经分析的很清楚了
+gradle插件版本要和gradle版本一致：
+    gradle插件版本：                 dependencies {
+                                         classpath 'com.android.tools.build:gradle:2.1.0'
+                                  }
+    gradle版本： //项目名/gradle/wrapper/gradle-wrapper.properties
+#Mon Dec 28 10:00:20 PST 2015
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-2.10-all.zip
+
+
+还有一个就是 buildToolsVersion '25.0.0' 这个是要求在SDK的C:\Users\Administrator\AppData\Local\Android\Sdk\build-tools下面要有这个版本构建
+
+不知道为什么RN的运行会默认去找这个地址还是说自己可以设置这个地址。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error:Failed to complete Gradle execution.
+
+Cause:
+The version of Gradle you are using does not support the forTasks() method on BuildActionExecuter. Support for this is available in Gradle 3.5 and all later versions.
+
+
+
+
+
+Error:(1, 0) Minimum supported Gradle version is 4.0-milestone-1. Current version is 3.4.1.
+
+Please fix the project's Gradle settings.
+<a href="fixGradleVersionInWrapper">Fix Gradle wrapper and re-import project</a><br><a href="openGradleSettings">Gradle settings</a>
+
+
+
+
+Error:All flavors must now belong to a named flavor dimension. The flavor 'a' is not assigned to a flavor dimension. Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html
+
+
+Error:(153, 0) Not valid.

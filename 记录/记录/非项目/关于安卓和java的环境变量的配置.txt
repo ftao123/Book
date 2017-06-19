@@ -1,0 +1,5 @@
+
+
+classpath、path、JAVA_HOME的作用及JAVA环境变量配置    http://www.cnblogs.com/xwdreamer/archive/2010/09/08/2297098.html
+
+Android环境变量的设置（详细图解版） http://blog.csdn.net/meetmeya/article/details/6595636

@@ -1,0 +1,86 @@
+
+
+
+
+1.Android利用微信SDK分享到微信教程，回调分享结果错误解决和注意点   http://www.itnose.net/detail/6239504.html
+
+  主要注意：
+  iwxapi = WXAPIFactory.createWXAPI(WXEntryActivity.this, AppConstants.WX_ID);
+  iwxapi.registerApp(AppConstants.WX_ID);
+
+  AppConstants.WX_ID 这个是要注意的是这个ID是注册微信那个ID，要注意替换，还有就是微信的分享或者支付只有回调的 onResp ，这些方法就是微信的回调方法，一会可能会
+用到。
+  还有一个坑就是文章里面说的，那个签名必须使用release的签名。
+
+
+
+
+2, 关于微信分享   https://my.oschina.net/tengda/blog/210287
+
+   //生成一张缩略图，注意：此处的bitmap千万不能太大，不要超过40k,否则sendReq()时，会有可能返回false。不知道开发shareSDK的人是怎么想的，在文档里写一下会
+   掉一块肉么！ 
+
+  这个坑死了，自己百度了一天，就是图片大小不能超过40k，友盟可以，因为友盟做过处理了，有时间用一下友盟。
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

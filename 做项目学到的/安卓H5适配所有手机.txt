@@ -1,0 +1,5 @@
+
+
+解决小米Vivo手机的适配白屏问题（可能是安卓系统版本对js的支持不同造成的）
+
+1. 集成TBS腾讯浏览服务X5内核的Webview   http://blog.csdn.net/github_2011/article/details/71600734

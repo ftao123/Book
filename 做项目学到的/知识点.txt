@@ -105,7 +105,7 @@ android:layout_aboveÕâÊÇÔÚÏà¶Ô²¼¾ÖÀïÃæ²ÅÓĞµÄÊôĞÔ£¬  1 2 3 ÅÅÁĞ¡£2ÔÚ1µÄÏÂÃæ£¬ÔÚ3µ
 
 23 TextViewµÄ×ÖÌåÑÕÉ«ÉèÖÃµÄ¶àÖÖ·½·¨ http://blog.csdn.net/a7a9a68/article/details/7778752
 
-24 ×Ô¼ºÔÚ×Ô¼ºµÄ¹¤³ÌÀïÃæµÄÀà±íÀïÃæÌí¼Ó×Ö¶Î£¬È·ÊµÊÇ¿ÉÒÔÌí¼Ó£¬¶øÇÒ¿ÉÒÔÊ¹ÓÃget·½·¨¡£
+24 ×Ô¼ºÔÚ×Ô¼ºµÄ¹¤³ÌÀïÃæµÄÀà±íÀïÃæÖ±½ÓÌí¼Ó×Ö¶Î£¬È·ÊµÊÇ¿ÉÒÔÌí¼Ó£¬¶øÇÒ¿ÉÒÔÊ¹ÓÃget·½·¨¡£
 
 25 ÏûÏ¢Ä£Ê½Toast.makeTextµÄ¼¸ÖÖ³£¼ûÓÃ·¨  http://www.cnblogs.com/ycxyyzw/archive/2013/03/12/2955845.html (ToastµÄ¼¸ÖÖÑùÊ½)
 
@@ -150,5 +150,128 @@ String AuthTokenString = new String(Base64.decodeFast(RestConfig.getAuthToken())
     http://blog.csdn.net/wike163/article/details/6678073
     
 
+29. JavaÖĞµÄTimerºÍTimerTaskÔÚAndroidÖĞµÄÓÃ·¨   http://blog.csdn.net/zuolongsnail/article/details/8168689
+ 
+30.AndroidÖĞinflate·½·¨µÄÓÃ·¨ http://blog.sina.com.cn/s/blog_5da93c8f0100xm6n.html
+   inflate(int resource, ViewGroup root)  °ÑĞÂÉú³ÉµÄÊÓÍ¼Ìí¼Óµ½¸ùÊÓÍ¼ rootÀïÃæ¡£
+
+   2.¹ØÓÚLayoutInflaterÀàinflate(int resource, ViewGroup root, boolean attachToRoot)·½·¨Èı¸ö²ÎÊıµÄº¬Òå
+
+  resource£ºĞèÒª¼ÓÔØ²¼¾ÖÎÄ¼şµÄid£¬ÒâË¼ÊÇĞèÒª½«Õâ¸ö²¼¾ÖÎÄ¼şÖĞ¼ÓÔØµ½ActivityÖĞÀ´²Ù×÷¡£
+
+  root£ºĞèÒª¸½¼Óµ½resource×ÊÔ´ÎÄ¼şµÄ¸ù¿Ø¼ş£¬Ê²Ã´ÒâË¼ÄØ£¬¾ÍÊÇinflate()»á·µ»ØÒ»¸öView¶ÔÏó£¬Èç¹ûµÚÈı¸ö²ÎÊıattachToRootÎªtrue£¬¾Í½«Õâ¸öroot×÷Îª¸ù¶ÔÏó·µ»Ø£¬
+        ·ñÔò½ö½ö½«Õâ¸öroot¶ÔÏóµÄLayoutParamsÊôĞÔ¸½¼Óµ½resource¶ÔÏóµÄ¸ù²¼¾Ö¶ÔÏóÉÏ£¬Ò²¾ÍÊÇ²¼¾ÖÎÄ¼şresourceµÄ×îÍâ²ãµÄViewÉÏ£¬±ÈÈçÊÇÒ»¸öLinearLayout»òÕßÆä
+        ËüµÄLayout¶ÔÏó¡£
+
+  attachToRoot£ºÊÇ·ñ½«root¸½¼Óµ½²¼¾ÖÎÄ¼şµÄ¸ùÊÓÍ¼ÉÏ
+
+
+ convertView&setTag·½·¨µÄÒ»µãÀí½â     http://blog.163.com/freemanls%40126/blog/static/164585061201171210504864/
+ Í¨¹ıÕâÆªÎÄÕÂ×Ô¼ºÖÕÓÚÖªµÀ×Ô¼ºÏÂµ¥ĞŞ¸ÄÉÌÆ·¸öÊı³öÏÖÎÊÌâµÄÔ­ÒòÁË£¬ÒòÎªÃ¿´Î¶¼ÊÇ¸´ÓÃ£¬£¨×Ô¼ºÀí½âÊÇÍ¬Ò»¸ö¶ÔÏó£©£¬ËùÒÔ²Ù×÷Ò»¸öÏÂÃæ¶¼¸Ä±ä¡£
+ È»ºó×Ô¼º°ÑconvertView.setTag(viewsHolder);È¥µô£¬È»ºóÃ¿´Î¶¼newÒ»¸öĞÂµÄviewsHolder¾Í½â¾öÎÊÌâÁË¡£
+
+ ******Ò²¾ÍÊÇËµÕâ¸öÊÇ½â¾öListViewÀïÃæÇ¶Ì×EditText³öÏÖÎÊÌâµÄ·½·¨¡£
+
+
+
+ LayoutInflater.inflate·½·¨½âÎö http://blog.csdn.net/u013474104/article/details/52702495
+
+ LayoutInflaterÖĞËÄÖÖÀàĞÍinflate·½·¨µÄ½éÉÜ  http://www.cnblogs.com/top5/archive/2012/05/05/2484938.html 
+
+ ViewÊÓÍ¼¿ò¼ÜÔ´Âë·ÖÎöÖ®Ò»:androidÊÇÈçºÎ´´½¨Ò»¸öview http://blog.csdn.net/jj120522/article/details/8211600
+
+  LayoutInflater.inflate·½·¨½âÎö  http://blog.csdn.net/u013474104/article/details/52702495
+
+  AndroidÖĞµÄinflateÓÃ·¨  http://blog.csdn.net/yinbucheng/article/details/51635363   £¨Õâ¸ö°ÑÄÇ¼¸¸ö²ÎÊıËµµÄºÜÏêÏ¸£©
+
+
+
+31 Android StudioĞŞ¸Ä°üÃû  http://blog.csdn.net/le_go/article/details/44342505
+
+  ËûÕâ¸ö·½·¨¿ÉÒÔËæ±ãĞŞ¸Ä°üÃû£¬Èç¹û²»ÄÜĞŞ¸Ä±¨´í£¬ÄÇÏÈĞŞ¸Ä zaozhuangbaixing£¨androidTest£©Õâ¸öÃû×Ö£¬È»ºóÔÙĞŞ¸ÄÎÒÃÇĞèÒªĞŞ¸ÄµÄ¡£
+
+  
+  ±ÈÈçÎÒ×Ô¼ºµÄÄ¿Â¼½á¹¹:×óÉÏ½Ç×îÉÏÃæÄÇ¸öÃû×ÖÊÇÕû¸ö¹¤³ÌµÄÃû×Ö£¬Õâ¸öÃû×Ö×Ô¼ºËæ±ãÆğÊÇºÍ°üÃûÃ»ÓĞÈÎºÎ¹ØÏµµÄ£¬appÄ¿Â¼¾Í·ÅÔÚËûÏÂÃæ¡£
+
+  appµÄ¹¤³Ì½á¹¹ÊÇÊÇjavaÄ¿Â¼ÏÂÃæÌåÏÖ³öÀ´µÄ£¬ÊÇ°´ÕÕ°üÃûÀ´µÄ£¬±ÈÈç zaozhuangbaixing.com.(×Ô¼ºµÄjava´úÂë)£¬ÄÇ¹¤³ÌÄ¿Â¼¾ÍÊÇ zaozhuangbaixing-->com-->×Ô¼ºĞ´µÄjava´úÂë
+  
+  »¹ÓĞ¾ÍÊÇ zaozhuangbaixing-->comÁ½¸öÄ¿Â¼¿ÉÒÔËæ±ãÍÏ×§£¬com¿ÉÒÔºÍ zaozhuangbaixingÆ½¼¶»òÕßÔÚËûÏÂÃæ£¬×Ô¼ºËæÒâĞŞ¸Ä¡£
+
+
+32 *******Õâ¸öÍ¦ÖØÒªµÄ£¬×Ô¼º°Ñ°²×¿ÖĞµÄActivity»î¶¯ÈÎÎñÕ»¸ãÇå³ş¾ÍºÃÁË¡£
+  ActivityµÄËÄÖÖÆô¶¯Ä£Ê½ºÍonNewIntent()    http://blog.csdn.net/linghu_java/article/details/17266603
+  onNewIntentµ÷ÓÃÊ±»ú     http://www.cnblogs.com/zenfly/archive/2012/02/10/2345196.html
+  Android½â¾ö·½°¸¡¿ÔÚonResumeÀïµ÷ÓÃgetIntent()µÃµ½µÄÊÇÉÏÒ»´ÎÊı¾İ   http://blog.csdn.net/xieyupeng520/article/details/49884573
+33 ***ÕæµÄºÃ Ê·ÉÏ×îÈ«webviewÏê½â  https://yq.aliyun.com/articles/32559
+
+34 ½â¾öÈıĞÇÊÖ»úÆµ·±µ÷ÓÃ½Ó¿ÚÊ§°ÜÎÊÌâ ±¨´í £º
+   
+   05-19 10:25:51.889 17186-22398/com.ybzf.mobile.newpharmacist.debug D/Retrofit: java.io.EOFException
+                                                                                   at libcore.io.Streams.readAsciiLine(Streams.java:203)
+                                                                                   at libcore.net.http.HttpEngine.readResponseHeaders(HttpEngine.java:579)
+                                                                                   at libcore.net.http.HttpEngine.readResponse(HttpEngine.java:827)
+                                                                                   at libcore.net.http.HttpURLConnectionImpl.getResponse(HttpURLConnectionImpl.java:283)
+                                                                                   at libcore.net.http.HttpURLConnectionImpl.getResponseCode(HttpURLConnectionImpl.java:497)
+                                                                                   at retrofit.client.UrlConnectionClient.readResponse(UrlConnectionClient.java:73)
+                                                                                   at retrofit.client.UrlConnectionClient.execute(UrlConnectionClient.java:38)
+                                                                                   at retrofit.RestAdapter$RestHandler.invokeRequest(RestAdapter.java:326)
+                                                                                   at retrofit.RestAdapter$RestHandler.invoke(RestAdapter.java:240)
+                                                                                   at $Proxy1.login(Native Method)
+                                                                                   at com.ybzf.mobile.newpharmacist.activity.LoginActivity$5.doInBackground(LoginActivity.java:207)
+                                                                                   at com.ybzf.mobile.newpharmacist.activity.LoginActivity$5.doInBackground(LoginActivity.java:203)
+                                                                                   at com.ybzf.mobile.commonutils.executor.Worker.run(Worker.java:35)
+                                                                                   at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+                                                                                   at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+                                                                                   at java.lang.Thread.run(Thread.java:841)
+ ½â¾öÍøÖ·£º
+ http://stackoverflow.com/questions/22680533/java-io-eofexception-using-ksoap2-lib-libcore-io-streams-readasciilinestreams-j
+ http://stackoverflow.com/questions/15411213/android-httpsurlconnection-eofexception
+
+  
+35 AndroidÊÂ¼ş·Ö·¢»úÖÆÍêÈ«½âÎö£¬´øÄã´ÓÔ´ÂëµÄ½Ç¶È³¹µ×Àí½â(ÉÏ)  http://blog.csdn.net/guolin_blog/article/details/9097463  
+
+
+36.Android»ñÈ¡¾­Î³¶È¡¢¼ÆËã¾àÀë¡¢·½Î»½Ç  http://www.cnblogs.com/ouling/archive/2011/08/26/2154555.html 
+
+37. AndroidÖĞµÄSelectorµÄÓÃ·¨  http://blog.csdn.net/shakespeare001/article/details/7788400/
+
+38.Intent´«µİÊı¾İ (µÃµ½·µ»ØÊı¾İ)  http://blog.csdn.net/gwalking/article/details/49756193
+
+
+
+
+
+
+
+
 
  
+                                  _oo0oo_
+                                 088888880
+                                 88" . "88
+                                 (| -_- |)
+                                  0\ = /0
+                               ___/'---'\___
+                             .' \\\\|     |// '.
+                            / \\\\|||  :  |||// \\
+                           /_ ||||| -:- |||||- \\
+                          |   | \\\\\\  -  /// |   |
+                          | \_|  ''\---/''  |_/ |
+                          \  .-\__  '-'  __/-.  /
+                        ___'. .'  /--.--\  '. .'___
+                     ."" '<  '.___\_<|>_/___.' >'  "".
+                    | | : '-  \'.;'\ _ /';.'/ - ' : | |
+                    \  \ '_.   \_ __\ /__ _/   .-' /  /
+                ====='-.____'.___ \_____/___.-'____.-'=====
+                                  '=---='
+ 
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        ·ğ×æ±£ÓÓ    iii    ÓÀ²»ËÀ»ú
+
+
+
+
+
+
+
+

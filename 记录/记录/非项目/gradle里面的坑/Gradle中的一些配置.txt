@@ -1,0 +1,22 @@
+
+
+
+Gradle学习系列之一——Gradle快速入门  http://www.cnblogs.com/davenkin/p/gradle-learning-1.html
+
+2017/5/22 今天遇到奇葩问题就是自己把AS工具换成2.3.1的时候签名也配置了，但是就是无法生存签名的包，最后自己只能下载一个手动的签名工具进行签名，不知道为什么？？？
+
+解决方法：
+android studio2.3以后给apk签名打包后安装失败的问题  http://blog.csdn.net/love_yan_1314/article/details/70184528
+
+Android APK Signature Scheme v2  http://blog.csdn.net/u013134391/article/details/60580852
+
+
+
+
+1.GRADLE构建最佳实践   http://www.cnblogs.com/jhj117/p/5455081.html
+
+2.Android 多渠道打包：使用Gradle和Android Studio  http://blog.csdn.net/jjwwmlp456/article/details/45057067
+
+使用gradle打包多个变体 http://www.jianshu.com/p/843055bf6edd
+
+Zipalign——Android apk优化工具  http://www.it610.com/article/1936460.htm

@@ -1,0 +1,9 @@
+
+
+
+1.   图解 Android 事件分发机制   http://www.jianshu.com/p/e99b5e8bd67b#
+
+     正如文章里面所说的：
+     之前图中的Activity 的dispatchTouchEvent ，只有return super.dispatchTouchEvent(ev) 才是往下走，
+     返回true 或者 false 事件就被消费了（终止传递）
+     也就是当return true或者false的时候View的

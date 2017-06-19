@@ -31,6 +31,12 @@
             android:name=".activity.chat.ChatDialogActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Pharmacist.Dialog.noTitle"/>
+
+    <style name="Theme.Pharmacist.Dialog.noTitle" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
 3.为啥不在PharmacistApp里面进行容联的初始化，而是在SplashActivity里面进行判断是否进行初始化？？？
   因为：
   初始化不要在application的onCreate方法中进行调用，因为如果android的application没有创建完成时执行初始化方法，将会导致初始化无效，在后续的登录和其他接口的
