@@ -113,7 +113,7 @@ ____________
 
 2017.4.27  自己前两天git抽风了，然后解决办法。
 
- git remote set-url origin http://git.local.ybzf.com/android/pharmacist.git     (使用这个貌似不需要自己再去输入密码啥的)
+ git remote set-url origin http://git.local.ybzf.com/liuqiong/ydbsReactNative.git     (使用这个貌似不需要自己再去输入密码啥的)
 
  git push
 
@@ -127,6 +127,13 @@ ____________
 
 
 如何向git账号上提交代码 http://www.cnblogs.com/wangkongming/p/4158664.html  (这里告诉如何使用https进行提交)
+
+
+
+
+
+
+git pull 拉取的时候会有冲突，然后解决冲突，再提交到本地，不然本地一直提交不上去。
 
 
 
